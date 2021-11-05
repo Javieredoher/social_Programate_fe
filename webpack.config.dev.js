@@ -36,7 +36,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|gif|jpg)$/,
+        test: /\.(png|gif|jpg|woff|otf|svg)$/,
         use: [
           {
             loader: 'file-loader',
@@ -44,6 +44,10 @@ module.exports = {
           }
         ],
       }
+      // {
+      //   test: /\.(png|gif|jpg|woff|otf|svg)$/,
+      //   use: ['url-loader?limit=100000']
+      // }
     ]
   },
   plugins: [
@@ -59,6 +63,6 @@ module.exports = {
     static: path.join(__dirname, 'dist'),
     compress: true,
     port: 3006,
-    historyApiFallback:true,
+    historyApiFallback: true,
   }
 }
