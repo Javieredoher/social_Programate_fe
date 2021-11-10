@@ -1,9 +1,10 @@
 import React from "react";
-import Footer from "../components/footer/Footer";
 import "../assets/styles/global2.css";
 
+import FormPhotoUser from "../components/formPhotoUser/FormPhotoUser";
+
 const App = () => {
-    return <Footer />;
+    return <FormPhotoUser />;
 };
 
 export default App;
