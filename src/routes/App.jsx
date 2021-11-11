@@ -1,9 +1,13 @@
 import React from "react";
-import Footer from "../components/footer/Footer";
 import "../assets/styles/global2.css";
+import Publications from "../components/formpublications/Publicactions";
+// import Footer from "../components/footer/Footer";
+
 
 const App = () => {
-    return <Footer />;
+    return (
+        <Publications />
+    );
 };
 
 export default App;
