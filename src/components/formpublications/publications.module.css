@@ -41,5 +41,6 @@ h3 {
     height: 30px;
     margin: 15px;
     border-radius: 10px;
-    border: 1px solid #92C149
+    border: 1px solid #92C149;
+    background-color: #ffffff;
 }
