@@ -1,30 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import style from "./formPhoto.module.css";
 import { BiTrash } from "react-icons/bi";
 import logo from "../../assets/images/logo-a-color-.jpg";
 
-import UploadPhoto from "../../services/UploadPhoto";
+import { getDataUser, sendDataUser } from "../../helpers/fetch";
+
+import { DataContext } from "../../context/DataContext";
 
 const FormPhotoUser = () => {
-    const [name, setName] = useState("");
-    const [file, setFile] = useState();
-    const [pathImage, setPathImage] = useState("");
+    const { file, setFile, pathImage, setPathImage } = useContext(DataContext);
 
-    const sendImage = (e) => {
+    const sendImage = async (e) => {
         if (file) {
             e.preventDefault();
-            UploadPhoto.sendImages(file).then((result) => {
-                console.log("resultado: ", result);
-            });
+            // sendDataUser(file).then((result) => {
+            //     console.log("resultado: ", result);
+            // });
+            const resp = await sendDataUser("endPoint", { file });
         } else {
             e.preventDefault();
             console.log("no hay imagen cargada");
         }
     };
 
-    const onFileChange = (e) => {
-        // const file = e.target.files[0];
+    const deleteImage = () => {
+        setPathImage("");
+        setFile();
+    };
 
+    const onFileChange = (e) => {
         if (e.target.files && e.target.files.length > 0) {
             const file = e.target.files[0];
 
@@ -63,7 +67,10 @@ const FormPhotoUser = () => {
                                     onChange={onFileChange}
                                 />
                             </div>
-                            <BiTrash className={style.icon} />
+                            <BiTrash
+                                onClick={deleteImage}
+                                className={style.icon}
+                            />
                         </div>
                     </div>
                     <div className={style.fileImage}>
