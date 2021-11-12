@@ -6,8 +6,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-<<<<<<< HEAD
-    entry: "./src/index.js",
+    entry: ["regenerator-runtime/runtime.js", "./src/index.js"],
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js",
@@ -56,61 +55,6 @@ module.exports = {
                     },
                 ],
             },
-=======
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: "/",
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-    alias: {
-      '@components': path.resolve(__dirname, 'src/components/'),
-      '@styles': path.resolve(__dirname, 'src/styles/')
-    }
-  },
-  mode: 'production',
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        }
-      },
-      {
-        test: /\.html$/,
-        use: [
-          { loader: 'html-loader' }
-        ]
-      },
-      {
-        test: /\.s[ac]ss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
-      },
-      {
-        test: /\.css$/,
-        use: [
-            {
-                loader: MiniCssExtractPlugin.loader,
-            },
-            "css-loader",
-        ],
-    },
-      {
-        test: /\.(png|gif|jpg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: { name: 'assets/[hash].[ext]' },
-          }
->>>>>>> origin/formInfoUser
         ],
     },
     plugins: [

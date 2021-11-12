@@ -21,6 +21,18 @@
     left: 0;
 }
 
+.welcome {
+    width: 90%;
+    font-size: 18px;
+    margin: 30px auto;
+    text-align: right;
+}
+
+.label {
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+}
+
 .containPhoto {
     width: 100%;
     text-align: center;
