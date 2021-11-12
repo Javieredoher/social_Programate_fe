@@ -43,7 +43,7 @@ const Publications = () => {
                 <div className={styles.form}>
                     <h3>Imagen</h3>
                     <input
-                        className={StyleSheet.input}
+                        className={styles.image}
                         type="file"
                         name="image"
                     />
