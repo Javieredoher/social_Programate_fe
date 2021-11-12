@@ -49,7 +49,9 @@ const Publications = () => {
                     />
                     <br />
                 </div>
-                <input className={styles.button} type="submit" value="Enviar" />
+                <div className={styles.send}>
+                    <button className="btn" type="submit">Enviar</button>
+                </div>
             </form>
         </Fragment>
     );

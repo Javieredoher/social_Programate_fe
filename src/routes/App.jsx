@@ -1,7 +1,8 @@
 import React from "react";
+import "../assets/styles/global2.css";
 import "../components/formpublications/publications.module.css";
 import Publications from "../components/formpublications/Publicactions";
-// import Footer from "../components/footer/Footer";
+
 
 
 const App = () => {

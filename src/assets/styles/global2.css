@@ -1,12 +1,10 @@
-/* @font-face {
-    font-family: Gilroy-bold;
-    src: url("../fonts/Gilroy-ExtraBold.otf") format("opentype");
-}
-@font-face {
-    font-family: Gilroy-light;
-    src: url("../fonts/Gilroy-Light.otf") format("opentype");
+* {
+    box-sizing: border-box;
 }
 
-p {
-    font-family: Gilroy-bold;
-} */
+
+body{
+    margin:0;
+    padding:0;
+
+} 

@@ -20,8 +20,9 @@ h3 {
     height: 50px;
     display: flex;
     justify-content: center;
-    border-radius: 30px;
-    border: 1px solid #010101;
+    border-radius: 50px;
+    border-style: solid;
+    border: 1px solid;
     padding: 0 15px;
     font-size: 18px;
     outline: none;
@@ -38,36 +39,48 @@ h3 {
     outline: none;
 }
 .tecno button {
-    width: 100%;
+    width: 100px;
     height: 30px;
-    margin: 10px;
+    margin: 15px;
     border-radius: 10px;
-    border: 1px solid #92C149;
+    border: 1px solid;
+    border-color: #92C149;
     background-color: #ffffff;
+    cursor: pointer;
 }
 .tecno {
     display: flex;
-    justify-content: around;
-    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-wrap: wrap; 
 }
-input .button {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 40px;
-}
-.button {
+.send button{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 90px;
     height: 30px;
-    margin: 10px 35%;
+    background-color: #FFCC02;
     border-radius: 10px;
-    border: none;
-    background-color: #ffcc02;
-    flex-wrap: wrap;
     color: #010101;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    flex-wrap: wrap;
+    margin: 10px 35%;
+    /* margin-top: 30px;
+    margin-bottom: 40px; */
+}
+.send button:hover {
+    background-color: black;
+    color: #ffcc02;
+}
+.send {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 40p
 }
 
 
