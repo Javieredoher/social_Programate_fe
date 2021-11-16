@@ -90,6 +90,10 @@
     top: 0;
 }
 
+.imgDocument {
+    width: 50px;
+}
+
 .title {
     border-bottom: 2px solid #ffcc02;
     width: 100%;

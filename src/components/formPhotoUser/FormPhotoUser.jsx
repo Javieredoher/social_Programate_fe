@@ -6,8 +6,8 @@ import logo from "../../assets/images/logo-a-color-.jpg";
 import { DataContext } from "../../context/DataContext";
 
 const FormPhotoUser = () => {
-    const { dataPhoto, setDataPhoto } = useContext(DataContext);
-
+    const { dataUser, setDataUser } = useContext(DataContext);
+    // console.log(dataUser);
     const [pathImage, setPathImage] = useState("");
 
     const deleteImage = () => {
@@ -26,8 +26,8 @@ const FormPhotoUser = () => {
 
                     reader.onload = function load() {
                         setPathImage(reader.result);
-                        setDataPhoto({
-                            ...dataPhoto,
+                        setDataUser({
+                            ...dataUser,
                             avatar: reader.result,
                         });
                     };
@@ -47,7 +47,7 @@ const FormPhotoUser = () => {
                 <h2>Completa tu perfil</h2>
             </div>
             <div className={style.welcome}>
-                <p>Hola Cristian, completa tus datos</p>
+                <p>Hola {dataUser.firstName}, completa tus datos</p>
             </div>
             <form>
                 <div className={style.containPhoto}>

@@ -1,64 +1,64 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
-import { DataContext } from "../../context/DataContext";
+import React, { Fragment, useContext, useRef, useState } from "react";
 import style from "./Form_PersonalInfo.module.css";
 
+import Languages from "./Languages";
+import { DataContext } from "../../context/DataContext";
+import HardSkills from "./HardSkills";
+import SoftSkills from "./SoftSkills";
+
 const Form_PersonalInfo = () => {
-    const { dataUser, setDataUser } = useContext(DataContext);
+    const { dataProfile, setDataProfile } = useContext(DataContext);
 
     const [technical, setTechnical] = useState([]);
-    const [softSkills, setSoftSkills] = useState([]);
+    const [softSkills, setsoftSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
 
     const onChange = ({ target }) => {
         const { name, value } = target;
-        setDataUser({
-            ...dataUser,
+        setDataProfile({
+            ...dataProfile,
             [name]: value,
         });
     };
 
     const onKeyHardSkills = (e) => {
-        if (e.key === "Enter") {
-            const addTech = technical.push(e.target.value);
-            setDataUser({
-                ...dataUser,
+        if (e.key === "Enter" && e.target.value.length > 0) {
+            technical.push(e.target.value);
+            setDataProfile({
+                ...dataProfile,
                 technicalSkills: technical,
             });
+            e.target.value = "";
             e.preventDefault();
         }
     };
 
     const onKeySoftSkills = (e) => {
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && e.target.value.length > 0) {
             const addTech = softSkills.push(e.target.value);
-            setDataUser({
-                ...dataUser,
+            setDataProfile({
+                ...dataProfile,
                 softSkills: softSkills,
             });
+            e.target.value = "";
             e.preventDefault();
         }
     };
 
+    // let targetSkill = useRef("null");
     const onKeyLanguages = (e) => {
-        if (e.key === "Enter") {
-            const addTech = languages.push(e.target.value);
-            setDataUser({
-                ...dataUser,
+        if (e.key === "Enter" && e.target.value.length > 0) {
+            languages.push(e.target.value);
+            setDataProfile({
+                ...dataProfile,
                 lenguages: languages,
             });
+            e.target.value = "";
+            // console.log(languages);
+
             e.preventDefault();
         }
     };
-
-    // const onSelectChange = (e) => {
-    //     setDataUser({
-    //         ...dataUser,
-    //         cohorte: {
-    //             name: e.target.options[e.target.selectedIndex].text,
-    //             num: parseInt(e.target.options[e.target.selectedIndex].value),
-    //         },
-    //     });
-    // };
 
     return (
         <Fragment>
@@ -69,7 +69,7 @@ const Form_PersonalInfo = () => {
                         className={style.nom}
                         type="text"
                         name="name"
-                        value={dataUser.name}
+                        value={dataProfile.name}
                         // onChange={onChange}
                     />
                 </div> */}
@@ -80,7 +80,7 @@ const Form_PersonalInfo = () => {
                         className={style.nom}
                         type="text"
                         name="github"
-                        value={dataUser.github}
+                        value={dataProfile.github}
                         onChange={onChange}
                     />
                 </div>
@@ -101,7 +101,7 @@ const Form_PersonalInfo = () => {
                         className={style.nom}
                         type="text"
                         name="cohorte"
-                        value={dataUser.cohorte}
+                        value={dataProfile.cohorte}
                         onChange={onChange}
                     /> */}
                 {/* </div> */}
@@ -112,7 +112,7 @@ const Form_PersonalInfo = () => {
                         className={style.textarea}
                         rows="3"
                         name="description"
-                        value={dataUser.description}
+                        value={dataProfile.description}
                         onChange={onChange}
                     ></textarea>
                 </div>
@@ -123,19 +123,17 @@ const Form_PersonalInfo = () => {
                         className={style.nom}
                         type="text"
                         name="technicalSkills"
-                        // value={technical[0]}
-                        // onChange={onChangeKey}
                         onKeyDown={onKeyHardSkills}
                     />
-                    <div className={style.tecnologias}>
-                        <button>HTML</button>
-                        <button>CSS</button>
-                        <button>Javascript</button>
-                        <button>React</button>
-                        <button>Angular</button>
-                        <button>MySQL</button>
-                        <button>Nodejs</button>
-                        <button>MongoDB</button>
+                    <div className={style.tecnologias} id="technologias">
+                        {technical.map((skill, index) => (
+                            <HardSkills
+                                skill={skill}
+                                key={index}
+                                technical={technical}
+                                setTechnical={setTechnical}
+                            />
+                        ))}
                     </div>
                 </div>
 
@@ -145,18 +143,17 @@ const Form_PersonalInfo = () => {
                         className={style.nom}
                         type="text"
                         name="softSkills"
-                        // value={softSkills[0]}
                         onKeyDown={onKeySoftSkills}
                     />
                     <div className={style.tecnologias}>
-                        <button>HTML</button>
-                        <button>CSS</button>
-                        <button>Javascript</button>
-                        <button>React</button>
-                        <button>Angular</button>
-                        <button>MySQL</button>
-                        <button>Nodejs</button>
-                        <button>MongoDB</button>
+                        {softSkills.map((skill, index) => (
+                            <SoftSkills
+                                skill={skill}
+                                key={index}
+                                softSkills={softSkills}
+                                setsoftSkills={setsoftSkills}
+                            />
+                        ))}
                     </div>
                 </div>
 
@@ -166,9 +163,22 @@ const Form_PersonalInfo = () => {
                         className={style.nom}
                         type="text"
                         name="lenguages"
-                        // value={languages[0]}
                         onKeyDown={onKeyLanguages}
                     />
+                    <div
+                        className={style.tecnologias}
+                        id="languages"
+                        // ref={targetSkill}
+                    >
+                        {languages.map((skill, index) => (
+                            <Languages
+                                skill={skill}
+                                key={index}
+                                languages={languages}
+                                setLanguages={setLanguages}
+                            />
+                        ))}
+                    </div>
                 </div>
             </form>
         </Fragment>

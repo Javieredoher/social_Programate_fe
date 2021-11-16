@@ -1,18 +1,19 @@
 import React from "react";
 import "../assets/styles/global2.css";
-
-// import FormPhotoUser from "../components/formPhotoUser/FormPhotoUser";
-// import { ProfessionalInformation } from "../components/professionalInformation/ProfessionalInformation";
-
 import { DataProvider } from "../context/DataContext";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CompletePerfil from "../pages/CompletePerfil";
 
 const App = () => {
     return (
         <DataProvider>
-            <CompletePerfil />
-            {/* <ProfessionalInformation /> */}
-            {/* <FormPhotoUser /> */}
+            <Router>
+                <Switch>
+                    <Route exact path="/">
+                        <CompletePerfil />
+                    </Route>
+                </Switch>
+            </Router>
         </DataProvider>
     );
 };

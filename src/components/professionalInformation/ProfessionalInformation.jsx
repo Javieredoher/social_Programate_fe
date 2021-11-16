@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import style from "./ProfessionalInformation.module.css";
 
 import { DataContext } from "../../context/DataContext";
-import { getDataUser, sendDataUser } from "../../helpers/fetch";
+import { getDataUser, sendDataUser, updateDataUser } from "../../helpers/fetch";
 
 export const ProfessionalInformation = () => {
-    const { dataUser, setDataUser, dataPhoto } = useContext(DataContext);
+    const { dataProfile, setDataProfile, dataUser, setDataUser, idUser } =
+        useContext(DataContext);
     const {
         user_info,
         github,
@@ -15,32 +16,52 @@ export const ProfessionalInformation = () => {
         lenguages,
         prev_studes,
         experience,
+    } = dataProfile;
+
+    const {
+        avatar,
+        cohorte,
+        contactNumber,
+        email,
+        firstName,
+        lastName,
+        middleName,
+        passwordHash,
+        program,
+        rol,
+        secondSurname,
+        state,
+        _id,
     } = dataUser;
 
-    const { avatar } = dataPhoto;
+    // const [idUser, setIdUser] = useState("618ea996e890a86c5d63fd6a");
 
-    const getData = async () => {
-        await getDataUser("endponit");
-        console.log(getData);
-    };
-    // getData();
+    //Traer data del usuario
+    useEffect(async () => {
+        const data = await getDataUser("users", idUser);
+        setDataUser(data);
+        // console.log(dataUser);
+    }, []);
+    {
+    }
+    // console.log(dataProfile);
 
+    //Enviar data del usuario al modelo de user y profile
     const sendData = async (e) => {
-        if (dataUser) {
+        // console.log(dataUser);
+        if (dataProfile) {
             e.preventDefault();
-            // sendDataUser(file).then((result) => {
-            //     console.log("resultado: ", result);
-            // });
-            setDataUser({
-                ...dataUser,
+
+            setDataProfile({
+                ...dataProfile,
                 prev_studes: education,
             });
-            setDataUser({
-                ...dataUser,
+            setDataProfile({
+                ...dataProfile,
                 experience: experience,
             });
-            console.log(dataUser);
-            const respData = await sendDataUser("endPoint", {
+            console.log(dataProfile);
+            await sendDataUser("profiles", {
                 user_info,
                 github,
                 description,
@@ -50,7 +71,22 @@ export const ProfessionalInformation = () => {
                 prev_studes,
                 experience,
             });
-            const respPhoto = await sendDataUser("endPoint", { avatar });
+
+            await updateDataUser("users", idUser, {
+                avatar,
+                cohorte,
+                contactNumber,
+                email,
+                firstName,
+                lastName,
+                middleName,
+                passwordHash,
+                program,
+                rol,
+                secondSurname,
+                state,
+                _id,
+            });
         } else {
             e.preventDefault();
             console.log("Error");
@@ -61,7 +97,7 @@ export const ProfessionalInformation = () => {
     const [education, setEducation] = useState({
         institution: "",
         eduDateInit: "",
-        eduDateFin: "",
+        eduDateEnd: "",
         certificate: "",
     });
     const [experienceNew, setExperience] = useState({
@@ -72,26 +108,29 @@ export const ProfessionalInformation = () => {
         descriptionJob: "",
     });
 
+    // Guardar los cambios de la educación
     const onChangeEducation = ({ target }) => {
         const { name, value } = target;
         setEducation({
             ...education,
             [name]: value,
         });
-        setDataUser({
-            ...dataUser,
+        setDataProfile({
+            ...dataProfile,
             prev_studes: Object.values(education),
         });
         // console.log(Object.values(education));
     };
+
+    //Guardar los cambios de la experiencia
     const onChangeExperience = ({ target }) => {
         const { name, value } = target;
         setExperience({
             ...experienceNew,
             [name]: value,
         });
-        setDataUser({
-            ...dataUser,
+        setDataProfile({
+            ...dataProfile,
             experience: Object.values(experienceNew),
         });
     };
@@ -107,7 +146,7 @@ export const ProfessionalInformation = () => {
             reader.onload = function load() {
                 setPathDocument(reader.result);
                 setEducation({ ...education, certificate: reader.result });
-                console.log(reader.result);
+                // console.log(reader.result);
             };
         }
     };
@@ -154,9 +193,9 @@ export const ProfessionalInformation = () => {
                     <input
                         type="date"
                         className={style.inputDate}
-                        name="eduDateFin"
+                        name="eduDateEnd"
                         id="fecha fin"
-                        value={education.eduDateFin}
+                        value={education.eduDateEnd}
                         onChange={onChangeEducation}
                     />
                 </div>
@@ -175,7 +214,13 @@ export const ProfessionalInformation = () => {
                         onChange={onFileChange}
                     />
                 </div>
-                <img src={pathDocument} alt="Document" />
+                {pathDocument ? (
+                    <img
+                        className={style.imgDocument}
+                        src={pathDocument}
+                        alt="Document"
+                    />
+                ) : null}
             </div>
 
             {/* Experiencia laboral */}
