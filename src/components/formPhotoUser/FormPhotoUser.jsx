@@ -7,7 +7,7 @@ import { DataContext } from "../../context/DataContext";
 
 const FormPhotoUser = () => {
     const { dataUser, setDataUser } = useContext(DataContext);
-    // console.log(dataUser);
+    console.log(dataUser.avatar);
     const [pathImage, setPathImage] = useState("");
 
     const deleteImage = () => {
@@ -73,8 +73,8 @@ const FormPhotoUser = () => {
                         </div>
                     </div>
                     <div className={style.fileImage}>
-                        {pathImage.length > 0 ? (
-                            <img src={pathImage} alt="Foto-usuario" />
+                        {dataUser.avatar ? (
+                            <img src={dataUser.avatar} alt="Foto-usuario" />
                         ) : null}
                     </div>
                 </div>
