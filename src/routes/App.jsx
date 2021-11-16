@@ -1,6 +1,8 @@
 import React from 'react'
 import Form_PersonalInfo from '../components/formInfo/Form_PersonalInfo'
 import "../assets/styles/global2.css"
+import Ofertas_laborales from '../components/ofertas_laborales/Ofertas_laborales'
+import Lista_Usuarios from '../components/lista_usuarios/Lista_Usuarios'
 
 
 
@@ -8,7 +10,7 @@ import "../assets/styles/global2.css"
 
 const App = () => 
 {return(
-<Form_PersonalInfo/>
+<Lista_Usuarios/>
 )}
 
 export default App
