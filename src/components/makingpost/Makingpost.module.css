@@ -29,7 +29,7 @@ div i {
     border-radius: 50%;
 }
 
-/*Large(lg)*/
+/*Medium(M)*/
 @media(min-width: 768px) {
     .card {
         width: 625px;

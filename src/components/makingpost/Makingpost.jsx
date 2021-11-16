@@ -8,7 +8,7 @@ const Makingpost = () => {
                 <div className={styles.card}>
                 <i class="bx bxs-user"></i>
                 <select name="" id="post" className={styles.share}>
-                    <option value="">Crear públicacion</option>
+                    <option value="">Crear publicación</option>
                     <option value="comentario">Añadir comentario</option>
                     <option value="documento">Añadir documento</option>
                     <option value="noticia">Añadir noticia</option>
