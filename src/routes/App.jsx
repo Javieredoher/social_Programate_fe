@@ -1,16 +1,18 @@
-import React from 'react'
-import Form_PersonalInfo from '../components/formInfo/Form_PersonalInfo'
-import "../assets/styles/global2.css"
-import Ofertas_laborales from '../components/ofertas_laborales/Ofertas_laborales'
-import Lista_Usuarios from '../components/lista_usuarios/Lista_Usuarios'
+
+import React from "react";
+import "../assets/styles/global2.css";
+// import "../components/formnews/Formnews.module.css";
+// import Formnews from "../components/formnews/Formnews";
+import Makingpost from "../components/makingpost/Makingpost";
 
 
 
+const App = () => {
+    return (
+        // <Formnews />
+        <Makingpost/>
+    );
+};
 
+export default App;
 
-const App = () => 
-{return(
-<Lista_Usuarios/>
-)}
-
-export default App
