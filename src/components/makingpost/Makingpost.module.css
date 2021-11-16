@@ -18,11 +18,26 @@
     width: 250px;
     height: 35px;
     border: 1px solid #d7d7d7;
+    padding: 0 0 0 8px;
     border-radius: 30px;
     color: rgba(0, 0, 0, 0.5);
 }
 div i {
     color: #d7d7d7;
-    font-size: 28px;
-    padding: 2px 0 0 0;
+    font-size: 26px;
+    padding: 2px;
+    border: 1px solid #d7d7d7;
+    border-radius: 50%;
+}
+
+/*Large(lg)*/
+@media(min-width: 768px) {
+    .card {
+        width: 625px;
+        padding: 10px 0 10px 0;
+    }
+    .share {
+        width: 500px;
+        padding: 0 0 0 10px;
+    }
 }
