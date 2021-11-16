@@ -1,16 +1,14 @@
 import React from 'react'
-// import "../assets/styles/global2.css"
-import Lista_Usuarios from '../components/lista_usuarios/Lista_Usuarios'
-import Ofertas_laborales from '../components/ofertas_laborales/Ofertas_laborales'
+import Form_PersonalInfo from '../components/formInfo/Form_PersonalInfo'
+import "../assets/styles/global2.css"
+
 
 
 
 
 const App = () => 
 {return(
-
-<Ofertas_laborales/>
-
+<Form_PersonalInfo/>
 )}
 
 export default App
