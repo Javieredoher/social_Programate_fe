@@ -3,6 +3,7 @@ import style from "./ProfessionalInformation.module.css";
 
 import { DataContext } from "../../context/DataContext";
 import { getDataUser, sendDataUser, updateDataUser } from "../../helpers/fetch";
+import { BiX } from "react-icons/bi";
 
 export const ProfessionalInformation = () => {
     const { dataProfile, setDataProfile, dataUser, setDataUser, idUser } =
@@ -34,33 +35,20 @@ export const ProfessionalInformation = () => {
         _id,
     } = dataUser;
 
-    // const [idUser, setIdUser] = useState("618ea996e890a86c5d63fd6a");
-
     //Traer data del usuario
     useEffect(async () => {
         const data = await getDataUser("users", idUser);
         setDataUser(data);
-        // console.log(dataUser);
     }, []);
     {
     }
-    // console.log(dataProfile);
 
     //Enviar data del usuario al modelo de user y profile
     const sendData = async (e) => {
-        // console.log(dataUser);
+        dataProfile.prev_studes.push(Object.values(education));
         if (dataProfile) {
             e.preventDefault();
 
-            setDataProfile({
-                ...dataProfile,
-                prev_studes: education,
-            });
-            setDataProfile({
-                ...dataProfile,
-                experience: experience,
-            });
-            console.log(dataProfile);
             await sendDataUser("profiles", {
                 user_info,
                 github,
@@ -70,6 +58,7 @@ export const ProfessionalInformation = () => {
                 lenguages,
                 prev_studes,
                 experience,
+                user_info,
             });
 
             await updateDataUser("users", idUser, {
@@ -93,7 +82,6 @@ export const ProfessionalInformation = () => {
         }
     };
 
-    const [pathDocument, setPathDocument] = useState("");
     const [education, setEducation] = useState({
         institution: "",
         eduDateInit: "",
@@ -115,11 +103,6 @@ export const ProfessionalInformation = () => {
             ...education,
             [name]: value,
         });
-        setDataProfile({
-            ...dataProfile,
-            prev_studes: Object.values(education),
-        });
-        // console.log(Object.values(education));
     };
 
     //Guardar los cambios de la experiencia
@@ -131,24 +114,30 @@ export const ProfessionalInformation = () => {
         });
         setDataProfile({
             ...dataProfile,
-            experience: Object.values(experienceNew),
+            experience: [Object.values(experienceNew)],
         });
     };
 
+    const [nameFile, setNameFile] = useState("");
     const onFileChange = (e) => {
         if (e.target.files && e.target.files.length > 0) {
             const file = e.target.files[0];
-            // console.log(file);
 
             const reader = new FileReader();
             reader.readAsDataURL(file);
-
             reader.onload = function load() {
-                setPathDocument(reader.result);
                 setEducation({ ...education, certificate: reader.result });
-                // console.log(reader.result);
             };
+            // console.log(education);
+            if (file.type === "application/pdf") {
+                setNameFile(file.name);
+            }
         }
+    };
+
+    const deleteCertificate = () => {
+        setEducation({ ...education, certificate: "" });
+        setNameFile("");
     };
 
     return (
@@ -157,6 +146,7 @@ export const ProfessionalInformation = () => {
                 {/* Seccion de educación formal  */}
                 <div className={style.title}>
                     <h2> Educación </h2>
+                    <i className="fa-solid fa-plus icon"></i>
                 </div>
                 <div className={style.inputs}>
                     <label className={style.label} htmlFor="institution">
@@ -202,7 +192,7 @@ export const ProfessionalInformation = () => {
 
                 <div name="formulario" className={style.inputFile}>
                     <label className={style.label} htmlFor="edad">
-                        Añadir certificado
+                        Añadir certificado <span>*pdf *jpg *png</span>
                     </label>
 
                     <input
@@ -210,16 +200,36 @@ export const ProfessionalInformation = () => {
                         name="certificate"
                         accept="application/pdf, image/jpg, image/png"
                         multiple
-                        // value={dataUser.certificate}
                         onChange={onFileChange}
                     />
                 </div>
-                {pathDocument ? (
-                    <img
-                        className={style.imgDocument}
-                        src={pathDocument}
-                        alt="Document"
-                    />
+                {education.certificate && nameFile.length <= 0 ? (
+                    <div className={style.containDelete}>
+                        <BiX
+                            className={style.deleteImg}
+                            onClick={deleteCertificate}
+                        />
+                        <img
+                            className={style.imgDocument}
+                            src={education.certificate}
+                            alt="Document"
+                        />
+                    </div>
+                ) : null}
+                {nameFile.length > 0 ? (
+                    <div className={style.containDelete}>
+                        <BiX
+                            className={style.deleteImg}
+                            onClick={deleteCertificate}
+                        />
+                        <h5 className={style.nameFile}>{nameFile}</h5>
+                        {/* <embed
+                            src={education.certificate}
+                            type="application/pdf"
+                            width="300px"
+                            height="600px"
+                        /> */}
+                    </div>
                 ) : null}
             </div>
 
@@ -227,6 +237,7 @@ export const ProfessionalInformation = () => {
             <div className={style.experience}>
                 <div className={style.title}>
                     <h2>Experiencia</h2>
+                    <i className="fa-solid fa-plus icon"></i>
                 </div>
                 <div className={style.inputs}>
                     <label className={style.label} htmlFor="position">

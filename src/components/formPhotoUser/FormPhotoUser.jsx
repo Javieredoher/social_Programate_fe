@@ -7,12 +7,13 @@ import { DataContext } from "../../context/DataContext";
 
 const FormPhotoUser = () => {
     const { dataUser, setDataUser } = useContext(DataContext);
-    console.log(dataUser.avatar);
     const [pathImage, setPathImage] = useState("");
 
     const deleteImage = () => {
-        setPathImage("");
-        setFile();
+        setDataUser({
+            ...dataUser,
+            avatar: "",
+        });
     };
 
     const onFileChange = (e) => {

@@ -2,11 +2,11 @@ import React, { createContext, useState } from "react";
 
 export const DataContext = createContext();
 
-const idUser = "618ea996e890a86c5d63fd6a";
+const idUser = "6193d612096f9c0e80cfcf49";
 
 export const DataProvider = ({ children }) => {
     const initialState = {
-        _id: idUser,
+        user_info: idUser,
         github: "",
         description: "",
         technicalSkills: [],
@@ -29,7 +29,7 @@ export const DataProvider = ({ children }) => {
         rol: 1,
         secondSurname: "",
         state: true,
-        _id: "618ea996e890a86c5d63fd6a",
+        _id: idUser,
     });
 
     return (
