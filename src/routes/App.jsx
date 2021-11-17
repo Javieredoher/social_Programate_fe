@@ -16,6 +16,8 @@ const App = () => {
             </Router>
         </DataProvider>
     );
+
 };
 
 export default App;
+
