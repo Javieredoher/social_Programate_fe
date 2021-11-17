@@ -9,6 +9,9 @@ const Commentbox = () => {
                 <i class="bx bxs-user"></i>
                 <input type="text" className={styles.input_box} placeholder="Añadir un comentario"/>
                 </div>
+                <div className={styles.button_box}>
+                <button type="submit" className={styles.btn}>Públicar</button>
+                </div>
             </div>
         </Fragment>
     )
