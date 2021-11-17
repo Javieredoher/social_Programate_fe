@@ -1,11 +1,23 @@
 import React from "react";
-//import Footer from "../components/footer/Footer";
 import "../assets/styles/global2.css";
-import { Navbar } from "../components/header/Navbar";
-
+import { DataProvider } from "../context/DataContext";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CompletePerfil from "../pages/CompletePerfil";
 
 const App = () => {
-    return <Navbar />;
+    return (
+        <DataProvider>
+            <Router>
+                <Switch>
+                    <Route exact path="/">
+                        <CompletePerfil />
+                    </Route>
+                </Switch>
+            </Router>
+        </DataProvider>
+    );
+
 };
 
 export default App;
+
