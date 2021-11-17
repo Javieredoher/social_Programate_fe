@@ -1,9 +1,11 @@
 import React from "react";
-import Footer from "../components/footer/Footer";
 import "../assets/styles/global2.css";
+import Commentbox from "../components/commentbox/commentbox";
 
 const App = () => {
-    return <Footer />;
+    return (
+        <Commentbox />
+    )
 };
 
 export default App;
