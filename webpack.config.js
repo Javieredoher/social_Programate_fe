@@ -6,7 +6,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-    entry: "./src/index.js",
+    entry: ["regenerator-runtime/runtime.js", "./src/index.js"],
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js",
@@ -47,7 +47,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|gif|jpg|woff|otf|svg)$/,
+                test: /\.(png|gif|jpg|woff|otf|svg|pdf)$/,
                 use: [
                     {
                         loader: "file-loader",
