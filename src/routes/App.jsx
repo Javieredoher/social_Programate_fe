@@ -1,14 +1,20 @@
 import React from "react";
 import "../assets/styles/global2.css";
-// import "../components/formnews/Formnews.module.css";
-// import Formnews from "../components/formnews/Formnews";
-import Makingpost from "../components/makingpost/Makingpost";
-
+import { DataProvider } from "../context/DataContext";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CompletePerfil from "../pages/CompletePerfil";
 
 const App = () => {
     return (
-        // <Formnews />
-        <Makingpost/>
+        <DataProvider>
+            <Router>
+                <Switch>
+                    <Route exact path="/">
+                        <CompletePerfil />
+                    </Route>
+                </Switch>
+            </Router>
+        </DataProvider>
     );
 
 };
