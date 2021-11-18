@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 const Formnews = () => {
     const { posts, setPosts } = useContext(DataContext);
 
-    const { title, type, description, images, technologies } = posts;
+    const { user_info, title, type, description, images, technologies } = posts;
 
     const history = useHistory();
 
@@ -23,6 +23,7 @@ const Formnews = () => {
 
         try {
             await sendData("posts", {
+                user_info,
                 title,
                 description,
                 images,
