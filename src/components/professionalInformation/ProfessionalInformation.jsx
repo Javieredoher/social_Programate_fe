@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import style from "./ProfessionalInformation.module.css";
 
 import { DataContext } from "../../context/DataContext";
-import { getDataUser, sendDataUser, updateDataUser } from "../../helpers/fetch";
+import { getData, sendData, updateData } from "../../helpers/fetch";
 import { BiX } from "react-icons/bi";
 
 export const ProfessionalInformation = () => {
@@ -37,7 +37,7 @@ export const ProfessionalInformation = () => {
 
     //Traer data del usuario
     useEffect(async () => {
-        const data = await getDataUser("users", idUser);
+        const data = await getData("users", idUser);
         setDataUser(data);
     }, []);
     {
@@ -48,7 +48,7 @@ export const ProfessionalInformation = () => {
         if (dataProfile) {
             e.preventDefault();
 
-            await sendDataUser("profiles", {
+            await sendData("profiles", {
                 user_info,
                 github,
                 description,
@@ -60,7 +60,7 @@ export const ProfessionalInformation = () => {
                 user_info,
             });
 
-            await updateDataUser("users", idUser, {
+            await updateData("users", idUser, {
                 avatar,
                 cohorte,
                 contactNumber,
