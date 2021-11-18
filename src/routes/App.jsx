@@ -6,6 +6,7 @@ import CompletePerfil from "../pages/CompletePerfil";
 import FormNewsPage from "../pages/FormNewsPage";
 import FormEventPage from "../pages/FormEventPage";
 import FormJobsPage from "../pages/FormJobsPage";
+import CommunityPage from "../pages/CommunityPage";
 
 
 const App = () => {
@@ -30,6 +31,10 @@ const App = () => {
 
                     <Route exact path="/formjobs">
                         <FormJobsPage />
+                    </Route>
+
+                    <Route exact path="/community">
+                        <CommunityPage />
                     </Route>
 
                 </Switch>

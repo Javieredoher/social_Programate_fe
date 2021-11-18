@@ -44,7 +44,7 @@ const FormJobs = () => {
         <div className={style.forms}>
         <h3>Empresa</h3>
         <input 
-        placeholder="ingrese su nombre" 
+        placeholder="" 
         className={style.nom} 
         type="text" 
         name="Tipo_de_perfil"  
