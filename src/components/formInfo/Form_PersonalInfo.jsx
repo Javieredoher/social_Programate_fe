@@ -50,8 +50,6 @@ const Form_PersonalInfo = () => {
         </div>
         </div>
         
-      
-        
         <div className={style.forms}>
         <h3>Idiomas</h3>
         <input className={style.nom} type="text" name="Idiomas" />

@@ -1,13 +1,13 @@
 import React from 'react'
 import "../assets/styles/global2.css"
+import EditarProyectos from '../components/editarproyectos/EditarProyectos'
 
-import Portafolio from '../components/portafolio/Portafolio'
 
 
 const App = () => 
 {return(
 
-<Portafolio/>
+<EditarProyectos/>
 )}
 
 export default App
