@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CompletePerfil from "../pages/CompletePerfil";
 import FormNewsPage from "../pages/FormNewsPage";
 import FormEventPage from "../pages/FormEventPage";
+import FormJobsPage from "../pages/FormJobsPage";
 
 const App = () => {
     return (
@@ -22,6 +23,10 @@ const App = () => {
 
                     <Route exact path="/formnews">
                         <FormNewsPage />
+                    </Route>
+
+                    <Route exact path="/formjobs">
+                        <FormJobsPage />
                     </Route>
 
                 </Switch>

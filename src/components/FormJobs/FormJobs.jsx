@@ -1,8 +1,10 @@
 import React, { Fragment, useState} from 'react'
-import style from './Ofertas_laborales.module.css'
+import style from './FormJobs.module.css'
 
 
-const Ofertas_laborales = () => {
+const FormJobs = () => {
+
+// Revisar los State al momento de aplicar funcionalidad
 
   const [datos, setDatos] = useState({
     nombre_de_la_oferta: '',
@@ -17,7 +19,7 @@ const Ofertas_laborales = () => {
     })
   }
 
-  const enviarDatos = (event) => {
+  const sendData = (event) => {
     event.preventDefault()
     console.log(`${datos.nombre_de_la_oferta} ${datos.Tipo_de_perfil}`)
 
@@ -25,12 +27,12 @@ const Ofertas_laborales = () => {
  
   return (
     <Fragment>
-      <form className={style.from_container} onSubmit={enviarDatos}>
+      <form className={style.from_container} onSubmit={sendData}>
 
         <div className={style.forms} >
         <h3>Nombre de la oferta</h3>
         <input 
-        placeholder="ingrese su nombre" 
+        placeholder="" 
         className={style.nom} 
         type="text" 
         name="nombre_de_la_oferta"  
@@ -40,7 +42,7 @@ const Ofertas_laborales = () => {
         </div>
 
         <div className={style.forms}>
-        <h3>Tipo_de_perfil</h3>
+        <h3>Empresa</h3>
         <input 
         placeholder="ingrese su nombre" 
         className={style.nom} 
@@ -96,4 +98,4 @@ const Ofertas_laborales = () => {
     </Fragment>
   )
 }
-export default Ofertas_laborales
+export default FormJobs
