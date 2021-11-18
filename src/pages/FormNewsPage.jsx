@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Footer from "../components/Footer/Footer";
 
 
 import Formnews from "../components/formnews/Formnews";
@@ -11,6 +12,7 @@ const FormNewsPage = () => {
     return (
         <>
             <Formnews />
+            <Footer/>
         </>
     );
 };
