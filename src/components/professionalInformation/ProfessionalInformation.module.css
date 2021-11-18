@@ -103,7 +103,7 @@
 .deleteImg {
     font-size: 30px;
     margin-right: 15px;
-    /* margin-bottom: 30%; */
+    cursor: pointer;
 }
 .containDelete {
     display: flex;
@@ -125,6 +125,7 @@
     position: absolute;
     right: 0;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .btnSubmit {
