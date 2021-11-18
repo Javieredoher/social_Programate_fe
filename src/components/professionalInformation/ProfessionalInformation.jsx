@@ -2,12 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import style from "./ProfessionalInformation.module.css";
 
 import { DataContext } from "../../context/DataContext";
-import { getDataUser, sendDataUser, updateDataUser } from "../../helpers/fetch";
+import { getData, sendData, updateData } from "../../helpers/fetch";
 import { BiX } from "react-icons/bi";
+import { useHistory } from "react-router-dom";
 
 export const ProfessionalInformation = () => {
     const { dataProfile, setDataProfile, dataUser, setDataUser, idUser } =
         useContext(DataContext);
+
+    const history = useHistory();
+
     const {
         user_info,
         github,
@@ -37,18 +41,18 @@ export const ProfessionalInformation = () => {
 
     //Traer data del usuario
     useEffect(async () => {
-        const data = await getDataUser("users", idUser);
+        const data = await getData("users", idUser);
         setDataUser(data);
     }, []);
     {
     }
 
     //Enviar data del usuario al modelo de user y profile
-    const sendData = async (e) => {
+    const submitData = async (e) => {
         if (dataProfile) {
             e.preventDefault();
 
-            await sendDataUser("profiles", {
+            await sendData("profiles", {
                 user_info,
                 github,
                 description,
@@ -60,7 +64,7 @@ export const ProfessionalInformation = () => {
                 user_info,
             });
 
-            await updateDataUser("users", idUser, {
+            await updateData("users", idUser, {
                 avatar,
                 cohorte,
                 contactNumber,
@@ -75,6 +79,7 @@ export const ProfessionalInformation = () => {
                 state,
                 _id,
             });
+            history.push("/formevent");
         } else {
             e.preventDefault();
             console.log("Error");
@@ -802,7 +807,7 @@ export const ProfessionalInformation = () => {
             <button
                 className={style.btnSubmit}
                 type="submit"
-                onClick={sendData}
+                onClick={submitData}
             >
                 Guardar cambios
             </button>
