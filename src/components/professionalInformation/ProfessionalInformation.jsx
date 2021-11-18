@@ -128,7 +128,7 @@ export const ProfessionalInformation = () => {
         }
     };
 
-    const [nameFile, setNameFile] = useState(["0", "0", "0"]);
+    const [nameFile, setNameFile] = useState(["", "", ""]);
     const onFileChange1 = (e) => {
         const file = e.target.files[0];
 
@@ -140,7 +140,8 @@ export const ProfessionalInformation = () => {
         };
 
         if (file.type === "application/pdf") {
-            setNameFile([...nameFile, (nameFile[0] = file.name)]);
+            nameFile[0] = file.name;
+            setNameFile([...nameFile]);
         }
 
         // console.log(education);
@@ -157,7 +158,8 @@ export const ProfessionalInformation = () => {
         };
 
         if (file.type === "application/pdf") {
-            setNameFile([...nameFile, (nameFile[1] = file.name)]);
+            nameFile[1] = file.name;
+            setNameFile([...nameFile]);
         }
 
         console.log(education);
@@ -174,7 +176,8 @@ export const ProfessionalInformation = () => {
         };
 
         if (file.type === "application/pdf") {
-            setNameFile([...nameFile, (nameFile[2] = file.name)]);
+            nameFile[2] = file.name;
+            setNameFile([...nameFile]);
         }
     };
 
@@ -182,14 +185,25 @@ export const ProfessionalInformation = () => {
         const idEducation = e.target.parentElement.parentElement.id;
         switch (idEducation) {
             case "0":
-                setEducation([...education, (education[0].certificate = "")]);
-                setNameFile([...nameFile, (nameFile[0] = "")]);
+                nameFile[0] = "";
+                setNameFile([...nameFile]);
+                education[0].certificate = "";
+                setEducation([...education]);
+                break;
             case "1":
-                setEducation([...education, (education[1].certificate = "")]);
-                setNameFile([...nameFile, (nameFile[1] = "")]);
+                nameFile[1] = "";
+                setNameFile([...nameFile]);
+                education[1].certificate = "";
+                setEducation([...education]);
+                break;
             case "2":
-                setEducation([...education, (education[2].certificate = "")]);
-                setNameFile([...nameFile, (nameFile[2] = "")]);
+                nameFile[2] = "";
+                setNameFile([...nameFile]);
+                education[2].certificate = "";
+                setEducation([...education]);
+                break;
+            default:
+                console.log("any");
         }
     };
 
@@ -252,14 +266,6 @@ export const ProfessionalInformation = () => {
                 experienceNew[2][name] = value;
                 setExperience([...experienceNew]);
         }
-        // setExperience({
-        //     ...experienceNew,
-        //     [name]: value,
-        // });
-        // setDataProfile({
-        //     ...dataProfile,
-        //     experience: [Object.values(experienceNew)],
-        // });
     };
     useEffect(() => {
         const sliceExperience = experienceNew.slice(0, countExp);
@@ -342,12 +348,14 @@ export const ProfessionalInformation = () => {
                                 onChange={onFileChange1}
                             />
                         </div>
-                        {education[0].certificate && nameFile[0].length <= 1 ? (
+                        {education[0].certificate &&
+                        nameFile[0].length === 0 ? (
                             <div className={style.containDelete}>
                                 <BiX
                                     className={style.deleteImg}
                                     onClick={deleteCertificate}
                                 />
+
                                 <img
                                     className={style.imgDocument}
                                     src={education[0].certificate}
@@ -355,13 +363,16 @@ export const ProfessionalInformation = () => {
                                 />
                             </div>
                         ) : null}
-                        {nameFile[0].length > 1 ? (
+                        {nameFile[0].length > 0 ? (
                             <div className={style.containDelete}>
                                 <BiX
                                     className={style.deleteImg}
                                     onClick={deleteCertificate}
                                 />
-                                <h5 className={style.nameFile}>{nameFile}</h5>
+
+                                <h5 className={style.nameFile}>
+                                    {nameFile[0]}
+                                </h5>
                                 {/* <embed
                              src={education.certificate}
                              type="application/pdf"
@@ -431,7 +442,7 @@ export const ProfessionalInformation = () => {
                             onChange={onFileChange2}
                         />
                     </div>
-                    {education[1].certificate && nameFile[1].length <= 1 ? (
+                    {education[1].certificate && nameFile[1].length < 1 ? (
                         <div className={style.containDelete}>
                             <BiX
                                 className={style.deleteImg}
@@ -450,7 +461,7 @@ export const ProfessionalInformation = () => {
                                 className={style.deleteImg}
                                 onClick={deleteCertificate}
                             />
-                            <h5 className={style.nameFile}>{nameFile}</h5>
+                            <h5 className={style.nameFile}>{nameFile[1]}</h5>
                         </div>
                     ) : null}
                 </div>
@@ -513,7 +524,7 @@ export const ProfessionalInformation = () => {
                             onChange={onFileChange3}
                         />
                     </div>
-                    {education[2].certificate && nameFile[2].length <= 1 ? (
+                    {education[2].certificate && nameFile[2].length < 1 ? (
                         <div className={style.containDelete}>
                             <BiX
                                 className={style.deleteImg}
@@ -526,13 +537,13 @@ export const ProfessionalInformation = () => {
                             />
                         </div>
                     ) : null}
-                    {nameFile[2].length > 1 ? (
+                    {nameFile[2].length > 0 ? (
                         <div className={style.containDelete}>
                             <BiX
                                 className={style.deleteImg}
                                 onClick={deleteCertificate}
                             />
-                            <h5 className={style.nameFile}>{nameFile}</h5>
+                            <h5 className={style.nameFile}>{nameFile[2]}</h5>
                         </div>
                     ) : null}
                 </div>
