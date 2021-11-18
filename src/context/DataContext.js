@@ -31,6 +31,36 @@ export const DataProvider = ({ children }) => {
         state: true,
         _id: idUser,
     });
+    const [posts, setPosts] = useState({
+        user_info: "",
+        likes: [],
+        title: "",
+        type: "",
+        softSkills: [],
+        comments: [],
+        description: "",
+        profile: "",
+        images: "",
+        company: "",
+        salary: "",
+        modality: "",
+        contact: "",
+        input_foro: "",
+        link: "",
+        tags: "",
+        dateEvent: "",
+        technologies: [],
+        place: "",
+    });
+    const [postsEvent, setPostsEvent] = useState({
+        title: "",
+        type: "",
+        description: "",
+        link: "",
+        dateEvent: "",
+        technologies: [],
+        place: "",
+    });
 
     return (
         <DataContext.Provider
@@ -40,6 +70,10 @@ export const DataProvider = ({ children }) => {
                 dataUser,
                 setDataUser,
                 idUser,
+                posts,
+                setPosts,
+                postsEvent,
+                setPostsEvent
             }}
         >
             {children}
