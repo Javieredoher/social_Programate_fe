@@ -59,7 +59,7 @@ const FormEvent = () => {
                     <input
                         placeholder="Breve descripción del evento"
                         className={style.nom}
-                        type="text"
+                        type="textarea"
                         name="description"
                         onChange={handleChange}
                     />

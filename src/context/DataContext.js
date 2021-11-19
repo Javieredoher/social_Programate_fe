@@ -32,6 +32,7 @@ export const DataProvider = ({ children }) => {
         _id: idUser,
     });
     const [posts, setPosts] = useState({
+        user_info: idUser,
         user_info: "",
         likes: [],
         title: "",
@@ -52,6 +53,7 @@ export const DataProvider = ({ children }) => {
         technologies: [],
         place: "",
     });
+
     const [postsEvent, setPostsEvent] = useState({
         title: "",
         type: "",
