@@ -1,10 +1,12 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import styles from "./Formnews.module.css";
-import { sendData } from "../../helpers/fetch";
+import swal from "sweetalert2";
 
+import { getData, sendData, updateData } from "../../helpers/fetch";
 import { DataContext } from "../../context/DataContext";
 import HardSkills from "./HardSkills";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Formnews = () => {
     const { posts, setPosts } = useContext(DataContext);
@@ -12,6 +14,7 @@ const Formnews = () => {
     const { user_info, title, type, description, images, technologies } = posts;
 
     const history = useHistory();
+    const params = useParams();
 
     useEffect(() => {
         setPosts({ ...posts, type: "news" });
@@ -21,22 +24,46 @@ const Formnews = () => {
     const submitData = async (e) => {
         e.preventDefault();
 
-        try {
-            await sendData("posts", {
-                user_info,
-                title,
-                description,
-                images,
-                technologies,
-                type,
+        if (posts.title.length <= 0 || posts.description.length <= 0) {
+            Swal.fire({
+                title: "Completar datos",
+                text: "Los campos de Nombre de la noticia y Contenido escrito son obligatorios",
+                icon: "error",
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "black",
+                timer: "6000",
             });
-            history.push("/formevent");
-        } catch (error) {
-            console.log(error);
+        } else {
+            try {
+                if (!params.id) {
+                    await sendData("posts", {
+                        user_info,
+                        title,
+                        description,
+                        images,
+                        technologies,
+                        type,
+                    });
+                } else {
+                    await updateData("posts", params.id, {
+                        user_info,
+                        title,
+                        description,
+                        images,
+                        technologies,
+                        type,
+                    });
+                }
+
+                history.push("/formevent");
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 
     const onChange = ({ target }) => {
+        console.log(posts);
         const { name, value } = target;
         setPosts({
             ...posts,
@@ -57,6 +84,22 @@ const Formnews = () => {
             // console.log(posts, technical);
         }
     };
+
+    const getDataNews = async (id) => {
+        try {
+            const dataNews = await getData("posts", id);
+            setPosts(dataNews);
+            setTechnical(dataNews.technologies);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        if (params.id) {
+            getDataNews(params.id);
+        }
+    }, []);
 
     const onFileChange = (e) => {
         const file = e.target.files[0];
@@ -81,6 +124,7 @@ const Formnews = () => {
                         className={styles.input}
                         type="text"
                         name="title"
+                        value={posts.title}
                         onChange={onChange}
                     />
                     <br />
@@ -94,6 +138,7 @@ const Formnews = () => {
                         name="description"
                         rows=""
                         cols=""
+                        value={posts.description}
                         onChange={onChange}
                     ></textarea>
                     <br />
