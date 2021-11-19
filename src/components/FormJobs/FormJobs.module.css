@@ -92,6 +92,28 @@ option {
     margin-top: 30px;
     margin-bottom: 40px;
 }
+.headerPerfil {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 10px;
+    border-bottom: 1px solid #ffcc02;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.headerPerfil h2 {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+}
+
+.headerPerfil img {
+    width: 60px;
+    position: absolute;
+    left: 0;
+}
 
 /* Medium (md) */
 @media (min-width: 768px) {

@@ -6,6 +6,7 @@ import React, {
     useEffect,
 } from "react";
 import style from "./FormJobs.module.css";
+import logo from "../../assets/images/logo-a-color-.jpg";
 import { DataContext } from "../../context/DataContext";
 import { sendData, updateData } from "../../helpers/fetch";
 import HardSkills from "../formInfo/HardSkills";
@@ -81,6 +82,10 @@ const FormJobs = () => {
 
     return (
         <Fragment>
+            <div className={style.headerPerfil}>
+                <img src={logo} alt="Educamás" />
+                <h2>Agregar una oferta</h2>
+            </div>
             <form className={style.from_container} onSubmit={submitData}>
                 <div className={style.forms}>
                     <h3>Nombre de la oferta</h3>
