@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CompletePerfil from "../pages/CompletePerfil";
 import FormNewsPage from "../pages/FormNewsPage";
 import FormEventPage from "../pages/FormEventPage";
+import Start from "../components/Start";
 import FormJobsPage from "../pages/FormJobsPage";
 import CommunityPage from "../pages/CommunityPage";
 
@@ -15,7 +16,9 @@ const App = () => {
             <Router>
       
                 <Switch>
-
+                    <Route exact path="/">
+                        <Start />
+                    </Route>
                     <Route exact path="/formprofile">
                         <CompletePerfil />
 
@@ -23,9 +26,14 @@ const App = () => {
 
                     <Route exact path="/formevent">
                         <FormEventPage />
-                    </Route> 
+                    </Route>
 
                     <Route exact path="/formnews">
+                        <FormNewsPage />
+                    </Route>
+
+
+                    <Route exact path="/formnews/:id">
                         <FormNewsPage />
                     </Route>
 
@@ -37,12 +45,11 @@ const App = () => {
                         <CommunityPage />
                     </Route>
 
+
                 </Switch>
             </Router>
         </DataProvider>
     );
-
 };
 
 export default App;
-
