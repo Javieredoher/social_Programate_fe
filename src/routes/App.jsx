@@ -7,22 +7,18 @@ import FormNewsPage from "../pages/FormNewsPage";
 import FormEventPage from "../pages/FormEventPage";
 import FormJobsPage from "../pages/FormJobsPage";
 
-
 const App = () => {
     return (
         <DataProvider>
             <Router>
-      
                 <Switch>
-
                     <Route exact path="/formprofile">
                         <CompletePerfil />
-
                     </Route>
 
                     <Route exact path="/formevent">
                         <FormEventPage />
-                    </Route> 
+                    </Route>
 
                     <Route exact path="/formnews">
                         <FormNewsPage />
@@ -31,13 +27,10 @@ const App = () => {
                     <Route exact path="/formjobs">
                         <FormJobsPage />
                     </Route>
-
                 </Switch>
             </Router>
         </DataProvider>
     );
-
 };
 
 export default App;
-
