@@ -7,7 +7,7 @@ const Formnews = () => {
             <form className={styles.form_container}>
                 <h1>Noticias</h1>
                 <div className={styles.form}>
-                    <h3>Nombre de la notcia</h3>
+                    <h3>Nombre de la noticia</h3>
                     <input className={styles.input} type="text" name="news" />
                     <br />
                 </div>
@@ -42,15 +42,13 @@ const Formnews = () => {
 
                 <div className={styles.form}>
                     <h3>Imagen</h3>
-                    <input
-                        className={styles.image}
-                        type="file"
-                        name="image"
-                    />
+                    <input className={styles.image} type="file" name="image" />
                     <br />
                 </div>
                 <div className={styles.send}>
-                    <button className="btn" type="submit">Enviar</button>
+                    <button className="btn" type="submit">
+                        Enviar
+                    </button>
                 </div>
             </form>
         </Fragment>
