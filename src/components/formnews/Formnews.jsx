@@ -174,6 +174,9 @@ const Formnews = () => {
                         name="image"
                         onChange={onFileChange}
                     />
+                 {posts.images ? (
+                    <img src={posts.images} alt="File" />
+                    ) : null}        
                     <br />
                 </div>
                 <div className={styles.send}>
