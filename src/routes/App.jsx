@@ -9,7 +9,7 @@ import Start from "../components/Start";
 import FormJobsPage from "../pages/FormJobsPage";
 import CommunityPage from "../pages/CommunityPage";
 import PortfolioPage from '../components/portfolio/Portfolio'
-import EditProject from '../components/EditProject/EditProject'
+import FormProject from '../components/FormProject/FormProject'
 
 
 const App = () => {
@@ -51,8 +51,8 @@ const App = () => {
                         <PortfolioPage />
                     </Route>
 
-                    <Route exact path="/editproject">
-                        <EditProject />
+                    <Route exact path="/formproject">
+                        <FormProject />
                     </Route>
 
 
