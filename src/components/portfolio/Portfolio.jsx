@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
-import style from './Portafolio.module.css'
+import style from './Portfolio.module.css'
 
-const Portafolio = () => {
+const Portfolio = () => {
   
     return (
         <Fragment>
@@ -110,4 +110,4 @@ const Portafolio = () => {
     )
 }
 
-export default Portafolio
+export default Portfolio

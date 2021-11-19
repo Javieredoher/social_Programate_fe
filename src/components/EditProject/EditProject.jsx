@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
-import style from './EditarProyectos.module.css'
+import style from './EditProject.module.css'
 import crud from '../../assets/images/crud.png'
 
-const EditarProyectos = () => {
+const EditProject = () => {
     return (
         <Fragment>
       <form className={style.from_container}>
@@ -75,4 +75,4 @@ const EditarProyectos = () => {
     )
 }
 
-export default EditarProyectos
+export default EditProject
