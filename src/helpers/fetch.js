@@ -33,3 +33,5 @@ export const updateData = async (endpoint, id, data) => {
 
     return res.json();
 };
+////////////////////////////////////
+

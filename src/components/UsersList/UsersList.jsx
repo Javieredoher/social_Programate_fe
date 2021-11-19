@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
 import ImagDama from '../../assets/images/ImagDama.png'
 import ImagCaballero from '../../assets/images/ImagCaballero.png'
-import style from './Lista_Usuarios.module.css'
+import style from './UsersList.module.css'
 
-const Lista_Usuarios = () => {
+const UsersList
+ = () => {
     return (
         <Fragment>
             <div className={style.container}>
@@ -89,4 +90,5 @@ const Lista_Usuarios = () => {
     )
 }
 
-export default Lista_Usuarios
+export default UsersList
+

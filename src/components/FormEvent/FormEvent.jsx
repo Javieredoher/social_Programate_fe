@@ -1,36 +1,79 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import style from "./FormEvent.module.css";
-
+import logo from "../../assets/images/logo-a-color-.jpg";
+import { DataContext } from "../../context/DataContext";
+import { sendData, updateData } from "../../helpers/fetch";
 const FormEvent = () => {
-    const [datos, setDatos] = useState({
-        nombre_de_la_oferta: "",
-        Tipo_de_perfil: "",
-    });
+    const { postsEvent, setPostsEvent } = useContext(DataContext);
+    const [techs, setTechs] = useState([]);
 
-    const handleInputChange = (event) => {
-        // console.log(event.target.value)
-        setDatos({
-            ...datos,
-            [event.target.name]: event.target.value,
-        });
+    //Enviar data del usuario al modelo de user y profile
+    const submitData = async (e) => {
+        e.preventDefault();
+        try {
+            await sendData("posts", postsEvent);
+        } catch (error) {
+            console.log("Error" + error);
+        }
     };
 
-    const enviarDatos = (event) => {
-        event.preventDefault();
-        console.log(`${datos.nombre_de_la_oferta} ${datos.Tipo_de_perfil}`);
-    };
 
+
+
+    const handleChange = (e) => {
+
+        const { name, value } = e.target;
+        setPostsEvent({ ...postsEvent, [name]: value })
+
+    }
+
+
+
+        ;
+    const onCapture = (e) => {
+        const value = e.target.value
+
+        if (e.key === "Enter" && value.length > 0) {
+            techs.push(e.target.value)
+            setPostsEvent({ ...postsEvent, technologies: techs })
+            e.target.value = "";
+            e.preventDefault();
+        }
+    }
+    useEffect(() => {
+
+
+    }, [postsEvent, setPostsEvent, techs, setTechs])
+    useEffect(() => {
+        setPostsEvent({ ...postsEvent, type: "event" })
+
+    }, [])
     return (
         <Fragment>
-            <form className={style.from_container} onSubmit={enviarDatos}>
+            <div className={style.headerPerfil}>
+                <img src={logo} alt="Educamás" />
+                <h2>Agregar evento</h2>
+            </div>
+            <form className={style.from_container} onSubmit={submitData}>
                 <div className={style.forms}>
                     <h3>Nombre del evento</h3>
                     <input
-                        placeholder="nombre del evento"
+                        placeholder="Nombre del evento"
                         className={style.nom}
                         type="text"
-                        name="Evento"
-                        onChange={handleInputChange}
+                        name="title"
+                        onChange={handleChange}
+                    />
+                    <br />
+                </div>
+                <div className={style.forms}>
+                    <h3>Descripción</h3>
+                    <input
+                        placeholder="Breve descripción del evento"
+                        className={style.nom}
+                        type="textarea"
+                        name="description"
+                        onChange={handleChange}
                     />
                     <br />
                 </div>
@@ -38,71 +81,69 @@ const FormEvent = () => {
                 <div className={style.forms}>
                     <h3>Lugar</h3>
                     <input
-                        placeholder="lugar"
+                        placeholder="Lugar"
                         className={style.nom}
                         type="text"
-                        name="Nombre_de_lugar"
-                        onChange={handleInputChange}
+                        name="place"
+                        onChange={handleChange}
                     />
                     <br />
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Fecha</h3>
+                    <h3>Fecha del evento</h3>
                     <input
-                        placeholder="fecha"
+
                         className={style.nom}
-                        type="text"
-                        name="Fecha"
-                        onChange={handleInputChange}
+                        type="date"
+                        name="dateEvent"
+                        onChange={handleChange}
                     />
                     <br />
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Link de inscripcion</h3>
+                    <h3>Link de inscripción</h3>
                     <input
-                        placeholder="link"
+                        placeholder="Link de inscripción"
                         className={style.nom}
                         type="text"
-                        name="Link"
-                        onChange={handleInputChange}
+                        name="link"
+                        onChange={handleChange}
                     />
                     <br />
                 </div>
                 <div className={style.forms}>
-                            <h3>Tegnologías</h3>         
+                    <h3>Tegnologías</h3>
                     <input
                         className={style.nom}
                         type="text"
-                        name="Tegnologías"
+                        placeholder="Tecnologías <Enter> para guardarla"
+                        name="technologies"
+
+                        onKeyDown={onCapture}
+
                     />
-                            
+
                     <br />
-                            
+
                     <div className={style.tecnologias}>
-                                  <button>HTML</button>
-                                  <button>CSS</button>
-                                  <button>Javascript</button>
-                                  <button>React</button>
-                                  <button>Angular</button>
-                                  <button>MySQL</button>
-                                  <button>Nodejs</button>
-                                  <button>MongoDB</button>
-                                
+                        {techs.map((tech, index) => (
+                            <button key={index}>{tech}</button>
+                        ))}
+
+
                     </div>
-                            
+
                 </div>
 
                 <div className={style.enviar}>
-                    <button className="btn" type="submit">
+                    <button className="btn" >
                         Enviar
                     </button>
                 </div>
             </form>
-            <h3>
-                {datos.nombre_de_la_oferta} - {datos.Tipo_de_perfil}
-            </h3>
+
         </Fragment>
     );
 };

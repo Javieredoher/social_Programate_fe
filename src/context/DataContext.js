@@ -5,6 +5,7 @@ export const DataContext = createContext();
 const idUser = "6193d612096f9c0e80cfcf49";
 
 export const DataProvider = ({ children }) => {
+
     const initialState = {
         user_info: idUser,
         github: "",
@@ -32,7 +33,9 @@ export const DataProvider = ({ children }) => {
         _id: idUser,
     });
     const [posts, setPosts] = useState({
+
         user_info: idUser,
+        user_info: "",
         likes: [],
         title: "",
         type: "",
@@ -53,6 +56,17 @@ export const DataProvider = ({ children }) => {
         place: "",
     });
 
+
+    const [postsEvent, setPostsEvent] = useState({
+        title: "",
+        type: "",
+        description: "",
+        link: "",
+        dateEvent: "",
+        technologies: [],
+        place: "",
+    });
+
     return (
         <DataContext.Provider
             value={{
@@ -63,10 +77,13 @@ export const DataProvider = ({ children }) => {
                 idUser,
                 posts,
                 setPosts,
+                postsEvent,
+                setPostsEvent
             }}
         >
-                        {children}
-                    
+            {children}
         </DataContext.Provider>
     );
 };
+
+
