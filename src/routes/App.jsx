@@ -10,6 +10,8 @@ import FormJobsPage from "../pages/FormJobsPage";
 import CommunityPage from "../pages/CommunityPage";
 import PortfolioPage from '../components/portfolio/Portfolio'
 import FormProject from '../components/FormProject/FormProject'
+import ProfilePage from "../pages/ProfilePage";
+import CreateResourcePage from "../pages/CreateResourcePage";
 
 
 const App = () => {
@@ -53,6 +55,14 @@ const App = () => {
 
                     <Route exact path="/formproject">
                         <FormProject />
+                    </Route>
+
+                    <Route exact path="/createresource">
+                        <CreateResourcePage />
+                    </Route>
+
+                    <Route exact path="/profile">
+                        <ProfilePage/>
                     </Route>
 
 
