@@ -1,6 +1,6 @@
 import React from "react";
 import "../assets/styles/global2.css";
-import EventCard from "../components/eventsCard/EventCard";
+import EventCard from "../components/EventsCard/EventCard";
 
 // import "../components/formnews/Formnews.module.css";
 // import Formnews from "../components/formnews/Formnews";
