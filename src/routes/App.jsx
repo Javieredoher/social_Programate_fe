@@ -9,7 +9,7 @@ import Start from "../components/Start";
 import FormJobsPage from "../pages/FormJobsPage";
 import CommunityPage from "../pages/CommunityPage";
 import Portafolio from '../components/portafolio/Portafolio'
-
+import EditarProyectos from '../components/editarproyectos/EditarProyectos'
 
 
 const App = () => {
@@ -54,5 +54,6 @@ const App = () => {
         </DataProvider>
     );
 };
+
 
 export default App;
