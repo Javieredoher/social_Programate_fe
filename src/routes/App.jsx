@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CompletePerfil from "../pages/CompletePerfil";
 import FormNewsPage from "../pages/FormNewsPage";
 import FormEventPage from "../pages/FormEventPage";
+import  ForumResources  from "../components/ForumResources/ForumResources";
+import CreateResource from "../pages/ CreateResource";
 
 const App = () => {
     return (
@@ -24,6 +26,9 @@ const App = () => {
                         <FormNewsPage />
                     </Route>
 
+                    <Route exact path="/createresource">
+                        <CreateResource />
+                    </Route>
                 </Switch>
             </Router>
         </DataProvider>

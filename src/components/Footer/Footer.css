@@ -1,71 +1,67 @@
 .footer {
-    height: 87px;
     width: 100%;
     background-color: rgb(0, 0, 0);
-}
-.container-footer {
+  }
+  .container-footer {
     max-width: 1024px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
-}
-.logoProgramate,
-.logoEducamas {
-    width: 200px;
-    height: 60px;
-}
-ul {
+    padding: 12px 0;
+  }
+  .logoProgramate,
+  .logoEducamas {
+    width: 170px;
+    height: 48px;
+  }
+  
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+  
+  ul {
     list-style: none;
-}
-
-.list-redes {
+  }
+  
+  .list-redes {
     display: flex;
     justify-content: space-around;
-    margin: 0;
+    margin: 0 0 5px 0;
     padding: 0;
-}
-.copyright {
+  }
+  .copyright {
     color: white;
-}
-.logo {
-    width: 40px;
-    height: 40px;
-}
-
-/* Small (sm) */
-@media (max-width: 640px) {
-    .logo {
-        width: 25px;
-        height: 25px;
-    }
-    .logoProgramate,
-    .logoEducamas {
-        width: 150px;
-        height: 30px;
-    }
-    /* ... */
-}
-
-/* Medium (md) */
-@media (max-width: 768px) {
-    .logo {
-        width: 35px;
-        height: 35px;
-    }
-    .logoProgramate,
-    .logoEducamas {
-        width: 170px;
-        height: 40px;
-    }
-    /* ... */
-}
-
-/* Large (lg) */
-@media (max-width: 1024px) {
+  }
+  /* Large (lg) */
+  @media (max-width: 1024px) {
     .container-footer {
-        margin: 0 16px;
+      margin: 0 16px;
     }
-    /* ... */
-}
+  }
+  /* Medium (md) */
+  @media (max-width: 768px) {
+    .logoProgramate,
+    .logoEducamas {
+      width: 150px;
+      height: 40px;
+    }
+    .logo {
+      width: 25px;
+      height: 25px;
+    }
+    .copyright {
+      font-size: 14px;
+    }
+  }
+  /* Small (sm) */
+  @media (max-width: 640px) {
+    .container-footer {
+        flex-direction: column;
+        row-gap: 15px;
+    }
+    .copyright {
+      font-size: 13px;
+    }
+  }

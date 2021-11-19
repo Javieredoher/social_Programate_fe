@@ -2,14 +2,14 @@
 import "regenerator-runtime/runtime";
 const API = "http://localhost:3000/api";
 
-export const getDataUser = async (endpoint, id) => {
+export const getData = async (endpoint, id) => {
     const url = `${API}/${endpoint}/${id}`;
     const resp = await fetch(url);
     // await console.log(resp.json());
     return await resp.json();
 };
 
-export const sendDataUser = async (endpoint, data) => {
+export const sendData = async (endpoint, data) => {
     const url = `${API}/${endpoint}`;
     const res = await fetch(url, {
         method: "POST",
@@ -22,7 +22,7 @@ export const sendDataUser = async (endpoint, data) => {
     return res.json();
 };
 
-export const updateDataUser = async (endpoint, id, data) => {
+export const updateData = async (endpoint, id, data) => {
     const url = `${API}/${endpoint}/${id}`;
     const res = await fetch(url, {
         method: "PUT",
