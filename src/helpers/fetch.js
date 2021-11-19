@@ -5,7 +5,6 @@ const API = "http://localhost:3000/api";
 export const getData = async (endpoint, id) => {
     const url = `${API}/${endpoint}/${id}`;
     const resp = await fetch(url);
-    // await console.log(resp.json());
     return await resp.json();
 };
 

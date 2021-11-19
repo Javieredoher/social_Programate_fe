@@ -14,6 +14,7 @@ import SoftSkills from "../formInfo/SoftSkills";
 import { set } from "react-hook-form";
 
 const FormJobs = () => {
+
     const { postsJobs, setPostsJobs } = useContext(DataContext);
 
     const [technical, setTechnical] = useState([]);
@@ -207,3 +208,4 @@ const FormJobs = () => {
     );
 };
 export default FormJobs;
+

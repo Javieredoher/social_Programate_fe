@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useRef, useState } from "react";
 import style from "./Form_PersonalInfo.module.css";
-
 import Languages from "./Languages";
 import { DataContext } from "../../context/DataContext";
 import HardSkills from "./HardSkills";
@@ -185,4 +184,5 @@ const Form_PersonalInfo = () => {
     );
 };
 export default Form_PersonalInfo;
+
 
