@@ -17,19 +17,11 @@ const FormEvent = () => {
         }
     };
 
-
-
-
     const handleChange = (e) => {
 
         const { name, value } = e.target;
         setPostsEvent({ ...postsEvent, [name]: value })
-
-    }
-
-
-
-        ;
+    };
     const onCapture = (e) => {
         const value = e.target.value
 
