@@ -59,6 +59,7 @@ const App = () => {
                 </Switch>
             </Router>
         </DataProvider>
+
     );
 };
 

@@ -1,0 +1,69 @@
+[
+    {
+        "id": "9",
+        "avatar": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+        "name_person": "Juan Hernando",
+        "cohort": "Quackcoders",
+        "time": "Hace 2 horas",
+        "event_name": "Seminario Blockchain Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nihil ratione a ipsa exercitationem rem, ",
+        "date_place": "01 de diciembre - virtual",
+        "inscription_link": "www.link@ejemplo.com",
+        "type": "event"
+    },
+
+    {
+        "id": "10",
+        "avatar": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+        "name_person": "Juan Hernando",
+        "cohort": "Quackcoders",
+        "time": "Hace 2 horas",
+        "event_name": "Hackaton",
+        "date_place": "04 de diciembre - virtual",
+        "inscription_link": "correo@ejemplo.com",
+        "type": "event"
+    },
+    {
+        "id": "11",
+        "avatar": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+        "name_person": "Juan Hernando",
+        "cohort": "Pioneros",
+        "time": "Hace 2 horas",
+        "event_name": "Seminario Blockchain",
+        "date_place": "01 de diciembre - virtual",
+        "inscription_link": "correo@ejemplo.com",
+        "type": "event"
+    },
+    {
+        "id": "12",
+        "avatar": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+        "name_person": "Juan Hernando",
+        "cohort": "Quackcoders",
+        "time": "Hace 2 horas",
+        "event_name": "Seminario Blockchain",
+        "date_place": "01 de diciembre - virtual",
+        "inscription_link": "correo@ejemplo.com",
+        "type": "event"
+    },
+    {
+        "id": "13",
+        "avatar": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+        "name_person": "Juan Hernando",
+        "cohort": "Quackcoders",
+        "time": "Hace 2 horas",
+        "event_name": "Seminario Blockchain",
+        "date_place": "01 de diciembre - virtual",
+        "inscription_link": "correo@ejemplo.com",
+        "type": "event"
+    },
+    {
+        "id": "14",
+        "avatar": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+        "name_person": "Juan Hernando",
+        "cohort": "Quackcoders",
+        "time": "Hace 2 horas",
+        "event_name": "Seminario Blockchain",
+        "date_place": "01 de diciembre - virtual",
+        "inscription_link": "correo@ejemplo.com",
+        "type": "event"
+    }
+]
