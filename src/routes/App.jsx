@@ -13,6 +13,13 @@ import FormProject from '../components/FormProject/FormProject'
 import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
 
+//Componentes test
+import ForumQuestion from "../components/ForumQuestion/Questions";
+import ForumResourcesList from "../components/ForumResourcesList/Recursos";
+import ForumCreateResources from "../components/ForumCreateResources/ForumCreateResources";
+
+
+
 
 const App = () => {
     return (
@@ -65,6 +72,11 @@ const App = () => {
                         <ProfilePage/>
                     </Route>
 
+                    <Route exact path="/test">
+                        <ForumQuestion />
+                        {/* <ForumResourcesList />
+                        <ForumCreateResources /> */}
+                    </Route>
 
                 </Switch>
             </Router>
