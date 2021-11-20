@@ -8,24 +8,27 @@ import FormEventPage from "../pages/FormEventPage";
 import Start from "../components/Start";
 import FormJobsPage from "../pages/FormJobsPage";
 import CommunityPage from "../pages/CommunityPage";
-import PortfolioPage from '../components/portfolio/Portfolio'
-import FormProject from '../components/FormProject/FormProject'
-
+import PortfolioPage from "../components/portfolio/Portfolio";
+import FormProject from "../components/FormProject/FormProject";
+import RenderPostHome from "../components/RenderPostHome/RenderPostHome";
+import EventCard from "../components/EventsCard/EventCard";
+import JobCard from "../components/JobCard/JobCard";
 
 const App = () => {
     return (
         <DataProvider>
-            <Router>      
+            <Router>
                 <Switch>
-      
                     <Route exact path="/">
                         <Start />
+                        <RenderPostHome />
+                        <EventCard />
+                        <JobCard />
                     </Route>
-      
+
                     <Route exact path="/formprofile">
                         <CompletePerfil />
                     </Route>
-
 
                     <Route exact path="/formevent">
                         <FormEventPage />
@@ -54,14 +57,10 @@ const App = () => {
                     <Route exact path="/formproject">
                         <FormProject />
                     </Route>
-
-
                 </Switch>
             </Router>
         </DataProvider>
-
     );
 };
-
 
 export default App;

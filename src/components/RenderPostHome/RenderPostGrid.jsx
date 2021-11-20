@@ -2,22 +2,18 @@ import React, { useState } from "react";
 import { BiLike, BiMessageRoundedDots, BiShare } from "react-icons/bi";
 import style from "./RenderPostHome.module.css";
 
+/* This is the son component of news => View Home  */
 export const RenderPostGrid = (post) => {
     const [count, setCount] = useState(0);
     const [show, setShow] = useState(true);
-    /* This is the son component of news */
+
     return (
         <div className={style.newscard}>
             {/*---From here is the part when you can see the photo, the user name, the cohort and the time when it was posted  */}
 
             <div className={style.userInformation}>
                 <div className={style.imageAvatar}>
-                    <img
-                        width={80}
-                        height={80}
-                        src={post.avatar}
-                        alt="avatar"
-                    />
+                    <img src={post.avatar} alt="avatar" />
                 </div>
                 <div className={style.user}>
                     <h3 className={style.namePerson}>{post.name_person}</h3>
@@ -69,8 +65,8 @@ export const RenderPostGrid = (post) => {
                                 type="text"
                                 className={style.commentHidden}
                                 name="comment"
-                                id="commentHidden"
-                                placeholder="Escribe un comentario..."
+                                id="comment"
+                                placeholder="Deja un comentario..."
                             />
                             <button className={style.btnComment} type="submit">
                                 Publicar
@@ -80,9 +76,6 @@ export const RenderPostGrid = (post) => {
                     <div className={style.commentButton}></div>
                 </div>
                 {/*This is the share button  */}
-                <div className={style.shareButton}>
-                    <BiShare className={style.share} size="40px"></BiShare>
-                </div>
             </div>
         </div>
     );
