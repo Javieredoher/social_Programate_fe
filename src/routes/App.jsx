@@ -1,5 +1,9 @@
 import React from "react";
 import "../assets/styles/global2.css";
+
+
+import LatestPosts from "../components/LatestPosts/LatestPosts.jsx";
+
 import { DataProvider } from "../context/DataContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CompletePerfil from "../pages/CompletePerfil";
@@ -19,6 +23,7 @@ import CreateResourcePage from "../pages/CreateResourcePage";
 
 const App = () => {
     return (
+
         <DataProvider>
 
             <Router>
@@ -74,11 +79,17 @@ const App = () => {
                         <ProfilePage/>
                     </Route>
 
+                    <Route exact path="/adminpost">
+                        <LatestPosts/>
+                    </Route>
+                    
+
 
 
                 </Switch>
             </Router>
         </DataProvider>
+
     );
 };
 
