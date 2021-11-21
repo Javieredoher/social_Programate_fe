@@ -43,8 +43,8 @@ hr {
     text-align: center;
 }
 
-img {
-    width: 150px;
+.container_img img {
+    width: 70px;
 }
 
 h3 {
