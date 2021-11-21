@@ -13,18 +13,25 @@ import FormProject from "../components/FormProject/FormProject";
 import RenderPostHome from "../components/RenderPostHome/RenderPostHome";
 import EventCard from "../components/EventsCard/EventCard";
 import JobCard from "../components/JobCard/JobCard";
+import ProfilePage from "../pages/ProfilePage";
+import CreateResourcePage from "../pages/CreateResourcePage";
+
 
 const App = () => {
     return (
         <DataProvider>
+
             <Router>
+
                 <Switch>
-                    <Route exact path="/">
+
+      
+                    <Route exact path="/home">
                         <Start />
                         <RenderPostHome />
                         <EventCard />
                         <JobCard />
-                    </Route>
+                    </Route>                 
 
                     <Route exact path="/formprofile">
                         <CompletePerfil />
@@ -46,6 +53,7 @@ const App = () => {
                         <FormJobsPage />
                     </Route>
 
+
                     <Route exact path="/community">
                         <CommunityPage />
                     </Route>
@@ -57,10 +65,22 @@ const App = () => {
                     <Route exact path="/formproject">
                         <FormProject />
                     </Route>
+
+                    <Route exact path="/createresource">
+                        <CreateResourcePage />
+                    </Route>
+
+                    <Route exact path="/profile">
+                        <ProfilePage/>
+                    </Route>
+
+
+
                 </Switch>
             </Router>
         </DataProvider>
     );
 };
+
 
 export default App;
