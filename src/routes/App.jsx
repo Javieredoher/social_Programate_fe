@@ -21,10 +21,12 @@ import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
 
 
+
 const App = () => {
     return (
 
         <DataProvider>
+
 
             <Router>
 
@@ -37,6 +39,7 @@ const App = () => {
                         <EventCard />
                         <JobCard />
                     </Route>                 
+
 
                     <Route exact path="/formprofile">
                         <CompletePerfil />
@@ -71,6 +74,10 @@ const App = () => {
                         <FormProject />
                     </Route>
 
+                    <Route exact path="/formproject/:id">
+                        <FormProject />
+                    </Route>
+
                     <Route exact path="/createresource">
                         <CreateResourcePage />
                     </Route>
@@ -84,14 +91,11 @@ const App = () => {
                     </Route>
                     
 
-
-
                 </Switch>
             </Router>
         </DataProvider>
 
     );
 };
-
 
 export default App;

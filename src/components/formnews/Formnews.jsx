@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import styles from "./Formnews.module.css";
-import swal from "sweetalert2";
 
 import { getData, sendData, updateData } from "../../helpers/fetch";
 import { DataContext } from "../../context/DataContext";
@@ -177,9 +176,9 @@ const Formnews = () => {
                         name="image"
                         onChange={onFileChange}
                     />
-                 {posts.images ? (
-                    <img src={posts.images} alt="File" />
-                    ) : null}        
+                    {posts.images ? (
+                        <img src={posts.images} alt="File" />
+                    ) : null}
                     <br />
                 </div>
                 <div className={styles.send}>
