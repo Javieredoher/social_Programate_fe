@@ -20,6 +20,13 @@ import JobCard from "../components/JobCard/JobCard";
 import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
 
+//Componentes test
+import ForumQuestion from "../components/ForumQuestion/Questions";
+import ForumResourcesList from "../components/ForumResourcesList/Recursos";
+import ForumCreateResources from "../components/ForumCreateResources/ForumCreateResources";
+
+
+
 
 
 const App = () => {
@@ -40,7 +47,6 @@ const App = () => {
                         <JobCard />
                     </Route>                 
 
-
                     <Route exact path="/formprofile">
                         <CompletePerfil />
                     </Route>
@@ -60,7 +66,6 @@ const App = () => {
                     <Route exact path="/formjobs">
                         <FormJobsPage />
                     </Route>
-
 
                     <Route exact path="/community">
                         <CommunityPage />
@@ -86,11 +91,16 @@ const App = () => {
                         <ProfilePage/>
                     </Route>
 
+                    <Route exact path="/Foro">
+                        <ForumQuestion />
+                        {/* <ForumResourcesList />
+                        <ForumCreateResources /> */}
+                    </Route>
+
                     <Route exact path="/adminpost">
                         <LatestPosts/>
                     </Route>
                     
-
                 </Switch>
             </Router>
         </DataProvider>
