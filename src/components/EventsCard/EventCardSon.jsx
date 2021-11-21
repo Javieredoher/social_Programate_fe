@@ -14,25 +14,35 @@ export const EventCardSon = (props) => {
 
             <div className={style.userInformation}>
                 <div className={style.imageAvatar}>
-                    <img
-                        width={80}
-                        height={80}
-                        src={props.avatar}
-                        alt="avatar"
-                    />
+                    <img src={props.avatar} alt="avatar" />
                 </div>
                 <div className={style.user}>
-                    <h3 className={style.namePerson}>{props.name_person}</h3>
+                    <h3 className={style.namePerson}>{props.user_info}</h3>
                     <h3 className={style.cohort}>{props.cohort} </h3>
                     <h3 className={style.time}>{props.time}</h3>
                 </div>
             </div>
 
             {/* In this part you can read the information of the event, name, date, place and the inscription link */}
+            <h3 className={style.namePerson}>{props.title} </h3>
+
+            <div className={style.imageContainer}>
+                <img src={props.image} alt="noticia" />
+            </div>
+
             <div className={style.eventsContainer}>
-                <p className={style.paragraph}>{props.event_name} </p>
-                <p className={style.paragraph}>{props.date_place} </p>
-                <p className={style.paragraph}>{props.inscription_link} </p>
+                <p className={style.paragraph1}>
+                    <strong> Descripción: </strong> {props.description}{" "}
+                </p>
+                <p className={style.paragraph1}>
+                    <strong> Link: </strong> {props.link}{" "}
+                </p>
+                <p className={style.paragraph1}>
+                    <strong> Fecha: </strong> {props.dateEvent}{" "}
+                </p>
+                <p className={style.paragraph1}>
+                    <strong> Lugar: </strong> {props.place}{" "}
+                </p>
             </div>
             {/*In this part is the last part with the like, comment and share section  */}
 
@@ -78,10 +88,6 @@ export const EventCardSon = (props) => {
                         </div>
                     )}
                     <div className={style.commentButton}></div>
-                </div>
-                {/*This is the share button  */}
-                <div className={style.shareButton}>
-                    <BiShare className={style.share} size="40px"></BiShare>
                 </div>
             </div>
         </div>
