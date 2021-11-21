@@ -111,6 +111,8 @@ const FormProject = () => {
     useEffect(() => {
         if (params.id) {
             getDataPortfolio(params.id);
+        } {
+            setPortfolio(initialStatePortfolio);
         }
     }, []);
 
@@ -153,6 +155,7 @@ const FormProject = () => {
                             onChange={onFileChange}
                         />
                     </div>
+                    {image.length > 0 && <img src={image} alt="Imagen" />}
                 </div>
 
                 <div className={style.forms}>
