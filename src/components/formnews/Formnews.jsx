@@ -119,6 +119,7 @@ const Formnews = () => {
                 <h1>Noticias</h1>
                 <div className={styles.form}>
                     <h3>Nombre de la noticia</h3>
+
                     <input
                         className={styles.input}
                         type="text"
@@ -126,6 +127,7 @@ const Formnews = () => {
                         value={posts.title}
                         onChange={onChange}
                     />
+
                     <br />
                 </div>
 
@@ -167,6 +169,7 @@ const Formnews = () => {
 
                 <div className={styles.form}>
                     <h3>Imagen</h3>
+
                     <input
                         className={styles.image}
                         type="file"
@@ -180,6 +183,7 @@ const Formnews = () => {
                 </div>
                 <div className={styles.send}>
                     <button className="btn">Enviar</button>
+
                 </div>
             </form>
         </Fragment>

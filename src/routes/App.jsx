@@ -1,5 +1,9 @@
 import React from "react";
 import "../assets/styles/global2.css";
+
+
+import LatestPosts from "../components/LatestPosts/LatestPosts.jsx";
+
 import { DataProvider } from "../context/DataContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CompletePerfil from "../pages/CompletePerfil";
@@ -10,15 +14,32 @@ import FormJobsPage from "../pages/FormJobsPage";
 import CommunityPage from "../pages/CommunityPage";
 import PortfolioPage from "../components/portfolio/Portfolio";
 import FormProject from "../components/FormProject/FormProject";
+import RenderPostHome from "../components/RenderPostHome/RenderPostHome";
+import EventCard from "../components/EventsCard/EventCard";
+import JobCard from "../components/JobCard/JobCard";
+import ProfilePage from "../pages/ProfilePage";
+import CreateResourcePage from "../pages/CreateResourcePage";
+
+
 
 const App = () => {
     return (
+
         <DataProvider>
+
+
             <Router>
+
                 <Switch>
-                    <Route exact path="/">
+
+      
+                    <Route exact path="/home">
                         <Start />
-                    </Route>
+                        <RenderPostHome />
+                        <EventCard />
+                        <JobCard />
+                    </Route>                 
+
 
                     <Route exact path="/formprofile">
                         <CompletePerfil />
@@ -40,6 +61,7 @@ const App = () => {
                         <FormJobsPage />
                     </Route>
 
+
                     <Route exact path="/community">
                         <CommunityPage />
                     </Route>
@@ -55,9 +77,24 @@ const App = () => {
                     <Route exact path="/formproject/:id">
                         <FormProject />
                     </Route>
+
+                    <Route exact path="/createresource">
+                        <CreateResourcePage />
+                    </Route>
+
+                    <Route exact path="/profile">
+                        <ProfilePage/>
+                    </Route>
+
+                    <Route exact path="/adminpost">
+                        <LatestPosts/>
+                    </Route>
+                    
+
                 </Switch>
             </Router>
         </DataProvider>
+
     );
 };
 

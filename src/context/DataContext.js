@@ -74,6 +74,17 @@ export const DataProvider = ({ children }) => {
         technologies: [],
         place: "",
     });
+    const [postsJobs, setPostsJobs] = useState({
+        title: "",
+        type: "",
+        company: "",
+        technologies: [],
+        softSkills: [],
+        place: "",
+        modality: "",
+        salary: "",
+        contact: "",
+    });
 
     return (
         <DataContext.Provider
@@ -90,9 +101,13 @@ export const DataProvider = ({ children }) => {
                 setPortfolio,
                 portfolio,
                 initialStatePortfolio,
+                postsJobs,
+                setPostsJobs,
+
             }}
         >
             {children}
         </DataContext.Provider>
     );
 };
+
