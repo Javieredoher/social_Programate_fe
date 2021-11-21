@@ -12,6 +12,9 @@ import PortfolioPage from '../components/portfolio/Portfolio'
 import FormProject from '../components/FormProject/FormProject'
 import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
+import ForumHome from "../components/ForumHome/ForumHome";
+import ForumQuestions from "../components/ForumQuestions/ForumQuestions";
+import ForumAnswers from "../components/ForumAnswers/ForumAnswers";
 
 
 const App = () => {
@@ -64,6 +67,28 @@ const App = () => {
                     <Route exact path="/profile">
                         <ProfilePage/>
                     </Route>
+                    
+                    // Forum Routes 
+                    <Route exact path="/forum">
+                        <ForumHome/>
+                    </Route>
+                    <Route exact path="/questions">
+                        <ForumQuestions />
+                    </Route>
+                    <Route exact path="/questions/:questionId">
+                        <ForumAnswers />
+                    </Route>
+                    
+                    
+                    // Test Foro
+                    // path="/forum" Ok
+                    // path="/forum/questions" Lista de preguntas
+                    // path="/forum/questions/question" crear y editar pregunta
+                    // path="/forum/questions/question/:id" ver pregunta y agregar comentario 
+
+                    // path="/forum/resources" Lista de recursos
+                    // path="/forum/resources/resources" Lista de recursos
+                    // path="/forum/questions/question/:id" ver pregunta y agregar comentario 
 
 
                 </Switch>
