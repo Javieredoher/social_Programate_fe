@@ -14,6 +14,12 @@ import SoftSkills from "../formInfo/SoftSkills";
 import { set } from "react-hook-form";
 
 const FormJobs = () => {
+    const [modality, setmodality] = useState("Presencial");
+
+    function changemodality(e) {
+        setmodality(e.target.value);
+    }
+
     const { postsJobs, setPostsJobs } = useContext(DataContext);
 
     const [technical, setTechnical] = useState([]);
@@ -27,6 +33,10 @@ const FormJobs = () => {
         } catch (error) {
             console.log("Error" + error);
         }
+    };
+
+    const handleChange = (selectedOpcion) => {
+        this.setState({ selectedOpcion });
     };
 
     const onChange = ({ target }) => {
@@ -162,18 +172,17 @@ const FormJobs = () => {
                     />
                     <br />
                 </div>
-                <div className={style.forms}>
+                <div c lassName={style.forms}>
                     <h3>Modalidad</h3>
-                    <select className={style.select} name="modality">
-                        <option className={style.opcion} value="Presencial">
-                            presencial
-                        </option>
-                        <option className={style.opcion} value="hibrida">
-                            hibrida
-                        </option>
-                        <option className={style.opcion} value="remota">
-                            remota
-                        </option>
+                    <select
+                        className={style.select}
+                        name="modality"
+                        value={modality}
+                        onChange={changemodality}
+                    >
+                        <option className={style.opcion}>presencial</option>
+                        <option className={style.opcion}>hibrida</option>
+                        <option className={style.opcion}>remota</option>
                     </select>
                     <br />
                 </div>

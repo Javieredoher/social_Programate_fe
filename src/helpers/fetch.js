@@ -20,7 +20,6 @@ export const sendData = async (endpoint, data) => {
 
     return res.json();
 };
-
 export const updateData = async (endpoint, id, data) => {
     const url = `${API}/${endpoint}/${id}`;
     const res = await fetch(url, {
@@ -33,5 +32,11 @@ export const updateData = async (endpoint, id, data) => {
 
     return res.json();
 };
-////////////////////////////////////
+export const deleteData = async (endpoint, id) => {
+    const url = `${API}/${endpoint}/${id}`;
+    const res = await fetch(url, {
+        method: "DELETE",
+    });
+};
 
+////////////////////////////////////

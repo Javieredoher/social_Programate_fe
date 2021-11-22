@@ -7,6 +7,7 @@ import FormNewsPage from "../pages/FormNewsPage";
 import FormEventPage from "../pages/FormEventPage";
 import Start from "../components/Start";
 import FormJobsPage from "../pages/FormJobsPage";
+import MakingPage from "../pages/FormMakingPage";
 import CommunityPage from "../pages/CommunityPage";
 import PortfolioPage from "../components/portfolio/Portfolio";
 import FormProject from "../components/FormProject/FormProject";
@@ -39,6 +40,9 @@ const App = () => {
                     <Route exact path="/formjobs">
                         <FormJobsPage />
                     </Route>
+                    <Route exact path="/formjobs/:id">
+                        <FormJobsPage />
+                    </Route>
 
                     <Route exact path="/community">
                         <CommunityPage />
@@ -50,6 +54,9 @@ const App = () => {
 
                     <Route exact path="/formproject">
                         <FormProject />
+                    </Route>
+                    <Route exact path="/making">
+                        <MakingPage />
                     </Route>
                 </Switch>
             </Router>

@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from "../makingpost/Makingpost.module.css";
+import React from "react";
+import Dropdown from "./Dropdown";
 
 const Makingpost = () => {
     return (
-        <div>
-            <h1>Soy una prueba</h1>
-        </div>
-    )
+        <>
+            <Dropdown />
+        </>
+    );
 };
 
 export default Makingpost;
