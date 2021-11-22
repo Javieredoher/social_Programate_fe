@@ -12,6 +12,7 @@ import PortfolioPage from '../components/portfolio/Portfolio'
 import FormProject from '../components/FormProject/FormProject'
 import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
+import AdminHome from "../components/adminHome/AdminHome";
 
 
 const App = () => {
@@ -64,6 +65,11 @@ const App = () => {
                     <Route exact path="/profile">
                         <ProfilePage/>
                     </Route>
+
+                    <Route exact path="/adminHome">
+                        <AdminHome/>
+                    </Route>
+
 
 
                 </Switch>

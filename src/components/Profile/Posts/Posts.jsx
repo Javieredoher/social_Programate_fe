@@ -17,7 +17,7 @@ const Posts = () => {
                         <p> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi accusantium ipsam explicabo saepe, dolorum quo accusamus, quisquam nihil recusandae optio possimus aliquam deleniti, aspernatur error! Corrupti sequi nihil officiis molestiae?</p></p>
                     </div>
                     <div className={style.icon_cont2}>
-                    <div><i class="far fa-thumbs-up"></i><span>23</span></div>
+                    <div className={style.icon_cont3}><i class="far fa-thumbs-up"></i><div><span>23</span></div></div>
                     <div><i class="far fa-comment-dots"></i></div>
                     <div><i class="fas fa-share"></i></div>
                     </div>

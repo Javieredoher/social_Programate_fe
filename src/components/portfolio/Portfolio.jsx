@@ -6,7 +6,7 @@ const Portfolio = () => {
     return (
         <Fragment>
             <div className={style.container}>
-
+               <section>
                 <div className={style.title_container}>
                     <div className={style.title}>
                         <h1>Chat red social </h1>
@@ -14,6 +14,8 @@ const Portfolio = () => {
                     </div>
                     <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam doloremque, itaque cumque error odit quaerat fugit  </p>
                 </div>
+                </section>
+                
                 <section className={style.section1}>
                     <div className={style.tex}>
                         <p>INTOCOL</p>
@@ -56,9 +58,9 @@ const Portfolio = () => {
 
 
             {/* segunda componente */}
-
+        
             <div className={style.container}>
-
+                <section>
                 <div className={style.title_container}>
                     <div className={style.title}>
                         <h1>Chat red social </h1>
@@ -66,6 +68,8 @@ const Portfolio = () => {
                     </div>
                     <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam doloremque, itaque cumque error odit quaerat fugit  </p>
                 </div>
+                </section>
+
                 <section className={style.section1}>
                     <div className={style.tex}>
                         <p>INTOCOL</p>

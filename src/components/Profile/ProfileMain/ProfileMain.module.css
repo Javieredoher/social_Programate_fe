@@ -5,6 +5,7 @@
     font-family: 'Roboto', sans-serif;
     background-color: #ffffff;
     padding: 20px 30px;
+   
 }
 
 .cont{
@@ -97,9 +98,11 @@ button:hover {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    flex-direction: row;
     width: 100%;
     gap: 10px;
+    margin-right: -31%;
+   
+    position: relative;
 }
 
 b{
