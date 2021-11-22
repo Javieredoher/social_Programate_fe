@@ -1,6 +1,6 @@
 // import "babel-polyfill";
 import "regenerator-runtime/runtime";
-const API = "http://localhost:3000/api";
+const API = "http://localhost:3001/api";
 
 export const getData = async (endpoint, id) => {
     const url = `${API}/${endpoint}/${id}`;

@@ -30,11 +30,16 @@
     width: 50px;
     
 }
+.p{
+    width: 160px;
+}
 
 .icon_Gray i {
     font-size: 25px;
     color: #D7D7D7;
     font-size: 25px;
+    cursor: pointer;
+
 
 }
 
@@ -42,6 +47,7 @@
     display: flex;
     color: #99fd02;
     font-size: 25px;
+    cursor: pointer;
 }
 
 i {
