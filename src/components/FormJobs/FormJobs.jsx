@@ -82,14 +82,14 @@ const FormJobs = () => {
     }, []);
 
     return (
-        <Fragment>
+        <div className={style.section}>
             <div className={style.headerPerfil}>
                 <img src={logo} alt="Educamás" />
-                <h2>Agregar una oferta</h2>
+                <h2 className={style.title}>Agregar una oferta</h2>
             </div>
             <form className={style.from_container} onSubmit={submitData}>
                 <div className={style.forms}>
-                    <h3>Nombre de la oferta</h3>
+                    <h3 className={style.subtitle}>Nombre de la oferta</h3>
                     <input
                         className={style.nom}
                         type="text"
@@ -99,7 +99,7 @@ const FormJobs = () => {
                     <br />
                 </div>
                 <div className={style.forms}>
-                    <h3>Empresa</h3>
+                    <h3 className={style.subtitle}>Empresa</h3>
                     <input
                         placeholder=""
                         className={style.nom}
@@ -111,7 +111,7 @@ const FormJobs = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Tecnologías</h3>
+                    <h3 className={style.subtitle}>Tecnologías</h3>
                     <input
                         className={style.nom}
                         type="text"
@@ -132,7 +132,7 @@ const FormJobs = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Habilidades blandas</h3>
+                    <h3 className={style.subtitle}>Habilidades blandas</h3>
                     <input
                         className={style.nom}
                         type="text"
@@ -153,9 +153,8 @@ const FormJobs = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Lugar de la oferta</h3>
+                    <h3 className={style.subtitle}>Lugar de la oferta</h3>
                     <input
-                        className={style.nom}
                         className={style.nom}
                         type="text"
                         name="place"
@@ -164,7 +163,7 @@ const FormJobs = () => {
                     <br />
                 </div>
                 <div className={style.forms}>
-                    <h3>Modalidad</h3>
+                    <h3 className={style.subtitle}>Modalidad</h3>
                     <select className={style.select} name="modality">
                         <option className={style.opcion} value="Presencial">
                             presencial
@@ -180,7 +179,7 @@ const FormJobs = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Salario</h3>
+                    <h3 className={style.subtitle}>Salario</h3>
                     <input
                         className={style.nom}
                         type="text"
@@ -190,7 +189,7 @@ const FormJobs = () => {
                     <br />
                 </div>
                 <div className={style.forms}>
-                    <h3>Contacto</h3>
+                    <h3 className={style.subtitle}>Contacto</h3>
                     <input
                         className={style.nom}
                         type="contact"
@@ -199,12 +198,12 @@ const FormJobs = () => {
                     <br />
                 </div>
                 <div className={style.enviar}>
-                    <button className="btn" type="submit">
+                    <button className={style.btn} type="submit">
                         Enviar
                     </button>
                 </div>
             </form>
-        </Fragment>
+        </div>
     );
 };
 export default FormJobs;
