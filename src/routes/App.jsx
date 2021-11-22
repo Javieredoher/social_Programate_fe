@@ -23,6 +23,7 @@ import ForumQuestion from "../components/ForumQuestion/Questions";
 import ForumResourcesList from "../components/ForumResourcesList/Recursos";
 import ForumCreateResources from "../components/ForumCreateResources/ForumCreateResources";
 import HomePage from "../pages/HomePage";
+import AdminHomePage from "../pages/AdminHomePage";
 
 
 
@@ -92,8 +93,8 @@ const App = () => {
                         <ForumCreateResources /> */}
                     </Route>
 
-                    <Route exact path="/adminpost">
-                        <LatestPosts/>
+                    <Route exact path="/adminhome">
+                        <AdminHomePage/>
                     </Route>
                     
                 </Switch>
