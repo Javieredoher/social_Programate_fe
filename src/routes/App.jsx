@@ -35,10 +35,6 @@ import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
 //import CreateResourcePage from "../pages/CreateResourcePage";
 
 
-
-
-
-
 const App = () => {
     return (
 
