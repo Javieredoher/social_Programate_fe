@@ -9,14 +9,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CompletePerfil from "../pages/CompletePerfil";
 import FormNewsPage from "../pages/FormNewsPage";
 import FormEventPage from "../pages/FormEventPage";
-import Start from "../components/Start";
+
 import FormJobsPage from "../pages/FormJobsPage";
 import CommunityPage from "../pages/CommunityPage";
 import PortfolioPage from "../components/portfolio/Portfolio";
 import FormProject from "../components/FormProject/FormProject";
-import RenderPostHome from "../components/RenderPostHome/RenderPostHome";
-import EventCard from "../components/EventsCard/EventCard";
-import JobCard from "../components/JobCard/JobCard";
+
 import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
 
@@ -24,6 +22,7 @@ import CreateResourcePage from "../pages/CreateResourcePage";
 import ForumQuestion from "../components/ForumQuestion/Questions";
 import ForumResourcesList from "../components/ForumResourcesList/Recursos";
 import ForumCreateResources from "../components/ForumCreateResources/ForumCreateResources";
+import HomePage from "../pages/HomePage";
 
 
 
@@ -38,13 +37,9 @@ const App = () => {
             <Router>
 
                 <Switch>
-
       
                     <Route exact path="/home">
-                        <Start />
-                        <RenderPostHome />
-                        <EventCard />
-                        <JobCard />
+                        <HomePage/>
                     </Route>                 
 
                     <Route exact path="/formprofile">
