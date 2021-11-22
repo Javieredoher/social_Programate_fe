@@ -15,6 +15,7 @@ import CreateResourcePage from "../pages/CreateResourcePage";
 import ForumHome from "../components/ForumHome/ForumHome";
 import ForumQuestions from "../components/ForumQuestions/ForumQuestions";
 import ForumAnswers from "../components/ForumAnswers/ForumAnswers";
+import ForumResources from "../components/ForumResources/ForumResources";
 
 
 const App = () => {
@@ -79,6 +80,13 @@ const App = () => {
                         <ForumAnswers />
                     </Route>
                     
+                    <Route exact path="/resources">
+                        <ForumResources />
+                    </Route>
+
+                    <Route exact path="/resources/:resorcesId">
+                        <ForumResources />
+                    </Route>
                     
                     // Test Foro
                     // path="/forum" Ok

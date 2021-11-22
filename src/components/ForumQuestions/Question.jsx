@@ -8,7 +8,7 @@ export const Question = ({data}) => {
     <div className={styles.questionContainerMain}>
       <div className={styles.containerQuestion}>
         <h5 className={styles.question}>{data.title}</h5>
-        <p className={styles.dateQuestion}>Creado:{data.timestamps}</p>
+        <p className={styles.dateQuestion}>Creado: {data.timestamps}</p>
       </div>
       <div className={styles.tagsContainer}>
         {

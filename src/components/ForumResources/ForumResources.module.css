@@ -53,6 +53,12 @@
   padding: 10px 15px;
   width: 80%;
 }
+.iconSearch{
+  font-size: 30px;
+  position: absolute;
+  top: 5px;
+  right: 105px;
+}
 .btn__container, .questionAnswer{
   display: flex;
   justify-content: space-between;
@@ -64,8 +70,9 @@
 .btn__addfilter{
   display: flex;
   column-gap: 5px;
+  cursor: pointer;
 }
-.questionContainerMain {
+.resourceContainerMain {
   border: 2.2px solid #ffc107;
   padding: 1rem 2rem;
   border-radius: 20px;
@@ -76,23 +83,24 @@
   flex-direction: column;
   row-gap: 15px;
 }
-.question,
+.resource,
 .tagsItems,
 .name,
-.dateQuestion {
+.dateResource {
   margin: 0;
 }
-.containerQuestion {
+.containerResource, .containerLikeTags {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.question {
+.resource {
   font-size: 17px;
 }
-.dateQuestion {
+.dateResource {
   font-size: 14px;
 }
+
 .tagsContainer {
   display: flex;
   flex-wrap: wrap;
@@ -106,20 +114,27 @@
   font-family: Gilroy-light;
   letter-spacing: 1.5px;
 }
-.infoContainer {
+
+.containerLikes{
+  display: flex;
+  align-items: center;
+}
+.infoContainer{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.btn__answer{
+.btn__view{
   cursor: pointer;
 }
 
 @media (max-width: 640px) {
-  .questionContainerMain{
+  .resourceContainerMain{
     padding: 1rem;
+    width: 90%;
+
   }
-  .containerQuestion {
+  .containerResource {
     display: block;
   }
   .name {
