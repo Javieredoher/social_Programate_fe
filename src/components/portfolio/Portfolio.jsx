@@ -1,8 +1,48 @@
-import React, { Fragment } from 'react'
-import style from './Portfolio.module.css'
+import React, { Fragment, useEffect, useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { getDataAll } from "../../helpers/fetch";
+import style from "./Portfolio.module.css";
+import Project from "./Project";
+import { DataContext } from "../../context/DataContext";
+import Swal from "sweetalert2";
 
 const Portfolio = () => {
-  
+    const history = useHistory();
+
+    const { portfolio } = useContext(DataContext);
+
+    const [dataPortfolios, setdataPortfolios] = useState([]);
+
+    const getDataPort = async () => {
+        try {
+            const data = await getDataAll("portfolios");
+            const filterData = data.filter(
+                (project) => project.profile_id === portfolio.profile_id
+            );
+            setdataPortfolios(filterData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    useEffect(() => {
+        getDataPort();
+    }, []);
+
+    const addProject = () => {
+        if (dataPortfolios.length < 10) {
+            history.push("/formproject");
+        } else {
+            Swal.fire({
+                title: "Máximo de proyectos",
+                text: "No puedes subir más de diez proyectos",
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "black",
+                timer: "6000",
+            });
+        }
+    };
+
     return (
         <Fragment>
             <div className={style.container}>
@@ -111,7 +151,7 @@ const Portfolio = () => {
 
 
         </Fragment>
-    )
-}
+    );
+};
 
-export default Portfolio
+export default Portfolio;

@@ -1,6 +1,6 @@
 import React from "react";
 import "./recursos.module.css";
-import like from "./like.png";
+import like from "../../assets/images/like.png";
 
 const Recurso = () => {
   return (

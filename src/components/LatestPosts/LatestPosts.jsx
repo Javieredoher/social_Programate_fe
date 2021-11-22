@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-
 import style from './LatestPosts.module.css'
 
 const LatestPosts = () => {

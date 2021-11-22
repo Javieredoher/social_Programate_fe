@@ -1,5 +1,4 @@
-
-.container{
+.container {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -10,15 +9,14 @@
   
 }
 
-.title_container{
+.title_container {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
-   
+    width: 100%;
 }
 
-.title{
+.title {
     display: flex;
     justify-content: end;
     align-items: center;
@@ -43,7 +41,7 @@
     align-items: center;
 }
 
-.tex2{
+.tex2 {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -51,35 +49,34 @@
     gap: 10px;
 }
 
-.section1{
-    width: 100%;
-    padding: 15px;
+.section1 {
+    width: 80%;
+    margin: auto;
+    /* padding: 15px; */
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid;
-    border-color: #92C149;
-    background-color: #ffffff;
-    
+}
+.section1 img {
+    margin: auto;
+    min-width: 100%;
 }
 
-.icon_chat{
-width: 50%;
-display: flex;
-justify-content: center;
-flex-direction: column;
-align-items: center;
-gap: 10px;
-
+.icon_chat {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
-.icon{
+.icon {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
     height: 50px;
     font-size: 50px;
-    
 }
 
 .icon i{
@@ -90,11 +87,11 @@ gap: 10px;
 .boton_principal {
     width: 90px;
     height: 30px;
-    background-color: #FFCC02;
+    background-color: #ffcc02;
     border-radius: 10px;
     color: #010101;
     border: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-size: 18px;
     margin: auto;
@@ -102,24 +99,20 @@ gap: 10px;
 
 .boton_principal:hover {
     background-color: black;
-    color: #FFCC02;
+    color: #ffcc02;
 }
 
-
 .tecnologias button {
-  
-    width:90px;
+    width: 90px;
     height: 30px;
     margin: 15px;
     border-radius: 10px;
     border: 1px solid;
-    border-color: #92C149;
+    border-color: #92c149;
     background-color: #ffffff;
-    
-
 }
 
-.tecnologias{
+.tecnologias {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -127,44 +120,65 @@ gap: 10px;
     
 }
 
-.boton2{
-display: flex;
-justify-content: center;
-justify-content: space-around;
-align-items: center;
-margin-top: 40px;
-margin-bottom: 20px;
+.addProject {
+    background-color: #ffcc02;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    cursor: pointer;
+}
 
+.boton2 {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 .boton_principal2 {
     display: flex;
-    width: 90px;
+    width: 120px;
     height: 30px;
-    background-color: #FFCC02;
+    background-color: #ffcc02;
     border-radius: 10px;
-    color: #010101;
     border: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-size: 18px;
     justify-content: center;
     align-items: center;
 }
 
+.boton_principal2 a {
+    text-decoration: none;
+    color: #010101;
+}
+.boton_principal2 a:hover {
+    color: #ffcc02;
+}
+
 .boton_principal2:hover {
     background-color: black;
-    color: #FFCC02;
 }
 
 @media (min-width: 1024px) {
-    .tex2{
+    .tex2 {
         display: flex;
         flex-direction: row;
         align-items: center;
         flex-direction: row;
         gap: 10px;
-    
-}
-
+    }
+    .titleIcons {
+        width: 7%;
+        margin-right: 10px;
+    }
 }
