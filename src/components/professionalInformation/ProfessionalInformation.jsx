@@ -4,10 +4,14 @@ import style from "./ProfessionalInformation.module.css";
 import { DataContext } from "../../context/DataContext";
 import { getData, sendData, updateData } from "../../helpers/fetch";
 import { BiX } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 export const ProfessionalInformation = () => {
     const { dataProfile, setDataProfile, dataUser, setDataUser, idUser } =
         useContext(DataContext);
+
+    const history = useNavigate();
+
     const {
         user_info,
         github,
@@ -44,8 +48,7 @@ export const ProfessionalInformation = () => {
     }
 
     //Enviar data del usuario al modelo de user y profile
-    const sendData = async (e) => {
-        dataProfile.prev_studes.push(Object.values(education));
+    const submitData = async (e) => {
         if (dataProfile) {
             e.preventDefault();
 
@@ -76,6 +79,7 @@ export const ProfessionalInformation = () => {
                 state,
                 _id,
             });
+            history.push("/formevent");
         } else {
             e.preventDefault();
             console.log("Error");
@@ -315,7 +319,7 @@ export const ProfessionalInformation = () => {
             <button
                 className={style.btnSubmit}
                 type="submit"
-                onClick={sendData}
+                onClick={submitData}
             >
                 Guardar cambios
             </button>

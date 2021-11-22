@@ -18,28 +18,23 @@ const FormEvent = () => {
     };
 
     const handleChange = (e) => {
-
         const { name, value } = e.target;
         setPostsEvent({ ...postsEvent, [name]: value })
     };
     const onCapture = (e) => {
-        const value = e.target.value
+        const value = e.target.value;
 
         if (e.key === "Enter" && value.length > 0) {
-            techs.push(e.target.value)
-            setPostsEvent({ ...postsEvent, technologies: techs })
+            techs.push(e.target.value);
+            setPostsEvent({ ...postsEvent, technologies: techs });
             e.target.value = "";
             e.preventDefault();
         }
-    }
+    };
+    useEffect(() => { }, [postsEvent, setPostsEvent, techs, setTechs]);
     useEffect(() => {
-
-
-    }, [postsEvent, setPostsEvent, techs, setTechs])
-    useEffect(() => {
-        setPostsEvent({ ...postsEvent, type: "event" })
-
-    }, [])
+        setPostsEvent({ ...postsEvent, type: "event" });
+    }, []);
     return (
         <Fragment>
             <div className={style.headerPerfil}>
@@ -63,7 +58,7 @@ const FormEvent = () => {
                     <input
                         placeholder="Breve descripción del evento"
                         className={style.nom}
-                        type="text"
+                        type="textarea"
                         name="description"
                         onChange={handleChange}
                     />
@@ -85,7 +80,6 @@ const FormEvent = () => {
                 <div className={style.forms}>
                     <h3>Fecha del evento</h3>
                     <input
-
                         className={style.nom}
                         type="date"
                         name="dateEvent"
@@ -112,9 +106,7 @@ const FormEvent = () => {
                         type="text"
                         placeholder="Tecnologías <Enter> para guardarla"
                         name="technologies"
-
                         onKeyDown={onCapture}
-
                     />
 
                     <br />
@@ -123,19 +115,13 @@ const FormEvent = () => {
                         {techs.map((tech, index) => (
                             <button key={index}>{tech}</button>
                         ))}
-
-
                     </div>
-
                 </div>
 
                 <div className={style.enviar}>
-                    <button className="btn" >
-                        Enviar
-                    </button>
+                    <button className="btn">Enviar</button>
                 </div>
             </form>
-
         </Fragment>
     );
 };

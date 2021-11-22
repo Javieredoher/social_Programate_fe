@@ -5,13 +5,12 @@ const API = "http://localhost:3001/api";
 export const getData = async (endpoint, id) => {
     const url = `${API}/${endpoint}/${id}`;
     const resp = await fetch(url);
-    // await console.log(resp.json());
     return await resp.json();
 };
+
 export const getDataAll = async (endpoint) => {
     const url = `${API}/${endpoint}`;
     const resp = await fetch(url);
-    // await console.log(resp.json());
     return await resp.json();
 };
 
@@ -40,5 +39,10 @@ export const updateData = async (endpoint, id, data) => {
 
     return res.json();
 };
-////////////////////////////////////
 
+export const deleteData = async (endpoint, id) => {
+    const url = `${API}/${endpoint}/${id}`;
+    return await fetch(url, {
+        method: "DELETE",
+    });
+};

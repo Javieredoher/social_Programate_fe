@@ -1,0 +1,112 @@
+.global-nav {
+    background-color: #fff;
+    height: 53px;
+    padding: 0 1rem;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.04);
+  }
+  
+  .global-nav__content {
+    display: flex;
+    max-width: 1128px;
+    margin: 0 auto;
+    align-items: center;
+    height: 53px;
+  }
+  
+  .global-nav__top-left-part {
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .global-nav__top-right-part {
+    width: 60%;
+  }
+  
+  .global-nav__branding {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 43px;
+  }
+  
+  .search-global {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search-global__input {
+    width: 100%;
+    border: none;
+    padding: 0 8px 0 28px;
+    line-height: 1.75;
+    color: #283e4abf;
+    font-size: 14px;
+    border-radius: 0.2rem;
+    outline: none;
+    height: 34px;
+    background-color: #eef3f8;
+    border-color: #e1e9ee;
+  }
+  
+  .search-global__icon-container {
+    position: absolute;
+    left: 0.2rem;
+    top: 0.7rem;
+  }
+  .global-nav__items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    list-style: none;
+  }
+  
+  .global-nav__primary-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    min-width: 90px;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  
+  /* Small (sm) */
+  @media (max-width: 678px) {
+    .global-nav__top-right-part {
+      width: 90%;
+    }
+    .global-nav__top-left-part {
+        width: 30%;
+      }
+    .global-nav__items {
+      justify-content: space-between;
+    }
+    .global-nav__primary-link-text {
+      display: none;
+    }
+    .global-nav__primary-link {
+      min-width: 10px;
+    }
+    .search-global__input {
+      display: none;
+    }
+    .search-global__icon-container {
+      left: 1rem;
+    }
+  }
+  @media (max-width: 450px) {
+      /* .global-nav__items {
+          justify-content: space-around;
+        }   */
+  }

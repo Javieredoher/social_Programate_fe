@@ -1,5 +1,9 @@
 import React from "react";
 import "../assets/styles/global2.css";
+
+
+import LatestPosts from "../components/LatestPosts/LatestPosts.jsx";
+
 import { DataProvider } from "../context/DataContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CompletePerfil from "../pages/CompletePerfil";
@@ -7,13 +11,16 @@ import FormNewsPage from "../pages/FormNewsPage";
 import FormEventPage from "../pages/FormEventPage";
 import FormEventEdit from "../components/FormEvent/FormEventEdit";
 import FormJobsPage from "../pages/FormJobsPage";
-import Lista_Usuarios from "../components/lista_usuarios/Lista_Usuarios";
+// import Lista_Usuarios from "../components/lista_usuarios/Lista_Usuarios";
 import Autentification from "../components/autentication/Autentification";
 
 
 const App = () => {
     return (
+
         <DataProvider>
+
+
             <Router>
 
                 <Routes>
@@ -26,9 +33,8 @@ const App = () => {
             </Router>
             <Autentification />
         </DataProvider>
-    );
 
+    );
 };
 
 export default App;
-

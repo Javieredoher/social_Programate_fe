@@ -10,7 +10,7 @@ import { Search } from "./Search";
 
 
 
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <header className="global-nav">
       <div className="global-nav__content">
@@ -77,3 +77,5 @@ export const Navbar = () => {
     </header>
   );
 };
+
+export default Navbar

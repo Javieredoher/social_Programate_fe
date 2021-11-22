@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/components/lista_usuarios/Lista_Usuarios.jsx
 import React, { useState, Fragment, useContext, useEffect } from 'react'
 import style from './Lista_Usuarios.module.css'
 import { getDataAll } from '../../helpers/fetch'
@@ -28,6 +29,15 @@ const Lista_Usuarios = () => {
 
         })
     }
+=======
+import React, { Fragment } from 'react'
+import ImagDama from '../../assets/images/ImagDama.png'
+import ImagCaballero from '../../assets/images/ImagCaballero.png'
+import style from './UsersList.module.css'
+
+const UsersList
+ = () => {
+>>>>>>> a4cd8189b8be2735ebbeb286009c3e3fab4e7a70:src/components/UsersList/UsersList.jsx
     return (
         <Fragment>
             <div className={style.container}>
@@ -59,4 +69,5 @@ const Lista_Usuarios = () => {
     )
 }
 
-export default Lista_Usuarios
+export default UsersList
+
