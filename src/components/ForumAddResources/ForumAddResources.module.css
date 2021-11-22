@@ -1,76 +1,95 @@
-
-.formulario {
-	max-width: 600px;
-	margin-top: 50px;
-	background: #fff;
-	border-radius: 5px;
-	padding: 20px;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+@font-face {
+  font-family: Gilroy-bold;
+  src: url("../../assets/fonts/Gilroy-ExtraBold.otf") format("opentype");
+}
+@font-face {
+  font-family: Gilroy-light;
+  src: url("../../assets/fonts/Gilroy-Light.otf") format("opentype");
 }
 
-.formulario > div {
-	margin-bottom: 20px;
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+  padding: 3rem 0 2rem;
+  width: 100%;
+  height: 100vh;
+  background-color: #ececec;
+  font-family: Gilroy-bold;
+}
+.section__global {
+  max-width: 1128px;
+  margin: 0 auto;
+}
+/*=============== ==================== ===============*/
+.containerForum {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.containerTitle {
+  margin-bottom: 20px;
+}
+.title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+}
+.lineTitle {
+  width: 100%;
+  height: 3px;
+  border: none;
+}
+/*================== FORUM  =================*/
+.forumAdd {
+  display: flex;
+  flex-direction: column;
+}
+.forumAdd label{
+    margin: 10px 0 7px 0;
 }
 
-.formulario label {
-	display: block;
-	font-weight: 600;
-	font-size: 14px;
-	margin-bottom: 5px;
-	color: #1f1f1f;
+.inputs,
+.inputSelect,
+.textArea {
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  outline: none;
+}
+.textArea {
+  resize: none;
+  height: 100px;
+}
+.inputSelect{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-.formulario input,
-.formulario textarea,
-.formulario select {
-	font-family: 'Open Sans', sans-serif;
-	width: 100%;
-	border-radius: 5px;
-	border: 2px solid #e2e2e2;
-	font-size: 18px;
-	padding: 10px;
-	margin-bottom: 5px;
-	color: #1f1f1f;
-	background-color: #fff;
+.inputFile{
+  padding: 10px;
+}
+.btnAdd{
+    margin-top: 30px;
+}
+.error {
+  color: red;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  column-gap: 3px;
+  font-family: Gilroy-bold;
 }
 
-.formulario select > options[seleted] {
-	background-color: aqua;
-}
-
-.formulario input:focus {
-	outline: none;
-	border: 2px solid #0085FF;
-}
-
-.formulario .error {
-	color: #e92b2d;
-	font-weight: 600;
-	font-size: 14px;
-}
-
-.formulario button[type="submit"] {
-	display: block;
-	background: #0085FF;
-	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	padding: 10px;
-	border-radius: 5px;
-	color: #fff;
-	font-size: 16px;
-	transition: .3s ease all;
-}
-
-.formulario button[type="submit"]:hover {
-	background: #0051ff;
-}
-
-.formulario .exito {
-	text-align: center;
-	font-size: 14px;
-	padding-top: 20px;
-	color: #02a802;
-}
+@media (max-width: 640px) {
+    .containerForum {
+        width: 90%;
+    }
+} 
+ 

@@ -17,17 +17,16 @@ const ForumAddQuestion = () => {
         <div className={styles.containerForum}>
           <div className={styles.containerTitle}>
             <h2 className={styles.title}>
-              <BiBox size="25" /> Crear recurso
+              <BiBox size="25" /> Crear pregunta
             </h2>
             <hr className={styles.lineTitle} />
           </div>
           <Formik
             initialValues={{
               title: "",
-              input_foro: "",
               description: "",
-              images: "",
               tags: [],
+              images: "",
             }}
             validate={(valores) => {
               let errores = {};
@@ -61,7 +60,7 @@ const ForumAddQuestion = () => {
           >
             {({ errors, setFieldValue }) => (
               <Form className={styles.forumAdd}>
-                <label htmlFor="title">Titulo del recurso</label>
+                <label htmlFor="title">Titulo de la pregunta</label>
                 <Field
                   type="text"
                   id="title"
@@ -77,32 +76,8 @@ const ForumAddQuestion = () => {
                     </div>
                   )}
                 />
-              
-                <label htmlFor="input_foro">Tipo de aporte</label>
-                <Field
-                  name="input_foro"
-                  as="select"
-                  id="input_foro"
-                  className={styles.inputSelect}
-                >
-                  <option value="">Seleccione una opción</option>
-                  <option value="Tutorial">Tutorial</option>
-                  <option value="Libro">Libro</option>
-                  <option value="Video">Video</option>
-                  <option value="Enlace">Enlace</option>
-                  <option value="Curso">Curso</option>
-                </Field>
-                <ErrorMessage
-                  name="input_foro"
-                  component={() => (
-                    <div className={styles.error}>
-                      <BiMessageAltX color="red" size="18" />
-                      {errors.input_foro}
-                    </div>
-                  )}
-                />
                 
-                <label htmlFor="description">Escribe tu aporte</label>
+                <label htmlFor="description">Escribe tu pregunta</label>
                 <Field name="description" as="textarea" id="description" className={styles.textArea}/>
                 <ErrorMessage
                   name="description"
