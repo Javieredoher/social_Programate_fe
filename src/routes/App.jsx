@@ -11,11 +11,14 @@ import CommunityPage from "../pages/CommunityPage";
 import PortfolioPage from '../components/portfolio/Portfolio'
 import FormProject from '../components/FormProject/FormProject'
 import ProfilePage from "../pages/ProfilePage";
-import CreateResourcePage from "../pages/CreateResourcePage";
+
 import ForumHome from "../components/ForumHome/ForumHome";
 import ForumQuestions from "../components/ForumQuestions/ForumQuestions";
 import ForumAnswers from "../components/ForumAnswers/ForumAnswers";
 import ForumResources from "../components/ForumResources/ForumResources";
+import ForumViewResource from "../components/ForumViewResource/ForumViewResource";
+import ForumAddResources from "../components/ForumAddResources/ForumAddResources";
+import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
 
 
 const App = () => {
@@ -61,10 +64,6 @@ const App = () => {
                         <FormProject />
                     </Route>
 
-                    <Route exact path="/createresource">
-                        <CreateResourcePage />
-                    </Route>
-
                     <Route exact path="/profile">
                         <ProfilePage/>
                     </Route>
@@ -79,13 +78,19 @@ const App = () => {
                     <Route exact path="/questions/:questionId">
                         <ForumAnswers />
                     </Route>
+                    <Route exact path="/addquestion">
+                        <ForumAddQuestion />
+                    </Route>
+                    
                     
                     <Route exact path="/resources">
                         <ForumResources />
                     </Route>
-
-                    <Route exact path="/resources/:resorcesId">
-                        <ForumResources />
+                    <Route exact path="/resources/:resourceId">
+                        <ForumViewResource />
+                    </Route>
+                    <Route exact path="/addresource">
+                        <ForumAddResources />
                     </Route>
                     
                     // Test Foro

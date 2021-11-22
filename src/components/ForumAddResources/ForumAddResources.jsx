@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import "./ForumCreateResources.module.css";
+import "./ForumAddResources.module.css";
 import ReactTagInput from "@pathofdev/react-tag-input"; //Review !
 import "@pathofdev/react-tag-input/build/index.css"; //Review !
 import { sendData } from "../../helpers/fetch";
 
-const ForumCreateResources = () => {
+const ForumAddResources = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
   const [tags, setTags] = useState([]);
   return (
@@ -55,6 +55,7 @@ const ForumCreateResources = () => {
         {({ errors, setFieldValue }) => (
           <Form className="formulario">
             <div>
+            <h2>Crear recurso</h2>
               <label htmlFor="title">Titulo del recurso</label>
               <Field type="text" id="title" name="title" />
               <ErrorMessage
@@ -129,4 +130,4 @@ const ForumCreateResources = () => {
   );
 };
 
-export default ForumCreateResources;
+export default ForumAddResources;

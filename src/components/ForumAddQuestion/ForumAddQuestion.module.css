@@ -1,0 +1,30 @@
+@font-face {
+  font-family: Gilroy-bold;
+  src: url("../../assets/fonts/Gilroy-ExtraBold.otf") format("opentype");
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+  padding: 3rem 0 2rem;
+  width: 100%;
+  height: 100vh;
+  background-color: #ececec;
+  font-family: Gilroy-bold;
+}
+.section__global {
+  max-width: 1128px;
+  margin: 0 auto;
+}
+/*=============== ==================== ===============*/
+.containerForum {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.title{
+    margin: 0;
+    letter-spacing: 0.7px;
+}

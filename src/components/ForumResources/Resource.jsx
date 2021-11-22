@@ -27,7 +27,7 @@ export const Resource = ({ data }) => {
 
       <div className={styles.infoContainer}>
         <p className={styles.name}>Jhonatan Mosquera Velez</p>
-        <Link to={"/questions/" + data.id}>
+        <Link to={"/resources/" + data.id}>
           <button className={styles.btn__view}>Ver</button>
         </Link>
       </div>

@@ -4,7 +4,8 @@ import { Question } from "./Question";
 import { RiQuestionLine } from "react-icons/ri";
 import { BiFilterAlt } from "react-icons/bi";
 import { BiMessageAdd } from "react-icons/bi";
-import { BiSearchAlt2 } from "react-icons/bi";
+import { Link } from "react-router-dom";
+
 import data from "./data.json";
 
 const ForumQuestions = () => {
@@ -23,9 +24,9 @@ const ForumQuestions = () => {
             <input type="text" placeholder="Buscar pregunta" className={styles.searchQuestion} />
           </div>
           <div className={styles.btn__container}>
-            <button className={styles.btn__addfilter}>
+          <Link to="/addquestion"><button className={styles.btn__addfilter}>
               Añadir <BiMessageAdd />
-            </button>
+            </button></Link>
             <button className={styles.btn__addfilter}>
               Filtro <BiFilterAlt />
             </button>

@@ -3,9 +3,9 @@ import styles from "./ForumResources.module.css";
 import { Resource } from "./Resource";
 import { BiFilterAlt } from "react-icons/bi";
 import { BiMessageAdd } from "react-icons/bi";
-import { BiSearchAlt2 } from "react-icons/bi";
 import { BiBox } from "react-icons/bi";
-import { IconContext } from "react-icons";
+import { Link } from "react-router-dom";
+
 import data from "./data.json";
 
 const ForumResources = () => {
@@ -24,9 +24,9 @@ const ForumResources = () => {
             <input type="text" placeholder="Buscar recurso" className={styles.searchQuestion} />
           </div>
           <div className={styles.btn__container}>
-            <button className={styles.btn__addfilter}>
+          <Link to="/addresource"><button className={styles.btn__addfilter}>
               Añadir <BiMessageAdd />
-            </button>
+            </button></Link>
             <button className={styles.btn__addfilter}>
               Filtro <BiFilterAlt />
             </button>
