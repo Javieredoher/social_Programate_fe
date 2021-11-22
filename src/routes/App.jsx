@@ -15,23 +15,22 @@ import EventCard from "../components/EventsCard/EventCard";
 import JobCard from "../components/JobCard/JobCard";
 import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
-
+import Navbar from "../components/header/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const App = () => {
     return (
         <DataProvider>
-
             <Router>
-
                 <Switch>
-
-      
                     <Route exact path="/home">
+                        <Navbar />
                         <Start />
                         <RenderPostHome />
                         <EventCard />
                         <JobCard />
-                    </Route>                 
+                        <Footer />
+                    </Route>
 
                     <Route exact path="/formprofile">
                         <CompletePerfil />
@@ -53,7 +52,6 @@ const App = () => {
                         <FormJobsPage />
                     </Route>
 
-
                     <Route exact path="/community">
                         <CommunityPage />
                     </Route>
@@ -71,16 +69,12 @@ const App = () => {
                     </Route>
 
                     <Route exact path="/profile">
-                        <ProfilePage/>
+                        <ProfilePage />
                     </Route>
-
-
-
                 </Switch>
             </Router>
         </DataProvider>
     );
 };
-
 
 export default App;
