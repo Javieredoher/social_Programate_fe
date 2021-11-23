@@ -12,7 +12,7 @@ const FormEventPage = () => {
     return (
         <>
             <FormEvent />
-            <Footer/>
+            <Footer />
         </>
     );
 };

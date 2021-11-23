@@ -1,13 +1,13 @@
 import React from "react";
 import  Footer  from "../components/Footer/Footer"
 import ForumCreateResources from "../components/ForumAddResources/ForumAddResources";
-import Header from "../components/header/header";
+import Navbar from "../components/Navbar/Navbar";
 
 
 const CreateResourcePage = () => {
   return (
     <>  
-        <Header />
+        <Navbar />
         <ForumCreateResources />
         <Footer />
     </>

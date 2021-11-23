@@ -14,12 +14,11 @@ import SoftSkills from "../formInfo/SoftSkills";
 import { set } from "react-hook-form";
 
 const FormJobs = () => {
-
     const { postsJobs, setPostsJobs } = useContext(DataContext);
 
     const [technical, setTechnical] = useState([]);
     const [softSkills, setsoftSkills] = useState([]);
-    const [languages, setLanguages] = useState([]);
+
     //Enviar data del usuario al modelo de user y profile
     const submitData = async (e) => {
         e.preventDefault();
@@ -62,21 +61,6 @@ const FormJobs = () => {
         }
     };
 
-    // let targetSkill = useRef("null");
-    const onKeyLanguages = (e) => {
-        if (e.key === "Enter" && e.target.value.length > 0) {
-            languages.push(e.target.value);
-            setPostsJobs({
-                ...postsJobs,
-                lenguages: languages,
-            });
-            e.target.value = "";
-            // console.log(languages);
-
-            e.preventDefault();
-        }
-    };
-
     useEffect(() => {
         setPostsJobs({ ...postsJobs, type: "jobs" });
     }, []);
@@ -109,7 +93,6 @@ const FormJobs = () => {
                     />
                     <br />
                 </div>
-
                 <div className={style.forms}>
                     <h3 className={style.subtitle}>Tecnologías</h3>
                     <input
@@ -163,8 +146,20 @@ const FormJobs = () => {
                     <br />
                 </div>
                 <div className={style.forms}>
+
+                    {/* Revisar
                     <h3 className={style.subtitle}>Modalidad</h3>
-                    <select className={style.select} name="modality">
+                    <select className={style.select} name="modality">*/}
+
+                    <h3>Modalidad</h3>
+                    <select
+                        className={style.select}
+                        name="modality"
+                        onChange={onChange}
+                        /* value="modality" */
+                    >
+                        <option value="select">Selecciona la modalidad</option>
+
                         <option className={style.opcion} value="Presencial">
                             presencial
                         </option>
@@ -177,7 +172,6 @@ const FormJobs = () => {
                     </select>
                     <br />
                 </div>
-
                 <div className={style.forms}>
                     <h3 className={style.subtitle}>Salario</h3>
                     <input
@@ -190,13 +184,16 @@ const FormJobs = () => {
                 </div>
                 <div className={style.forms}>
                     <h3 className={style.subtitle}>Contacto</h3>
+
                     <input
                         className={style.nom}
-                        type="contact"
+                        type="text"
+                        name="contact"
                         onChange={onChange}
                     />
                     <br />
                 </div>
+
                 <div className={style.enviar}>
                     <button className={style.btn} type="submit">
                         Enviar
@@ -207,4 +204,3 @@ const FormJobs = () => {
     );
 };
 export default FormJobs;
-

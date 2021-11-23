@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "../makingpost/Makingpost.module.css";
+import Dropdown from "./Dropdown";
 
 const Makingpost = () => {
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <>
+            <Dropdown />
+        </>
     );
 };
 
