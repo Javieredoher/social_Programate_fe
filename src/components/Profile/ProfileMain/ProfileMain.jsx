@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import style from './ProfileMain.module.css'
+// import style from './ProfileMain.module.css'
 import medalla1 from '../../../assets/images/medalla1.png'
 import medalla2 from '../../../assets/images/medalla2.png'
 import medalla3 from '../../../assets/images/medalla3.png'

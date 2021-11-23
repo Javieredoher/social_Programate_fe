@@ -1,0 +1,46 @@
+.questionContainerMain {
+    border: 2.2px solid #ffc107;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .question,
+  .tagsItems,
+  .name,
+  .dateQuestion {
+    margin: 0;
+  }
+  .containerQuestion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .question {
+    font-size: 17px;
+  }
+  .dateQuestion {
+    font-size: 14px;
+  }
+  .tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    row-gap: 5px;
+  }
+  .tagsItems {
+    padding: 0.5rem 1rem;
+    background-color: #d7d7d7;
+    border-radius: 5px;
+    font-family: Gilroy-light;
+    letter-spacing: 1.5px;
+  }
+  .infoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

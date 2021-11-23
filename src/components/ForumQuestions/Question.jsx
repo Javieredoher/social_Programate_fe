@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import styles from "./ForumQuestions.module.css"
 
 export const Question = ({data}) => {
-  console.log(data)
+  let date = data.createdAt.slice(0,10);
+ 
   return (
     <div className={styles.questionContainerMain}>
       <div className={styles.containerQuestion}>
         <h5 className={styles.question}>{data.title}</h5>
-        <p className={styles.dateQuestion}>Creado: {data.timestamps}</p>
+        <p className={styles.dateQuestion}>Creado: {date}</p>
       </div>
       <div className={styles.tagsContainer}>
         {
@@ -19,7 +20,7 @@ export const Question = ({data}) => {
       </div>
       <div className={styles.infoContainer}>
         <p className={styles.name}>Jhonatan Mosquera Velez</p>
-        <Link to={"/questions/" + data.id}><button className={styles.btn__answer}>Responder</button></Link>
+        <Link to={"/questions/" + data._id} className={styles.btn__question}>Responder</Link>
       </div>
     </div>
   );

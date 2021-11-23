@@ -7,10 +7,12 @@ import { BiBox } from "react-icons/bi";
 
 import ReactTagInput from "@pathofdev/react-tag-input"; //Review !
 import "@pathofdev/react-tag-input/build/index.css"; //Review !
+import { useHistory } from "react-router";
 
 const ForumAddQuestion = () => {
-  const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
   const [tags, setTags] = useState([]);
+  let history = useHistory();
+
   return (
     <section className={styles.section}>
       <div className={styles.section__global}>
@@ -23,21 +25,18 @@ const ForumAddQuestion = () => {
           </div>
           <Formik
             initialValues={{
-              title: "",
-              description: "",
+              title: "test1",
+              description: "test2",
               tags: [],
-              images: "",
+              images: "imagen.png",
+              type: "questions"
             }}
             validate={(valores) => {
               let errores = {};
-
+          
               // Validacion title
               if (!valores.title) {
                 errores.title = "Por favor ingresa un titulo";
-              }
-
-              if (!valores.input_foro) {
-                errores.input_foro = "Por favor ingrese el tipo de aporte";
               }
 
               if (!valores.description) {
@@ -49,13 +48,14 @@ const ForumAddQuestion = () => {
               }
               return errores;
             }}
-            onSubmit={async (valores, {resetForm}) => {
+            onSubmit={ async (valores, { resetForm }) => {
               valores.tags = tags;
               setTags([]);
               resetForm();
-              console.log(valores)
-              // await sendData("posts", valores);
-              setTimeout(() => cambiarFormularioEnviado(false), 3000);
+              console.log("Formulario enviado");
+              console.log(valores);
+              await sendData("posts", valores);
+              history.push("/questions");
             }}
           >
             {({ errors, setFieldValue }) => (
@@ -89,8 +89,9 @@ const ForumAddQuestion = () => {
                   )}
                 />
                 
-                <label htmlFor="description">Agregar etiquetas</label>
+                <label htmlFor="tag">Agregar etiquetas</label>
                 <ReactTagInput
+                  id="tag"
                   tags={tags}
                   placeholder="Type and press enter"
                   onChange={(newTags) => setTags(newTags)}
@@ -114,9 +115,6 @@ const ForumAddQuestion = () => {
                   )}
                 />
                 <button className={styles.btnAdd} type="submit">Publicar recurso</button>
-                {formularioEnviado && (
-                  <p className="exito">Formulario enviado con exito!</p>
-                )}
               </Form>
             )}
           </Formik>

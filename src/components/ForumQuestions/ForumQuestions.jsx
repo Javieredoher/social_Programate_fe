@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ForumQuestions.module.css";
 import { Question } from "./Question";
 import { RiQuestionLine } from "react-icons/ri";
 import { BiFilterAlt } from "react-icons/bi";
 import { BiMessageAdd } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { getDataAll } from "../../helpers/fetch";
+import { Search } from "./Search";
 
-import data from "./data.json";
-
+function useQuery(){
+  return new URLSearchParams(useLocation().search);
+}
 const ForumQuestions = () => {
+  const [questions, setQuestions] = useState([]);
+ 
+  const query = useQuery();
+  const search = query.get("search")
+
+  const allQuestions =  async () => {
+    const searchUrl = search ? "?title=" + search : "?type=questions";
+    const data = await getDataAll("posts", searchUrl);
+    setQuestions(data);
+  }
+  useEffect( () => {
+    allQuestions();
+  }, [search])
+
   return (
     <section className={styles.section}>
       <div className={styles.section__global}>
@@ -20,25 +37,23 @@ const ForumQuestions = () => {
           <hr className={styles.section__lineTitle} />
         </div>
         <div className={styles.section__options}>
-          <div className={styles.container__search}>
-            <input type="text" placeholder="Buscar pregunta" className={styles.searchQuestion} />
-          </div>
+          <Search />
           <div className={styles.btn__container}>
-          <Link to="/addquestion"><button className={styles.btn__addfilter}>
+          <Link to="/addquestion" className={styles.btn__question}>
               Añadir <BiMessageAdd />
-            </button></Link>
-            <button className={styles.btn__addfilter}>
+          </Link>
+            <button className={styles.btn__question}>
               Filtro <BiFilterAlt />
             </button>
           </div>
           <div className={styles.questionAnswer}>
             <p>4 respuestas</p>
-            <p>30 preguntas</p>
+            <p>{questions.length} preguntas</p>
           </div>
         </div>
         <div className={styles.section__container}>
-          {data.map((data) => (
-            <Question key={data.id} data={data} />
+          {questions.map((data) => (
+            <Question key={data._id} data={data} />
           ))}
         </div>
       </div>
