@@ -7,6 +7,9 @@ import { BiX } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
 export const ProfessionalInformation = () => {
+
+    const navigate = useNavigate()
+
     const { dataProfile, setDataProfile, dataUser, setDataUser, idUser } =
         useContext(DataContext);
 

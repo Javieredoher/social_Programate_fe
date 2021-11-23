@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 
 const Portfolio = () => {
 
+    const navigate = useNavigate()
+
     const { portfolio } = useContext(DataContext);
 
     const [dataPortfolios, setdataPortfolios] = useState([]);

@@ -14,6 +14,7 @@ const Project = ({
     id,
 }) => {
 
+    const navigate = useNavigate()
 
     const deleteProject = async () => {
         try {

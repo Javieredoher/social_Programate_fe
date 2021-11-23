@@ -8,7 +8,8 @@ import { DataContext } from "../context/DataContext";
 import { getDataAll } from "../helpers/fetch";
 
 const CompletePerfil = () => {
-
+    
+    
     const { sendData } = useContext(DataContext);
     const [status, setStatus] = useState(false)
     const [items, setItems] = useState([])
