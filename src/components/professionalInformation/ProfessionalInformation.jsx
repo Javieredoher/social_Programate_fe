@@ -10,8 +10,6 @@ export const ProfessionalInformation = () => {
     const { dataProfile, setDataProfile, dataUser, setDataUser, idUser } =
         useContext(DataContext);
 
-    const history = useNavigate();
-
     const {
         user_info,
         github,
@@ -79,7 +77,7 @@ export const ProfessionalInformation = () => {
                 state,
                 _id,
             });
-            history.push("/formevent");
+            navigate("/formevent");
         } else {
             e.preventDefault();
             console.log("Error");

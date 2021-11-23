@@ -21,8 +21,9 @@ import AdminHomePage from "../pages/AdminHomePage";
 import CompletePerfil from "../pages/CompletePerfil";
 import FormNewsPage from "../pages/FormNewsPage";
 import FormEventPage from "../pages/FormEventPage";
-
 import FormJobsPage from "../pages/FormJobsPage";
+
+
 import CommunityPage from "../pages/CommunityPage";
 import PortfolioPage from "../components/portfolio/Portfolio";
 import FormProject from "../components/FormProject/FormProject";
@@ -39,6 +40,8 @@ import ForumResources from "../components/ForumResources/ForumResources";
 import ForumViewResource from "../components/ForumViewResource/ForumViewResource";
 import ForumAddResources from "../components/ForumAddResources/ForumAddResources";
 import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
+
+//Testing imports
 import Notifications from "../components/Notifications/Notifications";
 
 
@@ -83,68 +86,67 @@ const App = () => {
     }, [token, dispatch])
 
     return (
-        <>
-
-            {/* <DataProvider>
-
-
-                <Router>
-
-                    <Autentification />
-
-
-
-
-                </Router>
-
-            </DataProvider>
         
+        <DataProvider>
+            <Router>         
 
-                   <Route exact path="/adminhome">
-                        <AdminHomePage/>
-                    </Route>
+{/*                 <Autentification>
+
+                <Autentification/> */}
+
+                <Routes>
+
+                    {/*  Model:
+                        <Route exact path="/" element={} /> 
+                    */}
+
+                    {/* Admin */}
+                    
+                    <Route exact path="/adminhome" element={<AdminHomePage/>} />
+
+                    {/* Home */}
+
+                    <Route exact path="/home" element={<HomePage/>} /> 
+
+                    {/* Community */}
+
+                    <Route exact path="/community" element={<CommunityPage/>} /> 
+
+                    {/* Profile */}
+
+                    <Route exact path="/profile" element={<ProfilePage/>} /> 
+                    <Route exact path="/formprofile" element={<CompletePerfil/>} />
+                    <Route exact path="/portfolio" element={<PortfolioPage/>} /> 
+                    <Route exact path="/formproject" element={<FormProject />} />
+                    <Route exact path="/formproject/:id" element={<FormProject />} />
+                     
+
+                    {/* Forms */}
+                    <Route exact path="/formevent" element={<FormEventPage/>} /> 
+                    <Route exact path="/formnew" element={<FormNewsPage/>} /> 
+                    <Route exact path="/formnews/:id" element={<FormNewsPage />} />
+                    <Route exact path="/formjob" element={<FormJobsPage/>} />             
+
+                    {/* Foro */}
+
+                    <Route exact path="/forum" element={<ForumHome/>} />
+                    <Route exact path="/questions" element={<ForumQuestions/>} />
+                    <Route exact path="/questions/:questionId" element={<ForumAnswers/>} />
+                    <Route exact path="/addquestion" element={<ForumAddQuestion/>} />
+                    <Route exact path="/resources" element={<ForumResources />} />
+                    <Route exact path="/resources/:resourceId" element={<ForumViewResource />} />
+                    <Route exact path="/addresource" element={<ForumAddResources />} />
+
+                    {/* Testing Routes to visualize components */}
+
+                    <Route exact path="/notify" element={<Notifications />} />
 
 
-                  {/*Forum Routes
-
+                </Routes>                                  
                   
-                    <Route exact path="/forum">
-                        <ForumHome/>
-                    </Route>
-                    <Route exact path="/questions">
-                        <ForumQuestions />
-                    </Route>
-                    <Route exact path="/questions/:questionId">
-                        <ForumAnswers />
-                    </Route>
-                    <Route exact path="/addquestion">
-                        <ForumAddQuestion />
-                    </Route>
-                    
-                    
-                    <Route exact path="/resources">
-                        <ForumResources />
-                    </Route>
-                    <Route exact path="/resources/:resourceId">
-                        <ForumViewResource />
-                    </Route>
-                    <Route exact path="/addresource">
-                        <ForumAddResources />
-                    </Route>
-
-
-                    {/* Testing Area 
-
-                    <Route exact path="/notify">
-                        <Notifications />
-                    </Route>
-
-                    
                 
             </Router>
-        </DataProvider> */}
-
-       </>
+        </DataProvider> 
 
 
     );
