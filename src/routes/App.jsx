@@ -12,7 +12,6 @@ import { dispatchGetUser, dispatchLogin, fetchUser } from '../redux/actions/auth
 
 //import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-
 //Revisar
 import LatestPosts from "../components/LatestPosts/LatestPosts.jsx";
 
@@ -43,13 +42,13 @@ import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
 
 //Testing imports
 import Notifications from "../components/Notifications/Notifications";
-
+import Navbar from "../components/Navbar/Navbar";
 
 
 //import CreateResourcePage from "../pages/CreateResourcePage";
 
-
 const App = () => {
+  
     const dispatch = useDispatch()
     const token = useSelector(state => state.token)
     const auth = useSelector(state => state.auth)
@@ -96,6 +95,7 @@ const App = () => {
 
                 <Routes>
 
+
                     {/*  Model:
                         <Route exact path="/" element={} /> 
                     */}
@@ -120,7 +120,6 @@ const App = () => {
                     <Route exact path="/formproject" element={<FormProject />} />
                     <Route exact path="/formproject/:id" element={<FormProject />} />
                      
-
                     {/* Forms */}
                     <Route exact path="/formevent" element={<FormEventPage/>} /> 
                     <Route exact path="/formnew" element={<FormNewsPage/>} /> 
@@ -128,7 +127,6 @@ const App = () => {
                     <Route exact path="/formjob" element={<FormJobsPage/>} />             
 
                     {/* Foro */}
-
                     <Route exact path="/forum" element={<ForumHome/>} />
                     <Route exact path="/questions" element={<ForumQuestions/>} />
                     <Route exact path="/questions/:questionId" element={<ForumAnswers/>} />
@@ -137,17 +135,14 @@ const App = () => {
                     <Route exact path="/resources/:resourceId" element={<ForumViewResource />} />
                     <Route exact path="/addresource" element={<ForumAddResources />} />
 
+                      
                     {/* Testing Routes to visualize components */}
-
                     <Route exact path="/notify" element={<Notifications />} />
 
+                </Routes>    
 
-                </Routes>                                  
-                  
-                
             </Router>
         </DataProvider> 
-
 
     );
 };
