@@ -2,10 +2,9 @@ import React, { createContext, useState } from "react";
 
 export const DataContext = createContext();
 
-const idUser = "6193d612096f9c0e80cfcf49";
+const idUser = "618ea996e890a86c5d63fd6a";
 
 export const DataProvider = ({ children }) => {
-
     const initialState = {
         user_info: idUser,
         github: "",
@@ -33,7 +32,6 @@ export const DataProvider = ({ children }) => {
         _id: idUser,
     });
     const [posts, setPosts] = useState({
-
         user_info: idUser,
         user_info: "",
         likes: [],
@@ -56,6 +54,16 @@ export const DataProvider = ({ children }) => {
         place: "",
     });
 
+    const initialStatePortfolio = {
+        profile_id: idUser,
+        image: "",
+        title: "",
+        description_proyect: "",
+        deploy: "",
+        proyect_link: "",
+        technologies: [],
+    };
+    const [portfolio, setPortfolio] = useState(initialStatePortfolio);
 
     const [postsEvent, setPostsEvent] = useState({
         title: "",
@@ -65,6 +73,17 @@ export const DataProvider = ({ children }) => {
         dateEvent: "",
         technologies: [],
         place: "",
+    });
+    const [postsJobs, setPostsJobs] = useState({
+        title: "",
+        type: "",
+        company: "",
+        technologies: [],
+        softSkills: [],
+        place: "",
+        modality: "",
+        salary: "",
+        contact: "",
     });
 
     return (
@@ -78,12 +97,15 @@ export const DataProvider = ({ children }) => {
                 posts,
                 setPosts,
                 postsEvent,
-                setPostsEvent
+                setPostsEvent,
+                setPortfolio,
+                portfolio,
+                initialStatePortfolio,
+                postsJobs,
+                setPostsJobs,
             }}
         >
             {children}
         </DataContext.Provider>
     );
 };
-
-

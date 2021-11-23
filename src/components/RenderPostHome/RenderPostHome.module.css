@@ -32,8 +32,12 @@ body {
         width: 100%;
     }
 
-    #commentHidden {
-        width: 10px;
+    .commentHidden {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        justify-content: left;
+        overflow: hidden;
     }
 }
 
@@ -100,6 +104,11 @@ body {
     background-color: white;
 }
 
+.imageAvatar img {
+    width: 100%;
+    height: 100%;
+}
+
 .user {
     display: inline;
     height: 100px;
@@ -108,7 +117,7 @@ body {
 .commentHidden {
     border-radius: 50px;
     height: 35px;
-    width: 21rem;
+    width: 100%;
     font-size: 14px;
     margin-top: 10px;
 }
@@ -116,6 +125,11 @@ body {
 .likeButton {
     display: flex;
     justify-content: left;
+}
+
+.commentButton {
+    overflow: hidden;
+    width: auto;
 }
 
 .btnComment {

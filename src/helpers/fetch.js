@@ -8,6 +8,12 @@ export const getData = async (endpoint, id) => {
     return await resp.json();
 };
 
+export const getDataAll = async (endpoint) => {
+    const url = `${API}/${endpoint}`;
+    const resp = await fetch(url);
+    return await resp.json();
+};
+
 export const sendData = async (endpoint, data) => {
     const url = `${API}/${endpoint}`;
     const res = await fetch(url, {
@@ -33,5 +39,12 @@ export const updateData = async (endpoint, id, data) => {
 
     return res.json();
 };
-////////////////////////////////////
 
+export const deleteData = async (endpoint, id) => {
+    const url = `${API}/${endpoint}/${id}`;
+    return await fetch(url, {
+        method: "DELETE",
+    });
+};
+
+////////////////////////////////////
