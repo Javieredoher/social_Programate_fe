@@ -79,7 +79,7 @@ export const ProfessionalInformation = () => {
                 state,
                 _id,
             });
-            history.push("/formevent");
+            history.push("/profile");
         } else {
             e.preventDefault();
             console.log("Error");
@@ -87,9 +87,27 @@ export const ProfessionalInformation = () => {
     };
 
     const [education, setEducation] = useState([
-        { institution: "", eduDateInit: "", eduDateEnd: "", certificate: "" },
-        { institution: "", eduDateInit: "", eduDateEnd: "", certificate: "" },
-        { institution: "", eduDateInit: "", eduDateEnd: "", certificate: "" },
+        {
+            degree: "",
+            institution: "",
+            eduDateInit: "",
+            eduDateEnd: "",
+            certificate: "",
+        },
+        {
+            degree: "",
+            institution: "",
+            eduDateInit: "",
+            eduDateEnd: "",
+            certificate: "",
+        },
+        {
+            degree: "",
+            institution: "",
+            eduDateInit: "",
+            eduDateEnd: "",
+            certificate: "",
+        },
     ]);
     const [experienceNew, setExperience] = useState([
         {
@@ -117,6 +135,7 @@ export const ProfessionalInformation = () => {
 
     // Guardar los cambios de la educación
     const onChangeEducation = ({ target }) => {
+        console.log(dataProfile);
         const idEducation = target.parentElement.parentElement.id;
         const { name, value } = target;
 
@@ -300,6 +319,23 @@ export const ProfessionalInformation = () => {
                                 className={style.label}
                                 htmlFor="institution"
                             >
+                                Título*
+                            </label>
+                            <input
+                                type="text"
+                                className={style.inputPersonal}
+                                name="degree"
+                                id="institution"
+                                value={education[0].degree}
+                                onChange={onChangeEducation}
+                                placeholder="Título"
+                            />
+                        </div>
+                        <div className={style.inputs}>
+                            <label
+                                className={style.label}
+                                htmlFor="institution"
+                            >
                                 Institución Educativa*
                             </label>
                             <input
@@ -394,6 +430,20 @@ export const ProfessionalInformation = () => {
                 <div className={style.education} id="1">
                     <div className={style.inputs}>
                         <label className={style.label} htmlFor="institution">
+                            Título*
+                        </label>
+                        <input
+                            type="text"
+                            className={style.inputPersonal}
+                            name="degree"
+                            id="institution"
+                            value={education[0].degree}
+                            onChange={onChangeEducation}
+                            placeholder="Título"
+                        />
+                    </div>
+                    <div className={style.inputs}>
+                        <label className={style.label} htmlFor="institution">
                             Institución Educativa*
                         </label>
                         <input
@@ -474,6 +524,20 @@ export const ProfessionalInformation = () => {
 
             {showFormEducation[2] ? (
                 <div className={style.education} id="2">
+                    <div className={style.inputs}>
+                        <label className={style.label} htmlFor="institution">
+                            Título*
+                        </label>
+                        <input
+                            type="text"
+                            className={style.inputPersonal}
+                            name="degree"
+                            id="institution"
+                            value={education[0].degree}
+                            onChange={onChangeEducation}
+                            placeholder="Título"
+                        />
+                    </div>
                     <div className={style.inputs}>
                         <label className={style.label} htmlFor="institution">
                             Institución Educativa*

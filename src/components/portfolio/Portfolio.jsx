@@ -53,7 +53,7 @@ const Portfolio = () => {
             {dataPortfolios.map((data) => (
                 <Project
                     key={data._id}
-                    deploy={data.deply}
+                    deploy={data.deploy}
                     decription={data.description_proyect}
                     project={data.proyect_link}
                     technologies={data.technologies}

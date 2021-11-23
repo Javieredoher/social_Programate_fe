@@ -1,28 +1,43 @@
-import React, {Fragment} from 'react'
-import ProfileEducations from '../ProfileEducations/ProfileEducations'
+import React, { Fragment, useContext } from "react";
+import { DataContext } from "../../../context/DataContext";
+import ProfileEducations from "../ProfileEducations/ProfileEducations";
 
-
-import style from './ProfileEducation.module.css'
+import style from "./ProfileEducation.module.css";
 
 const ProfileEducation = () => {
+    const { dataProfile } = useContext(DataContext);
+    const { prev_studes } = dataProfile;
+
     return (
         <Fragment>
-            <secction className={style.container1}>
+            <section className={style.container1}>
                 <div className={style.container2}>
                     <div className={style.icon_cont}>
-                        <div className={style.title}><p>Educacion</p></div>
-                        <div><i class="fas fa-pencil-alt"></i></div>
+                        <div className={style.title}>
+                            <p>Educacion</p>
+                        </div>
                     </div>
-                    <div className={style.icon_cont2}>
-                        <div><i class="fas fa-graduation-cap"></i></div>
-                        <p><b>Desarrollador Fullstack</b><br /> Educamas <br /> <span>2019-2021</span></p>
-                    </div>
-                    <ProfileEducations/>
-                </div>
-            </secction>
-            
-        </Fragment>
-    )
-}
+                    {prev_studes.map((study, index) => (
+                        <div className={style.icon_cont2} key={index}>
+                            <div>
+                                <i className="fas fa-graduation-cap"></i>
+                            </div>
+                            <p>
+                                <b>{study.degree}</b>
+                                <br /> {study.institution} <br />
+                                <span>
+                                    {study.eduDateInit.slice(0, 7)} hasta{" "}
+                                    {study.eduDateEnd.slice(0, 7)}
+                                </span>
+                            </p>
+                        </div>
+                    ))}
 
-export default ProfileEducation
+                    {/* <ProfileEducations /> */}
+                </div>
+            </section>
+        </Fragment>
+    );
+};
+
+export default ProfileEducation;

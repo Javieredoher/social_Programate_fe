@@ -1,7 +1,6 @@
 import React from "react";
 import "../assets/styles/global2.css";
 
-
 import LatestPosts from "../components/LatestPosts/LatestPosts.jsx";
 
 import { DataProvider } from "../context/DataContext";
@@ -25,27 +24,17 @@ import ForumQuestion from "../components/ForumQuestion/Questions";
 import ForumResourcesList from "../components/ForumResourcesList/Recursos";
 import ForumCreateResources from "../components/ForumCreateResources/ForumCreateResources";
 
-
-
-
-
 const App = () => {
     return (
-
         <DataProvider>
-
-
             <Router>
-
                 <Switch>
-
-      
                     <Route exact path="/home">
                         <Start />
                         <RenderPostHome />
                         <EventCard />
                         <JobCard />
-                    </Route>                 
+                    </Route>
 
                     <Route exact path="/formprofile">
                         <CompletePerfil />
@@ -88,7 +77,7 @@ const App = () => {
                     </Route>
 
                     <Route exact path="/profile">
-                        <ProfilePage/>
+                        <ProfilePage />
                     </Route>
 
                     <Route exact path="/Foro">
@@ -98,13 +87,11 @@ const App = () => {
                     </Route>
 
                     <Route exact path="/adminpost">
-                        <LatestPosts/>
+                        <LatestPosts />
                     </Route>
-                    
                 </Switch>
             </Router>
         </DataProvider>
-
     );
 };
 

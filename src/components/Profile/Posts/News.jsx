@@ -1,0 +1,71 @@
+import React from "react";
+import style from "./Posts.module.css";
+
+const News = ({
+    description,
+    images,
+    technologies,
+    title,
+    id,
+    firstName,
+    middleName,
+    lastName,
+    cohorte,
+    avatar,
+}) => {
+    return (
+        <section className={style.container1}>
+            <div className={style.container2}>
+                <div className={style.icon_cont1}>
+                    <div className={style.postUser}>
+                        <div className={style.icon}>
+                            {images ? (
+                                <img src={avatar} alt="Foto" />
+                            ) : (
+                                <i className="far fa-user-circle"></i>
+                            )}
+                        </div>
+                        <p>
+                            <b>
+                                {firstName} {middleName} {lastName}
+                            </b>
+                            <br />
+                            {cohorte.name}
+                            <br /> <span>2 hr</span>
+                        </p>
+                    </div>
+                    <div className={style.iconsModify}>
+                        <i className="fas fa-pencil-alt"></i>
+                        <i className="far fa-trash-alt"></i>
+                    </div>
+                </div>
+                <div className={style.news}>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                    <img src={images} alt="Foto" />
+                    <div className={style.techContain}>
+                        {technologies &&
+                            technologies.map((tech) => (
+                                <p className={style.tech}>{tech}</p>
+                            ))}
+                    </div>
+                </div>
+                <div className={style.icon_cont2}>
+                    <div className={style.like}>
+                        <i className="far fa-thumbs-up"></i>
+                        <span>23</span>
+                    </div>
+                    <div className={style.like}>
+                        <i className="far fa-comment-dots"></i>
+                        <span>20</span>
+                    </div>
+                    <div>
+                        <i className="fas fa-share"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default News;

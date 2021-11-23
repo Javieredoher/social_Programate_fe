@@ -1,31 +1,51 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import { DataContext } from "../../../context/DataContext";
+import { getDataAll } from "../../../helpers/fetch";
 
-import style from './Posts.module.css'
+import News from "./News";
 
 const Posts = () => {
+    const { getPosts, setGetPosts, idUser, dataUser } = useContext(DataContext);
+
+    const { firstName, middleName, lastName, cohorte, avatar } = dataUser;
+
+    useEffect(async () => {
+        try {
+            const data = await getDataAll("posts");
+            const filterData = data.filter(
+                (posts) => posts.user_info === idUser
+            );
+            setGetPosts(filterData);
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+    console.log(dataUser);
     return (
         <Fragment>
-            <secction className={style.container1}>
-                <div className={style.container2}>
-
-                    <div className={style.icon_cont1}>
-                        <div className={style.icon}><i class="far fa-user-circle"></i></div>
-                        <p><b>Juan Hernando Fernandez</b><br />QuakCoders<br /> <span>2 hr</span></p>
-
-                    </div>
-                    <div>
-                        <p> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi accusantium ipsam explicabo saepe, dolorum quo accusamus, quisquam nihil recusandae optio possimus aliquam deleniti, aspernatur error! Corrupti sequi nihil officiis molestiae?</p></p>
-                    </div>
-                    <div className={style.icon_cont2}>
-                    <div><i class="far fa-thumbs-up"></i><span>23</span></div>
-                    <div><i class="far fa-comment-dots"></i></div>
-                    <div><i class="fas fa-share"></i></div>
-                    </div>
-                </div>
-            </secction>
-
+            {getPosts?.map((post) =>
+                post.type === "news" ? (
+                    <News
+                        description={post.description}
+                        images={post.images}
+                        technologies={post.technologies}
+                        title={post.title}
+                        id={post._id}
+                        firstName={firstName}
+                        middleName={middleName}
+                        lastName={lastName}
+                        cohorte={cohorte}
+                        avatar={avatar}
+                        key={post._id}
+                    />
+                ) : post.type === "jobs" ? (
+                    <Jobs />
+                ) : post.type === "event" ? (
+                    <Jobs />
+                ) : null
+            )}
         </Fragment>
-    )
-}
+    );
+};
 
-export default Posts
+export default Posts;

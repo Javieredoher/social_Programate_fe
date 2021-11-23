@@ -2,8 +2,9 @@ import React, { createContext, useState } from "react";
 
 export const DataContext = createContext();
 
-const idUser = "618ea996e890a86c5d63fd6a";
-
+const idUser = "6193dc60f58b9543f26a7cad";
+// const navigate = useNavigate();
+// navigate('/home')
 export const DataProvider = ({ children }) => {
     const initialState = {
         user_info: idUser,
@@ -33,7 +34,6 @@ export const DataProvider = ({ children }) => {
     });
     const [posts, setPosts] = useState({
         user_info: idUser,
-        user_info: "",
         likes: [],
         title: "",
         type: "",
@@ -66,6 +66,7 @@ export const DataProvider = ({ children }) => {
     const [portfolio, setPortfolio] = useState(initialStatePortfolio);
 
     const [postsEvent, setPostsEvent] = useState({
+        user_info: idUser,
         title: "",
         type: "",
         description: "",
@@ -75,6 +76,7 @@ export const DataProvider = ({ children }) => {
         place: "",
     });
     const [postsJobs, setPostsJobs] = useState({
+        user_info: idUser,
         title: "",
         type: "",
         company: "",
@@ -85,6 +87,8 @@ export const DataProvider = ({ children }) => {
         salary: "",
         contact: "",
     });
+
+    const [getPosts, setGetPosts] = useState();
 
     return (
         <DataContext.Provider
@@ -103,11 +107,12 @@ export const DataProvider = ({ children }) => {
                 initialStatePortfolio,
                 postsJobs,
                 setPostsJobs,
-
+                getPosts,
+                setGetPosts,
+                idUser,
             }}
         >
             {children}
         </DataContext.Provider>
     );
 };
-
