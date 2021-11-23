@@ -1,11 +1,11 @@
-import React, { Fragment, useContext, useRef, useState } from "react";
+import React, { Fragment, useContext, useEffect, useRef, useState } from "react";
 import style from "./Form_PersonalInfo.module.css";
 import Languages from "./Languages";
 import { DataContext } from "../../context/DataContext";
 import HardSkills from "./HardSkills";
 import SoftSkills from "./SoftSkills";
 
-const Form_PersonalInfo = () => {
+const Form_PersonalInfo = ({ id }) => {
     const { dataProfile, setDataProfile } = useContext(DataContext);
 
     const [technical, setTechnical] = useState([]);
@@ -19,7 +19,12 @@ const Form_PersonalInfo = () => {
             [name]: value,
         });
     };
-
+    useEffect(() => {
+        setDataProfile({
+            ...dataProfile,
+            user_info: id,
+        })
+    }, [])
     const onKeyHardSkills = (e) => {
         if (e.key === "Enter" && e.target.value.length > 0) {
             technical.push(e.target.value);
@@ -167,7 +172,7 @@ const Form_PersonalInfo = () => {
                     <div
                         className={style.tecnologias}
                         id="languages"
-                        // ref={targetSkill}
+                    // ref={targetSkill}
                     >
                         {languages.map((skill, index) => (
                             <Languages

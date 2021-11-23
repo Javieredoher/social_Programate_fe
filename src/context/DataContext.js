@@ -6,7 +6,7 @@ const idUser = "61982c09c86dbd6a0c8d176e";
 
 export const DataProvider = ({ children }) => {
     const initialState = {
-        user_info: idUser,
+        user_info: "",
         github: "",
         description: "",
         technicalSkills: [],
@@ -29,7 +29,7 @@ export const DataProvider = ({ children }) => {
         rol: 1,
         secondSurname: "",
         state: true,
-        _id: idUser,
+        _id: "",
     });
     const [posts, setPosts] = useState({
         user_info: idUser,

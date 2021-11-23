@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { Input } from '../../../components/input/Input'
 import logo from '../../../assets/images/logo-blanco-alta-.png'
 import './Login.css'
+import { getData } from '../../../helpers/fetch'
 
 
 const initialState = {
@@ -34,16 +35,20 @@ function Login() {
       const res = await axios.post('http://localhost:3001/api/login', {
         email,
         password
+
       })
-      console.log(res)
+
+
       setUser({ ...user, err: '', success: res.data.msg })
       window.localStorage.setItem('firstLogin', true)
       window.localStorage.setItem(
         'loggedAgoraUser', JSON.stringify(res.data)
       )
       showSuccessMsg(success)
-      dispatch(dispatchLogin())
-      navigate('/landing')
+
+
+
+      navigate('/redirect')
     } catch (err) {
       showErrMsg(err.response.data.error)
       err.response.data.error &&

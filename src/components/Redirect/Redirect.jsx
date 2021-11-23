@@ -1,13 +1,16 @@
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { dispatchGetUser, dispatchLogin, fetchUser } from '../../redux/actions/authAction'
+import { Navigate } from 'react-router'
 
-const Landing = () => {
-
+const Redirect = () => {
+  const [isDisplayed, setIsDisplayed] = useState(false);
+  setTimeout(() => setIsDisplayed(true), 500);
   const dispatch = useDispatch()
   const token = useSelector(state => state.token)
   const auth = useSelector(state => state.auth)
+
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedAgoraUser')
@@ -38,12 +41,18 @@ const Landing = () => {
     }
 
   }, [token, dispatch])
-
   return (
-    <div>
-      INGRESO CON EXITO
-    </div>
+    <>
+      <div>
+        <div>
+          <p>Redirigiendo..</p>
+          {isDisplayed && <Navigate replace to="/formprofile" />}
+
+        </div>
+      </div>
+
+    </>
   )
 }
 
-export default Landing
+export default Redirect

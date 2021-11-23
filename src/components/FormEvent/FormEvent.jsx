@@ -5,6 +5,7 @@ import { DataContext } from "../../context/DataContext";
 import { sendData, updateData } from "../../helpers/fetch";
 const FormEvent = () => {
     const { postsEvent, setPostsEvent } = useContext(DataContext);
+
     const [techs, setTechs] = useState([]);
 
     //Enviar data del usuario al modelo de user y profile
