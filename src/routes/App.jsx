@@ -30,6 +30,7 @@ import ForumResources from "../components/ForumResources/ForumResources";
 import ForumViewResource from "../components/ForumViewResource/ForumViewResource";
 import ForumAddResources from "../components/ForumAddResources/ForumAddResources";
 import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
+import Notifications from "../components/Notifications/Notifications";
 
 
 //import CreateResourcePage from "../pages/CreateResourcePage";
@@ -120,6 +121,13 @@ const App = () => {
                     </Route>
                     <Route exact path="/addresource">
                         <ForumAddResources />
+                    </Route>
+
+
+                    {/* Testing Area */}
+
+                    <Route exact path="/notify">
+                        <Notifications />
                     </Route>
 
                     
