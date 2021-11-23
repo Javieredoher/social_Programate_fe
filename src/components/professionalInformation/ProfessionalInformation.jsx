@@ -7,10 +7,11 @@ import { BiX } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
 export const ProfessionalInformation = () => {
+
+    const navigate = useNavigate()
+
     const { dataProfile, setDataProfile, dataUser, setDataUser, idUser } =
         useContext(DataContext);
-
-    const history = useNavigate();
 
     const {
         user_info,
@@ -79,7 +80,7 @@ export const ProfessionalInformation = () => {
                 state,
                 _id,
             });
-            history.push("/formevent");
+            navigate("/formevent");
         } else {
             e.preventDefault();
             console.log("Error");

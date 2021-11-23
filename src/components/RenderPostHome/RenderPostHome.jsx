@@ -9,7 +9,8 @@ const RenderPostHome = () => {
     //const imageNews = news.image_new;
 
     return (
-        <div className={style.cardContainer}>
+        <section className={style.section}>
+            <div className={style.cardContainer}>
             {news.map((post) => (
                 <RenderPostGrid
                     key={post.id}
@@ -21,7 +22,8 @@ const RenderPostHome = () => {
                     news={post.news}
                 />
             ))}
-        </div>
+            </div>
+        </section>
     );
 };
 

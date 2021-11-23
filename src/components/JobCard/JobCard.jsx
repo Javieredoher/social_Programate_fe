@@ -7,7 +7,8 @@ import { JobCardS } from "./JobCardS";
 
 const JobCard = () => {
     return (
-        <div className={style.cardContainer}>
+        <section className={style.section}>
+            <div className={style.cardContainer}>
             {jobs.map((vacancies) => (
                 <JobCardS
                     key={vacancies.id}
@@ -26,7 +27,8 @@ const JobCard = () => {
                     contact={vacancies.contact}
                 />
             ))}
-        </div>
+            </div>
+        </section>
     );
 };
 

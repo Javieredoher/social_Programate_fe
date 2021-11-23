@@ -103,11 +103,9 @@ export const DataProvider = ({ children }) => {
                 initialStatePortfolio,
                 postsJobs,
                 setPostsJobs,
-
             }}
         >
             {children}
         </DataContext.Provider>
     );
 };
-

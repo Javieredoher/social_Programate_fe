@@ -1,7 +1,7 @@
 import React from "react";
 import { deleteData } from "../../helpers/fetch";
 import style from "./Portfolio.module.css";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Project = ({
     deploy,
@@ -13,7 +13,8 @@ const Project = ({
     getDataPort,
     id,
 }) => {
-    const history = useHistory();
+
+    const navigate = useNavigate()
 
     const deleteProject = async () => {
         try {
@@ -32,7 +33,7 @@ const Project = ({
                     <div className={style.titleIcons}>
                         <i
                             className="fas fa-pencil-alt"
-                            onClick={() => history.push(`/formproject/${id}`)}
+                            onClick={() => navigate(`/formproject/${id}`)}
                         ></i>
                         <i
                             className="far fa-trash-alt"
