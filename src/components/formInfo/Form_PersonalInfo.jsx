@@ -61,9 +61,10 @@ const Form_PersonalInfo = () => {
 
     return (
         <Fragment>
-            <form className={style.form_container}>
-                {/* <div className={style.forms}>
-                    <h3>Nombre *</h3>
+            <form>
+                <div className={style.form_container}>
+                    {/* <div className={style.forms}>
+                    <label>Nombre *</label>
                     <input
                         className={style.nom}
                         type="text"
@@ -73,19 +74,18 @@ const Form_PersonalInfo = () => {
                     />
                 </div> */}
 
-                <div className={style.forms}>
-                    <h3>Link de Git Hub</h3>
-                    <input
-                        className={style.nom}
-                        type="text"
-                        name="github"
-                        value={dataProfile.github}
-                        onChange={onChange}
-                    />
-                </div>
+                    <div className={style.forms}>
+                        <label>Link de Git Hub</label>
+                        <input className={style.input_nom}
+                            type="text"
+                            name="github"
+                            value={dataProfile.github}
+                            onChange={onChange}
+                        />
+                    </div>
 
-                {/* <div className={style.forms}>
-                    <h3>Cohorte *</h3>
+                    {/* <div className={style.forms}>
+                    <label>Cohorte *</label>
                     <select
                         className={style.nom}
                         name="cohorte"
@@ -96,88 +96,90 @@ const Form_PersonalInfo = () => {
                         <option value="1">Primeros</option>
                         <option value="2">Quackoders</option>
                     </select> */}
-                {/* <input
+                    {/* <input
                         className={style.nom}
                         type="text"
                         name="cohorte"
                         value={dataProfile.cohorte}
                         onChange={onChange}
                     /> */}
-                {/* </div> */}
+                    {/* </div> */}
 
-                <div className={style.forms}>
-                    <h3>Acerca de</h3>
-                    <textarea
-                        className={style.textarea}
-                        rows="3"
-                        name="description"
-                        value={dataProfile.description}
-                        onChange={onChange}
-                    ></textarea>
-                </div>
 
-                <div className={style.forms}>
-                    <h3>Tecnologías</h3>
-                    <input
-                        className={style.nom}
-                        type="text"
-                        name="technicalSkills"
-                        onKeyDown={onKeyHardSkills}
-                    />
-                    <div className={style.tecnologias} id="technologias">
-                        {technical.map((skill, index) => (
-                            <HardSkills
-                                skill={skill}
-                                key={index}
-                                technical={technical}
-                                setTechnical={setTechnical}
-                            />
-                        ))}
+                    <div className={style.forms}>
+                        <label>Tecnologías</label>
+                        <input className={style.input_nom}
+                            type="text"
+                            name="technicalSkills"
+                            onKeyDown={onKeyHardSkills}
+                        />
+
+                        <div className={style.tecnologias} id="technologias">
+                            {technical.map((skill, index) => (
+                                <HardSkills
+                                    skill={skill}
+                                    key={index}
+                                    technical={technical}
+                                    setTechnical={setTechnical}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
 
-                <div className={style.forms}>
-                    <h3>Habilidades blandas</h3>
-                    <input
-                        className={style.nom}
-                        type="text"
-                        name="softSkills"
-                        onKeyDown={onKeySoftSkills}
-                    />
-                    <div className={style.tecnologias}>
-                        {softSkills.map((skill, index) => (
-                            <SoftSkills
-                                skill={skill}
-                                key={index}
-                                softSkills={softSkills}
-                                setsoftSkills={setsoftSkills}
-                            />
-                        ))}
+                    <div className={style.forms}>
+                        <label>Habilidades blandas</label>
+                        <input className={style.input_nom}
+                            type="text"
+                            name="softSkills"
+                            onKeyDown={onKeySoftSkills}
+                        />
+
+                        <div className={style.tecnologias}>
+                            {softSkills.map((skill, index) => (
+                                <SoftSkills
+                                    skill={skill}
+                                    key={index}
+                                    softSkills={softSkills}
+                                    setsoftSkills={setsoftSkills}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
 
-                <div className={style.forms}>
-                    <h3>Idiomas</h3>
-                    <input
-                        className={style.nom}
-                        type="text"
-                        name="lenguages"
-                        onKeyDown={onKeyLanguages}
-                    />
-                    <div
-                        className={style.tecnologias}
-                        id="languages"
+                    <div className={style.forms}>
+                        <label>Idiomas</label>
+                        <input className={style.input_nom}
+                            type="text"
+                            name="lenguages"
+                            onKeyDown={onKeyLanguages}
+                        />
+
+                        <div className={style.tecnologias}
+                            id="languages"
                         // ref={targetSkill}
-                    >
+                        >
+
                         {languages.map((skill, index) => (
-                            <Languages
-                                skill={skill}
-                                key={index}
-                                languages={languages}
-                                setLanguages={setLanguages}
-                            />
-                        ))}
+                                <Languages
+                                    skill={skill}
+                                    key={index}
+                                    languages={languages}
+                                    setLanguages={setLanguages}
+                                />
+                            ))}
+                        </div>
                     </div>
+
+                    <div className={style.forms}>
+                        <label>Acerca de</label>
+                        <textarea className={style.textarea}
+                            rows="3"
+                            name="description"
+                            value={dataProfile.description}
+                            onChange={onChange}
+                        ></textarea>
+                    </div>
+
                 </div>
             </form>
         </Fragment>

@@ -7,7 +7,7 @@
     margin-top: 30px;
 }
 
-h3 {
+label {
     font-family: "Roboto", sans-serif;
     margin-left: 5px;
     font-size: 18px;
@@ -71,6 +71,10 @@ h3 {
     justify-content: center;
     margin-top: 30px;
     margin-bottom: 40px;
+}
+
+.rojo{
+    color: red;
 }
 
 /* Medium (md) */

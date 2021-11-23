@@ -18,12 +18,11 @@ import FormProject from "../components/FormProject/FormProject";
 import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
 import AdminHome from "../components/adminHome/AdminHome";
+import HomePage from "../pages/HomePage";
 
 //Componentes test
-import ForumQuestion from "../components/ForumQuestion/Questions";
-import ForumResourcesList from "../components/ForumResourcesList/Recursos";
-import ForumCreateResources from "../components/ForumCreateResources/ForumCreateResources";
-import HomePage from "../pages/HomePage";
+
+
 
 
 
@@ -91,11 +90,11 @@ const App = () => {
                         <AdminHome/>
                     </Route>
 
-
-
                     <Route exact path="/adminpost">
                         <LatestPosts/>
                     </Route>
+
+                
                     
                 </Switch>
             </Router>

@@ -3,12 +3,43 @@ import style from "./FormEvent.module.css";
 import logo from "../../assets/images/logo-a-color-.jpg";
 import { DataContext } from "../../context/DataContext";
 import { sendData, updateData } from "../../helpers/fetch";
+import Swal from "sweetalert2";
+
+
+            //  para crear alertas
+const mostrarAlerta = () => {
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Bienvenido',
+        text: 'Por favor llena todos los espacios',
+        footer: '<a  href="">Esta información es muy importante</a>',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#ffcc02',
+        timer: '6000'
+
+      }).then(respuesta=>{
+          if(respuesta)
+          Swal({
+        Text:'La información se envio con exito',
+        icon: 'success',
+        timer: "6000"
+    })
+      })
+}
+
+  
+
 const FormEvent = () => {
+
+
     const { postsEvent, setPostsEvent } = useContext(DataContext);
     const [techs, setTechs] = useState([]);
 
     //Enviar data del usuario al modelo de user y profile
+    
     const submitData = async (e) => {
+        
         e.preventDefault();
         try {
             await sendData("posts", postsEvent);
@@ -32,19 +63,23 @@ const FormEvent = () => {
             e.preventDefault();
         }
     };
-    useEffect(() => {}, [postsEvent, setPostsEvent, techs, setTechs]);
+    useEffect(() => { }, [postsEvent, setPostsEvent, techs, setTechs]);
     useEffect(() => {
         setPostsEvent({ ...postsEvent, type: "event" });
     }, []);
+
     return (
         <Fragment>
+
             <div className={style.headerPerfil}>
                 <img src={logo} alt="Educamás" />
                 <h2>Agregar evento</h2>
             </div>
+
             <form className={style.from_container} onSubmit={submitData}>
+               
                 <div className={style.forms}>
-                    <h3>Nombre del evento</h3>
+                    <label for="nombre">Nombre del evento</label>
                     <input
                         placeholder="Nombre del evento"
                         className={style.nom}
@@ -54,8 +89,9 @@ const FormEvent = () => {
                     />
                     <br />
                 </div>
+
                 <div className={style.forms}>
-                    <h3>Descripción</h3>
+                    <label for="descripcion">Descripción</label>
                     <input
                         placeholder="Breve descripción del evento"
                         className={style.nom}
@@ -67,7 +103,7 @@ const FormEvent = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Lugar</h3>
+                    <label for="lugar">Lugar</label>
                     <input
                         placeholder="Lugar"
                         className={style.nom}
@@ -79,7 +115,7 @@ const FormEvent = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Fecha del evento</h3>
+                    <label for="fecha">Fecha del evento</label>
                     <input
                         className={style.nom}
                         type="date"
@@ -90,7 +126,7 @@ const FormEvent = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Link de inscripción</h3>
+                    <label for="link">Link de inscripción</label>
                     <input
                         placeholder="Link de inscripción"
                         className={style.nom}
@@ -100,8 +136,10 @@ const FormEvent = () => {
                     />
                     <br />
                 </div>
+
                 <div className={style.forms}>
-                    <h3>Tegnologías</h3>
+
+                    <label for="Technologies">Tegnologías</label>
                     <input
                         className={style.nom}
                         type="text"
@@ -117,12 +155,15 @@ const FormEvent = () => {
                             <button key={index}>{tech}</button>
                         ))}
                     </div>
-                </div>
+
+                     </div>
 
                 <div className={style.enviar}>
-                    <button className="btn">Enviar</button>
+                    <button className="btn" type="submit" onClick={() => mostrarAlerta()}>Enviar</button>
                 </div>
+
             </form>
+
         </Fragment>
     );
 };
