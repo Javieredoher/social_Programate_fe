@@ -12,6 +12,7 @@ const CompletePerfil = () => {
     
     const { sendData } = useContext(DataContext);
     const [status, setStatus] = useState(false)
+    const [statusOff, setStatusOff] = useState(true)
     const [items, setItems] = useState([])
     const auth = useSelector(state => state.auth)
 
@@ -33,28 +34,36 @@ const CompletePerfil = () => {
             if (item.user_info.email === email) {
                 setStatus(status => true)
             }
+            if (item.user_info.rol === 0 || item.user_info.state === false) {
+                setStatusOff(false)
+            }
         })
 
     }, [setItems, items])
 
 
-
     return (
         <>
-            {status ?
+            {statusOff ?
 
-                <Navigate replace to="/formevent" /> :
-                <>
-                    <FormPhotoUser id={_id} />
-                    <Form_PersonalInfo id={_id} />
-                    <ProfessionalInformation id={_id} />
-                </>
+
+
+                status ?
+
+
+                    <Navigate replace to="/formevent" />
+
+                    :
+                    <>
+                        <FormPhotoUser id={_id} />
+                        <Form_PersonalInfo id={_id} />
+                        <ProfessionalInformation id={_id} />
+                    </>
+                : <Navigate replace to="/dontallow" />
 
 
             }
-            {/* <FormPhotoUser id={_id} />
-            <Form_PersonalInfo id={_id} />
-            <ProfessionalInformation id={_id} /> */}
+
 
 
         </>

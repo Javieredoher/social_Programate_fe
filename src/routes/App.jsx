@@ -9,6 +9,7 @@ import Autentification from "../components/autentication/Autentification";
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { dispatchGetUser, dispatchLogin, fetchUser } from '../redux/actions/authAction'
+import Logout from '../components/Logout/Logout';
 
 //import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -125,6 +126,9 @@ const App = () => {
                     <Route exact path="/formnews/:id" element={<FormNewsPage />} />
                     <Route exact path="/formjob" element={<FormJobsPage/>} />             
 
+
+                    <Logout />
+
                     {/* Foro */}
                     <Route exact path="/forum" element={<ForumHome/>} />
                     <Route exact path="/questions" element={<ForumQuestions/>} />
@@ -133,6 +137,7 @@ const App = () => {
                     <Route exact path="/resources" element={<ForumResources />} />
                     <Route exact path="/resources/:resourceId" element={<ForumViewResource />} />
                     <Route exact path="/addresource" element={<ForumAddResources />} />
+
 
                       
                     {/* Testing Routes to visualize components */}

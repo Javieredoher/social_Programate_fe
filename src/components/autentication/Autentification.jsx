@@ -9,6 +9,7 @@ import CompletePerfil from "../../pages/CompletePerfil";
 import FormEventPage from "../../pages/FormEventPage";
 import FormEventEdit from "../../components/FormEvent/FormEventEdit";
 import Redirect from '../Redirect/Redirect'
+import DontAllow from '../Messages/DontAllow'
 
 
 function Autentification() {
@@ -21,13 +22,14 @@ function Autentification() {
   return (
     <>
       <Routes>
-        <Route exact path='/login' element={isLogged ? <NotFound /> : <Login />} />
+        <Route exact path='/login' element={<Login />} />
         <Route exact path='/forgot_password' element={<ForgotPassword />} exact />
         <Route exact path='/user/reset/:token' element={isLogged ? <NotFound /> : <ResetPassword />} />
         <Route exact path="/formprofile" element={isLogged ? < CompletePerfil /> : <NotFound />} />
         <Route exact path="/formevent" element={isLogged ? <FormEventPage /> : <NotFound />} />
         <Route exact path="/editevent" element={isLogged ? <FormEventEdit /> : <NotFound />} />
         <Route exact path="/redirect" element={<Redirect />} />
+        <Route exact path="/dontallow" element={<DontAllow />} />
       </Routes>
 
     </>

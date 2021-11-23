@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { dispatchGetUser, dispatchLogin, fetchUser } from '../../redux/actions/authAction'
 import { Navigate } from 'react-router'
-
-const Redirect = () => {
-  const [isDisplayed, setIsDisplayed] = useState(false);
-  setTimeout(() => setIsDisplayed(true), 500);
+import './DontAllow.css'
+const DontAllow = () => {
   const dispatch = useDispatch()
   const token = useSelector(state => state.token)
   const auth = useSelector(state => state.auth)
@@ -43,17 +41,10 @@ const Redirect = () => {
 
   }, [token, dispatch])
   return (
-    <>
-      <div>
-        <div>
-          <p>Redirigiendo..</p>
-          {isDisplayed && <Navigate replace to="/formprofile" />}
-
-        </div>
-      </div>
-
-    </>
+    <div className="allow">
+      No tienes permisos para esta página.
+    </div>
   )
 }
 
-export default Redirect
+export default DontAllow
