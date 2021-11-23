@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react'
 import style from './AdminHome.module.css'
+import AdminCommunity from './adminCommunity/AdminCommunity'
+import Adminjob from './adminJob/Adminjob'
+
 
 const AdminHome = () => {
     return (
@@ -10,22 +13,13 @@ const AdminHome = () => {
 
                     <div className={style.cont}>
 
-                        <div className={style.icon}>
-                            <div><i class="fas fa-users"></i></div>
-                            <p>Usuario</p>
-                        </div>
 
-                        <div className={style.icon}>
-                            <div><i class="fas fa-chalkboard-teacher"></i></div>
-                            <p>Ofertas</p>
-                        </div>
+                        <AdminCommunity/>
 
-                        <div className={style.icon}>
-                            <div><i class="fas fa-newspaper"></i></div>
-                            <p>Publicaciones</p>
-                        </div>
+                        <Adminjob/>
 
                     </div>
+
                 </section>
 
             </div>

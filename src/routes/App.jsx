@@ -89,9 +89,8 @@ const App = () => {
         <DataProvider>
             <Router>         
 
-{/*                 <Autentification>
-
-                <Autentification/> */}
+                {/*<Autentification>
+                <Autentification/>*/}
 
                 <Routes>
 
@@ -127,7 +126,7 @@ const App = () => {
                     <Route exact path="/formjob" element={<FormJobsPage/>} />             
 
 
-                    <Logout />
+                    {/* <Logout /> */}
 
                     {/* Foro */}
                     <Route exact path="/forum" element={<ForumHome/>} />
