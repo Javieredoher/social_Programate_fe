@@ -32,6 +32,7 @@ import ForumAddResources from "../components/ForumAddResources/ForumAddResources
 import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
 
 
+
 //import CreateResourcePage from "../pages/CreateResourcePage";
 
 
@@ -121,8 +122,6 @@ const App = () => {
                     <Route exact path="/addresource">
                         <ForumAddResources />
                     </Route>
-
-                    
                 </Switch>
             </Router>
         </DataProvider>
