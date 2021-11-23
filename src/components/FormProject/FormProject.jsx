@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import style from "./FormProject.module.css";
 import { DataContext } from "../../context/DataContext";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import HardSkills from "./HardSkills";
 import { getData, sendData, updateData } from "../../helpers/fetch";
 import Swal from "sweetalert2";
@@ -20,7 +20,6 @@ const FormProject = () => {
         technologies,
     } = portfolio;
 
-    const history = useHistory();
     const params = useParams();
 
     //Enviar data del proyecto al modelo de portfolio
@@ -68,7 +67,7 @@ const FormProject = () => {
                     setPortfolio(initialStatePortfolio);
                 }
 
-                history.push("/portfolio");
+                navigate("/portfolio");
             } catch (error) {
                 console.log(error);
             }
@@ -131,7 +130,7 @@ const FormProject = () => {
 
     const cancelSend = () => {
         setPortfolio(initialStatePortfolio);
-        history.push("/portfolio");
+        navigate("/portfolio");
     };
 
     return (
