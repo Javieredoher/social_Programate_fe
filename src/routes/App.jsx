@@ -3,7 +3,6 @@ import "../assets/styles/global2.css";
 import { DataProvider } from "../context/DataContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-
 //Revisar
 import LatestPosts from "../components/LatestPosts/LatestPosts.jsx";
 
@@ -31,24 +30,18 @@ import ForumViewResource from "../components/ForumViewResource/ForumViewResource
 import ForumAddResources from "../components/ForumAddResources/ForumAddResources";
 import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
 import Notifications from "../components/Notifications/Notifications";
-
+import Navbar from "../components/Navbar/Navbar";
 
 //import CreateResourcePage from "../pages/CreateResourcePage";
 
-
 const App = () => {
     return (
-
         <DataProvider>
-
-
             <Router>
-
                 <Switch>
-      
                     <Route exact path="/home">
-                        <HomePage/>
-                    </Route>                 
+                        <HomePage />
+                    </Route>
 
                     <Route exact path="/formprofile">
                         <CompletePerfil />
@@ -86,21 +79,18 @@ const App = () => {
                         <FormProject />
                     </Route>
 
-
                     <Route exact path="/profile">
-                        <ProfilePage/>
+                        <ProfilePage />
                     </Route>
 
                     <Route exact path="/adminhome">
-                        <AdminHomePage/>
+                        <AdminHomePage />
                     </Route>
 
+                    {/*Forum Routes*/}
 
-                  {/*Forum Routes*/}
-
-                  
                     <Route exact path="/forum">
-                        <ForumHome/>
+                        <ForumHome />
                     </Route>
                     <Route exact path="/questions">
                         <ForumQuestions />
@@ -111,8 +101,7 @@ const App = () => {
                     <Route exact path="/addquestion">
                         <ForumAddQuestion />
                     </Route>
-                    
-                    
+
                     <Route exact path="/resources">
                         <ForumResources />
                     </Route>
@@ -123,18 +112,14 @@ const App = () => {
                         <ForumAddResources />
                     </Route>
 
-
                     {/* Testing Area */}
 
                     <Route exact path="/notify">
                         <Notifications />
                     </Route>
-
-                    
                 </Switch>
             </Router>
         </DataProvider>
-
     );
 };
 

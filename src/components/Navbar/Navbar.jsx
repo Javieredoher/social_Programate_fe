@@ -17,21 +17,26 @@ const Navbar = () => {
                 <nav className={styles.navBar}>
                     <ul className={styles.navList}>
                         <li className={styles.navListItem}>
-                            <img src={logo} alt="Prográmate" />
+                            <Link to="/home">
+                                <img src={logo} alt="Prográmate" />
+                            </Link>
                         </li>
                         <li className={styles.navListItem}>
                             <BiGroup size="24" />
-                            <span>Comunidad</span>
+                            <Link to="/community">
+                                <span>Comunidad</span>
+                            </Link>
                         </li>
                         <li className={styles.navListItem}>
                             <BiMessageRoundedAdd size="24" />
-                            <span>Foro</span>
+                            <Link to="/forum">
+                                <span>Foro</span>
+                            </Link>
                         </li>
 
                         <li className={styles.navListItem}>
-                            <Link to="/profile">
-                                <img src={logoperfil} alt="Prográmate" />
-                            </Link>
+                            {/* <img src={logoperfil} alt="Prográmate" /> */}
+                            <DropdownLogOut />
                         </li>
                     </ul>
                 </nav>
