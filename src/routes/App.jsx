@@ -6,6 +6,7 @@ import Autentification from "../components/autentication/Autentification";
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { dispatchGetUser, dispatchLogin, fetchUser } from '../redux/actions/authAction'
+import Logout from '../components/Logout/Logout';
 
 
 
@@ -52,6 +53,7 @@ const App = () => {
 
 
                 <Router>
+                    <Logout />
 
                     <Autentification />
 
