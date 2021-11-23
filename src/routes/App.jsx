@@ -44,7 +44,6 @@ import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
 import Notifications from "../components/Notifications/Notifications";
 import Navbar from "../components/Navbar/Navbar";
 
-
 //import CreateResourcePage from "../pages/CreateResourcePage";
 
 const App = () => {
@@ -139,7 +138,9 @@ const App = () => {
                     {/* Testing Routes to visualize components */}
                     <Route exact path="/notify" element={<Notifications />} />
 
+
                 </Routes>    
+
 
             </Router>
         </DataProvider> 

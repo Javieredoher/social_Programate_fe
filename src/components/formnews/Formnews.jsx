@@ -114,14 +114,14 @@ const Formnews = () => {
     };
 
     return (
-        <section className={styles.section}>
+        <section className={styles.section_container}>
             <form className={styles.form_container} onSubmit={submitData}>
                 <h1 className={styles.title}>Noticias</h1>
                 <div className={styles.form}>
                     <h3>Nombre de la noticia</h3>
 
                     <input
-                        className={styles.input}
+                        className={styles.nom_input}
                         type="text"
                         name="title"
                         value={posts.title}
@@ -148,7 +148,7 @@ const Formnews = () => {
                 <div className={styles.form}>
                     <h3 className={styles.subtitle}>Tecnologías</h3>
                     <input
-                        className={styles.input}
+                        className={styles.nom_input}
                         type="text"
                         name="tecno"
                         onKeyDown={onKeyTechnologies}
