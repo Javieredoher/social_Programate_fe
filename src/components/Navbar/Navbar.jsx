@@ -29,7 +29,9 @@ const Navbar = () => {
                         </li>
 
                         <li className={styles.navListItem}>
-                            <img src={logoperfil} alt="Prográmate" />
+                            <Link to="/profile">
+                                <img src={logoperfil} alt="Prográmate" />
+                            </Link>
                         </li>
                     </ul>
                 </nav>
