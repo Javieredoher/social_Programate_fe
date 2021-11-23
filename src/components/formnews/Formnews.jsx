@@ -4,7 +4,7 @@ import styles from "./Formnews.module.css";
 import { getData, sendData, updateData } from "../../helpers/fetch";
 import { DataContext } from "../../context/DataContext";
 import HardSkills from "./HardSkills";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Formnews = () => {
@@ -12,7 +12,7 @@ const Formnews = () => {
 
     const { user_info, title, type, description, images, technologies } = posts;
 
-    const history = useHistory();
+    const history = useNavigate();
     const params = useParams();
 
     useEffect(() => {

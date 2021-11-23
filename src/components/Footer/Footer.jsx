@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="container-footer">
         <img
           className="logoEducamas"
-          logoEducamas
+
           src={logoEducamas}
           alt="Educamas"
         />
