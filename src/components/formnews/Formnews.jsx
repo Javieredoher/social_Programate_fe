@@ -114,9 +114,9 @@ const Formnews = () => {
     };
 
     return (
-        <Fragment>
+        <section className={styles.section}>
             <form className={styles.form_container} onSubmit={submitData}>
-                <h1>Noticias</h1>
+                <h1 className={styles.title}>Noticias</h1>
                 <div className={styles.form}>
                     <h3>Nombre de la noticia</h3>
 
@@ -146,7 +146,7 @@ const Formnews = () => {
                 </div>
 
                 <div className={styles.form}>
-                    <h3>Tecnologías</h3>
+                    <h3 className={styles.subtitle}>Tecnologías</h3>
                     <input
                         className={styles.input}
                         type="text"
@@ -186,7 +186,7 @@ const Formnews = () => {
 
                 </div>
             </form>
-        </Fragment>
+        </section>
     );
 };
 

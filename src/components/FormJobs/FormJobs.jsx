@@ -152,7 +152,7 @@ const FormJobs = () => {
                         className={style.select}
                         name="modality"
                         onChange={onChange}
-                        value="modality"
+                        /* value="modality" */
                     >
                         <option value="select">Selecciona la modalidad</option>
                         <option className={style.opcion} value="Presencial">
@@ -167,7 +167,6 @@ const FormJobs = () => {
                     </select>
                     <br />
                 </div>
-
                 <div className={style.forms}>
                     <h3>Salario</h3>
                     <input
@@ -179,14 +178,16 @@ const FormJobs = () => {
                     <br />
                 </div>
                 <div className={style.forms}>
-                    <h3>Contacto</h3>
+                    <h3>contacto</h3>
                     <input
                         className={style.nom}
-                        type="contact"
+                        type="text"
+                        name="contact"
                         onChange={onChange}
                     />
                     <br />
                 </div>
+
                 <div className={style.enviar}>
                     <button className="btn" type="submit">
                         Enviar

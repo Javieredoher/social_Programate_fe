@@ -1,5 +1,5 @@
 import React from "react";
-import "./header.css";
+import "./Header.css";
 import logo from "../../assets/images/logo.png"
 import message from "../../assets/images/message.png"
 import bell from "../../assets/images/bell.png"
