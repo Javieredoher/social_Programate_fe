@@ -77,7 +77,7 @@ option {
     font-weight: 300;
     font-size: 18px;
     flex-wrap: wrap;
-    margin: 10px 35%;
+    margin: 20px 35%;
 }
 
 .enviar button:hover {
