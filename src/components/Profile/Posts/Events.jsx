@@ -55,6 +55,7 @@ const News = ({
                             </b>
                             <br />
                             {cohorte.name}
+
                             {/* <br /> <span>2 hr</span> */}
                         </p>
                     </div>
