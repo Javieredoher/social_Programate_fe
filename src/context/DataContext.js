@@ -1,12 +1,18 @@
 import React, { createContext, useState } from "react";
+import { useSelector } from "react-redux";
 
 export const DataContext = createContext();
 
-const idUser = "61982c09c86dbd6a0c8d176e";
+//const idUser = "619e91439d72f976d888e360";
 
 export const DataProvider = ({ children }) => {
+
+    const auth = useSelector(state => state.auth)
+    const {_id} = auth.user
+    const idUser = _id
+
     const initialState = {
-        user_info: "",
+        user_info: idUser,
         github: "",
         description: "",
         technicalSkills: [],

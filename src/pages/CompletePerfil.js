@@ -41,7 +41,7 @@ const CompletePerfil = () => {
 
     }, [setItems, items])
 
-    console.log(_id)
+    //console.log(_id)
     //619e91439d72f976d888e360
    
 
@@ -58,9 +58,9 @@ const CompletePerfil = () => {
 
                     :
                     <>
-                        <FormPhotoUser id={_id} />
-                        <Form_PersonalInfo id={_id} />
-                        <ProfessionalInformation id={_id} />
+                        <FormPhotoUser/>
+                        <Form_PersonalInfo/>
+                        <ProfessionalInformation/>
                     </>
                 : <Navigate replace to="/dontallow" />
 

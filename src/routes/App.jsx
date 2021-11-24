@@ -13,41 +13,6 @@ import { dispatchGetUser, dispatchLogin, fetchUser } from '../redux/actions/auth
 
 import Logout from '../components/Logout/Logout';
 
-//import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-//Revisar
-import LatestPosts from "../components/LatestPosts/LatestPosts.jsx";
-
-import AdminHomePage from "../pages/AdminHomePage";
-
-import CompletePerfil from "../pages/CompletePerfil";
-import FormNewsPage from "../pages/FormNewsPage";
-import FormEventPage from "../pages/FormEventPage";
-import FormJobsPage from "../pages/FormJobsPage";
-
-
-import CommunityPage from "../pages/CommunityPage";
-import PortfolioPage from "../components/portfolio/Portfolio";
-import FormProject from "../components/FormProject/FormProject";
-
-import ProfilePage from "../pages/ProfilePage";
-
-import HomePage from "../pages/HomePage";
-
-//Foro
-import ForumHome from "../components/ForumHome/ForumHome";
-import ForumQuestions from "../components/ForumQuestions/ForumQuestions";
-import ForumAnswers from "../components/ForumAnswers/ForumAnswers";
-import ForumResources from "../components/ForumResources/ForumResources";
-import ForumViewResource from "../components/ForumViewResource/ForumViewResource";
-import ForumAddResources from "../components/ForumAddResources/ForumAddResources";
-import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
-
-//Testing imports
-import Notifications from "../components/Notifications/Notifications";
-import Navbar from "../components/Navbar/Navbar";
-
-//import CreateResourcePage from "../pages/CreateResourcePage";
 
 const App = () => {
   
