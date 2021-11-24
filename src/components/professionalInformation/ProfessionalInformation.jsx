@@ -287,10 +287,6 @@ export const ProfessionalInformation = () => {
                 {/* Seccion de educación formal  */}
                 <div className={style.title}>
                     <h2> Educación </h2>
-                    <i
-                        className="fa-solid fa-plus icon"
-                        onClick={addEducation}
-                    ></i>
                 </div>
 
                 {showFormEducation[0] ? (
@@ -558,10 +554,6 @@ export const ProfessionalInformation = () => {
             <div className={style.experience}>
                 <div className={style.title}>
                     <h2>Experiencia</h2>
-                    <i
-                        className="fa-solid fa-plus icon"
-                        onClick={addExperience}
-                    ></i>
                 </div>
 
                 {showFormExperience[0] ? (
