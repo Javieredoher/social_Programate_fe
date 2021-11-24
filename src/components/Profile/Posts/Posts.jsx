@@ -3,6 +3,8 @@ import { DataContext } from "../../../context/DataContext";
 import { getDataAll } from "../../../helpers/fetch";
 
 import News from "./News";
+import Jobs from "./Jobs";
+import Events from "./Events";
 
 const Posts = () => {
     const { getPosts, setGetPosts, idUser, dataUser } = useContext(DataContext);
@@ -15,12 +17,12 @@ const Posts = () => {
             const filterData = data.filter(
                 (posts) => posts.user_info === idUser
             );
-            setGetPosts(filterData);
+            setGetPosts(filterData.reverse());
         } catch (error) {
             console.log(error);
         }
-    }, []);
-    console.log(dataUser);
+    }, [getPosts]);
+
     return (
         <Fragment>
             {getPosts?.map((post) =>
@@ -39,9 +41,40 @@ const Posts = () => {
                         key={post._id}
                     />
                 ) : post.type === "jobs" ? (
-                    <Jobs />
+                    <Jobs
+                        description={post.description}
+                        technologies={post.technologies}
+                        softSkills={post.softSkills}
+                        title={post.title}
+                        company={post.company}
+                        place={post.place}
+                        modality={post.modality}
+                        salary={post.salary}
+                        contact={post.contact}
+                        id={post._id}
+                        firstName={firstName}
+                        middleName={middleName}
+                        lastName={lastName}
+                        cohorte={cohorte}
+                        avatar={avatar}
+                        key={post._id}
+                    />
                 ) : post.type === "event" ? (
-                    <Jobs />
+                    <Events
+                        description={post.description}
+                        technologies={post.technologies}
+                        title={post.title}
+                        place={post.place}
+                        link={post.link}
+                        dateEvent={post.dateEvent}
+                        id={post._id}
+                        firstName={firstName}
+                        middleName={middleName}
+                        lastName={lastName}
+                        cohorte={cohorte}
+                        avatar={avatar}
+                        key={post._id}
+                    />
                 ) : null
             )}
         </Fragment>

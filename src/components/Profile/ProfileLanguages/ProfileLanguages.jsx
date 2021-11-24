@@ -18,7 +18,7 @@ const ProfileLanguages = () => {
                         <div>
                             <i className="far fa-check-circle"></i>
                         </div>
-                        {lenguages.map((lang, index) => (
+                        {lenguages?.map((lang, index) => (
                             <p className={style.text_cont} key={index}>
                                 {lang} &nbsp;
                             </p>

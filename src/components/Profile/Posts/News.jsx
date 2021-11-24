@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { DataContext } from "../../../context/DataContext";
+import { deleteData, getDataAll } from "../../../helpers/fetch";
 import style from "./Posts.module.css";
+import Technologies from "./Technologies";
 
 const News = ({
     description,
@@ -13,13 +17,31 @@ const News = ({
     cohorte,
     avatar,
 }) => {
+    const { setGetPosts, idUser } = useContext(DataContext);
+
+    let navigate = useNavigate();
+
+    const deletePost = async () => {
+        try {
+            await deleteData("posts", id);
+
+            const data = await getDataAll("posts");
+            const filterData = data.filter(
+                (posts) => posts.user_info === idUser
+            );
+            setGetPosts(filterData.reverse());
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <section className={style.container1}>
             <div className={style.container2}>
                 <div className={style.icon_cont1}>
                     <div className={style.postUser}>
                         <div className={style.icon}>
-                            {images ? (
+                            {avatar ? (
                                 <img src={avatar} alt="Foto" />
                             ) : (
                                 <i className="far fa-user-circle"></i>
@@ -31,12 +53,18 @@ const News = ({
                             </b>
                             <br />
                             {cohorte.name}
-                            <br /> <span>2 hr</span>
+                            {/* <br /> <span>2 hr</span> */}
                         </p>
                     </div>
                     <div className={style.iconsModify}>
-                        <i className="fas fa-pencil-alt"></i>
-                        <i className="far fa-trash-alt"></i>
+                        <i
+                            className="fas fa-pencil-alt"
+                            onClick={() => navigate(`/formnews/${id}`)}
+                        ></i>
+                        <i
+                            className="far fa-trash-alt"
+                            onClick={deletePost}
+                        ></i>
                     </div>
                 </div>
                 <div className={style.news}>
@@ -45,8 +73,8 @@ const News = ({
                     <img src={images} alt="Foto" />
                     <div className={style.techContain}>
                         {technologies &&
-                            technologies.map((tech) => (
-                                <p className={style.tech}>{tech}</p>
+                            technologies.map((tech, index) => (
+                                <Technologies tech={tech} key={index} />
                             ))}
                     </div>
                 </div>

@@ -1,18 +1,29 @@
-import React, { Fragment, useContext, useRef, useState } from "react";
+import React, {
+    Fragment,
+    useContext,
+    useEffect,
+    useRef,
+    useState,
+} from "react";
 import style from "./Form_PersonalInfo.module.css";
 import Languages from "./Languages";
 import { DataContext } from "../../context/DataContext";
 import HardSkills from "./HardSkills";
 import SoftSkills from "./SoftSkills";
+import { useParams } from "react-router-dom";
+import { getDataAll } from "../../helpers/fetch";
 
 const Form_PersonalInfo = () => {
-    const { dataProfile, setDataProfile } = useContext(DataContext);
+    const { dataProfile, setDataProfile, idUser } = useContext(DataContext);
+
+    const params = useParams();
 
     const [technical, setTechnical] = useState([]);
     const [softSkills, setsoftSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
 
     const onChange = ({ target }) => {
+        console.log(dataProfile);
         const { name, value } = target;
         setDataProfile({
             ...dataProfile,
@@ -59,6 +70,23 @@ const Form_PersonalInfo = () => {
         }
     };
 
+    useEffect(async () => {
+        if (params.id) {
+            try {
+                const data = await getDataAll("profiles");
+                const filter = data.filter(
+                    (prof) => prof.user_info._id === idUser
+                );
+                // console.log(filter[0]);
+                setDataProfile(filter[0]);
+                setLanguages(filter[0].lenguages);
+                setsoftSkills(filter[0].softSkills);
+                setTechnical(filter[0].technicalSkills);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }, []);
     return (
         <Fragment>
             <form className={style.form_container}>
@@ -184,5 +212,3 @@ const Form_PersonalInfo = () => {
     );
 };
 export default Form_PersonalInfo;
-
-

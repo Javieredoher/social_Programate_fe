@@ -4,7 +4,7 @@ import styles from "./Formnews.module.css";
 import { getData, sendData, updateData } from "../../helpers/fetch";
 import { DataContext } from "../../context/DataContext";
 import HardSkills from "./HardSkills";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Formnews = () => {
@@ -12,7 +12,6 @@ const Formnews = () => {
 
     const { user_info, title, type, description, images, technologies } = posts;
 
-    const history = useHistory();
     const params = useParams();
 
     useEffect(() => {
@@ -54,7 +53,8 @@ const Formnews = () => {
                     });
                 }
 
-                history.push("/formevent");
+                navigate(`/formevent`);
+                // history.push("/formevent");
             } catch (error) {
                 console.log(error);
             }
@@ -183,7 +183,6 @@ const Formnews = () => {
                 </div>
                 <div className={styles.send}>
                     <button className="btn">Enviar</button>
-
                 </div>
             </form>
         </Fragment>

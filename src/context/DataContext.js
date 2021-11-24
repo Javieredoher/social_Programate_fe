@@ -1,10 +1,11 @@
 import React, { createContext, useState } from "react";
+import { v4 as uuid } from "uuid";
+import { studyField, experienceField } from "../helpers/formProfile";
 
 export const DataContext = createContext();
 
 const idUser = "6193dc60f58b9543f26a7cad";
-// const navigate = useNavigate();
-// navigate('/home')
+
 export const DataProvider = ({ children }) => {
     const initialState = {
         user_info: idUser,
@@ -13,8 +14,8 @@ export const DataProvider = ({ children }) => {
         technicalSkills: [],
         softSkills: [],
         lenguages: [],
-        prev_studes: [],
-        experience: [],
+        prev_studes: [{ ...studyField, id: uuid() }],
+        experience: [{ ...experienceField, id: uuid() }],
     };
     const [dataProfile, setDataProfile] = useState(initialState);
     const [dataUser, setDataUser] = useState({
@@ -86,6 +87,7 @@ export const DataProvider = ({ children }) => {
         modality: "",
         salary: "",
         contact: "",
+        description: "",
     });
 
     const [getPosts, setGetPosts] = useState();

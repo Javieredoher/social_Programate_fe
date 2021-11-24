@@ -1,25 +1,17 @@
-import React, {
-    Fragment,
-    useContext,
-    useRef,
-    useState,
-    useEffect,
-} from "react";
+import React, { Fragment, useContext, useState, useEffect } from "react";
 import style from "./FormJobs.module.css";
 import logo from "../../assets/images/logo-a-color-.jpg";
 import { DataContext } from "../../context/DataContext";
-import { sendData, updateData } from "../../helpers/fetch";
+import { sendData } from "../../helpers/fetch";
 import HardSkills from "../formInfo/HardSkills";
 import SoftSkills from "../formInfo/SoftSkills";
-import { set } from "react-hook-form";
 
 const FormJobs = () => {
-
     const { postsJobs, setPostsJobs } = useContext(DataContext);
 
     const [technical, setTechnical] = useState([]);
     const [softSkills, setsoftSkills] = useState([]);
-    const [languages, setLanguages] = useState([]);
+
     //Enviar data del usuario al modelo de user y profile
     const submitData = async (e) => {
         e.preventDefault();
@@ -31,6 +23,7 @@ const FormJobs = () => {
     };
 
     const onChange = ({ target }) => {
+        console.log(postsJobs);
         const { name, value } = target;
         setPostsJobs({
             ...postsJobs,
@@ -43,7 +36,7 @@ const FormJobs = () => {
             technical.push(e.target.value);
             setPostsJobs({
                 ...postsJobs,
-                technicalSkills: technical,
+                technologies: technical,
             });
             e.target.value = "";
             e.preventDefault();
@@ -62,19 +55,11 @@ const FormJobs = () => {
         }
     };
 
-    // let targetSkill = useRef("null");
-    const onKeyLanguages = (e) => {
-        if (e.key === "Enter" && e.target.value.length > 0) {
-            languages.push(e.target.value);
-            setPostsJobs({
-                ...postsJobs,
-                lenguages: languages,
-            });
-            e.target.value = "";
-            // console.log(languages);
-
-            e.preventDefault();
-        }
+    const onSelectChange = (e) => {
+        setPostsJobs({
+            ...postsJobs,
+            modality: e.target.options[e.target.selectedIndex].value,
+        });
     };
 
     useEffect(() => {
@@ -165,7 +150,11 @@ const FormJobs = () => {
                 </div>
                 <div className={style.forms}>
                     <h3>Modalidad</h3>
-                    <select className={style.select} name="modality">
+                    <select
+                        className={style.select}
+                        name="modality"
+                        onChange={onSelectChange}
+                    >
                         <option className={style.opcion} value="Presencial">
                             presencial
                         </option>
@@ -194,8 +183,22 @@ const FormJobs = () => {
                     <input
                         className={style.nom}
                         type="contact"
+                        name="contact"
                         onChange={onChange}
                     />
+                    <br />
+                </div>
+                <div className={style.forms}>
+                    <h3>Descripción de la oferta</h3>
+                    <textarea
+                        className={style.textarea}
+                        type="text"
+                        name="description"
+                        rows=""
+                        cols=""
+                        value={postsJobs.description}
+                        onChange={onChange}
+                    ></textarea>
                     <br />
                 </div>
                 <div className={style.enviar}>
@@ -208,4 +211,3 @@ const FormJobs = () => {
     );
 };
 export default FormJobs;
-

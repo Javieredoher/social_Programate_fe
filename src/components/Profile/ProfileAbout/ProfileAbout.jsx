@@ -24,8 +24,7 @@ const ProfileAbout = () => {
                 (profile) => profile.user_info._id === idUser
             );
             setDataProfile(filterData[0]);
-
-            console.log(filterData[0]);
+            console.log(filterData);
         } catch (error) {
             console.log(error);
         }

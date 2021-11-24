@@ -16,7 +16,7 @@ const ProfileSkills = () => {
                         </div>
                     </div>
                     <div>
-                        {softSkills.map((skill, index) => (
+                        {softSkills?.map((skill, index) => (
                             <p className={style.skill} key={index}>
                                 {skill} -&nbsp;
                             </p>

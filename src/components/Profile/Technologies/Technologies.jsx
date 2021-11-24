@@ -16,7 +16,7 @@ const Technologies = () => {
                         </div>
                     </div>
                     <div>
-                        {technicalSkills.map((skill, index) => (
+                        {technicalSkills?.map((skill, index) => (
                             <p className={style.skill} key={index}>
                                 {skill} -&nbsp;
                             </p>

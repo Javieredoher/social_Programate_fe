@@ -52,6 +52,7 @@
 
 .iconsModify i {
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .icon {

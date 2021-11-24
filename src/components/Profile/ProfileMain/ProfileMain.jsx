@@ -1,17 +1,25 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import style from "./ProfileMain.module.css";
 import medalla1 from "../../../assets/images/medalla1.png";
 import medalla2 from "../../../assets/images/medalla2.png";
 import medalla3 from "../../../assets/images/medalla3.png";
 import { DataContext } from "../../../context/DataContext";
-import { getData } from "../../../helpers/fetch";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const ProfileMain = () => {
-    const { dataUser, dataProfile } = useContext(DataContext);
-    console;
-    const { avatar, firstName, middleName, lastName, secondSurname, cohorte } =
-        dataUser;
+const ProfileMain = ({ dataProfile }) => {
+    const { dataUser, idUser } = useContext(DataContext);
+    const { avatar, firstName, middleName, lastName, cohorte } = dataUser;
+
+    let navigate = useNavigate();
+
+    const editProfile = () => {
+        // console.log(idUser);
+        navigate(`/formprofile/${idUser}`);
+    };
+    useEffect(() => {
+        console.log(dataProfile, "sdfds");
+    }, []);
+
     return (
         <Fragment>
             <form className={style.container}>
@@ -33,7 +41,7 @@ const ProfileMain = () => {
                                 <button>Ver portafolio</button>
                             </Link>
                             <a href={dataProfile.github}>
-                                <button>Ver Github</button>
+                                <button type="button">Ver Github</button>
                             </a>
                         </div>
                     </div>
@@ -48,10 +56,9 @@ const ProfileMain = () => {
                             <br /> {cohorte.name}
                         </p>
                     </div>
-                    <div className={style.icon}>
-                        <p div className={style.tex_editar}>
-                            Editar perfil
-                        </p>
+
+                    <div className={style.icon} onClick={editProfile}>
+                        <p className={style.tex_editar}>Editar perfil</p>
                         <i className="fas fa-pencil-alt"></i>
                     </div>
                 </section>

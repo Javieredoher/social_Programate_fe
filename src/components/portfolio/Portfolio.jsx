@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getDataAll } from "../../helpers/fetch";
 import style from "./Portfolio.module.css";
 import Project from "./Project";
@@ -7,8 +7,6 @@ import { DataContext } from "../../context/DataContext";
 import Swal from "sweetalert2";
 
 const Portfolio = () => {
-    const history = useHistory();
-
     const { portfolio } = useContext(DataContext);
 
     const [dataPortfolios, setdataPortfolios] = useState([]);
@@ -30,7 +28,8 @@ const Portfolio = () => {
 
     const addProject = () => {
         if (dataPortfolios.length < 10) {
-            history.push("/formproject");
+            navigate(`/formproject`);
+            // history.push("/formproject");
         } else {
             Swal.fire({
                 title: "Máximo de proyectos",
