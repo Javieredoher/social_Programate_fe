@@ -7,6 +7,8 @@ import EventCard from "../components/EventsCard/EventCard";
 import JobCard from "../components/JobCard/JobCard";
 
 const HomePage = () => {
+
+    
     return (
         <>
             <Navbar />

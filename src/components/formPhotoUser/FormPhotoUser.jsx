@@ -55,6 +55,7 @@ const FormPhotoUser = ({ id }) => {
                 <h2>Completa tu perfil</h2>
             </div>
             <div className={style.welcome}>
+                {/* <p>Hola {dataUser.firstName}, completa tus datos</p> */}
                 <p>Hola {dataUser.firstName}, completa tus datos</p>
             </div>
             <form>

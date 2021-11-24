@@ -1,18 +1,43 @@
+// React imports
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+//Login imports
 import Login from '../../pages/auth/login/Login'
 import ForgotPassword from '../../pages/auth/forgotPassword/ForgotPassword'
 import ResetPassword from '../../pages/auth/resetPassword/ResetPassword'
+
+//Not found import
 import NotFound from '../notFound/NotFound'
-import CompletePerfil from "../../pages/CompletePerfil";
-import FormEventPage from "../../pages/FormEventPage";
-import FormEventEdit from "../../components/FormEvent/FormEventEdit";
 import Redirect from '../Redirect/Redirect'
 import DontAllow from '../Messages/DontAllow'
 
+//Forms import
+import CompletePerfil from "../../pages/CompletePerfil";
+import FormEventPage from "../../pages/FormEventPage";
+import FormEventEdit from "../../components/FormEvent/FormEventEdit";
+import FormNewsPage from "../../pages/FormNewsPage";
+import FormJobsPage from "../../pages/FormJobsPage";
+
+//Community imports
+import CommunityPage from '../../pages/CommunityPage'
+
+//Forum imports
+import ForumQuestions from "../ForumQuestions/ForumQuestions";
+import ForumAnswers from "../ForumAnswers/ForumAnswers";
+import ForumAddQuestion from "../ForumAddQuestion/ForumAddQuestion";
+
+//home
+import HomePage from "../../pages/HomePage";
+
+//Profile
+import ProfilePage from "../../pages/ProfilePage";
+import PortfolioPage from "../../components/portfolio/Portfolio";
+import FormProject from "../../components/FormProject/FormProject";
 
 function Autentification() {
+
   const auth = useSelector(state => state.auth)
   const { isLogged, isAdmin } = auth
   // useEffect(() => {
@@ -21,18 +46,65 @@ function Autentification() {
 
   return (
     <>
+   
       <Routes>
-        <Route exact path='/login' element={<Login />} />
+
+        {/* Model */}
+
+        {/* <Route exact path="/formprofile" element={isLogged ? < CompletePerfil /> : <NotFound />} /> 
+
+        */}
+
+        {/* Login */}
+        <Route exact path='/' element={isLogged? <HomePage/>:<Login />} />
+        <Route exact path='/login' element={isLogged? <HomePage/>:<Login />} />
         <Route exact path='/forgot_password' element={<ForgotPassword />} exact />
         <Route exact path='/user/reset/:token' element={isLogged ? <NotFound /> : <ResetPassword />} />
-        <Route exact path="/formprofile" element={isLogged ? < CompletePerfil /> : <NotFound />} />
-        <Route exact path="/formevent" element={isLogged ? <FormEventPage /> : <NotFound />} />
-        <Route exact path="/editevent" element={isLogged ? <FormEventEdit /> : <NotFound />} />
+
+        {/* Flow elements */}
         <Route exact path="/redirect" element={<Redirect />} />
         <Route exact path="/dontallow" element={<DontAllow />} />
+
+        {/* Admin */}
+        {/* <Route exact path="/homeadmin" element={isLogged ? <AdminHomePage/>: <NotFound />} />  */}
+
+        {/* Home */}
+        <Route exact path="/home" element={isLogged ? <HomePage/> : <NotFound />} /> 
+
+        {/* Community */}
+        <Route exact path='/community' element={isLogged ? <CommunityPage/>: <NotFound /> } />
+
+        {/* Profile */}
+        <Route exact path="/formprofile" element={isLogged ? < CompletePerfil /> : <NotFound />} /> 
+        <Route exact path="/profile" element={isLogged ? <ProfilePage/> : <NotFound />} /> 
+        <Route exact path="/portfolio" element={isLogged ? <PortfolioPage/> : <NotFound />} /> 
+        <Route exact path="/formproject" element={isLogged ? <FormProject /> : <NotFound />} /> 
+        <Route exact path="/formproject/:id" element={isLogged ? <FormProject /> : <NotFound />} /> 
+
+        {/* Forms */}
+        <Route exact path="/formevent" element={isLogged ? <FormEventPage /> : <NotFound />} />
+        <Route exact path="/editevent" element={isLogged ? <FormEventEdit /> : <NotFound />} />
+
+        <Route exact path="/formnew" element={isLogged ? <FormNewsPage/> : <NotFound />} />
+        <Route exact path="/formnews/:id" element={isLogged ? <FormNewsPage/> : <NotFound />} />
+
+        <Route exact path="/formjob" element={isLogged ? <FormJobsPage/> : <NotFound />} />
+
+        {/* Forum */}
+        <Route exact path="/questions" element={isLogged ? <ForumQuestions/> : <NotFound />} />
+        <Route exact path="/questions/:questionId" element={isLogged ? <ForumAnswers/> : <NotFound />} />
+        <Route exact path="/addquestion" element={isLogged ? <ForumAddQuestion/>: <NotFound />} />
+
+        {/*  */}
+
+
+        {/* Testing Routes to visualize components */}
+
       </Routes>
+
 
     </>
   )
 }
+
 export default Autentification

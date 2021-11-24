@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router";
+import { Navigate } from "react-router";
 import Form_PersonalInfo from "../components/formInfo/Form_PersonalInfo";
 import FormPhotoUser from "../components/formPhotoUser/FormPhotoUser";
 import { ProfessionalInformation } from "../components/professionalInformation/ProfessionalInformation";
@@ -41,6 +41,9 @@ const CompletePerfil = () => {
 
     }, [setItems, items])
 
+    console.log(_id)
+    //619e91439d72f976d888e360
+   
 
     return (
         <>
@@ -51,7 +54,7 @@ const CompletePerfil = () => {
                 status ?
 
 
-                    <Navigate replace to="/formevent" />
+                    <Navigate replace to="/" />
 
                     :
                     <>
