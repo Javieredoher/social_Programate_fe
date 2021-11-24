@@ -114,6 +114,17 @@ option {
     position: absolute;
     left: 0;
 }
+.textarea {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 30px;
+    font-size: 18px;
+    outline: none;
+}
 
 /* Medium (md) */
 @media (min-width: 768px) {

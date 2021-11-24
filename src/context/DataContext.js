@@ -75,6 +75,7 @@ export const DataProvider = ({ children }) => {
         place: "",
     });
     const [postsJobs, setPostsJobs] = useState({
+        user_info: idUser,
         title: "",
         type: "",
         company: "",
@@ -84,6 +85,7 @@ export const DataProvider = ({ children }) => {
         modality: "",
         salary: "",
         contact: "",
+        description: "",
     });
 
     return (

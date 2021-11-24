@@ -8,7 +8,7 @@ const Start = () => {
     return (
         <button
             className="btn btn-sm btn-info "
-            onClick={() => history.push(`/formnews/6196d50789ee532d9ef90fd0`)}
+            onClick={() => history.push(`/formjobs/619d4add3b05857d3be6fe64`)}
         >
             editar
         </button>

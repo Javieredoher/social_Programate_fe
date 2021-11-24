@@ -183,7 +183,6 @@ const Formnews = () => {
                 </div>
                 <div className={styles.send}>
                     <button className="btn">Enviar</button>
-
                 </div>
             </form>
         </section>
