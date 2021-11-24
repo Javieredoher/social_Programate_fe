@@ -19,7 +19,6 @@ import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
 import AdminHome from "../components/adminHome/AdminHome";
 import HomePage from "../pages/HomePage";
-
 //Componentes test
 
 
@@ -94,6 +93,8 @@ const App = () => {
                         <LatestPosts/>
                     </Route>
 
+                    
+                   
                 
                     
                 </Switch>

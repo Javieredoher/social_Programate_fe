@@ -1,41 +1,44 @@
+
+.section_container{
+    padding: 3rem 0 2rem;
+    width: 100%;
+    min-height: 100vh;
+}
+
 .form_container {
     width: 90%;
-    height: 90%;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     margin: auto;
-}
-h1 {
-    display: inline-block;
-    text-align: center;
-}
-
-h3 {
-    font-size: 18px;
-    margin-left: 5px;
+    border: 1px solid #92c149;
+    border-radius: 10px;
+    padding: 10px 45px;
     font-family: "Roboto", sans-serif;
 }
-.input {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    border-radius: 50px;
-    border-style: solid;
-    border: 1px solid;
-    padding: 0 15px;
+
+
+.subtitle {
     font-size: 18px;
+    margin-left: 5px;
+    margin: 10px;
+}
+
+.nom_input {
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    font-size: 16px;
     outline: none;
 }
 .textarea {
     width: 100%;
     height: 150px;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    border: 1px solid;
-    border-radius: 30px;
-    font-size: 18px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    font-size: 16px;
     outline: none;
 }
 .tecno button {
@@ -55,39 +58,43 @@ h3 {
 }
 
 .form img {
-margin-top: 10px;
+
 width: 50px;
 } 
 
-.image {
+.image{
     width: 100%;
-    height: 50px;
+    height: 50%;
     display: flex;
     justify-content: center;
     border-radius: 50px;
-    border-style: solid;
-    border: 1px solid;
+    /* border-style: solid;
+    border: 1px solid; */
     padding: 10px 15px;
-    font-size: 18px;
     outline: none;
+    margin: 15px;
+    margin-left: -15px;
+    
+   
 }
+
 .send button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 90px;
-    height: 30px;
+    height: 40px;
     background-color: #ffcc02;
     border-radius: 10px;
     color: #010101;
     border: none;
     font-family: "Roboto", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 18px;
     flex-wrap: wrap;
     margin: 10px 35%;
-    /* margin-top: 30px;
-    margin-bottom: 40px; */
+    margin-top: 30px;
+    margin-bottom: 40px;
 }
 .send button:hover {
     background-color: black;
@@ -103,18 +110,27 @@ width: 50px;
 
 /* Medium (md) */
 @media (min-width: 768px) {
-    /* ... */
+    .form_container {
+        width: 68%;
+    }
+    .form {
+        width: 100%;
+    }
 }
 
 /* Large (lg) */
 @media (min-width: 1024px) {
-    .from_container {
-        width: 90%;
+    .form_container {
+        width: 50%;
         flex-wrap: wrap;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center; 
     }
-    .forms {
-        width: 47%;
+
+    .image {
+        width: 100%;
+        font-size: 18px;
+       
     }
+   
 }

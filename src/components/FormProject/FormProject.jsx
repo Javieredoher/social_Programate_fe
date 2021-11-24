@@ -142,10 +142,10 @@ const FormProject = () => {
                     <hr />
                 </div>
 
-                <div className={style.container_img}>
-                    <div className={style.img}>
+                <div className={style.container_image}>
+                    <div className={style.image}>
                         <div>
-                            <h3>Imagen del proyecto *</h3>
+                            <label>Imagen del proyecto *</label>
                         </div>
                         <br />
                         <input
@@ -159,9 +159,9 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Nombre del proyecto *</h3>
+                    <label>Nombre del proyecto *</label>
                     <input
-                        className={style.nom}
+                        className={style.input_nom}
                         type="text"
                         name="title"
                         value={title}
@@ -171,7 +171,7 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Descripción *</h3>
+                    <label>Descripción *</label>
                     <textarea
                         className={style.textarea}
                         rows="3"
@@ -183,9 +183,9 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Link de despliegue *</h3>
+                    <label>Link de despliegue *</label>
                     <input
-                        className={style.nom}
+                        className={style.input_nom}
                         type="text"
                         name="proyect_link"
                         value={proyect_link}
@@ -195,9 +195,9 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Link de repositorio *</h3>
+                    <label>Link de repositorio *</label>
                     <input
-                        className={style.nom}
+                        className={style.input_nom}
                         type="text"
                         name="deploy"
                         value={deploy}
@@ -207,9 +207,9 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <h3>Tegnologías utilizadas</h3>
+                    <label>Tegnologías utilizadas</label>
                     <input
-                        className={style.nom}
+                        className={style.input_nom}
                         type="text"
                         name="technologies"
                         onKeyDown={onKeyTechnologies}
