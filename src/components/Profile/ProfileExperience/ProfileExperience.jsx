@@ -1,12 +1,12 @@
 import React, { Fragment, useContext } from "react";
 import { DataContext } from "../../../context/DataContext";
-import Education from "./Education";
+import Experience from "./Experience";
 
-import style from "./ProfileEducation.module.css";
+import style from "./ProfileExperience.module.css";
 
-const ProfileEducation = () => {
+const ProfileExperience = () => {
     const { dataProfile } = useContext(DataContext);
-    const { prev_studes } = dataProfile;
+    const { experience } = dataProfile;
 
     return (
         <Fragment>
@@ -14,11 +14,11 @@ const ProfileEducation = () => {
                 <div className={style.container2}>
                     <div className={style.icon_cont}>
                         <div className={style.title}>
-                            <p>Educacion</p>
+                            <p>Experiencia</p>
                         </div>
                     </div>
-                    {prev_studes?.map((study, index) => (
-                        <Education key={index} study={study} />
+                    {experience?.map((exper, index) => (
+                        <Experience key={index} exper={exper} />
                     ))}
 
                     {/* <ProfileEducations /> */}
@@ -28,4 +28,4 @@ const ProfileEducation = () => {
     );
 };
 
-export default ProfileEducation;
+export default ProfileExperience;

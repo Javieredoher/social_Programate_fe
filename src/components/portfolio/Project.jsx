@@ -15,7 +15,6 @@ const Project = ({
 }) => {
 
     const navigate = useNavigate()
-
     const deleteProject = async () => {
         try {
             await deleteData("portfolios", id);

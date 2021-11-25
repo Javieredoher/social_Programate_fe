@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 const Portfolio = () => {
 
     const navigate = useNavigate()
-
     const { portfolio } = useContext(DataContext);
 
     const [dataPortfolios, setdataPortfolios] = useState([]);
@@ -31,7 +30,9 @@ const Portfolio = () => {
 
     const addProject = () => {
         if (dataPortfolios.length < 10) {
-            navigate("/formproject");
+            
+            navigate(`/formproject`);
+
         } else {
             Swal.fire({
                 title: "Máximo de proyectos",
@@ -54,7 +55,7 @@ const Portfolio = () => {
             {dataPortfolios.map((data) => (
                 <Project
                     key={data._id}
-                    deploy={data.deply}
+                    deploy={data.deploy}
                     decription={data.description_proyect}
                     project={data.proyect_link}
                     technologies={data.technologies}

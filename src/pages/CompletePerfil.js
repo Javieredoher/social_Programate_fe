@@ -19,6 +19,7 @@ const CompletePerfil = () => {
     const token = useSelector(state => state.token)
     const { _id, email } = auth.user;
 
+
     useEffect(async () => {
         const { email } = auth.user;
         const data = await getDataAll(`profiles`)

@@ -12,6 +12,7 @@ const Formnews = () => {
 
     const { user_info, title, type, description, images, technologies } = posts;
 
+
     const history = useNavigate();
     const params = useParams();
 
@@ -54,7 +55,8 @@ const Formnews = () => {
                     });
                 }
 
-                history.push("/formevent");
+                navigate(`/formevent`);
+                // history.push("/formevent");
             } catch (error) {
                 console.log(error);
             }
@@ -183,7 +185,6 @@ const Formnews = () => {
                 </div>
                 <div className={styles.send}>
                     <button className="btn">Enviar</button>
-
                 </div>
             </form>
         </section>

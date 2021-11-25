@@ -1,17 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import style from "./ProfessionalInformation.module.css";
+import { useNavigate, useParams } from "react-router-dom";
+import { BiX } from "react-icons/bi";
+import { studyField, experienceField } from "../../helpers/formProfile";
+import { v4 as uuid } from "uuid";
 
+import style from "./ProfessionalInformation.module.css";
 import { DataContext } from "../../context/DataContext";
 import { getData, sendData, updateData } from "../../helpers/fetch";
-import { BiX } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+
+
 
 export const ProfessionalInformation = () => {
 
-    const navigate = useNavigate()
-
+    const params = useParams();
     const { dataProfile, setDataProfile, dataUser, setDataUser, idUser } =
         useContext(DataContext);
+    const navigate = useNavigate();
 
     const {
         user_info,
@@ -45,104 +49,154 @@ export const ProfessionalInformation = () => {
         const data = await getData("users", idUser);
         setDataUser(data);
     }, []);
-    {
-    }
 
     //Enviar data del usuario al modelo de user y profile
     const submitData = async (e) => {
-        if (dataProfile) {
-            e.preventDefault();
+        if (!params.id) {
+            if (dataProfile) {
+                e.preventDefault();
 
-            await sendDataUser("profiles", {
-                user_info,
-                github,
-                description,
-                technicalSkills,
-                softSkills,
-                lenguages,
-                prev_studes,
-                experience,
-                user_info,
-            });
+                await sendData("profiles", {
+                    user_info,
+                    github,
+                    description,
+                    technicalSkills,
+                    softSkills,
+                    lenguages,
+                    prev_studes,
+                    experience,
+                    user_info,
+                });
 
-            await updateDataUser("users", idUser, {
-                avatar,
-                cohorte,
-                contactNumber,
-                email,
-                firstName,
-                lastName,
-                middleName,
-                passwordHash,
-                program,
-                rol,
-                secondSurname,
-                state,
-                _id,
-            });
-            navigate("/formevent");
+                await updateData("users", idUser, {
+                    avatar,
+                    cohorte,
+                    contactNumber,
+                    email,
+                    firstName,
+                    lastName,
+                    middleName,
+                    passwordHash,
+                    program,
+                    rol,
+                    secondSurname,
+                    state,
+                    _id,
+                });
+                navigate(`/profile`);
+
+            } else {
+                e.preventDefault();
+                console.log("Error");
+            }
+
         } else {
-            e.preventDefault();
-            console.log("Error");
-        }
-    };
-
-    const [education, setEducation] = useState({
-        institution: "",
-        eduDateInit: "",
-        eduDateEnd: "",
-        certificate: "",
-    });
-    const [experienceNew, setExperience] = useState({
-        charge: "",
-        company: "",
-        jobDateInit: "",
-        jobDateFin: "",
-        descriptionJob: "",
-    });
-
-    // Guardar los cambios de la educación
-    const onChangeEducation = ({ target }) => {
-        const { name, value } = target;
-        setEducation({
-            ...education,
-            [name]: value,
-        });
-    };
-
-    //Guardar los cambios de la experiencia
-    const onChangeExperience = ({ target }) => {
-        const { name, value } = target;
-        setExperience({
-            ...experienceNew,
-            [name]: value,
-        });
-        setDataProfile({
-            ...dataProfile,
-            experience: [Object.values(experienceNew)],
-        });
-    };
-
-    const [nameFile, setNameFile] = useState("");
-    const onFileChange = (e) => {
-        if (e.target.files && e.target.files.length > 0) {
-            const file = e.target.files[0];
-
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function load() {
-                setEducation({ ...education, certificate: reader.result });
-            };
-            // console.log(education);
-            if (file.type === "application/pdf") {
-                setNameFile(file.name);
+            try {
+                await updateData("users", idUser, dataProfile);
+                await updateData("profiles", dataProfile._id, dataProfile);
+                navigate(`/profile`);
+            } catch (error) {
+                console.log(error);
             }
         }
     };
 
-    const deleteCertificate = () => {
-        setEducation({ ...education, certificate: "" });
-        setNameFile("");
+    const handleChangeEdu = ({ target }, id) => {
+        console.log(dataProfile);
+        const { name, value } = target;
+        setDataProfile({
+            ...dataProfile,
+            prev_studes: dataProfile.prev_studes.map((item) => ({
+                ...item,
+                [name]: item.id === id ? value : item[name],
+            })),
+        });
+    };
+
+    const addEducationField = () => {
+        setDataProfile({
+            ...dataProfile,
+            prev_studes: [
+                ...dataProfile.prev_studes,
+                {
+                    ...studyField,
+                    id: uuid(),
+                },
+            ],
+        });
+    };
+
+    const [nameFile, setNameFile] = useState(["", "", ""]);
+    const onFileChange = ({ target }, id) => {
+        const file = target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function load() {
+            setDataProfile({
+                ...dataProfile,
+                prev_studes: dataProfile.prev_studes.map((item) => ({
+                    ...item,
+                    certificate:
+                        item.id === id ? reader.result : item.certificate,
+                })),
+            });
+        };
+
+        if (file.type === "application/pdf") {
+            nameFile[0] = file.name;
+            setNameFile([...nameFile]);
+        }
+    };
+
+    const deleteCertificate = (id) => {
+        setDataProfile({
+            ...dataProfile,
+            prev_studes: dataProfile.prev_studes.map((item) => ({
+                ...item,
+                certificate: item.id === id ? "" : item.certificate,
+            })),
+        });
+    };
+
+    const deleteEducation = (id) => {
+        setDataProfile({
+            ...dataProfile,
+            prev_studes: dataProfile.prev_studes.filter(
+                (item) => item.id !== id
+            ),
+        });
+    };
+
+    const handleChangeExperience = ({ target }, id) => {
+        console.log(dataProfile);
+        const { name, value } = target;
+        setDataProfile({
+            ...dataProfile,
+            experience: dataProfile.experience.map((item) => ({
+                ...item,
+                [name]: item.id === id ? value : item[name],
+            })),
+        });
+    };
+
+    const deleteExperience = (id) => {
+        setDataProfile({
+            ...dataProfile,
+            experience: dataProfile.experience.filter((item) => item.id !== id),
+        });
+    };
+
+    const addExperienceField = () => {
+        setDataProfile({
+            ...dataProfile,
+            experience: [
+                ...dataProfile.experience,
+                {
+                    ...experienceField,
+                    id: uuid(),
+                },
+            ],
+        });
     };
 
     return (
@@ -151,171 +205,49 @@ export const ProfessionalInformation = () => {
                 {/* Seccion de educación formal  */}
                 <div className={style.title}>
                     <h2> Educación </h2>
-                    <i className="fa-solid fa-plus icon"></i>
-                </div>
-                <div className={style.inputs}>
-                    <label className={style.label} htmlFor="institution">
-                        Institución Educativa*
-                    </label>
-                    <input
-                        type="text"
-                        className={style.inputPersonal}
-                        name="institution"
-                        id="institution"
-                        value={education.institution}
-                        onChange={onChangeEducation}
-                        placeholder="nombre de la institución"
-                    />
-                </div>
-                {/* seccion de las fechas */}
-                <div className={style.containDate}>
-                    <label className={style.label} htmlFor="email">
-                        Fecha inicio{" "}
-                    </label>
-                    <input
-                        type="date"
-                        className={style.inputDate}
-                        name="eduDateInit"
-                        id="fecha inicio"
-                        value={education.eduDateInit}
-                        onChange={onChangeEducation}
-                    />
-                </div>
-                <div className={style.containDate}>
-                    <label className={style.label} htmlFor="edad">
-                        Fecha fin
-                    </label>
-                    <input
-                        type="date"
-                        className={style.inputDate}
-                        name="eduDateEnd"
-                        id="fecha fin"
-                        value={education.eduDateEnd}
-                        onChange={onChangeEducation}
-                    />
-                </div>
 
-                <div name="formulario" className={style.inputFile}>
-                    <label className={style.label} htmlFor="edad">
-                        Añadir certificado <span>*pdf *jpg *png</span>
-                    </label>
-
-                    <input
-                        type="file"
-                        name="certificate"
-                        accept="application/pdf, image/jpg, image/png"
-                        multiple
-                        onChange={onFileChange}
-                    />
+                    {prev_studes.length < 3 && (
+                        <i
+                            className="fa-solid fa-plus icon"
+                            onClick={addEducationField}
+                        ></i>
+                    )}
                 </div>
-                {education.certificate && nameFile.length <= 0 ? (
-                    <div className={style.containDelete}>
-                        <BiX
-                            className={style.deleteImg}
-                            onClick={deleteCertificate}
-                        />
-                        <img
-                            className={style.imgDocument}
-                            src={education.certificate}
-                            alt="Document"
-                        />
-                    </div>
-                ) : null}
-                {nameFile.length > 0 ? (
-                    <div className={style.containDelete}>
-                        <BiX
-                            className={style.deleteImg}
-                            onClick={deleteCertificate}
-                        />
-                        <h5 className={style.nameFile}>{nameFile}</h5>
-                        {/* <embed
-                            src={education.certificate}
-                            type="application/pdf"
-                            width="300px"
-                            height="600px"
-                        /> */}
-                    </div>
-                ) : null}
+                {prev_studes.map((edu) => (
+                    <FieldEducation
+                        key={edu.id}
+                        handleChange={handleChangeEdu}
+                        item={edu}
+                        onFileChange={onFileChange}
+                        deleteCertificate={deleteCertificate}
+                        deleteEducation={deleteEducation}
+                    />
+                ))}
+
             </div>
 
             {/* Experiencia laboral */}
             <div className={style.experience}>
                 <div className={style.title}>
                     <h2>Experiencia</h2>
-                    <i className="fa-solid fa-plus icon"></i>
-                </div>
-                <div className={style.inputs}>
-                    <label className={style.label} htmlFor="position">
-                        Cargo
-                    </label>
-                    <input
-                        type="text"
-                        className={style.inputPersonal}
-                        name="charge"
-                        id="position"
-                        value={experience.charge}
-                        onChange={onChangeExperience}
-                        placeholder="Desarrollador backend Java"
-                    />
+
+                    {experience.length < 3 && (
+                        <i
+                            className="fa-solid fa-plus icon"
+                            onClick={addExperienceField}
+                        ></i>
+                    )}
                 </div>
 
-                <div className={style.inputs}>
-                    <label className={style.label} htmlFor="company">
-                        Empresa
-                    </label>
-                    <input
-                        type="text"
-                        className={style.inputPersonal}
-                        name="company"
-                        id="company"
-                        value={experience.company}
-                        onChange={onChangeExperience}
-                        placeholder="Nombre de la empresa"
+                {experience.map((exp) => (
+                    <FieldExperience
+                        key={exp.id}
+                        handleChange={handleChangeExperience}
+                        item={exp}
+                        deleteExperience={deleteExperience}
                     />
-                </div>
-                <div className={style.containDate}>
-                    <label className={style.label} htmlFor="email">
-                        Fecha inicio{" "}
-                    </label>
-                    <input
-                        type="date"
-                        className={style.inputDate}
-                        name="jobDateInit"
-                        id="fecha inicio"
-                        value={experience.jobDateInit}
-                        onChange={onChangeExperience}
-                    />
-                </div>
+                ))}
 
-                <div className={style.containDate}>
-                    <label className={style.label} htmlFor="edad">
-                        Fecha fin
-                    </label>
-                    <input
-                        type="date"
-                        className={style.inputDate}
-                        name="jobDateFin"
-                        id="fecha fin"
-                        value={experience.jobDateFin}
-                        onChange={onChangeExperience}
-                    />
-                </div>
-
-                <div className={style.inputs}>
-                    <label className={style.label} htmlFor="description">
-                        {" "}
-                        Descripción{" "}
-                    </label>
-                    <input
-                        type="textarea"
-                        className={style.inputPersonal}
-                        name="descriptionJob"
-                        id="description"
-                        value={experience.descriptionJob}
-                        onChange={onChangeExperience}
-                        placeholder="Realicé..."
-                    />
-                </div>
             </div>
             <button
                 className={style.btnSubmit}
@@ -324,6 +256,206 @@ export const ProfessionalInformation = () => {
             >
                 Guardar cambios
             </button>
+        </div>
+    );
+};
+
+const FieldEducation = ({
+    item,
+    handleChange,
+    onFileChange,
+    deleteCertificate,
+    deleteEducation,
+}) => {
+    const { dataProfile } = useContext(DataContext);
+    return (
+        <div className={style.education} id="0">
+            <div className={style.inputs}>
+                <label className={style.label} htmlFor="institution">
+                    Título*
+                </label>
+                <i
+                    className="far fa-trash-alt"
+                    onClick={() => deleteEducation(item.id)}
+                />
+                <input
+                    type="text"
+                    className={style.inputPersonal}
+                    name="degree"
+                    id="institution"
+                    value={item.degree}
+                    onChange={(e) => handleChange(e, item.id)}
+                    placeholder="Título"
+                />
+            </div>
+            <div className={style.inputs}>
+                <label className={style.label} htmlFor="institution">
+                    Institución Educativa*
+                </label>
+                <input
+                    type="text"
+                    className={style.inputPersonal}
+                    name="institution"
+                    id="institution"
+                    value={item.education}
+                    onChange={(e) => handleChange(e, item.id)}
+                    placeholder="nombre de la institución"
+                />
+            </div>
+            {/* seccion de las fechas */}
+            <div className={style.containDate}>
+                <label className={style.label} htmlFor="email">
+                    Fecha inicio{" "}
+                </label>
+                <input
+                    type="date"
+                    className={style.inputDate}
+                    name="eduDateInit"
+                    id="fecha inicio"
+                    value={item.eduDateInit}
+                    onChange={(e) => handleChange(e, item.id)}
+                />
+            </div>
+            <div className={style.containDate}>
+                <label className={style.label} htmlFor="edad">
+                    Fecha fin
+                </label>
+                <input
+                    type="date"
+                    className={style.inputDate}
+                    name="eduDateEnd"
+                    id="fecha fin"
+                    value={item.eduDateEnd}
+                    onChange={(e) => handleChange(e, item.id)}
+                />
+            </div>
+
+            <div name="formulario" className={style.inputFile}>
+                <label className={style.label} htmlFor="edad">
+                    Añadir certificado <span>*jpg *png *jpeg</span>
+                </label>
+
+                <input
+                    type="file"
+                    name="certificate"
+                    accept="image/jpg, image/png, image/jpeg,"
+                    multiple
+                    value=""
+                    onChange={(e) => onFileChange(e, item.id)}
+                />
+            </div>
+            {dataProfile.prev_studes.map(
+                (dataCert) =>
+                    item.id === dataCert.id &&
+                    dataCert.certificate && (
+                        <div className={style.containDelete} key={item.id}>
+                            <BiX
+                                className={style.deleteImg}
+                                onClick={() => deleteCertificate(item.id)}
+                            />
+
+                            <img
+                                className={style.imgDocument}
+                                src={dataCert.certificate}
+                                alt="Document"
+                            />
+                        </div>
+                    )
+            )}
+
+            {/* {nameFile[0].length > 0 ? (
+                <div className={style.containDelete}>
+                    <BiX
+                        className={style.deleteImg}
+                        onClick={deleteCertificate}
+                    />
+
+                    <h5 className={style.nameFile}>{nameFile[0]}</h5>
+                </div>
+            ) : null} */}
+        </div>
+    );
+};
+
+const FieldExperience = ({ deleteExperience, handleChange, item }) => {
+    return (
+        <div className={style.experience} id="2">
+            <div className={style.inputs}>
+                <label className={style.label} htmlFor="position">
+                    Cargo
+                </label>
+                <i
+                    className="far fa-trash-alt"
+                    onClick={() => deleteExperience(item.id)}
+                ></i>
+                <input
+                    type="text"
+                    className={style.inputPersonal}
+                    name="charge"
+                    id="position"
+                    value={item.charge}
+                    onChange={(e) => handleChange(e, item.id)}
+                    placeholder="Desarrollador backend Java"
+                />
+            </div>
+
+            <div className={style.inputs}>
+                <label className={style.label} htmlFor="company">
+                    Empresa
+                </label>
+                <input
+                    type="text"
+                    className={style.inputPersonal}
+                    name="company"
+                    id="company"
+                    value={item.company}
+                    onChange={(e) => handleChange(e, item.id)}
+                    placeholder="Nombre de la empresa"
+                />
+            </div>
+            <div className={style.containDate}>
+                <label className={style.label} htmlFor="email">
+                    Fecha inicio{" "}
+                </label>
+                <input
+                    type="date"
+                    className={style.inputDate}
+                    name="jobDateInit"
+                    id="fecha inicio"
+                    value={item.jobDateInit}
+                    onChange={(e) => handleChange(e, item.id)}
+                />
+            </div>
+
+            <div className={style.containDate}>
+                <label className={style.label} htmlFor="edad">
+                    Fecha fin
+                </label>
+                <input
+                    type="date"
+                    className={style.inputDate}
+                    name="jobDateFin"
+                    id="fecha fin"
+                    value={item.jobDateFin}
+                    onChange={(e) => handleChange(e, item.id)}
+                />
+            </div>
+
+            <div className={style.inputs}>
+                <label className={style.label} htmlFor="description">
+                    {" "}
+                    Descripción{" "}
+                </label>
+                <input
+                    type="textarea"
+                    className={style.inputPersonal}
+                    name="descriptionJob"
+                    id="description"
+                    value={item.descriptionJob}
+                    onChange={(e) => handleChange(e, item.id)}
+                    placeholder="Realicé..."
+                />
+            </div>
         </div>
     );
 };

@@ -68,6 +68,7 @@ const FormProject = () => {
                 }
 
                 navigate("/portfolio");
+
             } catch (error) {
                 console.log(error);
             }
@@ -110,7 +111,8 @@ const FormProject = () => {
     useEffect(() => {
         if (params.id) {
             getDataPortfolio(params.id);
-        } {
+        }
+        {
             setPortfolio(initialStatePortfolio);
         }
     }, []);

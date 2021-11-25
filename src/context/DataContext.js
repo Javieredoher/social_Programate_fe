@@ -1,16 +1,23 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { v4 as uuid } from "uuid";
+import { studyField, experienceField } from "../helpers/formProfile";
 
 export const DataContext = createContext();
-
-//const idUser = "619e91439d72f976d888e360";
-
 export const DataProvider = ({ children }) => {
+
+/*     const [idUser,setidUser]=useState(0)
+
+    useEffect(() => {
+    const auth = useSelector(state => state.auth)
+    const {_id} = auth.user
+    setidUser(_id)
+    }, [])  */
 
     const auth = useSelector(state => state.auth)
     const {_id} = auth.user
-    const idUser = _id
-
+    const idUser = _id  
+ 
     const initialState = {
         user_info: idUser,
         github: "",
@@ -18,8 +25,8 @@ export const DataProvider = ({ children }) => {
         technicalSkills: [],
         softSkills: [],
         lenguages: [],
-        prev_studes: [],
-        experience: [],
+        prev_studes: [{ ...studyField, id: uuid() }],
+        experience: [{ ...experienceField, id: uuid() }],
     };
     const [dataProfile, setDataProfile] = useState(initialState);
     const [dataUser, setDataUser] = useState({
@@ -39,7 +46,6 @@ export const DataProvider = ({ children }) => {
     });
     const [posts, setPosts] = useState({
         user_info: idUser,
-        user_info: "",
         likes: [],
         title: "",
         type: "",
@@ -72,6 +78,7 @@ export const DataProvider = ({ children }) => {
     const [portfolio, setPortfolio] = useState(initialStatePortfolio);
 
     const [postsEvent, setPostsEvent] = useState({
+        user_info: idUser,
         title: "",
         type: "",
         description: "",
@@ -81,6 +88,7 @@ export const DataProvider = ({ children }) => {
         place: "",
     });
     const [postsJobs, setPostsJobs] = useState({
+        user_info: idUser,
         title: "",
         type: "",
         company: "",
@@ -90,7 +98,10 @@ export const DataProvider = ({ children }) => {
         modality: "",
         salary: "",
         contact: "",
+        description: "",
     });
+
+    const [getPosts, setGetPosts] = useState();
 
     return (
         <DataContext.Provider
@@ -109,6 +120,9 @@ export const DataProvider = ({ children }) => {
                 initialStatePortfolio,
                 postsJobs,
                 setPostsJobs,
+                getPosts,
+                setGetPosts,
+
             }}
         >
             {children}
