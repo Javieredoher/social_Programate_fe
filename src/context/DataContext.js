@@ -21,9 +21,9 @@ export const DataProvider = ({ children }) => {
     //     // console.log(_id);
     // }, [_id]);
 
-    useEffect(() => {
-        localStorage.setItem("id", _id);
-    }, [_id]);
+    // useEffect(() => {
+    //     localStorage.setItem("id", _id);
+    // }, [_id]);
 
     const [dataProfile, setDataProfile] = useState({
         user_info: _id,

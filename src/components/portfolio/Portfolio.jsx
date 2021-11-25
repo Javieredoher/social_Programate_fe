@@ -23,7 +23,7 @@ const Portfolio = () => {
         try {
             const data = await getDataAll("portfolios");
             const filterData = data.filter(
-                (project) => project.profile_id === id
+                (project) => project.profile_id === idUser
             );
             console.log(filterData, id);
             setdataPortfolios(filterData);
@@ -33,7 +33,7 @@ const Portfolio = () => {
     };
     useEffect(() => {
         getDataPort();
-    }, [id]);
+    }, [idUser]);
 
     const addProject = () => {
         if (dataPortfolios.length < 10) {
