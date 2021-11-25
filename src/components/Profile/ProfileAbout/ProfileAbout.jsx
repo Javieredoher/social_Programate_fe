@@ -9,26 +9,30 @@ const ProfileAbout = () => {
 
     //Traer data del usuario
     useEffect(async () => {
-        try {
-            const data = await getData("users", idUser);
-            setDataUser(data);
-        } catch (error) {
-            console.log(error);
+        if (idUser) {
+            try {
+                const data = await getData("users", idUser);
+                setDataUser(data);
+            } catch (error) {
+                console.log(error);
+            }
         }
-    }, []);
+    }, [idUser]);
 
     useEffect(async () => {
-        try {
-            const data = await getDataAll("profiles");
-            const filterData = data.filter(
-                (profile) => profile.user_info._id === idUser
-            );
-            setDataProfile(filterData[0]);
-            console.log(filterData);
-        } catch (error) {
-            console.log(error);
+        if (idUser) {
+            try {
+                const data = await getDataAll("profiles");
+                const filterData = data.filter(
+                    (profile) => profile.user_info?._id === idUser
+                );
+                setDataProfile(filterData[0]);
+                console.log(filterData, "data del perfil");
+            } catch (error) {
+                console.log(error);
+            }
         }
-    }, []);
+    }, [idUser]);
 
     return (
         <>
@@ -40,7 +44,7 @@ const ProfileAbout = () => {
                         </div>
                     </div>
                     <div>
-                        <p>{dataProfile.description}</p>
+                        <p>{dataProfile?.description}</p>
                     </div>
                 </div>
             </section>

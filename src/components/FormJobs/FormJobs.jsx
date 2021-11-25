@@ -7,7 +7,7 @@ import HardSkills from "../formInfo/HardSkills";
 import SoftSkills from "../formInfo/SoftSkills";
 
 const FormJobs = () => {
-    const { postsJobs, setPostsJobs } = useContext(DataContext);
+    const { postsJobs, setPostsJobs, idUser } = useContext(DataContext);
 
     const [technical, setTechnical] = useState([]);
     const [softSkills, setsoftSkills] = useState([]);
@@ -28,6 +28,7 @@ const FormJobs = () => {
         setPostsJobs({
             ...postsJobs,
             [name]: value,
+            user_info: idUser,
         });
     };
 
@@ -147,7 +148,6 @@ const FormJobs = () => {
                     <br />
                 </div>
                 <div className={style.forms}>
-
                     {/* Revisar
                     <h3 className={style.subtitle}>Modalidad</h3>
                     <select className={style.select} name="modality">*/}
@@ -159,7 +159,6 @@ const FormJobs = () => {
                         onChange={onSelectChange}
                         /* value="modality" */
                     >
-
                         <option value="select">Selecciona la modalidad</option>
 
                         <option className={style.opcion} value="Presencial">
@@ -196,9 +195,8 @@ const FormJobs = () => {
                     />
 
                     <br />
-
                 </div>
-                
+
                 <div className={style.forms}>
                     <h3>Descripción de la oferta</h3>
                     <textarea

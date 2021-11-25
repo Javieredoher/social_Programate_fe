@@ -15,20 +15,22 @@ import { DataContext } from "../context/DataContext";
 
 const ProfilePage = () => {
     const { idUser, setDataProfile, dataProfile } = useContext(DataContext);
-    
-    console.log(idUser)
+
+    // console.log(idUser)
 
     useEffect(async () => {
-        try {
-            const data = await getDataAll("profiles");
-            const filterData = data.filter(
-                (profile) => profile.user_info._id === idUser
-            );
-            setDataProfile(filterData[0]);
-        } catch (error) {
-            console.log(error);
+        if (idUser) {
+            try {
+                const data = await getDataAll("profiles");
+                const filterData = data.filter(
+                    (profile) => profile.user_info._id === idUser
+                );
+                setDataProfile(filterData[0]);
+            } catch (error) {
+                console.log(error);
+            }
         }
-    }, []);
+    }, [idUser]);
     // console.log(dataProfile);
     return (
         <div>

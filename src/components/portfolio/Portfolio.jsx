@@ -7,18 +7,25 @@ import { DataContext } from "../../context/DataContext";
 import Swal from "sweetalert2";
 
 const Portfolio = () => {
+    const { setPortfolio, portfolio, idUser } = useContext(DataContext);
 
-    const navigate = useNavigate()
-    const { portfolio } = useContext(DataContext);
+    const navigate = useNavigate();
 
     const [dataPortfolios, setdataPortfolios] = useState([]);
 
+    // useEffect(() => {
+    //     setPortfolio({ ...portfolio, profile_id: idUser });
+    //     console.log(portfolio, idUser);
+    // }, [idUser]);
+
+    const id = localStorage.getItem("id");
     const getDataPort = async () => {
         try {
             const data = await getDataAll("portfolios");
             const filterData = data.filter(
-                (project) => project.profile_id === portfolio.profile_id
+                (project) => project.profile_id === id
             );
+            console.log(filterData, id);
             setdataPortfolios(filterData);
         } catch (error) {
             console.log(error);
@@ -26,13 +33,11 @@ const Portfolio = () => {
     };
     useEffect(() => {
         getDataPort();
-    }, []);
+    }, [id]);
 
     const addProject = () => {
         if (dataPortfolios.length < 10) {
-            
             navigate(`/formproject`);
-
         } else {
             Swal.fire({
                 title: "Máximo de proyectos",

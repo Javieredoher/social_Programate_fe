@@ -8,10 +8,7 @@ import style from "./ProfessionalInformation.module.css";
 import { DataContext } from "../../context/DataContext";
 import { getData, sendData, updateData } from "../../helpers/fetch";
 
-
-
 export const ProfessionalInformation = () => {
-
     const params = useParams();
     const { dataProfile, setDataProfile, dataUser, setDataUser, idUser } =
         useContext(DataContext);
@@ -46,9 +43,12 @@ export const ProfessionalInformation = () => {
 
     //Traer data del usuario
     useEffect(async () => {
-        const data = await getData("users", idUser);
-        setDataUser(data);
-    }, []);
+        if (idUser) {
+            const data = await getData("users", idUser);
+            setDataUser(data);
+            console.log(data, "data user");
+        }
+    }, [idUser]);
 
     //Enviar data del usuario al modelo de user y profile
     const submitData = async (e) => {
@@ -65,7 +65,6 @@ export const ProfessionalInformation = () => {
                     lenguages,
                     prev_studes,
                     experience,
-                    user_info,
                 });
 
                 await updateData("users", idUser, {
@@ -84,12 +83,10 @@ export const ProfessionalInformation = () => {
                     _id,
                 });
                 navigate(`/profile`);
-
             } else {
                 e.preventDefault();
                 console.log("Error");
             }
-
         } else {
             try {
                 await updateData("users", idUser, dataProfile);
@@ -102,7 +99,7 @@ export const ProfessionalInformation = () => {
     };
 
     const handleChangeEdu = ({ target }, id) => {
-        console.log(dataProfile);
+        console.log(dataProfile, idUser);
         const { name, value } = target;
         setDataProfile({
             ...dataProfile,
@@ -223,7 +220,6 @@ export const ProfessionalInformation = () => {
                         deleteEducation={deleteEducation}
                     />
                 ))}
-
             </div>
 
             {/* Experiencia laboral */}
@@ -247,7 +243,6 @@ export const ProfessionalInformation = () => {
                         deleteExperience={deleteExperience}
                     />
                 ))}
-
             </div>
             <button
                 className={style.btnSubmit}

@@ -21,22 +21,22 @@ const Form_PersonalInfo = () => {
     const [softSkills, setsoftSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
 
-    console.log(idUser)
+    // console.log(idUser)
 
     const onChange = ({ target }) => {
-        console.log(dataProfile);
+        // console.log(dataProfile);
         const { name, value } = target;
         setDataProfile({
             ...dataProfile,
             [name]: value,
         });
     };
-    useEffect(() => {
-        setDataProfile({
-            ...dataProfile,
-            //user_info: id,
-        })
-    }, [])
+    // useEffect(() => {
+    //     setDataProfile({
+    //         ...dataProfile,
+    //         user_info: id,
+    //     })
+    // }, [])
     const onKeyHardSkills = (e) => {
         if (e.key === "Enter" && e.target.value.length > 0) {
             technical.push(e.target.value);
@@ -201,7 +201,7 @@ const Form_PersonalInfo = () => {
                     <div
                         className={style.tecnologias}
                         id="languages"
-                    // ref={targetSkill}
+                        // ref={targetSkill}
                     >
                         {languages.map((skill, index) => (
                             <Languages

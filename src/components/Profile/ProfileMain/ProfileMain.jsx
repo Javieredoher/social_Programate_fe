@@ -31,7 +31,7 @@ const ProfileMain = ({ dataProfile }) => {
                     </div>
 
                     <div className={style.img_cont}>
-{/*                         <div>
+                        {/*                         <div>
                             <img src={medalla1} alt="imagen1" />
                             <img src={medalla2} alt="imagen2" />
                             <img src={medalla3} alt="imagen3" />
@@ -40,7 +40,7 @@ const ProfileMain = ({ dataProfile }) => {
                             <Link to="/portfolio">
                                 <button>Ver portafolio</button>
                             </Link>
-                            <a href={dataProfile.github}>
+                            <a href={dataProfile?.github} target="_blank">
                                 <button type="button">Ver Github</button>
                             </a>
                         </div>

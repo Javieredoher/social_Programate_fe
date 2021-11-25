@@ -5,7 +5,7 @@ import logo from "../../assets/images/logo-a-color-.jpg";
 
 import { DataContext } from "../../context/DataContext";
 
-const FormPhotoUser = ({ id }) => {
+const FormPhotoUser = () => {
     const { dataUser, setDataUser } = useContext(DataContext);
 
     const [pathImage, setPathImage] = useState("");
@@ -16,12 +16,12 @@ const FormPhotoUser = ({ id }) => {
             avatar: "",
         });
     };
-    useEffect(() => {
-        setDataUser({
-            ...dataUser,
-            _id: id,
-        })
-    }, [])
+    // useEffect(() => {
+    //     setDataUser({
+    //         ...dataUser,
+    //         _id: id,
+    //     })
+    // }, [])
 
     const onFileChange = (e) => {
         if (e.target.files.length) {
