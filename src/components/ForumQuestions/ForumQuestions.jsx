@@ -5,26 +5,31 @@ import { RiQuestionLine } from "react-icons/ri";
 import { BiFilterAlt } from "react-icons/bi";
 import { BiMessageAdd } from "react-icons/bi";
 import { Link, useLocation } from "react-router-dom";
-import { getDataAll } from "../../helpers/fetch";
+import { getDataAll, getData } from "../../helpers/fetch";
 import { Search } from "./Search";
 
-function useQuery(){
+function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 const ForumQuestions = () => {
   const [questions, setQuestions] = useState([]);
- 
+
+
   const query = useQuery();
   const search = query.get("search")
 
-  const allQuestions =  async () => {
+  const allQuestions = async () => {
     const searchUrl = search ? "?title=" + search : "?type=questions";
     const data = await getDataAll("posts", searchUrl);
     setQuestions(data);
   }
-  useEffect( () => {
+
+  useEffect(() => {
     allQuestions();
+
+
   }, [search])
+
 
   return (
     <section className={styles.section}>
@@ -39,9 +44,9 @@ const ForumQuestions = () => {
         <div className={styles.section__options}>
           <Search />
           <div className={styles.btn__container}>
-          <Link to="/addquestion" className={styles.btn__question}>
+            <Link to="/addquestion" className={styles.btn__question}>
               Añadir <BiMessageAdd />
-          </Link>
+            </Link>
             <button className={styles.btn__question}>
               Filtro <BiFilterAlt />
             </button>
