@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/header/Navbar";
-import Portfolio from "../components/portfolio/Portfolio";
+import Porfolio from "../components/Porfolio/Porfolio";
 
-const PortfolioPage = () => {
+
+const PorfolioPage = () => {
     return (
         <>
             {/* <Navbar/>                         */}
-            <Portfolio />
-            <Footer />
+            <Porfolio/>
+            <Footer/>
         </>
     );
 };
 
-export default PortfolioPage;
+export default PorfolioPage;

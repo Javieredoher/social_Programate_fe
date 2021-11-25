@@ -1,6 +1,6 @@
 import React from "react";
 import { deleteData } from "../../helpers/fetch";
-import style from "./Portfolio.module.css";
+import style from "./Porfolio.module.css";
 import { useHistory } from "react-router-dom";
 
 const Project = ({

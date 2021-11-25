@@ -73,13 +73,13 @@ const FormEvent = () => {
 
             <div className={style.headerPerfil}>
                 <img src={logo} alt="Educamás" />
-                <h2>Agregar evento</h2>
+                <h1>Agregar evento</h1>
             </div>
 
             <form className={style.from_container} onSubmit={submitData}>
                
                 <div className={style.forms}>
-                    <label for="nombre">Nombre del evento</label>
+                    <label for="nombre"><h3>Nombre del evento</h3></label>
                     <input
                         placeholder="Nombre del evento"
                         className={style.nom}
@@ -91,7 +91,7 @@ const FormEvent = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <label for="descripcion">Descripción</label>
+                    <label for="descripcion"><h3>Descripción</h3></label>
                     <input
                         placeholder="Breve descripción del evento"
                         className={style.nom}
@@ -103,7 +103,7 @@ const FormEvent = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <label for="lugar">Lugar</label>
+                    <label for="lugar"><h3>Lugar</h3></label>
                     <input
                         placeholder="Lugar"
                         className={style.nom}
@@ -115,7 +115,7 @@ const FormEvent = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <label for="fecha">Fecha del evento</label>
+                    <label for="fecha"><h3>Fecha del evento</h3></label>
                     <input
                         className={style.nom}
                         type="date"
@@ -126,7 +126,7 @@ const FormEvent = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <label for="link">Link de inscripción</label>
+                    <label for="link"><h3>Link de inscripción</h3></label>
                     <input
                         placeholder="Link de inscripción"
                         className={style.nom}
@@ -139,7 +139,7 @@ const FormEvent = () => {
 
                 <div className={style.forms}>
 
-                    <label for="Technologies">Tegnologías</label>
+                    <label for="Technologies"><h3>Tegnologías</h3></label>
                     <input
                         className={style.nom}
                         type="text"

@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { getDataAll } from "../../helpers/fetch";
-import style from "./Portfolio.module.css";
+import style from "./Porfolio.module.css";
 import Project from "./Project";
 import { DataContext } from "../../context/DataContext";
 import Swal from "sweetalert2";
 
-const Portfolio = () => {
+const Porfolio = () => {
     const history = useHistory();
 
     const { portfolio } = useContext(DataContext);
@@ -98,9 +98,8 @@ const Portfolio = () => {
 
 
             {/* segunda componente */}
-        
             <div className={style.container}>
-                <section>
+               <section>
                 <div className={style.title_container}>
                     <div className={style.title}>
                         <h1>Chat red social </h1>
@@ -109,7 +108,7 @@ const Portfolio = () => {
                     <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam doloremque, itaque cumque error odit quaerat fugit  </p>
                 </div>
                 </section>
-
+                
                 <section className={style.section1}>
                     <div className={style.tex}>
                         <p>INTOCOL</p>
@@ -150,8 +149,9 @@ const Portfolio = () => {
             </div>
 
 
+
         </Fragment>
     );
 };
 
-export default Portfolio;
+export default Porfolio;

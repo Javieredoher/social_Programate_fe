@@ -9,8 +9,8 @@ import style from "./FormJobs.module.css";
 import logo from "../../assets/images/logo-a-color-.jpg";
 import { DataContext } from "../../context/DataContext";
 import { sendData, updateData } from "../../helpers/fetch";
-import HardSkills from "../formInfo/HardSkills";
-import SoftSkills from "../formInfo/SoftSkills";
+import HardSkills from "../FormInfo/HardSkills";
+import SoftSkills from "../FormInfo/SoftSkills";
 import { set } from "react-hook-form";
 
 const FormJobs = () => {

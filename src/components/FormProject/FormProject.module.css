@@ -8,10 +8,10 @@
 }
 
 .title {
-    width: 100%;
+    max-width: 100%;
     color: #ffcc02;
-    margin-top: 30px;
     border-bottom: 1px solid #ffcc02;
+   
 }
 
 
@@ -20,6 +20,36 @@
     justify-content: center;
     flex-direction: row;
     align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+
+}
+
+.container_image_subtitle{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.rectangulo{
+    width: 170px;
+    height: 130px;
+    background-color: #D7D7D7;
+}
+
+.container_icon_text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon_dos{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    
+
 }
 
 .trash {
@@ -32,21 +62,13 @@
 }
 
 .image {
-    width: 50%;
-    display: flex;
-    justify-content: center;
+    width: 100%;
     align-items: center;
-    flex-direction: column;
-    display: block;
-    font-size: 10px;
-    text-align: center;
+    font-size: 18px;
 }
 
-.container_image img {
-    width: 70px;
-}
 
-label {
+.label_input {
     font-family: "Roboto", sans-serif;
     margin-left: 5px;
     font-size: 18px;
@@ -54,15 +76,15 @@ label {
 
 .input_nom {
     width: 100%;
-    height: 50px;
     display: flex;
     justify-content: center;
     border-radius: 50px;
     border-style: solid;
     border: 1px solid;
-    padding: 0 15px;
+    padding: 10px;
     font-size: 18px;
     outline: none;
+   
 }
 
 .textarea {
@@ -95,7 +117,7 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
+    gap: 30px;
 }
 
 .boton_envia {
@@ -125,9 +147,9 @@ label {
 }
 
 /* Large (lg) */
-@media (min-width: 1024px) {
+@media (min-width: 1028px) {
     .from_container {
-        width: 90%;
+        width: 100%;
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-between;
@@ -138,7 +160,7 @@ label {
     }
 
     .title {
-        width: 90%;
+        width: 100%;
     }
 
   
@@ -146,17 +168,29 @@ label {
     .container_image {
         width: 90%;
     }
-/* 
+
     img {
         width: 500px;
         margin-bottom: 20px;
-    } */
+    }
 
     .boton_envia_container {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        margin-bottom: 40px;
+      
+        margin-bottom: -40px;
     }
+
+    .icon_dos{
+        display: flex;
+        font-size: 20px;
+        gap: 30px;
+        align-items: center;
+       margin-right: -100px; 
+    
+    }
+    
+    .icon_mas{
+        display: flex;
+        font-size: 35px;
+    }
+    
 }

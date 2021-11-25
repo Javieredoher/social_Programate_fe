@@ -12,13 +12,23 @@ import FormEventPage from "../pages/FormEventPage";
 
 import FormJobsPage from "../pages/FormJobsPage";
 import CommunityPage from "../pages/CommunityPage";
-import PortfolioPage from "../components/portfolio/Portfolio";
+
 import FormProject from "../components/FormProject/FormProject";
 
 import ProfilePage from "../pages/ProfilePage";
 import CreateResourcePage from "../pages/CreateResourcePage";
 import AdminHome from "../components/adminHome/AdminHome";
 import HomePage from "../pages/HomePage";
+
+
+import PorfolioPage from "../pages/PorfolioPage";
+
+import JobOffers from "../components/JobOffers/JobOffers";
+
+
+
+
+
 //Componentes test
 
 
@@ -65,8 +75,8 @@ const App = () => {
                         <CommunityPage />
                     </Route>
 
-                    <Route exact path="/portfolio">
-                        <PortfolioPage />
+                    <Route exact path="/Porfolio">
+                        <PorfolioPage />
                     </Route>
 
                     <Route exact path="/formproject">
@@ -94,7 +104,10 @@ const App = () => {
                     </Route>
 
                     
-                   
+                    <Route exact path="/edwin">
+                        <JobOffers/>
+                    </Route>
+
                 
                     
                 </Switch>

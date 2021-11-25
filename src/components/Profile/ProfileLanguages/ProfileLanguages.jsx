@@ -10,7 +10,7 @@ const ProfileLanguages = () => {
                    
                 <div className={style.icon_cont2}>
                         <div><i class="far fa-check-circle"></i></div>
-                        <p className={style.text_cont}><b>Ingles avanzado</b></p>
+                        <p>Ingles avanzado</p>
                         <div className={style.pencil_cont}><i class="fas fa-pencil-alt"></i></div> 
                     </div>
                 </div>

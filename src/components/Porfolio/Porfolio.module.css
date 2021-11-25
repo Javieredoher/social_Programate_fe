@@ -1,12 +1,12 @@
 .container {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 30px;
-    margin-bottom: 60px;
-    
-  
+    margin-top: -30px;
+    margin-bottom: 80px;
+
+
 }
 
 .title_container {
@@ -22,18 +22,18 @@
     align-items: center;
     justify-content: space-between;
     margin-right: 20px;
-    
+
 
 }
 
 .title i {
     display: flex;
     justify-content: flex-end;
-    
+
 }
 
 
-.tex{
+.tex {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -50,13 +50,17 @@
 }
 
 .section1 {
-    width: 80%;
+    width: 100%;
     margin: auto;
     /* padding: 15px; */
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid;
+    outline: none;
+    padding: 10px 10px;
 }
+
 .section1 img {
     margin: auto;
     min-width: 100%;
@@ -70,6 +74,7 @@
     align-items: center;
     gap: 10px;
 }
+
 .icon {
     display: flex;
     justify-content: center;
@@ -79,11 +84,12 @@
     font-size: 50px;
 }
 
-.icon i{
+.icon i {
     display: flex;
     justify-content: center;
-    
+
 }
+
 .boton_principal {
     width: 90px;
     height: 30px;
@@ -116,8 +122,8 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    
-    
+
+
 }
 
 .addProject {
@@ -161,6 +167,7 @@
     text-decoration: none;
     color: #010101;
 }
+
 .boton_principal2 a:hover {
     color: #ffcc02;
 }
@@ -169,7 +176,17 @@
     background-color: black;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1028px) {
+
+    .container {
+        margin-bottom: 140px;
+        margin-top: -60px;
+        
+    
+    
+    }
+  
+
     .tex2 {
         display: flex;
         flex-direction: row;
@@ -177,6 +194,25 @@
         flex-direction: row;
         gap: 10px;
     }
+    .tex {
+        width: 50%;
+        
+        
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icon_chat {
+        width: 50%;
+        display: flex;
+        justify-content: end;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    
+
     .titleIcons {
         width: 7%;
         margin-right: 10px;

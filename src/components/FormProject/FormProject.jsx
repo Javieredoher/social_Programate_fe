@@ -6,6 +6,10 @@ import HardSkills from "./HardSkills";
 import { getData, sendData, updateData } from "../../helpers/fetch";
 import Swal from "sweetalert2";
 
+
+
+
+
 const FormProject = () => {
     const { portfolio, setPortfolio, initialStatePortfolio } =
         useContext(DataContext);
@@ -137,16 +141,28 @@ const FormProject = () => {
     return (
         <Fragment>
             <form className={style.from_container} onSubmit={submitData}>
+
                 <div className={style.title}>
                     <h1>Editar proyecto</h1>
-                    <hr />
+
+
                 </div>
 
                 <div className={style.container_image}>
-                    <div className={style.image}>
-                        <div>
-                            <label>Imagen del proyecto *</label>
+
+                    <div className={style.container_image_subtitle}>
+                        <div className={style.container_icon_text}>
+                        <label><div><h3>Imagen del proyecto *</h3></div></label>
+                            <div className={style.icon_dos}>
+                            <div className={style.icon_mas}>+</div>
+                            <div><i class="far fa-trash-alt"></i></div>
+                            </div>
                         </div>
+                        <div className={style.rectangulo}></div>
+                    </div>
+
+                    <div className={style.image}>
+
                         <br />
                         <input
                             className={style.image}
@@ -159,7 +175,7 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <label>Nombre del proyecto *</label>
+                    <label><h3>Nombre del proyecto *</h3></label>
                     <input
                         className={style.input_nom}
                         type="text"
@@ -171,7 +187,7 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <label>Descripción *</label>
+                    <label><h3>Descripción *</h3></label>
                     <textarea
                         className={style.textarea}
                         rows="3"
@@ -183,7 +199,7 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <label>Link de despliegue *</label>
+                    <label><h3>Link de despliegue *</h3></label>
                     <input
                         className={style.input_nom}
                         type="text"
@@ -195,7 +211,7 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <label>Link de repositorio *</label>
+                    <label><h3>Link de repositorio *</h3></label>
                     <input
                         className={style.input_nom}
                         type="text"
@@ -207,7 +223,7 @@ const FormProject = () => {
                 </div>
 
                 <div className={style.forms}>
-                    <label>Tegnologías utilizadas</label>
+                    <label><h3>Tegnologías utilizadas</h3></label>
                     <input
                         className={style.input_nom}
                         type="text"

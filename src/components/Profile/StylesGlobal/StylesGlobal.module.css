@@ -1,0 +1,9 @@
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #D7D7D7;
+    margin: auto;
+    gap: 30px;
+}

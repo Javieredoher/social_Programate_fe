@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import Form_PersonalInfo from "../components/formInfo/Form_PersonalInfo";
+import Form_PersonalInfo from "../components/FormInfo/Form_PersonalInfo";
 import FormPhotoUser from "../components/formPhotoUser/FormPhotoUser";
 import { ProfessionalInformation } from "../components/professionalInformation/ProfessionalInformation";
 import { DataContext } from "../context/DataContext";

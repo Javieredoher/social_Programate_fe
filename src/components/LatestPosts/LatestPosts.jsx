@@ -10,7 +10,7 @@ const LatestPosts = () => {
                 <div className={style.title_container}>
                     <div className={style.title}>
                         <h1>Ultimas Publicaciones </h1>
-                        <i class="fas fa-pencil-alt"></i>
+                       <div><i class="fas fa-pencil-alt"></i></div> 
                     </div>
                     <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam doloremque, itaque cumque error odit quaerat fugit  </p>
                 </div>
