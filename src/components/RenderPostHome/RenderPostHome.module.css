@@ -4,6 +4,7 @@
     min-height: 100vh;
 }
 
+
 .cardContainer {
     display: grid;
     grid-template-columns: repeat(autofill, 600px);
