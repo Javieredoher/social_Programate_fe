@@ -6,6 +6,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@pathofdev/react-tag-input": "^1.0.7",
     "@react-icons/all-files": "^4.1.0",
+    "@react-navigation/native": "^6.0.6",
     "axios": "^0.24.0",
     "boxicons": "^2.0.9",
     "dotenv": "^10.0.0",
