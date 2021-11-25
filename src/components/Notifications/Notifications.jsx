@@ -4,11 +4,10 @@ import styles from "./Notifications.module.css";
 export const Notifications = (noti) => {
     return (
         <div className={styles.containerHome}>
+            <h2>Notificaciones</h2>
             <div className={styles.notificationContainer}>
                 <div className={styles.topbar}>
-                    <div className={styles.tittle}>
-                        <h2>Notificaciones</h2>
-                    </div>
+                    <div className={styles.tittle}></div>
 
                     <div className={styles.notification}>
                         <ul>
