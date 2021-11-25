@@ -66,6 +66,7 @@ export const DataProvider = ({ children }) => {
     const [portfolio, setPortfolio] = useState(initialStatePortfolio);
 
     const [postsEvent, setPostsEvent] = useState({
+        user_info: idUser,
         title: "",
         type: "",
         description: "",

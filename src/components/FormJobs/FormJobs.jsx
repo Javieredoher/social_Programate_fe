@@ -58,7 +58,7 @@ const FormJobs = () => {
         ) {
             Swal.fire({
                 title: "Completar datos",
-                text: "Los campos de Nombre de la oferta,modalidad, salario son obligatorios",
+                text: "Los campos de Nombre de la oferta,modalidad y salario son obligatorios",
                 icon: "error",
                 confirmButtonText: "Aceptar",
                 confirmButtonColor: "black",

@@ -49,6 +49,9 @@ const App = () => {
                     <Route exact path="/formevent">
                         <FormEventPage />
                     </Route>
+                    <Route exact path="/formevent/:id">
+                        <FormEventPage />
+                    </Route>
 
                     <Route exact path="/formnews">
                         <FormNewsPage />
