@@ -4,7 +4,7 @@ import logo from "../../assets/images/logo-a-color-.jpg";
 import { DataContext } from "../../context/DataContext";
 import { sendData, updateData } from "../../helpers/fetch";
 const FormEvent = () => {
-    const { postsEvent, setPostsEvent } = useContext(DataContext);
+    const { postsEvent, setPostsEvent, idUser } = useContext(DataContext);
 
     const [techs, setTechs] = useState([]);
 
@@ -20,7 +20,7 @@ const FormEvent = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setPostsEvent({ ...postsEvent, [name]: value })
+        setPostsEvent({ ...postsEvent, [name]: value, user_info: idUser });
     };
     const onCapture = (e) => {
         const value = e.target.value;
@@ -32,7 +32,7 @@ const FormEvent = () => {
             e.preventDefault();
         }
     };
-    useEffect(() => { }, [postsEvent, setPostsEvent, techs, setTechs]);
+    useEffect(() => {}, [postsEvent, setPostsEvent, techs, setTechs]);
     useEffect(() => {
         setPostsEvent({ ...postsEvent, type: "event" });
     }, []);

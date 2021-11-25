@@ -3,7 +3,6 @@ import "regenerator-runtime/runtime";
 const API = "http://localhost:3001/api";
 //const API = "http://localhost:3000/api";
 
-
 export const getData = async (endpoint, id) => {
     const url = `${API}/${endpoint}/${id}`;
     const resp = await fetch(url);

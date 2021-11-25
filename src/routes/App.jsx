@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import "../assets/styles/global2.css";
+
 import { DataProvider } from "../context/DataContext";
 
 //Login Redux
@@ -12,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { dispatchGetUser, dispatchLogin, fetchUser } from '../redux/actions/authAction'
 
 import Logout from '../components/Logout/Logout';
+
 
 
 const App = () => {
@@ -52,6 +54,7 @@ const App = () => {
     }, [token, dispatch])
 
     return (
+
 
         <>
             <DataProvider>

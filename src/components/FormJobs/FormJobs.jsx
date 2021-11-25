@@ -1,20 +1,13 @@
-import React, {
-    Fragment,
-    useContext,
-    useRef,
-    useState,
-    useEffect,
-} from "react";
+import React, { Fragment, useContext, useState, useEffect } from "react";
 import style from "./FormJobs.module.css";
 import logo from "../../assets/images/logo-a-color-.jpg";
 import { DataContext } from "../../context/DataContext";
-import { sendData, updateData } from "../../helpers/fetch";
+import { sendData } from "../../helpers/fetch";
 import HardSkills from "../formInfo/HardSkills";
 import SoftSkills from "../formInfo/SoftSkills";
-import { set } from "react-hook-form";
 
 const FormJobs = () => {
-    const { postsJobs, setPostsJobs } = useContext(DataContext);
+    const { postsJobs, setPostsJobs, idUser } = useContext(DataContext);
 
     const [technical, setTechnical] = useState([]);
     const [softSkills, setsoftSkills] = useState([]);
@@ -30,10 +23,12 @@ const FormJobs = () => {
     };
 
     const onChange = ({ target }) => {
+        console.log(postsJobs);
         const { name, value } = target;
         setPostsJobs({
             ...postsJobs,
             [name]: value,
+            user_info: idUser,
         });
     };
 
@@ -42,7 +37,7 @@ const FormJobs = () => {
             technical.push(e.target.value);
             setPostsJobs({
                 ...postsJobs,
-                technicalSkills: technical,
+                technologies: technical,
             });
             e.target.value = "";
             e.preventDefault();
@@ -59,6 +54,13 @@ const FormJobs = () => {
             e.target.value = "";
             e.preventDefault();
         }
+    };
+
+    const onSelectChange = (e) => {
+        setPostsJobs({
+            ...postsJobs,
+            modality: e.target.options[e.target.selectedIndex].value,
+        });
     };
 
     useEffect(() => {
@@ -146,7 +148,6 @@ const FormJobs = () => {
                     <br />
                 </div>
                 <div className={style.forms}>
-
                     {/* Revisar
                     <h3 className={style.subtitle}>Modalidad</h3>
                     <select className={style.select} name="modality">*/}
@@ -155,7 +156,7 @@ const FormJobs = () => {
                     <select
                         className={style.select}
                         name="modality"
-                        onChange={onChange}
+                        onChange={onSelectChange}
                         /* value="modality" */
                     >
                         <option value="select">Selecciona la modalidad</option>
@@ -182,6 +183,7 @@ const FormJobs = () => {
                     />
                     <br />
                 </div>
+
                 <div className={style.forms}>
                     <h3 className={style.subtitle}>Contacto</h3>
 
@@ -191,6 +193,21 @@ const FormJobs = () => {
                         name="contact"
                         onChange={onChange}
                     />
+
+                    <br />
+                </div>
+
+                <div className={style.forms}>
+                    <h3>Descripción de la oferta</h3>
+                    <textarea
+                        className={style.textarea}
+                        type="text"
+                        name="description"
+                        rows=""
+                        cols=""
+                        value={postsJobs.description}
+                        onChange={onChange}
+                    ></textarea>
                     <br />
                 </div>
 

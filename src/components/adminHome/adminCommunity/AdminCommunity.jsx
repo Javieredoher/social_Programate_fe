@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useContext, useEffect } from 'react'
 import { getDataAll } from '../../../helpers/fetch'
-//import style from './UsersList.module.css'
+import style from '../../UsersList/UsersList.module.css'
 //import ImagDama from '../../assets/images/ImagDama.png'
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
 
@@ -57,6 +57,17 @@ const AdminCommunity = () =>  {
 
         })
     }
+
+/*     const onToggle = (id) => {
+        allUser.map((user) => {
+            if (user._id === id) {
+                console.log(id, user._id);
+                user.state = !user.state
+                setAllUser(allUser)
+            }
+
+        })
+    } */
 
     return (
         <Fragment>

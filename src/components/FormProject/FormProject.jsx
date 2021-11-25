@@ -7,8 +7,10 @@ import { getData, sendData, updateData } from "../../helpers/fetch";
 import Swal from "sweetalert2";
 
 const FormProject = () => {
-    const { portfolio, setPortfolio, initialStatePortfolio } =
+    const { portfolio, setPortfolio, initialStatePortfolio, idUser } =
         useContext(DataContext);
+
+    const navigate = useNavigate();
 
     const {
         profile_id,
@@ -45,24 +47,14 @@ const FormProject = () => {
             try {
                 if (!params.id) {
                     await sendData("portfolios", {
-                        profile_id,
-                        image,
-                        title,
-                        description_proyect,
-                        deploy,
-                        proyect_link,
-                        technologies,
+                        ...portfolio,
+                        profile_id: idUser,
                     });
                     setPortfolio(initialStatePortfolio);
                 } else {
                     await updateData("portfolios", params.id, {
-                        profile_id,
-                        image,
-                        title,
-                        description_proyect,
-                        deploy,
-                        proyect_link,
-                        technologies,
+                        ...portfolio,
+                        profile_id: idUser,
                     });
                     setPortfolio(initialStatePortfolio);
                 }
@@ -110,7 +102,8 @@ const FormProject = () => {
     useEffect(() => {
         if (params.id) {
             getDataPortfolio(params.id);
-        } {
+        }
+        {
             setPortfolio(initialStatePortfolio);
         }
     }, []);
