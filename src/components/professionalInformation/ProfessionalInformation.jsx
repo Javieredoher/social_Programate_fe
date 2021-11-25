@@ -57,7 +57,7 @@ export const ProfessionalInformation = () => {
                 e.preventDefault();
 
                 await sendData("profiles", {
-                    user_info,
+                    user_info: idUser,
                     github,
                     description,
                     technicalSkills,
@@ -80,7 +80,7 @@ export const ProfessionalInformation = () => {
                     rol,
                     secondSurname,
                     state,
-                    _id,
+                    _id: idUser,
                 });
                 navigate(`/profile`);
             } else {
