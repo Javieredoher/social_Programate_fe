@@ -1,3 +1,10 @@
+.section {
+    padding: 15rem 0 2rem;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
 .cardContainer {
     display: grid;
     grid-template-columns: repeat(autofill, 600px);
@@ -73,11 +80,11 @@
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: 300;
 }
-
+/*
 .cardContainer:hover {
     transform: scale(1.1);
 }
-
+*/
 .imageContainer {
     overflow: hidden;
     height: 200px;

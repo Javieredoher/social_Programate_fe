@@ -1,3 +1,9 @@
+.section {
+    padding: 15rem 0 2rem;
+    width: 100%;
+    min-height: 100vh;
+}
+
 .cardContainer {
     width: 90%;
     height: 90%;
@@ -77,11 +83,11 @@
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: 300;
 }
-
+/*
 .cardContainer:hover {
     transform: scale(1.1);
 }
-
+*/
 .eventsContainer {
     overflow: hidden;
     height: auto;

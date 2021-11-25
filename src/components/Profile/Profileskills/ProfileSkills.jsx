@@ -1,20 +1,31 @@
-import React from 'react'
-import style from './ProfileSkills.module.css'
+import React, { useContext } from "react";
+import { DataContext } from "../../../context/DataContext";
+import style from "./ProfileSkills.module.css";
 
 const ProfileSkills = () => {
+    const { dataProfile } = useContext(DataContext);
+    const { softSkills } = dataProfile;
+
     return (
         <>
-            <secction className={style.container1}>
-            <div className={style.container2}>
-                <div className={style.icon_cont}>
-                    <div className={style.title}><p>Habilidades</p></div>
-                   <div><i class="fas fa-pencil-alt"></i></div> 
+            <section className={style.container1}>
+                <div className={style.container2}>
+                    <div className={style.icon_cont}>
+                        <div className={style.title}>
+                            <p>Habilidades</p>
+                        </div>
+                    </div>
+                    <div>
+                        {softSkills?.map((skill, index) => (
+                            <p className={style.skill} key={index}>
+                                {skill} -&nbsp;
+                            </p>
+                        ))}
+                    </div>
                 </div>
-                <div><p>Trabajo en equipo - Adaptación al cambio -Gestión del tiempo</p></div>
-            </div>
-            </secction>
+            </section>
         </>
-    )
-}
+    );
+};
 
-export default ProfileSkills
+export default ProfileSkills;

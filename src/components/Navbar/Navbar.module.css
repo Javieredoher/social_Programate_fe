@@ -1,0 +1,154 @@
+.globalNav {
+    background-color: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(0, 0, 0, 0.1);
+    left: 0;
+    position: absolute;
+    width: 100%;
+    max-height: 7rem;
+}
+
+.globalNavContent {
+    position: relative;
+    width: 100%;
+}
+.navBar {
+    left: 0;
+    width: 100%;
+}
+
+.navBar ul {
+    padding-inline-start: 0px;
+}
+
+.imgprincipal {
+    left: 10px;
+}
+
+.navList {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.navListItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navListItem svg {
+    display: none;
+}
+/*
+.navListItem input {
+    background-image: url("../../assets/images/search-outline.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+    padding: 5px 0px 5px 15px;
+    width: 85%;
+    border-radius: 50px;
+    border: 2px solid rgba(155, 155, 155, 0.8);
+}
+
+.nav__list-item input:focus {
+    border: 2px solid rgba(88, 88, 88, 0.08);
+}
+*/
+
+.navListItem img {
+    width: 70px;
+    height: 70px;
+}
+
+.navListItem span {
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+@media (max-width: 745px) {
+    .navListItem svg {
+        display: inline;
+    }
+    .navListItem span {
+        display: none;
+    }
+
+    .main {
+        width: 100%;
+    }
+}
+
+/* Small (sm) */
+@media (max-width: 400px) {
+    .navListItem img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Dropdown Logout styles  */
+
+.dropdownLogOut {
+    width: auto;
+    user-select: none;
+    margin: 0.5rem;
+    position: relative;
+    height: auto;
+}
+
+.dropdownLogOut .dropdownBtn {
+    padding: 15px 20px;
+    background: #fff;
+    /*box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06); */
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    border-radius: 50px;
+    background-color: white;
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+}
+
+a {
+    list-style: none;
+    text-decoration: none;
+    color: #010101;
+}
+
+.dropdownLogOut .dropdownContent {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    font-weight: 500;
+    color: #333;
+    width: 100%;
+}
+
+.dropdownLogOut .dropdownContent .dropdownItem {
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropdownLogOut .dropdownContent .dropdownItem:hover {
+    background: #f4f4f4;
+}
+
+.dropdownClose {
+    border-top-style: ridge;
+    border-top-color: grey;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropdownLogOut .dropdownContent .dropdownItem:hover {
+    background: #f4f4f4;
+}

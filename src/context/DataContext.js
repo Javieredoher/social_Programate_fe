@@ -1,21 +1,40 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { v4 as uuid } from "uuid";
+import { studyField, experienceField } from "../helpers/formProfile";
 
 export const DataContext = createContext();
-
-const idUser = "618ea996e890a86c5d63fd6a";
-
 export const DataProvider = ({ children }) => {
-    const initialState = {
-        user_info: idUser,
+    /*     const [idUser,setidUser]=useState(0)
+
+    useEffect(() => {
+    const auth = useSelector(state => state.auth)
+    const {_id} = auth.user
+    setidUser(_id)
+    }, [])  */
+    const { _id, email } = useSelector((state) => state.auth.user);
+
+    // const { _id } = auth.user;
+    // const [infoUser, setInfoUser] = useState("");
+    // useEffect(() => {
+    //     setInfoUser(_id);
+    //     // console.log(_id);
+    // }, [_id]);
+
+    // useEffect(() => {
+    //     localStorage.setItem("id", _id);
+    // }, [_id]);
+
+    const [dataProfile, setDataProfile] = useState({
+        user_info: _id,
         github: "",
         description: "",
         technicalSkills: [],
         softSkills: [],
         lenguages: [],
-        prev_studes: [],
-        experience: [],
-    };
-    const [dataProfile, setDataProfile] = useState(initialState);
+        prev_studes: [{ ...studyField, id: uuid() }],
+        experience: [{ ...experienceField, id: uuid() }],
+    });
     const [dataUser, setDataUser] = useState({
         avatar: "",
         cohorte: { num: 1, name: "" },
@@ -26,14 +45,13 @@ export const DataProvider = ({ children }) => {
         middleName: "",
         passwordHash: "",
         program: "Progamate",
-        rol: 1,
+        rol: 0,
         secondSurname: "",
         state: true,
-        _id: idUser,
+        _id: _id,
     });
     const [posts, setPosts] = useState({
-        user_info: idUser,
-        user_info: "",
+        user_info: _id,
         likes: [],
         title: "",
         type: "",
@@ -55,7 +73,7 @@ export const DataProvider = ({ children }) => {
     });
 
     const initialStatePortfolio = {
-        profile_id: idUser,
+        profile_id: _id,
         image: "",
         title: "",
         description_proyect: "",
@@ -66,6 +84,7 @@ export const DataProvider = ({ children }) => {
     const [portfolio, setPortfolio] = useState(initialStatePortfolio);
 
     const [postsEvent, setPostsEvent] = useState({
+        user_info: _id,
         title: "",
         type: "",
         description: "",
@@ -75,6 +94,7 @@ export const DataProvider = ({ children }) => {
         place: "",
     });
     const [postsJobs, setPostsJobs] = useState({
+        user_info: _id,
         title: "",
         type: "",
         company: "",
@@ -84,7 +104,10 @@ export const DataProvider = ({ children }) => {
         modality: "",
         salary: "",
         contact: "",
+        description: "",
     });
+
+    const [getPosts, setGetPosts] = useState();
 
     return (
         <DataContext.Provider
@@ -93,7 +116,8 @@ export const DataProvider = ({ children }) => {
                 setDataProfile,
                 dataUser,
                 setDataUser,
-                idUser,
+                idUser: _id,
+                email,
                 posts,
                 setPosts,
                 postsEvent,
@@ -103,6 +127,8 @@ export const DataProvider = ({ children }) => {
                 initialStatePortfolio,
                 postsJobs,
                 setPostsJobs,
+                getPosts,
+                setGetPosts,
             }}
         >
             {children}
