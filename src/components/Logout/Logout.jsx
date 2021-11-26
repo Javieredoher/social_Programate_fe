@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import './Logout.css'
-
+import { baseUrl } from '../../../config'
 
 function Logout() {
   const auth = useSelector(state => state.auth)
@@ -11,10 +11,9 @@ function Logout() {
   const { user, isLogged } = auth
 
 
-
   const handleLogout = async () => {
     try {
-      await axios.get('http://localhost:3001/api/logout')
+      await axios.get(`${baseUrl}/api/logout`)
       window.localStorage.removeItem('firstLogin')
       window.location.href = "/login";
     } catch (err) {

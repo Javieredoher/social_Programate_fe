@@ -123,7 +123,7 @@ const ForumAddQuestion = () => {
                     </div>
                   )}
                 />
-                <button className={styles.btnAdd} type="submit">Publicar recurso</button>
+                <button className={styles.btnAdd} type="submit">Publicar</button>
               </Form>
             )}
           </Formik>

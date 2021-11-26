@@ -12,7 +12,7 @@ import style from "../components/filterHome/filterHome.module.css";
 const HomePage = () => {
     return (
         <>
-            {/* <Navbar /> */}
+            <Navbar /> 
             <div className={style.containBody}>
                 <div className={style.containFilter}>
                     <FilterHome />

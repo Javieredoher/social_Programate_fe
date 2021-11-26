@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { dispatchGetUser, dispatchLogin, fetchUser } from '../../redux/actions/authAction'
-import { Navigate } from 'react-router'
+import { Navigate } from 'react-router-dom'
+import { baseUrl } from '../../../config'
+
 
 const Redirect = () => {
   const [isDisplayed, setIsDisplayed] = useState(false);
@@ -21,7 +23,7 @@ const Redirect = () => {
       const refreshtoken = user.refresh_token
 
       const getToken = async () => {
-        const res = await axios.post('http://localhost:3001/api/refresh_token', { refreshtoken })
+        const res = await axios.post(`${baseUrl}/api/refresh_token`, { refreshtoken })
         console.log(res)
         dispatch({ type: 'GET_TOKEN', payload: res.data.access_token })
       }

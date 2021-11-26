@@ -14,8 +14,6 @@ import { dispatchGetUser, dispatchLogin, fetchUser } from '../redux/actions/auth
 
 import Logout from '../components/Logout/Logout';
 
-
-
 const App = () => {
   
     const dispatch = useDispatch()
@@ -31,8 +29,13 @@ const App = () => {
             const refreshtoken = user.refresh_token
 
             const getToken = async () => {
-                const res = await axios.post('http://localhost:3001/api/refresh_token', { refreshtoken })
-                //console.log(res)
+
+/*                 const res = await axios.post('http://localhost:3001/api/refresh_token', { refreshtoken })
+                //console.log(res) */
+
+                const res = await axios.post(`${baseUrl}/api/refresh_token`, { refreshtoken })
+                console.log(res)
+
                 dispatch({ type: 'GET_TOKEN', payload: res.data.access_token })
             }
             getToken()
@@ -60,7 +63,7 @@ const App = () => {
             <DataProvider>
                 <Router>   
                                     
-                    <Logout/>  
+                    {/* <Logout/>   */}
                     <Autentification/>                    
             
                 </Router>
