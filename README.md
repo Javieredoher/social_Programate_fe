@@ -1,10 +1,47 @@
-Pre-configured and Ready to use React Starter App. To save time in settings things up for new project.
-Directory Structure
+# Alumni
 
-This document aims to describe the React Js directory structure for building our project.
-The top level directory structure will be as follows:
+Es un proyecto pensado en Educamás Prográmate, con el fin de mantener activa la comunicación con los estudiantes y exalumnos, donde se pueda seguir informando acerca de las ofertas educativas y laborales y tener en cuenta como prioridad a los integrantes de la comunidad.
 
-components : Global components, such as layout (wrappers, navigation), form components, buttons.
-resources: Global static resources as images, fonts and styles to apply on components.
-routes: Main router that contains the pages.
+# Logo
 
+![Captura](https://user-images.githubusercontent.com/67348811/143618203-578cb9ce-de48-41d9-95ba-c0d93b118af1.JPG)
+
+El Logo fue inspirado en el uso de los colores corporativos que nos  fueron entregados además del logo proporcionado por la organización.
+
+
+
+##Instalacion
+git clone https://github.com/Javieredoher/social_Programate_fe.git
+npm i
+npm run dev
+
+### Tecnologías
+Se hace uso del Stark MERN ya que es la tecnologia que mas dominamos en este momento, además por que permitirá que se siga complementando el universo Prográmate para que cuente con todas las herramentas para hacer mas fácil la permanencia de estudiantes y facilitar la comunicacion de los administrativos y profesores.
+* MONGO BD
+* EXPRESS
+* REACT
+* NODE
+
+# Equipo programador
+* Adrian  https://github.com/AdrianCPC 
+* Alexandra Mendivelso Durán https://github.com/amendivelso
+* Carolina Samacá  https://github.com/carolina06-sam
+* James Rodriguez https://github.com/jerodriguez6
+* Juliana Rodriguez  https://github.com/julianamrg 
+* Laura Bogotá
+Edwin Bernal https://github.com/diomedes1233 
+Javier  Hernandez https://github.com/Javieredoher
+Adrian Peña  https://github.com/AdrianCPC 
+Jhonatan Mosquera
+Rafael Ramirez
+Cristian Buenaventura https://github.com/CristianTura
+
+#Agradecimientos
+* A nuestras Familias que nos apoyaron, nos dieron la fuerza para seguir adelante en este proceso.
+* A Nuestros Profesores por sacar a flote so vocación de enseñar, de dar lo mejor de ellos para cambiar la vida de 50 personas desconocidos para ellos, pero que terminamos siendo acogidos con la dulzura de una familia.
+* A nuestros mentores que nos regalaron tiempo preciado de sus vidas para compartirnos parte de su conocimiento, para darnos fuerza, y alentarnos a seguir adelante.
+* A Prográmate, por ver en nosotros el potencial para cambiar nuestros entornos, por darnos la posibilidad de mejorar nuestras situaciones particulares, por permitirnos salir adelante y sacar adelante a nuetras familias.
+
+```
+
+###End
