@@ -6,6 +6,7 @@ import { Input } from '../../../components/input/Input'
 import logo from '../../../assets/images/logo-blanco-alta-.png'
 import './ForgotPassword.css'
 
+
 const initialState = {
     email: '',
     err: '',
@@ -27,7 +28,7 @@ function ForgotPassword() {
             return setData({ ...data, err: 'El email es incorrecto', success: '' })
 
         try {
-            const res = await axios.post('http://localhost:3001/api/forgot', { email })
+            const res = await axios.post(`${baseUrl}/api/forgot`, { email })
 
             showSuccessMsg(res.data.msg)
             setData({ ...data, err: "", success: res.data.msg })

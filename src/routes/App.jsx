@@ -46,6 +46,7 @@ import ForumAddQuestion from "../components/ForumAddQuestion/ForumAddQuestion";
 //Testing imports
 import Notifications from "../components/Notifications/Notifications";
 import Navbar from "../components/Navbar/Navbar";
+import { baseUrl } from '../../config';
 
 //import CreateResourcePage from "../pages/CreateResourcePage";
 
@@ -64,7 +65,7 @@ const App = () => {
             const refreshtoken = user.refresh_token
 
             const getToken = async () => {
-                const res = await axios.post('http://localhost:3001/api/refresh_token', { refreshtoken })
+                const res = await axios.post(`${baseUrl}/api/refresh_token`, { refreshtoken })
                 console.log(res)
                 dispatch({ type: 'GET_TOKEN', payload: res.data.access_token })
             }
@@ -92,7 +93,7 @@ const App = () => {
             <DataProvider>
                 <Router>   
                                     
-                    <Logout/>  
+                    {/* <Logout/>   */}
                     <Autentification/>                    
             
                 </Router>

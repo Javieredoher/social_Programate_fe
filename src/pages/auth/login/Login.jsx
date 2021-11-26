@@ -8,6 +8,7 @@ import { Input } from '../../../components/input/Input'
 import logo from '../../../assets/images/logo-blanco-alta-.png'
 import './Login.css'
 import { getData } from '../../../helpers/fetch'
+import { baseUrl } from '../../../../config'
 
 
 const initialState = {
@@ -32,7 +33,7 @@ function Login() {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      const res = await axios.post('http://localhost:3001/api/login', {
+      const res = await axios.post(`${baseUrl}/api/login`, {
         email,
         password
 

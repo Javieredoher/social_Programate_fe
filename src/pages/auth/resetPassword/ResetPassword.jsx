@@ -6,6 +6,8 @@ import { isLength, isMatch } from '../../../utils/validation'
 import './ResetPassword.css'
 import { Input } from '../../../components/input/Input'
 import logo from '../../../assets/images/logo-blanco-alta-.png'
+import { baseUrl } from '../../../../config'
+
 const initialState = {
   password: '',
   cf_password: '',
@@ -41,7 +43,7 @@ function ResetPassword() {
 
     try {
       const res = await axios.post(
-        'http://localhost:3001/api/reset',
+        `${baseUrl}/api/reset`,
         { password },
         {
           headers: { Authorization: token }

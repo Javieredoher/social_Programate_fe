@@ -1,154 +1,122 @@
 .globalNav {
-    background-color: rgb(255, 255, 255);
-    border-bottom: 2px solid rgb(0, 0, 0, 0.1);
-    left: 0;
-    position: absolute;
-    width: 100%;
-    max-height: 7rem;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+.globalNavContent{
+    max-width: 1124px;
+    margin: 0 auto;
+}
+.navBar{
+  display: flex;
+  align-items: center;
+  height: 80px;
+  justify-content: space-between;
 }
 
-.globalNavContent {
-    position: relative;
-    width: 100%;
+.navList{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  column-gap: 20px;
+  margin: 0;
+  padding: 0;
 }
-.navBar {
-    left: 0;
-    width: 100%;
+.navList a{
+  text-decoration: none;
+  color: black;
 }
-
-.navBar ul {
-    padding-inline-start: 0px;
+.navListItem{
+  width: 100px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
 }
-
-.imgprincipal {
-    left: 10px;
+.navListItem p{
+  margin: 0;
 }
-
-.navList {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-}
-
-.navListItem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.navListItem svg {
-    display: none;
-}
-/*
-.navListItem input {
-    background-image: url("../../assets/images/search-outline.svg");
-    background-repeat: no-repeat;
-    background-position: right;
-    padding: 5px 0px 5px 15px;
-    width: 85%;
-    border-radius: 50px;
-    border: 2px solid rgba(155, 155, 155, 0.8);
+.containerPhoto{
+  display: flex;
+  align-items: center;
 }
 
-.nav__list-item input:focus {
-    border: 2px solid rgba(88, 88, 88, 0.08);
+.photoProfile{
+  width: 55px;
+  height: 55px;
 }
-*/
-
-.navListItem img {
-    width: 70px;
-    height: 70px;
-}
-
-.navListItem span {
-    font-weight: 700;
-    font-size: 1.2em;
-}
-
-@media (max-width: 745px) {
-    .navListItem svg {
-        display: inline;
-    }
-    .navListItem span {
-        display: none;
-    }
-
-    .main {
-        width: 100%;
-    }
-}
-
-/* Small (sm) */
-@media (max-width: 400px) {
-    .navListItem img {
-        width: 50px;
-        height: 50px;
-    }
-}
-
-/* Dropdown Logout styles  */
-
+/*========================= Dropdown ========================= */
 .dropdownLogOut {
-    width: auto;
-    user-select: none;
-    margin: 0.5rem;
-    position: relative;
-    height: auto;
+  width: 30px;
+  height: 30px;
+  user-select: none;
+  margin: 0 5px;
+  position: relative;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5)
+}
+.dropdownBtn{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdownContent {
+  position: absolute;
+  top: 56px;
+  right: 0;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  color: #333;
+  width: 145px;
+  border-radius: 10px;
+}
+.dropdownContent a{
+  text-decoration: none;
+  color: black
+}
+.dropdownOptions{
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  column-gap: 3px;
+}
+/*========================= End Dropdown ========================= */
+
+@media (max-width: 640px) {
+  .globalNavContent{
+    margin: 0 10px;
+  }
+  .navBar{
+    height: 60px;
+  }
+  .navListItem{
+    height: 60px;
+    width: 90px;
+  }
+  .iconoEducamas{
+    width: 45px;
+    height: 45px;
+  }
+  .photoProfile{
+    display: none;
+  }
 }
 
-.dropdownLogOut .dropdownBtn {
-    padding: 15px 20px;
-    background: #fff;
-    /*box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06); */
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    justify-content: space-between;
-    border-radius: 50px;
-    background-color: white;
-    width: 100%;
-    height: 50px;
-    padding: 5px;
-}
-
-a {
-    list-style: none;
-    text-decoration: none;
-    color: #010101;
-}
-
-.dropdownLogOut .dropdownContent {
-    position: absolute;
-    top: 110%;
-    left: 0;
-    padding: 10px;
-    background: #fff;
-    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
-    font-weight: 500;
-    color: #333;
-    width: 100%;
-}
-
-.dropdownLogOut .dropdownContent .dropdownItem {
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.dropdownLogOut .dropdownContent .dropdownItem:hover {
-    background: #f4f4f4;
-}
-
-.dropdownClose {
-    border-top-style: ridge;
-    border-top-color: grey;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.dropdownLogOut .dropdownContent .dropdownItem:hover {
-    background: #f4f4f4;
+@media (max-width: 420px) {
+  .navListItem{
+    width: 60px;
+  }
+  .navList{
+    column-gap: 10px;
+  }
+  .navListItem{
+    font-size: 14px;
+  }
+  .navListItem p{
+    display: none;
+  }
 }

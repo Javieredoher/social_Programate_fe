@@ -1,6 +1,8 @@
 // import "babel-polyfill";
 import "regenerator-runtime/runtime";
-const API = "http://localhost:3001/api";
+import { baseUrl } from "../../config";
+
+const API = `${baseUrl}/api`;
 //const API = "http://localhost:3000/api";
 
 
