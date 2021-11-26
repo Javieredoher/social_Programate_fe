@@ -24,7 +24,6 @@ const News = ({ description, images, technologies, title, id, user }) => {
     const deletePost = async () => {
         try {
             await deleteData("posts", id);
-
             const data = await getDataAll("posts");
             setGetPosts(data.reverse());
         } catch (error) {

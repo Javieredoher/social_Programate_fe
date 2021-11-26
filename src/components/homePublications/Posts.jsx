@@ -1,40 +1,69 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 
 import News from "./News";
 import Jobs from "./Jobs";
 import Events from "./Events";
-import { getData, getDataAll } from "../../helpers/fetch";
+import { getDataAll } from "../../helpers/fetch";
 import { DataContext } from "../../context/DataContext";
+import { useState } from "react";
 
 const Posts = () => {
-    const { getPosts, setGetPosts, dataUser } = useContext(DataContext);
+    const { getPosts, setGetPosts, filterHome, setFilterHome } =
+        useContext(DataContext);
 
-    const { firstName, middleName, lastName, cohorte, avatar } = dataUser;
+    const [dataUsers, setDataUsers] = useState([]);
 
-    // useEffect(async () => {
-    //     if (idUser) {
-    //         try {
-    //             const data = await getData("users", idUser);
-    //             setDataUser(data);
-    //             console.log(data);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    // }, [idUser]);
+    useEffect(async () => {
+        try {
+            const data = await getDataAll("users");
+            setDataUsers(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
+    const filteredUser = () => {
+        const filteredUser = dataUsers.filter(
+            (user) =>
+                user?.firstName?.toLowerCase().includes(filterHome) ||
+                user?.middleName?.toLowerCase().includes(filterHome) ||
+                user?.lastName?.toLowerCase().includes(filterHome)
+        );
+
+        return filteredUser;
+    };
+
+    const filterPosts = () => {
+        if (filterHome.length !== 0) {
+            const filtered = getPosts.filter(
+                (post) =>
+                    post?.type?.toLowerCase().includes(filterHome) ||
+                    post?.technologies
+                        ?.map((tech) => tech.toLowerCase())
+                        .includes(filterHome) ||
+                    filteredUser()
+                        .map((user) => user._id)
+                        .includes(post?.user_info)
+            );
+            return filtered;
+        } else {
+            return getPosts;
+        }
+    };
 
     useEffect(async () => {
         try {
             const data = await getDataAll("posts");
             setGetPosts(data.reverse());
+            // console.log(data);
         } catch (error) {
             console.log(error);
         }
-    }, [getPosts]);
+    }, []);
 
     return (
         <Fragment>
-            {getPosts?.map((post) =>
+            {filterPosts()?.map((post) =>
                 post.type === "news" ? (
                     <News
                         description={post.description}
