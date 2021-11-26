@@ -16,9 +16,9 @@ const ProfileMain = ({ dataProfile }) => {
         // console.log(idUser);
         navigate(`/formprofile/${idUser}`);
     };
-    useEffect(() => {
-        console.log(dataProfile, idUser);
-    }, []);
+    // useEffect(() => {
+    //     console.log(dataProfile, idUser);
+    // }, []);
 
     return (
         <Fragment>

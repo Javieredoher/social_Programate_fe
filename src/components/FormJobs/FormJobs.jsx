@@ -5,6 +5,7 @@ import { DataContext } from "../../context/DataContext";
 import { sendData } from "../../helpers/fetch";
 import HardSkills from "../formInfo/HardSkills";
 import SoftSkills from "../formInfo/SoftSkills";
+import { useNavigate } from "react-router-dom";
 
 const FormJobs = () => {
     const { postsJobs, setPostsJobs, idUser } = useContext(DataContext);
@@ -12,11 +13,14 @@ const FormJobs = () => {
     const [technical, setTechnical] = useState([]);
     const [softSkills, setsoftSkills] = useState([]);
 
+    const navigate = useNavigate();
+
     //Enviar data del usuario al modelo de user y profile
     const submitData = async (e) => {
         e.preventDefault();
         try {
             await sendData("posts", postsJobs);
+            navigate("/home");
         } catch (error) {
             console.log("Error" + error);
         }

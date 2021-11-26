@@ -8,11 +8,14 @@ const FormEvent = () => {
 
     const [techs, setTechs] = useState([]);
 
+    const navigate = useNavigate();
+
     //Enviar data del usuario al modelo de user y profile
     const submitData = async (e) => {
         e.preventDefault();
         try {
             await sendData("posts", postsEvent);
+            navigate("/home");
         } catch (error) {
             console.log("Error" + error);
         }
