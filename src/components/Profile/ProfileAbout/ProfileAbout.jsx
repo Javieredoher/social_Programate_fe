@@ -4,8 +4,9 @@ import { getData, getDataAll } from "../../../helpers/fetch";
 import style from "./ProfileAbout.module.css";
 
 const ProfileAbout = () => {
+
     const { setDataUser, idUser, setDataProfile, dataProfile } =
-        useContext(DataContext);
+        useContext(DataContext); 
 
     //Traer data del usuario
     useEffect(async () => {
@@ -13,23 +14,35 @@ const ProfileAbout = () => {
             try {
                 const data = await getData("users", idUser);
                 setDataUser(data);
+                //console.log(data,idUser)
+                
             } catch (error) {
                 console.log(error);
             }
         }
     }, [idUser]);
 
+
+
     useEffect(async () => {
         if (idUser) {
+
+
             try {
-                const data = await getDataAll("profiles");
+                console.log(idUser, "Testeando")
+
+                const data = await getDataAll("profiles");  
+
+                console.log(data)
+
                 const filterData = data.filter(
                     (profile) => profile.user_info?._id === idUser
                 );
+
                 setDataProfile(filterData[0]);
-                console.log(filterData, "data del perfil");
-            } catch (error) {
-                console.log(error);
+                //console.log(filterData, "data del perfil"); !!!
+            } catch (error) { 
+                console.log(error); 
             }
         }
     }, [idUser]);

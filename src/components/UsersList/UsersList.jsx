@@ -4,34 +4,6 @@ import style from './UsersList.module.css'
 //import ImagDama from '../../assets/images/ImagDama.png'
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
 
-
-
-/* const Lista_Usuarios = () => {
-    const [toogle, setToogle] = useState(true)
-
-    const [allUser, setAllUser] = useState([])
-
-    useEffect(async () => {
-        const dataToEdit = await getDataAll("users");
-
-        setAllUser(dataToEdit)
-    }, [])
-    useEffect(() => {
-
-    }, [allUser, setAllUser]);
-
-    const onToggle = (id) => {
-        allUser.map((user) => {
-            if (user._id === id) {
-                console.log(id, user._id);
-                user.state = !user.state
-                setAllUser(allUser)
-            }
-
-        })
-    } */
-
-
 const UsersList = () =>  {
 
     const [toogle, setToogle] = useState(true)

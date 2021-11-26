@@ -32,7 +32,7 @@ const App = () => {
 
             const getToken = async () => {
                 const res = await axios.post('http://localhost:3001/api/refresh_token', { refreshtoken })
-                console.log(res)
+                //console.log(res)
                 dispatch({ type: 'GET_TOKEN', payload: res.data.access_token })
             }
             getToken()
