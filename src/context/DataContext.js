@@ -109,6 +109,8 @@ export const DataProvider = ({ children }) => {
 
     const [getPosts, setGetPosts] = useState();
 
+    const [filterHome, setFilterHome] = useState("");
+
     return (
         <DataContext.Provider
             value={{
@@ -129,6 +131,8 @@ export const DataProvider = ({ children }) => {
                 setPostsJobs,
                 getPosts,
                 setGetPosts,
+                setFilterHome,
+                filterHome,
             }}
         >
             {children}
