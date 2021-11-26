@@ -7,25 +7,26 @@ import { DataContext } from "../../context/DataContext";
 const ForumAnswers = () => {
   const { questionId } = useParams();
   const [user, setUser] = useState([]);
+  const [users, setUsers] = useState([]);
   const [comments, setComments] = useState([]);
   const [postComments, setPostComments] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [clear, setClear] = useState(false);
   const [comment, setComment] = useState("");
   const [question, setQuestion] = useState([]);
-  const [userComment, setUserComment] = useState("");
+  const [userComment, setUserComment] = useState([]);
 
-  const { setDataUser, idUser} = useContext(DataContext); 
+  const { setDataUser, idUser } = useContext(DataContext);
   console.log(idUser)
-  const searchUrl=idUser
+  const searchUrl = idUser
 
-/*   const searchUrl = '61942ebcac84f48bb97d64aa' //'619e91439d72f976d888e360'//'61942ebcac84f48bb97d64aa'*/
+  /*   const searchUrl = '61942ebcac84f48bb97d64aa' //'619e91439d72f976d888e360'//'61942ebcac84f48bb97d64aa'*/
 
   const userInfo = async () => {
     const data = await getData("users", searchUrl);
     setUser(data);
     console.log(data)
-  } 
+  }
 
 
   const commentInfo = async () => {
@@ -53,10 +54,16 @@ const ForumAnswers = () => {
 
   };
 
+  const getUsers = async () => {
+    const data = await getDataAll(`users`);
+    setUsers(data);
+  }
+
   useEffect(() => {
 
     userInfo();
     commentInfo();
+    getUsers();
   }, [])
   useEffect(() => {
     commentInfo();
@@ -74,6 +81,14 @@ const ForumAnswers = () => {
     };
     singleQuestions();
   }, [questionId]);
+
+  const onName = (id) => {
+    const user = users.filter(user => user._id === id)
+    const userFilter = user[0];
+    console.log(userFilter);
+    return `${userFilter.firstName} ${userFilter.lastName}`
+  }
+
 
   const onDelete = async (id) => {
     await deleteData('comments', id)
@@ -123,8 +138,8 @@ const ForumAnswers = () => {
       {comments.map((comment, i) => (
         <div key={i} className={styles.questionContainerMain}>
           <br />
-          <p className={styles.name}>{comment.user_id}</p>
-          {comment.user_id}
+          <p className={styles.name}>{onName(comment.user_id)}</p>
+
           <p className={styles.name}>{comment.comment}</p>
           <p className={styles.dateQuestion}>Creado: {question.createdAt} </p>
           {user._id === comment.user_id && <span className={styles.links} onClick={() => onDelete(comment._id)}>Eliminar</span>}

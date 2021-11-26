@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getDataAll, getData } from "../../helpers/fetch";
 import styles from "./ForumQuestions.module.css"
 
-export const Question = ({ data, user }) => {
+export const Question = ({ data }) => {
+
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState("");
+  const getUsers = async () => {
+    const data = await getDataAll(`users`);
+    setUsers(data);
+  }
+  useEffect(() => {
+    getUsers();
+  }, [])
+
+  const onName = (id) => {
+    const user = users.filter(user => user._id === id)
+    const userFilter = user[0];
+    if (userFilter) {
+      return `${userFilter.firstName} ${userFilter.lastName}`
+    }
+
+  }
+
   let date = data.createdAt.slice(0, 10);
 
   return (
@@ -19,7 +40,7 @@ export const Question = ({ data, user }) => {
         }
       </div>
       <div className={styles.infoContainer}>
-        <p className={styles.name}>Jhonatan Mosquera Velez</p>
+        <p className={styles.name}>{data.user_info && onName(data.user_info)}</p>
         <Link to={"/questions/" + data._id} state={{ from: "user" }} className={styles.btn__question}>Responder</Link>
       </div>
     </div>
