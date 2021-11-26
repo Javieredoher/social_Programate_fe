@@ -5,6 +5,7 @@ import styles from "./ForumQuestions.module.css"
 
 export const Question = ({ data }) => {
 
+
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState("");
   const getUsers = async () => {
@@ -24,12 +25,23 @@ export const Question = ({ data }) => {
 
   }
 
+  const onImage = (id) => {
+    const user = users.filter(user => user._id === id)
+    const userFilter = user[0];
+    if (userFilter) {
+      return userFilter.avatar
+    }
+
+  }
+
   let date = data.createdAt.slice(0, 10);
 
   return (
     <div className={styles.questionContainerMain}>
       <div className={styles.containerQuestion}>
+        <img className={styles.question} src={data.title && onImage(data.user_info)} />
         <h5 className={styles.question}>{data.title}</h5>
+
         <p className={styles.dateQuestion}>Creado: {date}</p>
       </div>
       <div className={styles.tagsContainer}>

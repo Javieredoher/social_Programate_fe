@@ -89,6 +89,13 @@ const ForumAnswers = () => {
     return `${userFilter.firstName} ${userFilter.lastName}`
   }
 
+  const onImage = (id) => {
+    const user = users.filter(user => user._id === id)
+    const userFilter = user[0];
+    console.log(userFilter);
+    return userFilter.avatar
+  }
+
 
   const onDelete = async (id) => {
     await deleteData('comments', id)
@@ -139,6 +146,7 @@ const ForumAnswers = () => {
         <div key={i} className={styles.questionContainerMain}>
           <br />
           <p className={styles.name}>{onName(comment.user_id)}</p>
+          <img src={onImage(comment.user_id)} />
 
           <p className={styles.name}>{comment.comment}</p>
           <p className={styles.dateQuestion}>Creado: {question.createdAt} </p>
