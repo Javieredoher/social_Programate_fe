@@ -10,11 +10,10 @@ const HomePage = () => {
     return (
         <>
             <Navbar />
-
+            <Notification />
             <RenderPostHome />
             <EventCard />
             <JobCard />
-            <Notification />
 
             <Footer />
         </>
