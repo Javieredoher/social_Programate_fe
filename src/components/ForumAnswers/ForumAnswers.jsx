@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, useParams, useLocation } from "react-router-dom";
 import { getData, getDataAll, sendData, deleteData } from "../../helpers/fetch";
 import styles from "./ForumAnswers.module.css";
+import { DataContext } from "../../context/DataContext";
 
 const ForumAnswers = () => {
   const { questionId } = useParams();
@@ -14,12 +15,17 @@ const ForumAnswers = () => {
   const [question, setQuestion] = useState([]);
   const [userComment, setUserComment] = useState("");
 
-  const searchUrl = '61942ebcac84f48bb97d64aa' //'619e91439d72f976d888e360'//'61942ebcac84f48bb97d64aa'
+  const { setDataUser, idUser} = useContext(DataContext); 
+  console.log(idUser)
+  const searchUrl=idUser
+
+/*   const searchUrl = '61942ebcac84f48bb97d64aa' //'619e91439d72f976d888e360'//'61942ebcac84f48bb97d64aa'*/
+
   const userInfo = async () => {
     const data = await getData("users", searchUrl);
     setUser(data);
-  }
-
+    console.log(data)
+  } 
 
 
   const commentInfo = async () => {
@@ -118,7 +124,7 @@ const ForumAnswers = () => {
         <div key={i} className={styles.questionContainerMain}>
           <br />
           <p className={styles.name}>{comment.user_id}</p>
-          {renderName(comment.user_id)}
+          {comment.user_id}
           <p className={styles.name}>{comment.comment}</p>
           <p className={styles.dateQuestion}>Creado: {question.createdAt} </p>
           {user._id === comment.user_id && <span className={styles.links} onClick={() => onDelete(comment._id)}>Eliminar</span>}

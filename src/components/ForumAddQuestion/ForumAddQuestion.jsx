@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./ForumAddQuestion.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { sendData } from "../../helpers/fetch";
 import { BiMessageAltX } from "react-icons/bi";
 import { BiBox } from "react-icons/bi";
+import { DataContext } from "../../context/DataContext";
 
 import ReactTagInput from "@pathofdev/react-tag-input"; //Review !
 import "@pathofdev/react-tag-input/build/index.css"; //Review !
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 const ForumAddQuestion = () => {
   const [tags, setTags] = useState([]);
-  let history = useHistory();
+  let navigate = useNavigate();
+  const { dataUser, idUser } = useContext(DataContext);
+
+
+
 
   return (
     <section className={styles.section}>
@@ -29,8 +34,10 @@ const ForumAddQuestion = () => {
               description: "test2",
               tags: [],
               images: "imagen.png",
-              type: "questions"
+              type: "questions",
+              user_info: idUser
             }}
+
             validate={(valores) => {
               let errores = {};
           
@@ -49,13 +56,15 @@ const ForumAddQuestion = () => {
               return errores;
             }}
             onSubmit={ async (valores, { resetForm }) => {
+
               valores.tags = tags;
               setTags([]);
               resetForm();
               console.log("Formulario enviado");
               console.log(valores);
               await sendData("posts", valores);
-              history.push("/questions");
+              navigate("/questions");
+
             }}
           >
             {({ errors, setFieldValue }) => (

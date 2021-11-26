@@ -20,7 +20,7 @@ const ForumQuestions = () => {
 
   const allQuestions = async () => {
     const searchUrl = search ? "?title=" + search : "?type=questions";
-    const data = await getDataAll("posts", searchUrl);
+    const data = await getDataAll(`posts${searchUrl}`);
     setQuestions(data);
   }
 

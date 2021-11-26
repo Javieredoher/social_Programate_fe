@@ -2,16 +2,16 @@ import React from "react";
 import styles from "./ForumQuestions.module.css";
 import { BiSearch } from "react-icons/bi";
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 export const Search = () => {
   const [searchText, setSearchText] = useState("");
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-        history.push("/questions?search=" + searchText);
+        navigate("/questions?search=" + searchText);
   };
 
   return (

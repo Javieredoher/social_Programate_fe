@@ -9,8 +9,8 @@ export const getData = async (endpoint, id) => {
     return await resp.json();
 };
 
-export const getDataAll = async (endpoint, search) => {
-    const url = `${API}/${endpoint}${search}`;
+export const getDataAll = async (endpoint) => {
+    const url = `${API}/${endpoint}`;
     const resp = await fetch(url);
     return await resp.json();
 };
