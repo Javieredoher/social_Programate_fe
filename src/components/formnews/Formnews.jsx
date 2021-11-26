@@ -54,7 +54,7 @@ const Formnews = () => {
                     });
                 }
 
-                navigate(`/formevent`);
+                navigate(`/home`);
                 // history.push("/formevent");
             } catch (error) {
                 console.log(error);

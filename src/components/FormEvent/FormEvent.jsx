@@ -2,17 +2,21 @@ import React, { Fragment, useState, useContext, useEffect } from "react";
 import style from "./FormEvent.module.css";
 import logo from "../../assets/images/logo-a-color-.jpg";
 import { DataContext } from "../../context/DataContext";
-import { sendData, updateData } from "../../helpers/fetch";
+import { sendData } from "../../helpers/fetch";
+import { useNavigate } from "react-router-dom";
 const FormEvent = () => {
     const { postsEvent, setPostsEvent, idUser } = useContext(DataContext);
 
     const [techs, setTechs] = useState([]);
+
+    const navigate = useNavigate();
 
     //Enviar data del usuario al modelo de user y profile
     const submitData = async (e) => {
         e.preventDefault();
         try {
             await sendData("posts", postsEvent);
+            navigate("/home");
         } catch (error) {
             console.log("Error" + error);
         }
