@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import styles from "./Formnews.module.css";
 
 import { getData, sendData, updateData } from "../../helpers/fetch";

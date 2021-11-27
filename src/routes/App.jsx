@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import "../assets/styles/global2.css";
+
 import { DataProvider } from "../context/DataContext";
 
 //Login Redux
@@ -12,6 +13,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { dispatchGetUser, dispatchLogin, fetchUser } from '../redux/actions/authAction'
 
 import Logout from '../components/Logout/Logout';
+import NotAccess from '../components/notAccess/NotAccess';
+
 
 
 const App = () => {
@@ -30,7 +33,7 @@ const App = () => {
 
             const getToken = async () => {
                 const res = await axios.post('http://localhost:3001/api/refresh_token', { refreshtoken })
-                console.log(res)
+                //console.log(res)
                 dispatch({ type: 'GET_TOKEN', payload: res.data.access_token })
             }
             getToken()
@@ -55,10 +58,11 @@ const App = () => {
 
         <>
             <DataProvider>
-                <Router>   
+                <Router>
+                <NotAccess /> 
                                     
-                    <Logout/>  
-                    <Autentification/>                    
+                    {/* <Logout/>  
+                    <Autentification/>                     */}
             
                 </Router>
             </DataProvider>

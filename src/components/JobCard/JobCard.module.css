@@ -1,5 +1,5 @@
 .section {
-    padding: 15rem 0 2rem;
+    padding: 3rem 0 2rem;
     width: 100%;
     min-height: 100vh;
 }
@@ -83,11 +83,7 @@
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: 300;
 }
-/*
-.cardContainer:hover {
-    transform: scale(1.1);
-}
-*/
+
 .eventsContainer {
     overflow: hidden;
     height: auto;
@@ -108,8 +104,8 @@
 }
 
 .imageAvatar img {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
 }
 
 .user {
