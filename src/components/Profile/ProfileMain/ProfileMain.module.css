@@ -46,10 +46,10 @@
     gap: 5px;
 }
 
-img {
+/* img {
     width: 20px;
     margin: 10px;
-}
+} */
 
 .but_cont {
     width: 45;
@@ -105,9 +105,9 @@ button:hover {
     cursor: pointer;
 }
 
-b {
+/* b {
     font-size: 20px;
-}
+} */
 
 .tex_editar {
     visibility: hidden;

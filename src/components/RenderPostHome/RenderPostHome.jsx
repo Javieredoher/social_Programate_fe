@@ -7,6 +7,14 @@ import { RenderPostGrid } from "./RenderPostGrid";
 
 const RenderPostHome = () => {
     //const imageNews = news.image_new;
+    const getTest = async () => {
+        const url = `https://redsocialprogramate.herokuapp.com/api/users`;
+        const resp = await fetch(url);
+        const data = await resp.json();
+        return data
+    };
+    
+    console.log(getTest())
 
     return (
         <section className={style.section}>
