@@ -5,7 +5,7 @@ import { deleteData, getData, getDataAll, sendData } from "../../helpers/fetch";
 import style from "./Posts.module.css";
 import styles from "./Comment_likes.module.css";
 import Technologies from "./Technologies";
-
+import './style_icon.css'
 
 const News = ({ description, images, technologies, title, id, user }) => {
     const { setGetPosts, idUser } = useContext(DataContext);
@@ -16,13 +16,15 @@ const News = ({ description, images, technologies, title, id, user }) => {
     const [comments, setComments] = useState([]);
     const [users, setUsers] = useState([]);
     const [refresh, setRefresh] = useState(false);
+    const [like, setLike] = useState(true)
+    const [likes, setLikes] = useState([])
 
     let navigate = useNavigate();
 
     const [userPost, setUserPost] = useState();
     const commentInfo = async () => {
         const data = await getData("posts", id);
-
+        setLikes(likes => data.likes)
         setComments(comments => data.comments);
 
     }
@@ -101,7 +103,39 @@ const News = ({ description, images, technologies, title, id, user }) => {
     const onDelete = async (id) => {
         await deleteData('comments', id)
         setRefresh(!refresh)
+    }
+    const submitLike = async () => {
+        setLike(!like)
+        console.log("like");
+        const data = await getData('posts', id)
+        const idPost = data.likes
 
+        likes.map((like) => {
+            if (like._id === idPost) {
+
+            }
+        })
+        try {
+
+            await sendData(`posts/like/${id}`, { like: 1, user_id: idUser });
+            setRefresh(!refresh)
+
+
+        } catch (error) {
+            console.log("Error" + error);
+        }
+
+    }
+    const onDeleteLike = async () => {
+        setLike(!like)
+        console.log("dislike");
+        likes.map((like) => {
+            if (like.user_id === idUser) {
+                console.log(like.user_id, like._id);
+                deleteData('likes', like._id)
+                setRefresh(!refresh)
+            }
+        })
 
     }
 
@@ -174,8 +208,8 @@ const News = ({ description, images, technologies, title, id, user }) => {
                 </div>
                 <div className={style.icon_cont2}>
                     <div className={style.like}>
-                        <i className="far fa-thumbs-up"></i>
-                        <span>23</span>
+                        <i onClick={like ? submitLike : onDeleteLike} className={like ? "far fa-thumbs-up " : "far fa-thumbs-up red "}></i>
+                        <span>{likes.length}</span>
                     </div>
                     <div className={style.like}>
                         <i onClick={toggle} className="far fa-comment-dots"></i>

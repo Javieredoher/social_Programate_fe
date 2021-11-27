@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/DataContext";
 import { deleteData, getData, getDataAll, sendData } from "../../helpers/fetch";
 import styles from "./Comment_likes.module.css";
-
+import './style_icon.css'
 import style from "./Posts.module.css";
 
 const News = ({
@@ -25,12 +25,14 @@ const News = ({
     const [users, setUsers] = useState([]);
     const [refresh, setRefresh] = useState(false);
     const [userPost, setUserPost] = useState();
+    const [like, setLike] = useState(true)
+    const [likes, setLikes] = useState([])
 
     let navigate = useNavigate();
 
     const commentInfo = async () => {
         const data = await getData("posts", id);
-
+        setLikes(likes => data.likes)
         setComments(comments => data.comments);
 
     }
@@ -95,9 +97,42 @@ const News = ({
     const onDelete = async (id) => {
         await deleteData('comments', id)
         setRefresh(!refresh)
+    }
+    const submitLike = async () => {
+        setLike(!like)
+        console.log("like");
+        const data = await getData('posts', id)
+        const idPost = data.likes
 
+        likes.map((like) => {
+            if (like._id === idPost) {
+
+            }
+        })
+        try {
+
+            await sendData(`posts/like/${id}`, { like: 1, user_id: idUser });
+            setRefresh(!refresh)
+
+
+        } catch (error) {
+            console.log("Error" + error);
+        }
 
     }
+    const onDeleteLike = async () => {
+        setLike(!like)
+        console.log("dislike");
+        likes.map((like) => {
+            if (like.user_id === idUser) {
+                console.log(like.user_id, like._id);
+                deleteData('likes', like._id)
+                setRefresh(!refresh)
+            }
+        })
+
+    }
+
 
     const previewComment = (comment, index) => {
         return (
@@ -183,8 +218,8 @@ const News = ({
                 </div>
                 <div className={style.icon_cont2}>
                     <div className={style.like}>
-                        <i className="far fa-thumbs-up"></i>
-                        <span>23</span>
+                        <i onClick={like ? submitLike : onDeleteLike} className={like ? "far fa-thumbs-up " : "far fa-thumbs-up red "}></i>
+                        <span>{likes.length}</span>
                     </div>
                     <div className={style.like}>
                         <i onClick={toggle} className="far fa-comment-dots"></i>
