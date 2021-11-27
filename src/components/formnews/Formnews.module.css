@@ -1,8 +1,7 @@
-.section {
+.section_container{
     padding: 3rem 0 2rem;
     width: 100%;
     min-height: 100vh;
-    background-color: #ececec;
 }
 
 .form_container {
@@ -25,7 +24,7 @@
     font-size: 18px;
     margin-left: 5px;
 }
-.input {
+.nom_input {
     width: 100%;
     border-radius: 15px;
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -59,9 +58,10 @@
 }
 
 .form img {
-margin-top: 10px;
-width: 50px;
-} 
+    margin-top: 10px;
+    height: 50px;
+    min-width: 50px;
+}
 
 .image {
     width: 100%;

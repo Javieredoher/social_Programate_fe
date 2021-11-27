@@ -1,14 +1,16 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import style from "./FormProject.module.css";
 import { DataContext } from "../../context/DataContext";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import HardSkills from "./HardSkills";
 import { getData, sendData, updateData } from "../../helpers/fetch";
 import Swal from "sweetalert2";
 
 const FormProject = () => {
-    const { portfolio, setPortfolio, initialStatePortfolio } =
+    const { portfolio, setPortfolio, initialStatePortfolio, idUser } =
         useContext(DataContext);
+
+    const navigate = useNavigate();
 
     const {
         profile_id,
@@ -20,7 +22,6 @@ const FormProject = () => {
         technologies,
     } = portfolio;
 
-    const history = useHistory();
     const params = useParams();
 
     //Enviar data del proyecto al modelo de portfolio
@@ -46,29 +47,19 @@ const FormProject = () => {
             try {
                 if (!params.id) {
                     await sendData("portfolios", {
-                        profile_id,
-                        image,
-                        title,
-                        description_proyect,
-                        deploy,
-                        proyect_link,
-                        technologies,
+                        ...portfolio,
+                        profile_id: idUser,
                     });
                     setPortfolio(initialStatePortfolio);
                 } else {
                     await updateData("portfolios", params.id, {
-                        profile_id,
-                        image,
-                        title,
-                        description_proyect,
-                        deploy,
-                        proyect_link,
-                        technologies,
+                        ...portfolio,
+                        profile_id: idUser,
                     });
                     setPortfolio(initialStatePortfolio);
                 }
 
-                history.push("/portfolio");
+                navigate("/portfolio");
             } catch (error) {
                 console.log(error);
             }
@@ -111,7 +102,8 @@ const FormProject = () => {
     useEffect(() => {
         if (params.id) {
             getDataPortfolio(params.id);
-        } {
+        }
+        {
             setPortfolio(initialStatePortfolio);
         }
     }, []);
@@ -131,7 +123,7 @@ const FormProject = () => {
 
     const cancelSend = () => {
         setPortfolio(initialStatePortfolio);
-        history.push("/portfolio");
+        navigate("/portfolio");
     };
 
     return (

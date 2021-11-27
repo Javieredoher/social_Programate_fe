@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import style from "./formPhoto.module.css";
 import { BiTrash } from "react-icons/bi";
 import logo from "../../assets/images/logo-a-color-.jpg";
@@ -7,6 +7,7 @@ import { DataContext } from "../../context/DataContext";
 
 const FormPhotoUser = () => {
     const { dataUser, setDataUser } = useContext(DataContext);
+
     const [pathImage, setPathImage] = useState("");
 
     const deleteImage = () => {
@@ -15,6 +16,12 @@ const FormPhotoUser = () => {
             avatar: "",
         });
     };
+    // useEffect(() => {
+    //     setDataUser({
+    //         ...dataUser,
+    //         _id: id,
+    //     })
+    // }, [])
 
     const onFileChange = (e) => {
         if (e.target.files.length) {
@@ -48,6 +55,7 @@ const FormPhotoUser = () => {
                 <h2>Completa tu perfil</h2>
             </div>
             <div className={style.welcome}>
+                {/* <p>Hola {dataUser.firstName}, completa tus datos</p> */}
                 <p>Hola {dataUser.firstName}, completa tus datos</p>
             </div>
             <form>
