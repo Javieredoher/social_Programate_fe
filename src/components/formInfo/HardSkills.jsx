@@ -8,7 +8,7 @@ const HardSkills = ({ skill, technical, setTechnical }) => {
     const deleteSkill = (e) => {
         e.preventDefault();
 
-        console.log(technical);
+        // console.log(technical);
         const tech = technical.filter((t) => t !== skill);
         setTechnical(tech);
         setDataProfile({

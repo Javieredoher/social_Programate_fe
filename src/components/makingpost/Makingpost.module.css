@@ -1,5 +1,5 @@
 .dropdown {
-    width: 100%;
+    width: 47%;
     user-select: none;
     margin: 10px auto;
     position: relative;
@@ -42,4 +42,18 @@ a {
 }
 .dropdown .dropdown_content .dropdown_item:hover {
     background: #f4f4f4;
+}
+
+@media (max-width: 768px) {
+    .dropdown {
+        width: 95%;
+        margin: 0px auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .dropdown {
+        width: 95%;
+        margin: 10px auto;
+    }
 }

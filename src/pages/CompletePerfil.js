@@ -7,13 +7,18 @@ import { ProfessionalInformation } from "../components/professionalInformation/P
 import { DataContext } from "../context/DataContext";
 import { getDataAll, getData } from "../helpers/fetch";
 
-const CompletePerfil = () => {
+/*const CompletePerfil = () => {
+    const { idUser, email, setDataProfile, dataProfile } =
+        useContext(DataContext);*/
+
+const CompletePerfil = ({ value }) => {
     const {
         idUser,
         email,
         setDataProfile,
         dataProfile,
     } = useContext(DataContext);
+
     const [status, setStatus] = useState(false);
     const [statusOff, setStatusOff] = useState(true);
     const [items, setItems] = useState([]);
@@ -32,7 +37,7 @@ const CompletePerfil = () => {
         data.map((value) => {
             setItems((items) => [...items, value]);
         });
-    }
+    };
 
     useEffect(() => {
         getAllProfiles();
@@ -41,57 +46,63 @@ const CompletePerfil = () => {
     const getUserInfo = async () => {
         const data = await getData(`users`, idUser);
         setUser(data);
-    }
+    };
 
     useEffect(() => {
         getUserInfo();
-
     }, []);
     useEffect(() => {
         items.map((item) => {
-
             if (item.user_info?.email === email) {
                 setStatus((status) => true);
                 console.log("working 2");
             }
-
         });
-
     }, [setItems, items]);
 
     useEffect(() => {
-        console.log(user)
         if (user?.rol === 0 || user?.state === false) {
-
             setStatusOff(false);
         }
-
-    }, [user, items])
+    }, [user, items]);
 
     useEffect(() => {
         setDataProfile({ ...dataProfile, user_info: idUser });
     }, [idUser]);
 
-    //console.log(_id)
-    //619e91439d72f976d888e360
-    // console.log(idUser, email);
-    return (
-        <>
-            {statusOff ? (
-                status ? (
-                    <Navigate replace to="/" />
+
+    const validation = () => {
+        return (
+            <>
+                {statusOff ? (
+                    status ? (
+                        <Navigate replace to="/" />
+                    ) : (
+                        <>
+                            <FormPhotoUser />
+                            <Form_PersonalInfo />
+                            <ProfessionalInformation />
+                        </>
+                    )
                 ) : (
-                    <>
-                        <FormPhotoUser />
-                        <Form_PersonalInfo />
-                        <ProfessionalInformation />
-                    </>
-                )
-            ) : (
-                <Navigate replace to="/dontallow" />
-            )}
-        </>
-    );
+                    <Navigate replace to="/dontallow" />
+                )}
+            </>
+        )
+    };
+    const validationEdit = () => {
+        return (
+            <>
+                <FormPhotoUser />
+                <Form_PersonalInfo />
+                <ProfessionalInformation />
+            </>
+        )
+    }
+    return (
+        value ? validationEdit() : validation()
+    )
+
 };
 
 export default CompletePerfil;

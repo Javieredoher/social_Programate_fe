@@ -87,9 +87,6 @@ const News = ({
                         <i className="far fa-comment-dots"></i>
                         <span>20</span>
                     </div>
-                    <div>
-                        <i className="fas fa-share"></i>
-                    </div>
                 </div>
             </div>
         </section>

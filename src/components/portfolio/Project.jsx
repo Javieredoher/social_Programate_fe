@@ -13,8 +13,7 @@ const Project = ({
     getDataPort,
     id,
 }) => {
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const deleteProject = async () => {
         try {
             await deleteData("portfolios", id);
@@ -57,8 +56,8 @@ const Project = ({
                 </div>
 
                 <div className={style.tecnologias}>
-                    {technologies.map((tech) => (
-                        <button>{tech}</button>
+                    {technologies.map((tech, index) => (
+                        <button key={index}>{tech}</button>
                     ))}
                 </div>
             </section>

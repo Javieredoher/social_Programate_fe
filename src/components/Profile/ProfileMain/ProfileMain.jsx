@@ -5,7 +5,7 @@ import medalla2 from "../../../assets/images/medalla2.png";
 import medalla3 from "../../../assets/images/medalla3.png"; */
 import { DataContext } from "../../../context/DataContext";
 import { Link, useNavigate } from "react-router-dom";
-
+import altImg from "../../../assets/images/avatar.png";
 
 const ProfileMain = ({ dataProfile }) => {
     const { dataUser, idUser } = useContext(DataContext);
@@ -20,11 +20,15 @@ const ProfileMain = ({ dataProfile }) => {
 
     return (
         <Fragment>
-            <form className={style.container}>
+            <div className={style.container}>
                 <section className={style.cont}>
                     <div className={style.circulo_cont}>
                         <div className={style.circulo}>
-                            <img src={avatar} alt="Foto" />
+                            {avatar ? (
+                                <img src={avatar} alt="Foto" />
+                            ) : (
+                                <img src={altImg} alt="Foto" />
+                            )}
                         </div>
                     </div>
 
@@ -60,7 +64,7 @@ const ProfileMain = ({ dataProfile }) => {
                         <i className="fas fa-pencil-alt"></i>
                     </div>
                 </section>
-            </form>
+            </div>
         </Fragment>
     );
 };
