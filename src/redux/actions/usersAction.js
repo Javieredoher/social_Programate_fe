@@ -1,8 +1,9 @@
 import ACTIONS from './index'
 import axios from 'axios'
+import { baseUrl } from '../../../config'
 
 export const fetchAllUsers = async (token) => {
-    const res = await axios.get('http://localhost:3001/api/all_info', {
+    const res = await axios.get(`${baseUrl}/api/all_info`, {
         headers: { Authorization: token }
     })
     return res

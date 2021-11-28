@@ -8,11 +8,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Formnews = () => {
-    const { posts, setPosts } = useContext(DataContext);
+    const { posts, setPosts, idUser } = useContext(DataContext);
 
     const { user_info, title, type, description, images, technologies } = posts;
 
-    const history = useNavigate();
+    const navigate = useNavigate();
     const params = useParams();
 
     useEffect(() => {
@@ -36,7 +36,7 @@ const Formnews = () => {
             try {
                 if (!params.id) {
                     await sendData("posts", {
-                        user_info,
+                        user_info: idUser,
                         title,
                         description,
                         images,
@@ -45,7 +45,7 @@ const Formnews = () => {
                     });
                 } else {
                     await updateData("posts", params.id, {
-                        user_info,
+                        user_info: idUser,
                         title,
                         description,
                         images,
@@ -54,7 +54,8 @@ const Formnews = () => {
                     });
                 }
 
-                history.push("/formevent");
+                navigate(`/home`);
+                // history.push("/formevent");
             } catch (error) {
                 console.log(error);
             }
@@ -183,7 +184,6 @@ const Formnews = () => {
                 </div>
                 <div className={styles.send}>
                     <button className="btn">Enviar</button>
-
                 </div>
             </form>
         </section>

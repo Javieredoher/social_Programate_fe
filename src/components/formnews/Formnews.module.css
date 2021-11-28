@@ -58,9 +58,10 @@
 }
 
 .form img {
-margin-top: 10px;
-width: 50px;
-} 
+    margin-top: 10px;
+    height: 50px;
+    min-width: 50px;
+}
 
 .image {
     width: 100%;

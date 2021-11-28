@@ -8,41 +8,94 @@ import React, {
 import style from "./FormJobs.module.css";
 import logo from "../../assets/images/logo-a-color-.jpg";
 import { DataContext } from "../../context/DataContext";
-import { sendData, updateData } from "../../helpers/fetch";
+import { getData, sendData, updateData } from "../../helpers/fetch";
 import HardSkills from "../formInfo/HardSkills";
 import SoftSkills from "../formInfo/SoftSkills";
-import { set } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const FormJobs = () => {
-    const { postsJobs, setPostsJobs } = useContext(DataContext);
+    const { postsJobs, setPostsJobs, idUser } = useContext(DataContext);
+    const {
+        user_info,
+        title,
+        type,
+        company,
+        technologies,
+        softSkills,
+        place,
+        modality,
+        salary,
+        contact,
+        description,
+    } = postsJobs;
+
+    const navigate = useNavigate();
+    const params = useParams();
+
+    useEffect(() => {
+        setPostsJobs({ ...postsJobs, type: "jobs" });
+    }, []);
 
     const [technical, setTechnical] = useState([]);
-    const [softSkills, setsoftSkills] = useState([]);
+    const [softSkill, setsoftSkill] = useState([]);
 
     //Enviar data del usuario al modelo de user y profile
+
     const submitData = async (e) => {
         e.preventDefault();
-        try {
-            await sendData("posts", postsJobs);
-        } catch (error) {
-            console.log("Error" + error);
+
+        if (
+            postsJobs.title.length <= 0 ||
+            postsJobs.company.length <= 0 ||
+            postsJobs.place.length <= 0 ||
+            postsJobs.modality.length <= 0 ||
+            postsJobs.contact.length <= 0 ||
+            postsJobs.description.length <= 0 ||
+            postsJobs.technologies.length <= 0 ||
+            postsJobs.softSkills.length <= 0 ||
+            postsJobs.salary.length <= 0
+        ) {
+            Swal.fire({
+                title: "Completar datos",
+                text: "Los campos de Nombre de la oferta,modalidad y salario son obligatorios",
+                icon: "error",
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "black",
+                timer: "6000",
+            });
+        } else {
+            try {
+                if (!params.id) {
+                    await sendData("posts", postsJobs);
+                } else {
+                    await updateData("posts", params.id, postsJobs);
+                }
+
+                navigate("/home");
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 
     const onChange = ({ target }) => {
+        /* console.log(postsJobs); */
         const { name, value } = target;
         setPostsJobs({
             ...postsJobs,
             [name]: value,
+            user_info: idUser,
         });
     };
 
     const onKeyHardSkills = (e) => {
         if (e.key === "Enter" && e.target.value.length > 0) {
             technical.push(e.target.value);
+
             setPostsJobs({
                 ...postsJobs,
-                technicalSkills: technical,
+                technologies: technical,
             });
             e.target.value = "";
             e.preventDefault();
@@ -51,54 +104,67 @@ const FormJobs = () => {
 
     const onKeySoftSkills = (e) => {
         if (e.key === "Enter" && e.target.value.length > 0) {
-            const addTech = softSkills.push(e.target.value);
+            const addTech = softSkill.push(e.target.value);
             setPostsJobs({
                 ...postsJobs,
-                softSkills: softSkills,
+                softSkills: softSkill,
             });
             e.target.value = "";
             e.preventDefault();
         }
     };
-
+    const getDataJobs = async (id) => {
+        try {
+            const dataJobs = await getData("posts", id);
+            setPostsJobs(dataJobs);
+            setsoftSkill(dataJobs.softSkills);
+            setTechnical(dataJobs.technologies);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     useEffect(() => {
-        setPostsJobs({ ...postsJobs, type: "jobs" });
+        if (params.id) {
+            getDataJobs(params.id);
+        }
     }, []);
 
     return (
-        <div className={style.section}>
+        <Fragment>
             <div className={style.headerPerfil}>
                 <img src={logo} alt="Educamás" />
-                <h2 className={style.title}>Agregar una oferta</h2>
+                <h2>Agregar una oferta</h2>
             </div>
             <form className={style.from_container} onSubmit={submitData}>
                 <div className={style.forms}>
-                    <h3 className={style.subtitle}>Nombre de la oferta</h3>
+                    <h3>Nombre de la oferta</h3>
                     <input
                         className={style.nom}
                         type="text"
                         name="title"
+                        value={postsJobs.title}
                         onChange={onChange}
                     />
                     <br />
                 </div>
                 <div className={style.forms}>
-                    <h3 className={style.subtitle}>Empresa</h3>
+                    <h3>Empresa</h3>
                     <input
                         placeholder=""
                         className={style.nom}
                         type="text"
                         name="company"
+                        value={postsJobs.company}
                         onChange={onChange}
                     />
                     <br />
                 </div>
                 <div className={style.forms}>
-                    <h3 className={style.subtitle}>Tecnologías</h3>
+                    <h3>Tecnologías</h3>
                     <input
                         className={style.nom}
                         type="text"
-                        name="technicalSkills"
+                        name="technologies"
                         onKeyDown={onKeyHardSkills}
                     />
                     <br />
@@ -109,13 +175,14 @@ const FormJobs = () => {
                                 key={index}
                                 technical={technical}
                                 setTechnical={setTechnical}
+                                index={index}
                             />
                         ))}
                     </div>
                 </div>
 
                 <div className={style.forms}>
-                    <h3 className={style.subtitle}>Habilidades blandas</h3>
+                    <h3>Habilidades blandas</h3>
                     <input
                         className={style.nom}
                         type="text"
@@ -124,42 +191,40 @@ const FormJobs = () => {
                     />
                     <br />
                     <div className={style.tecnologias}>
-                        {softSkills.map((skill, index) => (
+                        {softSkill.map((skill, index) => (
                             <SoftSkills
                                 skill={skill}
                                 key={index}
-                                softSkills={softSkills}
-                                setsoftSkills={setsoftSkills}
+                                softSkills={softSkill}
+                                setsoftSkills={setsoftSkill}
+                                index={index}
                             />
                         ))}
                     </div>
                 </div>
 
                 <div className={style.forms}>
-                    <h3 className={style.subtitle}>Lugar de la oferta</h3>
+                    <h3>Lugar de la oferta</h3>
                     <input
+                        className={style.nom}
                         className={style.nom}
                         type="text"
                         name="place"
+                        value={postsJobs.place}
                         onChange={onChange}
                     />
                     <br />
                 </div>
                 <div className={style.forms}>
-
-                    {/* Revisar
-                    <h3 className={style.subtitle}>Modalidad</h3>
-                    <select className={style.select} name="modality">*/}
-
                     <h3>Modalidad</h3>
                     <select
                         className={style.select}
                         name="modality"
+                        value={postsJobs.modality}
                         onChange={onChange}
                         /* value="modality" */
                     >
                         <option value="select">Selecciona la modalidad</option>
-
                         <option className={style.opcion} value="Presencial">
                             presencial
                         </option>
@@ -173,34 +238,48 @@ const FormJobs = () => {
                     <br />
                 </div>
                 <div className={style.forms}>
-                    <h3 className={style.subtitle}>Salario</h3>
+                    <h3>Salario</h3>
                     <input
                         className={style.nom}
                         type="text"
                         name="salary"
+                        value={postsJobs.salary}
                         onChange={onChange}
                     />
                     <br />
                 </div>
                 <div className={style.forms}>
-                    <h3 className={style.subtitle}>Contacto</h3>
-
+                    <h3>contacto</h3>
                     <input
                         className={style.nom}
                         type="text"
                         name="contact"
+                        value={postsJobs.contact}
                         onChange={onChange}
                     />
                     <br />
                 </div>
+                <div className={style.forms}>
+                    <h3>Descripción de la oferta</h3>
+                    <textarea
+                        className={style.textarea}
+                        type="text"
+                        name="description"
+                        rows=""
+                        cols=""
+                        value={postsJobs.description}
+                        onChange={onChange}
+                    ></textarea>
+                    <br />
+                </div>
 
                 <div className={style.enviar}>
-                    <button className={style.btn} type="submit">
+                    <button className="btn" type="submit">
                         Enviar
                     </button>
                 </div>
             </form>
-        </div>
+        </Fragment>
     );
 };
 export default FormJobs;
