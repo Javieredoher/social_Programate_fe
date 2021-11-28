@@ -3,17 +3,18 @@ import React, { Fragment, useContext, useEffect } from "react";
 import News from "./News";
 import Jobs from "./Jobs";
 import Events from "./Events";
-import { getDataAll } from "../../helpers/fetch";
+import { getData, getDataAll } from "../../helpers/fetch";
 import { DataContext } from "../../context/DataContext";
 import { useState } from "react";
 import style from "./Posts.module.css";
 
 const Posts = () => {
-    const { getPosts, setGetPosts, filterHome, setFilterHome } =
+    const { getPosts, setGetPosts, filterHome, setFilterHome, idUser } =
         useContext(DataContext);
 
     const [dataUsers, setDataUsers] = useState([]);
     const [quantityPosts, setQuantityPosts] = useState(15);
+    const [getRol, setGetRol] = useState(1);
 
     useEffect(async () => {
         try {
@@ -23,6 +24,18 @@ const Posts = () => {
             console.log(error);
         }
     }, []);
+
+    useEffect(async () => {
+        if (idUser) {
+            try {
+                const data = await getData("users", idUser);
+                // console.log(data, "rol");
+                setGetRol(data.rol);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }, [idUser]);
 
     const filteredUser = () => {
         const filteredUser = dataUsers.filter((user) =>
@@ -80,6 +93,7 @@ const Posts = () => {
                         title={post.title}
                         id={post._id}
                         user={post.user_info ? post.user_info : ""}
+                        rol={getRol}
                         key={post._id}
                     />
                 ) : post.type === "jobs" ? (
@@ -95,6 +109,7 @@ const Posts = () => {
                         contact={post.contact}
                         id={post._id}
                         user={post.user_info ? post.user_info : ""}
+                        rol={getRol}
                         key={post._id}
                     />
                 ) : post.type === "event" ? (
@@ -107,6 +122,7 @@ const Posts = () => {
                         dateEvent={post.dateEvent}
                         id={post._id}
                         user={post.user_info ? post.user_info : ""}
+                        rol={getRol}
                         key={post._id}
                     />
                 ) : null

@@ -88,7 +88,7 @@ export const ProfessionalInformation = () => {
             }
         } else {
             try {
-                await updateData("users", idUser, dataProfile);
+                await updateData("users", idUser, dataUser);
                 await updateData("profiles", dataProfile._id, dataProfile);
                 navigate(`/profile`);
             } catch (error) {
