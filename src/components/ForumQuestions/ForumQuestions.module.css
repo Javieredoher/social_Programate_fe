@@ -8,6 +8,7 @@
     src: url("../../assets/fonts/Gilroy-Light.otf") format("opentype");
 }
 /*=============== REUSABLE CSS CLASSES ===============*/
+
 .section {
     padding: 3rem 0 2rem;
     width: 100%;
@@ -15,18 +16,21 @@
     background-color: #ececec;
     font-family: Gilroy-bold;
 }
+
 .section__global {
     max-width: 1128px;
     margin: 0 auto;
 }
+
 .section__title {
     display: flex;
     justify-content: center;
     column-gap: 5px;
     margin: 0;
 }
+
 .section__lineTitle {
-    width: 200px;
+    width: 100px;
     border: 2px solid #ffcc02;
 }
 
@@ -36,22 +40,26 @@
     row-gap: 15px;
     padding-top: 10px;
 }
+
 /*=============== QUESTION COMPONENT ===============*/
 .section__options {
     width: 80%;
     margin: 0 auto;
 }
+
 /*=============== SEARCH COMPONENT ===============*/
 .searchContainer {
     display: flex;
     justify-content: center;
-    padding: 20px 0 40px;
-    position: relative;
+    padding: 20px 0;
 }
+
+
 .searchBox {
     position: relative;
     width: 80%;
 }
+
 .searchButton {
     position: absolute;
     right: 0;
@@ -75,6 +83,7 @@
     right: 2%;
     top: 55px;
     cursor: pointer;
+
 }
 
 /* .container__search{
@@ -96,6 +105,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .questionAnswer {
     margin-top: 20px;
 }
@@ -113,9 +123,11 @@
     font-family: Gilroy-light;
     border: none;
 }
+
 .btn__question:hover {
     background-color: black;
     color: #ffcc02;
+
 }
 .btn__container {
     position: relative;
@@ -141,8 +153,10 @@
 .dropdown_content .dropdown_item:hover {
     background: #f4f4f4;
 }
+
 .questionContainerMain {
-    border: 2.2px solid #ffc107;
+    border: 2.2px solid #92c149;
+   /* border: 2.2px solid #ffc107;*/
     padding: 1rem 2rem;
     border-radius: 20px;
     width: 80%;
@@ -152,41 +166,51 @@
     flex-direction: column;
     row-gap: 15px;
 }
+
 .question,
 .tagsItems,
 .name,
 .dateQuestion {
     margin: 0;
 }
+
 .containerQuestion {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .question {
     font-size: 17px;
+    height: 3rem;
 }
+
 .dateQuestion {
     font-size: 14px;
 }
+
 .tagsContainer {
     display: flex;
     flex-wrap: wrap;
     column-gap: 5px;
     row-gap: 5px;
 }
+
 .tagsItems {
+    border: 2.2px solid #92c149;
     padding: 0.5rem 1rem;
     background-color: #d7d7d7;
     border-radius: 5px;
     font-family: Gilroy-light;
     letter-spacing: 1.5px;
 }
+
 .infoContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .btn__answer {
     cursor: pointer;
 }

@@ -89,5 +89,6 @@ export const Search = ({
                 </p>
             </form>
         </>
+
     );
 };

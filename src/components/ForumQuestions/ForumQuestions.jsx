@@ -4,7 +4,7 @@ import { Question } from "./Question";
 import { RiQuestionLine } from "react-icons/ri";
 import { BiFilterAlt } from "react-icons/bi";
 import { BiMessageAdd } from "react-icons/bi";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getDataAll, getData } from "../../helpers/fetch";
 import { Search } from "./Search";
 
@@ -28,6 +28,7 @@ const ForumQuestions = () => {
     useEffect(() => {
         allQuestions();
     }, [search]);
+
     // console.log(questions, "preguntas");
     return (
         <section
@@ -191,6 +192,7 @@ const ForumQuestions = () => {
                                 </div>
                             </div>
                         )}
+
                     </div>
                     <div className={styles.questionAnswer}>
                         <p>4 respuestas</p>

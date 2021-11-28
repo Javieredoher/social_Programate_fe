@@ -40,7 +40,13 @@
 }
 
 .containFilter {
-    width: 100%;
+
+    width: 47%;
+    max-width: 540px;
+    margin: 25px auto;
+    /*background-color: #ffffff;*/
+
+    /*dth: 100%;
     max-width: 100%;
     margin: 0px auto;
     background-color: #ffffff;
@@ -48,7 +54,8 @@
     border: 1px solid #92c149;
     padding: 15px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;*/
+
 }
 
 .filter {

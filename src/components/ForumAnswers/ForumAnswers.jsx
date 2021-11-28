@@ -30,6 +30,7 @@ const ForumAnswers = () => {
         const data = await getData("users", searchUrl);
         setUser(data);
         console.log(data, "users");
+
     };
 
     const commentInfo = async () => {
@@ -112,7 +113,9 @@ const ForumAnswers = () => {
                 </div>
                 <div className={styles.tagsContainer}></div>
                 <div className={styles.infoContainer}>
+                  
                     <p className={styles.name}>Jhonatan Mosquera Velez</p>
+
                 </div>
             </div>
             <p className={styles.title}>Respuestas</p>
