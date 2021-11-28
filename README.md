@@ -16,7 +16,7 @@ npm i
 npm run dev
 
 ### Tecnologías
-Se hace uso del Stark MERN ya que es la tecnologia que mas dominamos en este momento, además por que permitirá que se siga complementando el universo Prográmate para que cuente con todas las herramentas para hacer mas fácil la permanencia de estudiantes y facilitar la comunicacion de los administrativos y profesores.
+Se hace uso del Stark MERN por que permitirá que se siga complementando el universo Prográmate para que cuente con todas las herramentas para hacer mas fácil la permanencia de estudiantes y facilitar la comunicacion de los administrativos y profesores.
 * MONGO BD
 * EXPRESS
 * REACT
