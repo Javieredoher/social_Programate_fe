@@ -12,20 +12,15 @@ import Portfolio from "../components/portfolio/Portfolio";
 import style from "../components/filterHome/filterHome.module.css";
 import Notification from "../components/Notifications/Notification";
 
-import { useEffect } from "react";
 import Media from "react-media";
 
 const HomePage = () => {
     // const [widthScreen, setWidthScreen] = useState();
 
-    // useEffect
-
     return (
-
         <div className={style.homePage}>
-            
             <Navbar />
-            <Notification/>
+            {/* <Notification /> */}
 
             <div className={style.containBody}>
                 <Media query="(min-width: 1024px)">
@@ -51,7 +46,7 @@ const HomePage = () => {
                         return (
                             matches && (
                                 <div className={style.containNotifications}>
-                                    <Portfolio />
+                                    <Notification />
                                 </div>
                             )
                         );

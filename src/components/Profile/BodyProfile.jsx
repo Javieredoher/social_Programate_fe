@@ -10,9 +10,19 @@ import ProfileExperience from "./ProfileExperience/ProfileExperience";
 import ProfileLanguages from "./ProfileLanguages/ProfileLanguages";
 import Posts from "./Posts/Posts";
 import style from "./Posts/Posts.module.css";
+import { useState } from "react";
+import ProfileMainHome from "./ProfileMainHome/ProfileMainHome";
 
 const BodyProfile = () => {
     const { idUser, setDataProfile, dataProfile } = useContext(DataContext);
+    const [showMain, setShowMain] = useState(false);
+
+    useEffect(() => {
+        const path = window.location.pathname;
+        if (path === "/" || path === "/home") {
+            setShowMain(true);
+        }
+    }, []);
 
     useEffect(async () => {
         if (idUser) {
@@ -29,7 +39,12 @@ const BodyProfile = () => {
     }, [idUser]);
     return (
         <div className={style.containBodyProfile}>
-            <ProfileMain dataProfile={dataProfile} />
+            {!showMain ? (
+                <ProfileMain dataProfile={dataProfile} />
+            ) : (
+                <ProfileMainHome dataProfile={dataProfile} />
+            )}
+
             <ProfileAbout />
             <ProfileSkills />
             <ProfileEducation />

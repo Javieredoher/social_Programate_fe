@@ -70,7 +70,9 @@ const News = ({
                 <div className={style.news}>
                     <h3>{title}</h3>
                     <p>{description}</p>
-                    <img src={images} alt="Foto" />
+                    <div className={style.image}>
+                        <img src={images} alt="Foto" />
+                    </div>
                     <div className={style.techContain}>
                         {technologies &&
                             technologies.map((tech, index) => (

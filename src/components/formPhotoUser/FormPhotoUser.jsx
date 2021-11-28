@@ -46,6 +46,7 @@ const FormPhotoUser = () => {
                 alert(`El tamaño máximo es 200 KB`);
             }
         }
+        // console.log(dataUser);
     };
 
     return (
