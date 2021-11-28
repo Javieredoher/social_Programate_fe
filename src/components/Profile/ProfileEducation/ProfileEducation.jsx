@@ -17,9 +17,12 @@ const ProfileEducation = () => {
                             <p>Educacion</p>
                         </div>
                     </div>
-                    {prev_studes?.map((study, index) => (
-                        <Education key={index} study={study} />
-                    ))}
+                    {prev_studes?.map(
+                        (study, index) =>
+                            study.degree && (
+                                <Education key={index} study={study} />
+                            )
+                    )}
 
                     {/* <ProfileEducations /> */}
                 </div>

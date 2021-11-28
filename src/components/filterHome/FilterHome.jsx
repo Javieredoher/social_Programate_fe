@@ -15,7 +15,7 @@ const FilterHome = () => {
         <div className={style.filter}>
             <input
                 type="text"
-                placeholder="Buscar publicaciones"
+                placeholder="Buscar publicación "
                 value={filterHome}
                 onChange={handleChange}
             />

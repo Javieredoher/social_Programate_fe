@@ -81,25 +81,43 @@ const News = ({
                 <div className={style.news}>
                     <h3>{title}</h3>
                     <p>{description}</p>
-                    <div className={style.techContain}>
-                        Tecnologías:
+                    <div className={style.techContains}>
+                        <p className={style.llavePost}>Tecnologías:&nbsp; </p>
                         {technologies &&
                             technologies.map((tech, index) => (
-                                <span key={`tech${index}`}>{tech}</span>
+                                <p key={`tech${index}`}>{tech}&nbsp;</p>
                             ))}
                     </div>
-                    <div className={style.techContain}>
-                        Habilidades:
+                    <div className={style.techContains}>
+                        <p className={style.llavePost}>Habilidades:&nbsp;</p>
+
                         {softSkills &&
                             softSkills.map((soft, index) => (
-                                <span key={`soft${index}`}>{soft}</span>
+                                <p key={`soft${index}`}>{soft}&nbsp;</p>
                             ))}
                     </div>
-                    <p>Empresa: {company}</p>
-                    <p>Lugar: {place}</p>
-                    <p>Modalidad: {modality}</p>
-                    <p>Salario: {salary}</p>
-                    <p>Contacto: {contact}</p>
+                    <p>
+                        <span className={style.llavePost}>Empresa:&nbsp;</span>{" "}
+                        {company}
+                    </p>
+                    <p>
+                        <span className={style.llavePost}>Lugar:&nbsp;</span>{" "}
+                        {place}
+                    </p>
+                    <p>
+                        <span className={style.llavePost}>
+                            Modalidad:&nbsp;
+                        </span>{" "}
+                        {modality}
+                    </p>
+                    <p>
+                        <span className={style.llavePost}>Salario:&nbsp;</span>{" "}
+                        {salary}
+                    </p>
+                    <p>
+                        <span className={style.llavePost}>Contacto:&nbsp;</span>{" "}
+                        {contact}
+                    </p>
                 </div>
                 <div className={style.icon_cont2}>
                     <div className={style.like}>
@@ -109,9 +127,6 @@ const News = ({
                     <div className={style.like}>
                         <i className="far fa-comment-dots"></i>
                         <span>20</span>
-                    </div>
-                    <div>
-                        <i className="fas fa-share"></i>
                     </div>
                 </div>
             </div>

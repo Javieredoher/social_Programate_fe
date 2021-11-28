@@ -25,7 +25,7 @@ const Portfolio = () => {
             const filterData = data.filter(
                 (project) => project.profile_id === idUser
             );
-            console.log(filterData, id);
+            // console.log(filterData, id);
             setdataPortfolios(filterData);
         } catch (error) {
             console.log(error);
@@ -52,24 +52,26 @@ const Portfolio = () => {
 
     return (
         <Fragment>
-            <div className={style.containBtn}>
-                <div className={style.addProject} onClick={addProject}>
-                    <i className="fa-solid fa-plus icon"></i>
+            <div className={style.containProjects}>
+                <div className={style.containBtn}>
+                    <div className={style.addProject} onClick={addProject}>
+                        <i className="fa-solid fa-plus icon"></i>
+                    </div>
                 </div>
+                {dataPortfolios.map((data) => (
+                    <Project
+                        key={data._id}
+                        deploy={data.deploy}
+                        decription={data.description_proyect}
+                        project={data.proyect_link}
+                        technologies={data.technologies}
+                        title={data.title}
+                        image={data.image}
+                        getDataPort={getDataPort}
+                        id={data._id}
+                    />
+                ))}
             </div>
-            {dataPortfolios.map((data) => (
-                <Project
-                    key={data._id}
-                    deploy={data.deploy}
-                    decription={data.description_proyect}
-                    project={data.proyect_link}
-                    technologies={data.technologies}
-                    title={data.title}
-                    image={data.image}
-                    getDataPort={getDataPort}
-                    id={data._id}
-                />
-            ))}
         </Fragment>
     );
 };
