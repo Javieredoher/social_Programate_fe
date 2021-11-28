@@ -8,11 +8,13 @@ import Posts from "../components/homePublications/Posts";
 import Dropdown from "../components/makingpost/Dropdown";
 import FilterHome from "../components/filterHome/FilterHome";
 import style from "../components/filterHome/filterHome.module.css";
+import Notification from "../components/Notifications/Notification";
 
 const HomePage = () => {
     return (
         <>
             <Navbar /> 
+            <Notification/>
             <div className={style.containBody}>
                 <div className={style.containFilter}>
                     <FilterHome />
