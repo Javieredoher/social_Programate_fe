@@ -5,8 +5,8 @@ import { sendData } from "../../helpers/fetch";
 import { BiMessageAltX } from "react-icons/bi";
 import { BiBox } from "react-icons/bi";
 
-import ReactTagInput from "@pathofdev/react-tag-input"; //Review !
-import "@pathofdev/react-tag-input/build/index.css"; //Review !
+//import ReactTagInput from "@pathofdev/react-tag-input"; //Review !
+//import "@pathofdev/react-tag-input/build/index.css"; //Review !
 
 const ForumAddResources = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);

@@ -1,39 +1,51 @@
 import React from "react";
-import "./Navbar.css";
-import logo from "../../assets/images/logo.png";
-import logoperfil from "../../assets/images/logo-perfil.png";
+
+import styles from "../Navbar/Navbar.module.css";
+import iconoEducamas from "../../assets/images/iconoEducamas.png";
+import logoperfil from "../../assets/images/photoProfile.png";
 import { BiGroup } from "react-icons/bi";
+import { BiHomeAlt } from "react-icons/bi";
 import { BiMessageRoundedAdd } from "react-icons/bi";
-import { BiSearchAlt2 } from "react-icons/bi";
-import { BiBell } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import DropdownLogOut from "./DropdownLogOut";
 
 
 const Navbar = () => {
-    return (
-        <header className="global-nav">
-            <div className="global-nav__content">
-                <nav className="nav">
-                    <ul className="nav__list">
-                        <li className="nav__list-item">
-                            <img src={logo} alt="Prográmate" />
-                        </li>
-                        <li className="nav__list-item">
-                            <BiGroup size="24" />
-                            <span>Comunidad</span>
-                        </li>
-                        <li className="nav__list-item">
-                            <BiMessageRoundedAdd size="24" />
-                            <span>Foro</span>
-                        </li>
-
-                        <li className="nav__list-item">
-                            <img src={logoperfil} alt="Prográmate" />
-                        </li>
-                    </ul>
-                </nav>                
-            </div>
-        </header>
-    );
+  return (
+    <header className={styles.globalNav}>
+      <div className={styles.globalNavContent}>
+        <nav className={styles.navBar}>
+          <Link to="/home">
+            <img src={iconoEducamas} alt="Prográmate" className={styles.iconoEducamas}/>
+          </Link>
+          <ul className={styles.navList}>
+            <Link to="/home">
+              <li className={styles.navListItem}>
+                <BiHomeAlt size="30" />
+                <p>Home</p>
+              </li>
+            </Link>
+            <Link to="/community">
+              <li className={styles.navListItem}>
+                <BiGroup size="30" />
+                <p>Comunidad</p>
+              </li>
+            </Link>
+            <Link to="/questions">
+              <li className={styles.navListItem}>
+                <BiMessageRoundedAdd size="30" />
+                <p>Foro</p>
+              </li>
+            </Link>
+          </ul>
+          <div className={styles.containerPhoto}>
+            <img src={logoperfil} alt="Prográmate" className={styles.photoProfile}/>
+            <DropdownLogOut />
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
 };
 
 export default Navbar;
