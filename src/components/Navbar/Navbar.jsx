@@ -5,7 +5,7 @@ import iconoEducamas from "../../assets/images/iconoEducamas.png";
 import logoperfil from "../../assets/images/photoProfile.png";
 import { BiGroup } from "react-icons/bi";
 import { BiHomeAlt } from "react-icons/bi";
-import { BiMessageRoundedAdd } from "react-icons/bi";
+import { MdOutlineForum } from "react-icons/md"
 import { Link } from "react-router-dom";
 import DropdownLogOut from "./DropdownLogOut";
 
