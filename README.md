@@ -23,18 +23,18 @@ Se hace uso del Stark MERN por que permitirá que se siga complementando el univ
 * NODE
 
 # Equipo programador
-* Adrian  https://github.com/AdrianCPC 
+* Adrian Peña  https://github.com/AdrianCPC 
 * Alexandra Mendivelso Durán https://github.com/amendivelso
 * Carolina Samacá  https://github.com/carolina06-sam
+* Cristian Buenaventura https://github.com/CristianTura
+* Edwin Bernal https://github.com/diomedes1233 
 * James Rodriguez https://github.com/jerodriguez6
+* Javier  Hernandez https://github.com/Javieredoher
+* Jhonatan Mosquera https://github.com/JhonMos
 * Juliana Rodriguez  https://github.com/julianamrg 
-* Laura Bogotá
-Edwin Bernal https://github.com/diomedes1233 
-Javier  Hernandez https://github.com/Javieredoher
-Adrian Peña  https://github.com/AdrianCPC 
-Jhonatan Mosquera
-Rafael Ramirez
-Cristian Buenaventura https://github.com/CristianTura
+* Laura Bogotá https://github.com/LauraAlejanBogota
+* Rafael Ramirez https://github.com/RafaelRamirez21
+
 
 #Agradecimientos
 * A nuestras Familias que nos apoyaron, nos dieron la fuerza para seguir adelante en este proceso.
