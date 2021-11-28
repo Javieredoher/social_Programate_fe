@@ -2,9 +2,8 @@ import React from "react";
 import styles from "./ForumQuestions.module.css";
 import { BiSearch } from "react-icons/bi";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { getDataAll } from "../../helpers/fetch";
-
 
 export const Search = ({
     setQuestions,
@@ -90,6 +89,5 @@ export const Search = ({
                 </p>
             </form>
         </>
-
     );
 };
