@@ -10,7 +10,7 @@
 .container2 {
     width: 47%;
     max-width: 540px;
-    /* width: 90%; */
+    width: 90%;
     min-height: 90%;
     display: flex;
     justify-content: center;
@@ -80,6 +80,7 @@
 
 .news img {
     width: 80%;
+    max-height: 10rem;
     margin: auto;
     margin-left: 10%;
 }
