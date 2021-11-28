@@ -5,33 +5,6 @@ import style from '../../UsersList/UsersList.module.css'
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
 
 
-
-/* const Lista_Usuarios = () => {
-    const [toogle, setToogle] = useState(true)
-
-    const [allUser, setAllUser] = useState([])
-
-    useEffect(async () => {
-        const dataToEdit = await getDataAll("users");
-
-        setAllUser(dataToEdit)
-    }, [])
-    useEffect(() => {
-
-    }, [allUser, setAllUser]);
-
-    const onToggle = (id) => {
-        allUser.map((user) => {
-            if (user._id === id) {
-                console.log(id, user._id);
-                user.state = !user.state
-                setAllUser(allUser)
-            }
-
-        })
-    } */
-
-
 const AdminCommunity = () =>  {
 
     const [toogle, setToogle] = useState(true)
@@ -52,6 +25,7 @@ const AdminCommunity = () =>  {
             if (user._id === id) {
                 console.log(id, user._id);
                 user.state = !user.state
+                console.log(user.state)
                 setAllUser(allUser)
             }
 

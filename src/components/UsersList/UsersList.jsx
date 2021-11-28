@@ -21,6 +21,7 @@ const UsersList = () => {
             if (user._id === id) {
                 // console.log(id, user._id);
                 user.state = !user.state;
+                console.log(user.state)
                 setAllUser(allUser);
             }
         });
