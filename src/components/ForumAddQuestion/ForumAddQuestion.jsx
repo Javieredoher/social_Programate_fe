@@ -56,8 +56,10 @@ const ForumAddQuestion = () => {
                             valores.tags = tags;
                             setTags([]);
                             resetForm();
-                            console.log("Formulario enviado");
-                            console.log(valores);
+
+                            // console.log("Formulario enviado");
+                            // console.log(valores);
+
                             await sendData("posts", valores);
                             navigate("/questions");
                         }}

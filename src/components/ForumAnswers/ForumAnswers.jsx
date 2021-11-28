@@ -29,7 +29,8 @@ const ForumAnswers = () => {
     const userInfo = async () => {
         const data = await getData("users", searchUrl);
         setUser(data);
-        console.log(data);
+        console.log(data, "users");
+
     };
 
     const commentInfo = async () => {
@@ -112,7 +113,9 @@ const ForumAnswers = () => {
                 </div>
                 <div className={styles.tagsContainer}></div>
                 <div className={styles.infoContainer}>
-                    <p className={styles.name}>Jonathan</p>
+                  
+                    <p className={styles.name}>Jhonatan Mosquera Velez</p>
+
                 </div>
             </div>
             <p className={styles.title}>Respuestas</p>
@@ -121,7 +124,7 @@ const ForumAnswers = () => {
                     <div className={styles.forms}>
                         <h3>Tu respuesta</h3>
                         <textarea
-                            placeholder="Escribe aquí tu respuesta"
+                            placeholder="Escribe tu respuesta"
                             className={styles.nom}
                             type="text"
                             name="comment"

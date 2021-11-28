@@ -1,3 +1,8 @@
+.containProjects {
+    width: 100%;
+    background-color: white;
+}
+
 .container {
     width: 90%;
     height: 90%;
@@ -6,15 +11,15 @@
     margin: auto;
     /* margin-top: 30px; */
     margin-bottom: 30px;
-    font-family: 'Roboto', sans-serif;
-    }
-
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+}
 
 .containBtn {
     width: 90%;
     display: flex;
     margin: auto;
-    margin-top: 10px;
+    padding-top: 10px;
 }
 
 .addProject:hover {
@@ -38,8 +43,9 @@
 }
 
 .titleIcons {
-    width: 15%;
+    width: 30%;
     margin-right: 10px;
+    gap: 10px;
 }
 
 .tex {

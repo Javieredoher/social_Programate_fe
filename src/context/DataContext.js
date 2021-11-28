@@ -108,6 +108,7 @@ export const DataProvider = ({ children }) => {
     });
 
     const [getPosts, setGetPosts] = useState();
+    const [getPostsProfile, setGetPostsProfile] = useState();
 
     const [filterHome, setFilterHome] = useState("");
 
@@ -133,6 +134,8 @@ export const DataProvider = ({ children }) => {
                 setGetPosts,
                 setFilterHome,
                 filterHome,
+                setGetPostsProfile,
+                getPostsProfile,
             }}
         >
             {children}

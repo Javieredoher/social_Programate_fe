@@ -13,6 +13,8 @@ function useQuery() {
 }
 const ForumQuestions = () => {
     const [questions, setQuestions] = useState([]);
+    const [filterTag, setFilterTag] = useState("");
+    const [dropdown, setDropdown] = useState(false);
 
     const query = useQuery();
     const search = query.get("search");
@@ -27,8 +29,14 @@ const ForumQuestions = () => {
         allQuestions();
     }, [search]);
 
+    // console.log(questions, "preguntas");
     return (
-        <section className={styles.section}>
+        <section
+            className={styles.section}
+            onClick={() => {
+                dropdown && setDropdown(false);
+            }}
+        >
             <div className={styles.section__global}>
                 <div className={styles.section__head}>
                     <h1 className={styles.section__title}>
@@ -38,7 +46,13 @@ const ForumQuestions = () => {
                     <hr className={styles.section__lineTitle} />
                 </div>
                 <div className={styles.section__options}>
-                    <Search />
+                    <Search
+                        setQuestions={setQuestions}
+                        questions={questions}
+                        allQuestions={allQuestions}
+                        filterTag={filterTag}
+                        dropdown={dropdown}
+                    />
                     <div className={styles.btn__container}>
                         <Link
                             to="/addquestion"
@@ -46,9 +60,139 @@ const ForumQuestions = () => {
                         >
                             Añadir <BiMessageAdd />
                         </Link>
-                        <button className={styles.btn__question}>
+
+                        <button
+                            className={styles.btn__question}
+                            onClick={() => setDropdown(!dropdown)}
+                        >
                             Filtro <BiFilterAlt />
                         </button>
+
+                        {dropdown && (
+                            <div className={styles.dropdown_content}>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    HTML
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    CSS
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    Bootstrap
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    Tailwind
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    Javascript
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    React
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    Angular
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    VueJs
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    NodeJs
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    Express
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    Java
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    Python
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    MongoDB
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    MySQL
+                                </div>
+                                <div
+                                    className={styles.dropdown_item}
+                                    onClick={(e) =>
+                                        setFilterTag(e.target.innerText)
+                                    }
+                                >
+                                    Blockchain
+                                </div>
+                            </div>
+                        )}
+
                     </div>
                     <div className={styles.questionAnswer}>
                         <p>4 respuestas</p>

@@ -63,7 +63,7 @@ const Formnews = () => {
     };
 
     const onChange = ({ target }) => {
-        console.log(posts);
+        // console.log(posts);
         const { name, value } = target;
         setPosts({
             ...posts,
