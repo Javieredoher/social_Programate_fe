@@ -6,8 +6,8 @@
 }
 
 .container2 {
-    width: 90%;
-    height: 90%;
+    width: 98%;
+    height: 98%;
     display: flex;
     justify-content: center;
     margin: auto;
@@ -37,4 +37,18 @@
 
 .skill {
     display: inline-block;
+}
+
+@media (min-width: 768px) {
+    .container2 {
+        width: 90%;
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container2 {
+        width: 98%;
+        max-width: 1112px;
+    }
 }

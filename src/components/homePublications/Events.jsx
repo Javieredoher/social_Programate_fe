@@ -205,14 +205,25 @@ const News = ({
                 <div className={style.news}>
                     <h3>{title}</h3>
                     <p>{description}</p>
-                    <p>Link: {link}</p>
-                    <p>Lugar: {place}</p>
-                    <p>Fecha: {dateEvent}</p>
-                    <div className={style.techContain}>
-                        Tecnologías:
+                    <p>
+                        <span className={style.llavePost}>Link:&nbsp;</span>{" "}
+                        {link}
+                    </p>
+                    <p>
+                        {" "}
+                        <span className={style.llavePost}>Lugar:</span> &nbsp;
+                        {place}
+                    </p>
+                    <p>
+                        <span className={style.llavePost}>Fecha:</span> &nbsp;
+                        {dateEvent}
+                    </p>
+                    <div className={style.techContains}>
+                        <p className={style.llavePost}>Tecnologías:&nbsp;</p>
+
                         {technologies &&
                             technologies.map((tech, index) => (
-                                <span key={`technologies${index}`}>{tech}</span>
+                                <p key={`technologies${index}`}>{tech}&nbsp;</p>
                             ))}
                     </div>
                 </div>
@@ -224,9 +235,6 @@ const News = ({
                     <div className={style.like}>
                         <i onClick={toggle} className="far fa-comment-dots"></i>
                         <span>{comments.length}</span>
-                    </div>
-                    <div>
-                        <i className="fas fa-share"></i>
                     </div>
                 </div>
                 {showComments &&

@@ -7,7 +7,8 @@ import Jobs from "./Jobs";
 import Events from "./Events";
 
 const Posts = () => {
-    const { getPosts, setGetPosts, idUser, dataUser } = useContext(DataContext);
+    const { setGetPostsProfile, getPostsProfile, idUser, dataUser } =
+        useContext(DataContext);
 
     const { firstName, middleName, lastName, cohorte, avatar } = dataUser;
 
@@ -17,15 +18,15 @@ const Posts = () => {
             const filterData = data.filter(
                 (posts) => posts.user_info === idUser
             );
-            setGetPosts(filterData.reverse());
+            setGetPostsProfile(filterData.reverse());
         } catch (error) {
             console.log(error);
         }
-    }, [getPosts]);
+    }, [getPostsProfile]);
 
     return (
         <Fragment>
-            {getPosts?.map((post) =>
+            {getPostsProfile?.map((post) =>
                 post.type === "news" ? (
                     <News
                         description={post.description}

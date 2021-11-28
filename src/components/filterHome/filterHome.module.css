@@ -1,20 +1,60 @@
-.containBody {
-    width: 100%;
+.homePage {
     background-color: #d7d7d7;
-    padding: 25px;
+    scrollbar-width: none;
+}
+.containBody {
+    display: flex;
+    width: 100%;
+    max-width: 1128px;
+    background-color: #d7d7d7;
+    padding: 5px;
+    gap: 15px;
+    justify-content: center;
+    margin: auto;
+    max-height: 219vh;
+    overflow: hidden;
+}
+.containProfile {
+    width: 28%;
+    border-radius: 15px;
+    position: sticky;
+    top: 50px;
+    overflow: hidden;
+}
+.mainContent {
+    width: 100%;
+    max-width: 540px;
+    border-radius: 15px;
+    overflow-y: scroll;
+}
+.containNotifications {
+    width: 28%;
+    border-radius: 15px;
+    position: sticky;
+    top: 50px;
+    right: 10px;
+    overflow: hidden;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 
 .containFilter {
-    width: 47%;
-    max-width: 540px;
-    margin: 25px auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0px auto;
     background-color: #ffffff;
+    border-radius: 15px;
+    border: 1px solid #92c149;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .filter {
-    width: 100%;
+    width: 95%;
     user-select: none;
-    margin: 10px auto;
+    margin: 0px auto 10px;
     position: relative;
 }
 .filter input {
@@ -31,10 +71,51 @@
     width: 100%;
     height: 35px;
     outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .filter i {
     position: absolute;
-    right: 20px;
+    right: 18px;
     width: 15px;
     top: 10px;
+}
+
+@media (min-width: 768px) {
+    .mainContent {
+        width: 85%;
+        max-width: 85%;
+        margin: auto;
+        /* height: 200vh;
+        min-height: 200vh;
+        max-height: 200vh; */
+    }
+    .containFilter {
+        width: 100%;
+        max-width: 100%;
+    }
+    .filter {
+        width: 95%;
+        margin: 0px auto 15px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .containFilter {
+        width: 100%;
+        max-width: 540px;
+    }
+
+    .filter {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    .mainContent {
+        width: 47%;
+        max-width: 540px;
+        margin: 0;
+        /* height: 200vh;
+        min-height: 200vh;
+        max-height: 200vh; */
+    }
 }

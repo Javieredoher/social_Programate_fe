@@ -217,9 +217,10 @@ const News = ({ description, images, technologies, title, id, user }) => {
 
                     </div>
 
-                    <div>
+                   {/*   <div>
                         <i className="fas fa-share"></i>
-                    </div>
+                    </div>*/}
+
                 </div>
                 {showComments &&
 

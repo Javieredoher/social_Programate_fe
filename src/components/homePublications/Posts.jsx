@@ -6,12 +6,14 @@ import Events from "./Events";
 import { getDataAll } from "../../helpers/fetch";
 import { DataContext } from "../../context/DataContext";
 import { useState } from "react";
+import style from "./Posts.module.css";
 
 const Posts = () => {
     const { getPosts, setGetPosts, filterHome, setFilterHome } =
         useContext(DataContext);
 
     const [dataUsers, setDataUsers] = useState([]);
+    const [quantityPosts, setQuantityPosts] = useState(15);
 
     useEffect(async () => {
         try {
@@ -23,11 +25,11 @@ const Posts = () => {
     }, []);
 
     const filteredUser = () => {
-        const filteredUser = dataUsers.filter(
-            (user) =>
-                user?.firstName?.toLowerCase().includes(filterHome) ||
-                user?.middleName?.toLowerCase().includes(filterHome) ||
-                user?.lastName?.toLowerCase().includes(filterHome)
+        const filteredUser = dataUsers.filter((user) =>
+            user?.firstName
+                .concat(" ", user?.lastName)
+                .toLowerCase()
+                .includes(filterHome)
         );
 
         return filteredUser;
@@ -38,6 +40,9 @@ const Posts = () => {
             const filtered = getPosts.filter(
                 (post) =>
                     post?.type?.toLowerCase().includes(filterHome) ||
+                    post?.title?.toLowerCase().includes(filterHome) ||
+                    post?.company?.toLowerCase().includes(filterHome) ||
+                    post?.description?.toLowerCase().includes(filterHome) ||
                     post?.technologies
                         ?.map((tech) => tech.toLowerCase())
                         .includes(filterHome) ||
@@ -45,17 +50,20 @@ const Posts = () => {
                         .map((user) => user._id)
                         .includes(post?.user_info)
             );
-            return filtered;
+            return filtered?.slice(0, quantityPosts);
         } else {
-            return getPosts;
+            return getPosts?.slice(0, quantityPosts);
         }
+    };
+
+    const showMorePosts = () => {
+        setQuantityPosts(quantityPosts + 15);
     };
 
     useEffect(async () => {
         try {
             const data = await getDataAll("posts");
             setGetPosts(data.reverse());
-            // console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -103,6 +111,12 @@ const Posts = () => {
                     />
                 ) : null
             )}
+            {/* <p className={style.backUp} onClick={showMorePosts}>
+                Ver más
+            </p> */}
+            <p className={style.addPosts} onClick={showMorePosts}>
+                Ver más
+            </p>
         </Fragment>
     );
 };
