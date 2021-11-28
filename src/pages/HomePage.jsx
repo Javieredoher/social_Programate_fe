@@ -23,7 +23,6 @@ const HomePage = () => {
             {/* <RenderPostHome />
             <EventCard />
             <JobCard /> */}
-
             <Footer />
         </>
     );

@@ -8,7 +8,7 @@ import { DataContext } from "../../context/DataContext";
 
 import ReactTagInput from "@pathofdev/react-tag-input"; //Review !
 import "@pathofdev/react-tag-input/build/index.css"; //Review !
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const ForumAddQuestion = () => {
   const [tags, setTags] = useState([]);

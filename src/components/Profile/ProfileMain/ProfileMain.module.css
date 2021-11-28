@@ -59,7 +59,7 @@
     align-items: center;
     gap: 15px;
 }
-
+/* 
 button {
     display: flex;
     width: 120px;
@@ -78,7 +78,7 @@ button {
 button:hover {
     background-color: black;
     color: #ffcc02;
-}
+} */
 
 .tex_cont {
     width: 100%;

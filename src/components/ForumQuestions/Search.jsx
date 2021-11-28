@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ForumQuestions.module.css";
 import { BiSearch } from "react-icons/bi";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const Search = () => {
   const [searchText, setSearchText] = useState("");
