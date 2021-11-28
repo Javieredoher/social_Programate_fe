@@ -121,7 +121,7 @@ const ForumAnswers = () => {
                     <div className={styles.forms}>
                         <h3>Tu respuesta</h3>
                         <textarea
-                            placeholder="Escribe tu respuesta"
+                            placeholder="Escribe aquí tu respuesta"
                             className={styles.nom}
                             type="text"
                             name="comment"
