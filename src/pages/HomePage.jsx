@@ -23,10 +23,8 @@ const HomePage = () => {
     return (
 
         <div className={style.homePage}>
+            
             <Navbar />
-
-        <>
-         
             <Notification/>
 
             <div className={style.containBody}>
