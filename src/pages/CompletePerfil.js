@@ -12,12 +12,8 @@ import { getDataAll, getData } from "../helpers/fetch";
         useContext(DataContext);*/
 
 const CompletePerfil = ({ value }) => {
-    const {
-        idUser,
-        email,
-        setDataProfile,
-        dataProfile,
-    } = useContext(DataContext);
+    const { idUser, email, setDataProfile, dataProfile } =
+        useContext(DataContext);
 
     const [status, setStatus] = useState(false);
     const [statusOff, setStatusOff] = useState(true);
@@ -55,7 +51,7 @@ const CompletePerfil = ({ value }) => {
         items.map((item) => {
             if (item.user_info?.email === email) {
                 setStatus((status) => true);
-                console.log("working 2");
+                // console.log("working 2");
             }
         });
     }, [setItems, items]);
@@ -69,7 +65,6 @@ const CompletePerfil = ({ value }) => {
     useEffect(() => {
         setDataProfile({ ...dataProfile, user_info: idUser });
     }, [idUser]);
-
 
     const validation = () => {
         return (
@@ -88,7 +83,7 @@ const CompletePerfil = ({ value }) => {
                     <Navigate replace to="/dontallow" />
                 )}
             </>
-        )
+        );
     };
     const validationEdit = () => {
         return (
@@ -97,12 +92,9 @@ const CompletePerfil = ({ value }) => {
                 <Form_PersonalInfo />
                 <ProfessionalInformation />
             </>
-        )
-    }
-    return (
-        value ? validationEdit() : validation()
-    )
-
+        );
+    };
+    return value ? validationEdit() : validation();
 };
 
 export default CompletePerfil;

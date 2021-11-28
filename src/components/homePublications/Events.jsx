@@ -15,6 +15,7 @@ const News = ({
     dateEvent,
     id,
     user,
+    rol,
 }) => {
     const { setGetPosts, idUser } = useContext(DataContext);
     const [showComments, setShowComments] = useState(false);
@@ -198,12 +199,8 @@ const News = ({
                                 onClick={deletePost}
                             ></i>
                         </div>
-                    ) : userPost?.rol === 9 ? (
+                    ) : rol === 9 ? (
                         <div className={style.iconsModify}>
-                            <i
-                                className="fas fa-pencil-alt"
-                                onClick={() => navigate(`/formnews/${id}`)}
-                            ></i>
                             <i
                                 className="far fa-trash-alt"
                                 onClick={deletePost}

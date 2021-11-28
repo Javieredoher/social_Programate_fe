@@ -7,7 +7,7 @@ import styles from "./Comment_likes.module.css";
 import Technologies from "./Technologies";
 import "./style_icon.css";
 
-const News = ({ description, images, technologies, title, id, user }) => {
+const News = ({ description, images, technologies, title, id, user, rol }) => {
     const { setGetPosts, idUser } = useContext(DataContext);
     const [showComments, setShowComments] = useState(false);
     const [moreComments, setMoreComments] = useState(false);
@@ -190,12 +190,8 @@ const News = ({ description, images, technologies, title, id, user }) => {
                                 onClick={deletePost}
                             ></i>
                         </div>
-                    ) : userPost?.rol === 9 ? (
+                    ) : rol === 9 ? (
                         <div className={style.iconsModify}>
-                            <i
-                                className="fas fa-pencil-alt"
-                                onClick={() => navigate(`/formnews/${id}`)}
-                            ></i>
                             <i
                                 className="far fa-trash-alt"
                                 onClick={deletePost}

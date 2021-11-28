@@ -51,7 +51,7 @@ const BodyProfile = () => {
             <ProfileExperience />
             <Technologies />
             <ProfileLanguages />
-            <Posts />
+            {!showMain && <Posts />}
         </div>
     );
 };
