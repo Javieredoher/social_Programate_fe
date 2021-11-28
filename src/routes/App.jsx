@@ -5,6 +5,7 @@ import "../assets/styles/global2.css";
 import LatestPosts from "../components/LatestPosts/LatestPosts.jsx";
 
 import { DataProvider } from "../context/DataContext";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CompletePerfil from "../pages/CompletePerfil";
 import FormNewsPage from "../pages/FormNewsPage";
@@ -23,7 +24,9 @@ import HomePage from "../pages/HomePage";
 
 import PorfolioPage from "../pages/PorfolioPage";
 
-import JobOffers from "../components/JobOffers/JobOffers";
+
+import NotFound from "../components/NotFound/NotFound";
+
 
 
 
@@ -105,7 +108,7 @@ const App = () => {
 
                     
                     <Route exact path="/edwin">
-                        <JobOffers/>
+                        <NotFound/>
                     </Route>
 
                 
