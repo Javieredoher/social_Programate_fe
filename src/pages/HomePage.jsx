@@ -10,6 +10,8 @@ import FilterHome from "../components/filterHome/FilterHome";
 import BodyProfile from "../components/Profile/BodyProfile";
 import Portfolio from "../components/portfolio/Portfolio";
 import style from "../components/filterHome/filterHome.module.css";
+import Notification from "../components/Notifications/Notification";
+
 import { useEffect } from "react";
 import Media from "react-media";
 
@@ -19,8 +21,14 @@ const HomePage = () => {
     // useEffect
 
     return (
+
         <div className={style.homePage}>
             <Navbar />
+
+        <>
+         
+            <Notification/>
+
             <div className={style.containBody}>
                 <Media query="(min-width: 1024px)">
                     {(matches) => {

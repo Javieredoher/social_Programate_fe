@@ -7,9 +7,18 @@ import { ProfessionalInformation } from "../components/professionalInformation/P
 import { DataContext } from "../context/DataContext";
 import { getDataAll, getData } from "../helpers/fetch";
 
-const CompletePerfil = () => {
+/*const CompletePerfil = () => {
     const { idUser, email, setDataProfile, dataProfile } =
-        useContext(DataContext);
+        useContext(DataContext);*/
+
+const CompletePerfil = ({ value }) => {
+    const {
+        idUser,
+        email,
+        setDataProfile,
+        dataProfile,
+    } = useContext(DataContext);
+
     const [status, setStatus] = useState(false);
     const [statusOff, setStatusOff] = useState(true);
     const [items, setItems] = useState([]);
@@ -61,26 +70,39 @@ const CompletePerfil = () => {
         setDataProfile({ ...dataProfile, user_info: idUser });
     }, [idUser]);
 
-    //console.log(_id)
-    //619e91439d72f976d888e360
-    // console.log(idUser, email);
-    return (
-        <>
-            {statusOff ? (
-                status ? (
-                    <Navigate replace to="/" />
+
+    const validation = () => {
+        return (
+            <>
+                {statusOff ? (
+                    status ? (
+                        <Navigate replace to="/" />
+                    ) : (
+                        <>
+                            <FormPhotoUser />
+                            <Form_PersonalInfo />
+                            <ProfessionalInformation />
+                        </>
+                    )
                 ) : (
-                    <>
-                        <FormPhotoUser />
-                        <Form_PersonalInfo />
-                        <ProfessionalInformation />
-                    </>
-                )
-            ) : (
-                <Navigate replace to="/dontallow" />
-            )}
-        </>
-    );
+                    <Navigate replace to="/dontallow" />
+                )}
+            </>
+        )
+    };
+    const validationEdit = () => {
+        return (
+            <>
+                <FormPhotoUser />
+                <Form_PersonalInfo />
+                <ProfessionalInformation />
+            </>
+        )
+    }
+    return (
+        value ? validationEdit() : validation()
+    )
+
 };
 
 export default CompletePerfil;
