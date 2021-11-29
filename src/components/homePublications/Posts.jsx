@@ -13,7 +13,7 @@ const Posts = () => {
         useContext(DataContext);
 
     const [dataUsers, setDataUsers] = useState([]);
-    const [quantityPosts, setQuantityPosts] = useState(35);
+    const [quantityPosts, setQuantityPosts] = useState(50);
     const [getRol, setGetRol] = useState(1);
 
     useEffect(async () => {
