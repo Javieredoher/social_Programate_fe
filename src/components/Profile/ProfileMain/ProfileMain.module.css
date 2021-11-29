@@ -62,8 +62,8 @@
     gap: 15px;
     font-weight: bolder;
 }
-/* 
-button {
+ 
+.button {
     display: flex;
     width: 120px;
     height: 30px;
@@ -78,10 +78,10 @@ button {
     align-items: center;
 }
 
-button:hover {
+.button:hover {
     background-color: black;
     color: #ffcc02;
-} */
+} 
 
 .tex_cont {
     width: 80%;

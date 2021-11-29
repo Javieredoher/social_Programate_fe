@@ -37,7 +37,7 @@ import HomePage from "../../pages/HomePage";
 
 //Profile
 import ProfilePage from "../../pages/ProfilePage";
-import PortfolioPage from "../../components/portfolio/Portfolio";
+import PortfolioPage from "../../pages/PortfolioPage";
 import FormProject from "../../components/FormProject/FormProject";
 
 //admin
@@ -127,7 +127,18 @@ function Autentification() {
                 />
                 <Route
                     exact
+                    path="/profile/:id"
+                    element={isLogged ? <ProfilePage /> : <NotFound />}
+                />
+
+                <Route
+                    exact
                     path="/portfolio"
+                    element={isLogged ? <PortfolioPage /> : <NotFound />}
+                />
+                <Route
+                    exact
+                    path="/portfolio/:id"
                     element={isLogged ? <PortfolioPage /> : <NotFound />}
                 />
 

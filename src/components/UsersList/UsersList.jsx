@@ -1,31 +1,40 @@
 import React, { useState, Fragment, useContext, useEffect } from "react";
-import { getDataAll } from "../../helpers/fetch";
+import { useNavigate } from "react-router-dom";
+import { getDataAll, updateData } from "../../helpers/fetch";
 import style from "./UsersList.module.css";
 //import ImagDama from '../../assets/images/ImagDama.png'
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
 
 const UsersList = () => {
-    const [toogle, setToogle] = useState(true);
 
-    const [allUser, setAllUser] = useState([]);
+    const [toogle, setToogle] = useState(true)
+    const navigate = useNavigate()
+    const [allUser, setAllUser] = useState([])
+
 
     useEffect(async () => {
         const dataToEdit = await getDataAll("users");
 
-        setAllUser(dataToEdit);
-    }, []);
-    useEffect(() => {}, [allUser, setAllUser]);
+        setAllUser(dataToEdit)
+    }, [])
+
+    useEffect(() => {
+
+    }, [allUser, setAllUser]);
 
     const onToggle = (id) => {
         allUser.map((user) => {
             if (user._id === id) {
-                // console.log(id, user._id);
-                user.state = !user.state;
+                console.log(id, user._id);
+                user.state = !user.state
                 console.log(user.state)
-                setAllUser(allUser);
+                setAllUser(allUser)
+                navigate("/community")
             }
-        });
-    };
+
+        })
+    }
+
 
     return (
         <Fragment>
@@ -42,7 +51,16 @@ const UsersList = () => {
                             {user.middleName && user.middleName}
                             <br />
                             {user.state ? "En línea" : "off line"}
+                            <br/>
+                            <i>{user.cohorte.name}</i> 
                         </p>
+                        <button
+                            type="button"
+                            onClick={() => navigate(`/profile/${user._id}`)}
+                        >
+                            Ver perfil
+                        </button>
+
                         <ul
                             className={
                                 user.state ? style.icon_green : style.icon_Gray

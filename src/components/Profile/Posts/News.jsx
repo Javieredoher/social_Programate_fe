@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DataContext } from "../../../context/DataContext";
 import { deleteData, getDataAll } from "../../../helpers/fetch";
 import style from "./Posts.module.css";
@@ -20,6 +20,7 @@ const News = ({
     const { setGetPosts, idUser } = useContext(DataContext);
 
     let navigate = useNavigate();
+    const params = useParams();
 
     const deletePost = async () => {
         try {
@@ -56,16 +57,18 @@ const News = ({
                             {/* <br /> <span>2 hr</span> */}
                         </p>
                     </div>
-                    <div className={style.iconsModify}>
-                        <i
-                            className="fas fa-pencil-alt"
-                            onClick={() => navigate(`/formnews/${id}`)}
-                        ></i>
-                        <i
-                            className="far fa-trash-alt"
-                            onClick={deletePost}
-                        ></i>
-                    </div>
+                    {!params.id && (
+                        <div className={style.iconsModify}>
+                            <i
+                                className="fas fa-pencil-alt"
+                                onClick={() => navigate(`/formnews/${id}`)}
+                            ></i>
+                            <i
+                                className="far fa-trash-alt"
+                                onClick={deletePost}
+                            ></i>
+                        </div>
+                    )}
                 </div>
                 <div className={style.news}>
                     <h3>{title}</h3>
