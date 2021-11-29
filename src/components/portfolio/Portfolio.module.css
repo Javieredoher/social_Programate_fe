@@ -1,6 +1,8 @@
 .containProjects {
     width: 100%;
     background-color: white;
+    min-height: 68vh;
+    padding-bottom: 40px;
 }
 
 .container {
