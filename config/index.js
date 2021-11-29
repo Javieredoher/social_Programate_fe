@@ -1,1 +1,1 @@
-export const baseUrl = REACT_APP_URL_API;
+export const baseUrl = "http://localhost:3001";
