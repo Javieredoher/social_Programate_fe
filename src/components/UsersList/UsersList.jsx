@@ -1,6 +1,9 @@
 import React, { useState, Fragment, useContext, useEffect } from "react";
+import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { getDataAll, updateData } from "../../helpers/fetch";
+import FilterHome from "../filterHome/FilterHome";
+import { Search } from "../ForumQuestions/Search";
 import style from "./UsersList.module.css";
 //import ImagDama from '../../assets/images/ImagDama.png'
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
@@ -10,6 +13,8 @@ const UsersList = () => {
     const [toogle, setToogle] = useState(true)
     const navigate = useNavigate()
     const [allUser, setAllUser] = useState([])
+    const [filteredUser, setfilteredUser] = useState("");
+
 
 
     useEffect(async () => {
@@ -22,23 +27,14 @@ const UsersList = () => {
 
     }, [allUser, setAllUser]);
 
-    const onToggle = (id) => {
-        allUser.map((user) => {
-            if (user._id === id) {
-                console.log(id, user._id);
-                user.state = !user.state
-                console.log(user.state)
-                setAllUser(allUser)
-                navigate("/community")
-            }
-
-        })
-    }
-
 
     return (
         <Fragment>
+
             <div className={style.container}>
+
+                <FilterHome/>
+
                 {allUser.map((user) => (
                     <div key={user._id} className={style.card}>
                         <img
@@ -50,8 +46,8 @@ const UsersList = () => {
                             {user.firstName}{" "}
                             {user.middleName && user.middleName}
                             <br />
-                            {user.state ? "En línea" : "off line"}
-                            <br/>
+                            {/* {user.state ? "En línea" : "off line"} 
+                            <br/>*/}
                             <i>{user.cohorte.name}</i> 
                         </p>
                         <button
@@ -67,7 +63,7 @@ const UsersList = () => {
                             }
                         >
                             <i
-                                onClick={() => onToggle(user._id)}
+                                /* onClick={() => onToggle(user._id)} */
                                 className="far fa-user"
                             ></i>
                         </ul>

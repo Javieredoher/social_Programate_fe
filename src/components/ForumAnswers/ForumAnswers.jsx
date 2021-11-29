@@ -21,13 +21,13 @@ const ForumAnswers = () => {
     const [userComment, setUserComment] = useState([]);
 
     const { setDataUser, idUser } = useContext(DataContext);
-
     const searchUrl = idUser;
 
 
     const userInfo = async () => {
         const data = await getData("users", searchUrl);
         setUser(data);
+        console.log(data, "users");
     };
 
     const commentInfo = async () => {
@@ -55,7 +55,6 @@ const ForumAnswers = () => {
 
     const getUsers = async () => {
         const data = await getDataAll(`users`);
-        console.log(data)
         setUsers(data);
     };
 
@@ -82,22 +81,6 @@ const ForumAnswers = () => {
     }, [questionId]);
 
     const onName = (id) => {
-
-/*         console.log(users)
-        const user = users.filter((user) => user._id === id);
-        //console.log(user)
-        const userFilter = user[0];
-        //console.log(id)
-        //console.log(userFilter);
-        return `${userFilter.firstName} ${userFilter.lastName}`;
-    };
-
-    const onImage = (id) => {
-        const user = users.filter((user) => user._id === id);
-        const userFilter = user[0];
-        //console.log(userFilter);
-        return userFilter.avatar; */
-
         // console.log(users, "users");
         if (users.length > 0) {
             const user = users?.filter((user) => user._id === id);
@@ -115,15 +98,12 @@ const ForumAnswers = () => {
             return userFilter.avatar;
         }
         // console.log(userFilter);
-
     };
 
     const onDelete = async (id) => {
         await deleteData("comments", id);
         setRefresh((refresh) => !refresh);
     };
-
-    console.log(question)
 
     return (
         <>
@@ -136,7 +116,7 @@ const ForumAnswers = () => {
                 </div>
                 <div className={styles.tagsContainer}></div>
                 <div className={styles.infoContainer}>
-                    <p className={styles.name}>Pablito perez</p>
+                    <p className={styles.name}>Jhonatan Mosquera Velez</p>
                 </div>
             </div>
             <p className={styles.title}>Respuestas</p>
