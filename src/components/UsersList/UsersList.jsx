@@ -16,7 +16,7 @@ const UsersList = () => {
         setAllUser(dataToEdit);
     }, []);
 
-    useEffect(() => {}, [allUser, setAllUser]);
+    // useEffect(() => {}, [allUser, setAllUser]);
 
     const onToggle = (id) => {
         allUser.map((user) => {
