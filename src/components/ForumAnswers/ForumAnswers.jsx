@@ -53,9 +53,9 @@ const ForumAnswers = () => {
     };
 
     const getUsers = async () => {
-        const dataToEdit = await getDataAll(`users`);
-        console.log(dataToEdit)
-        setUsers(dataToEdit);
+        const data = await getDataAll(`users`);
+        console.log(data)
+        setUsers(data);
     };
 
     useEffect(() => {
