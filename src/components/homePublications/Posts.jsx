@@ -29,7 +29,6 @@ const Posts = () => {
         if (idUser) {
             try {
                 const data = await getData("users", idUser);
-                // console.log(data, "rol");
                 setGetRol(data.rol);
             } catch (error) {
                 console.log(error);
@@ -94,6 +93,7 @@ const Posts = () => {
                         id={post._id}
                         user={post.user_info ? post.user_info : ""}
                         rol={getRol}
+                        users={dataUsers}
                         key={post._id}
                     />
                 ) : post.type === "jobs" ? (
@@ -110,6 +110,7 @@ const Posts = () => {
                         id={post._id}
                         user={post.user_info ? post.user_info : ""}
                         rol={getRol}
+                        users={dataUsers}
                         key={post._id}
                     />
                 ) : post.type === "event" ? (
@@ -123,13 +124,11 @@ const Posts = () => {
                         id={post._id}
                         user={post.user_info ? post.user_info : ""}
                         rol={getRol}
+                        users={dataUsers}
                         key={post._id}
                     />
                 ) : null
             )}
-            {/* <p className={style.backUp} onClick={showMorePosts}>
-                Ver más
-            </p> */}
             <p className={style.addPosts} onClick={showMorePosts}>
                 Ver más
             </p>

@@ -1,19 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar"
+import Navbar from "../components/Navbar/Navbar";
 
-
-import UsersList from "../components/UsersList/UsersList"
-
+import UsersList from "../components/UsersList/UsersList";
 
 const CommunityPage = () => {
-   
-
     return (
         <>
-            <Navbar/>  
-            <UsersList/>
-            <Footer/>
+            <Navbar />
+            <UsersList />
+            <Footer />
         </>
     );
 };

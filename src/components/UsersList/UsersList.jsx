@@ -10,20 +10,24 @@ const UsersList = () => {
     const navigate = useNavigate();
     const [allUser, setAllUser] = useState([]);
 
-    useEffect(async () => {
-        const dataToEdit = await getDataAll("users");
-
-        setAllUser(dataToEdit);
+    useEffect(() => {
+        allUsers();
     }, []);
+
+    const allUsers = async () => {
+        const dataToEdit = await getDataAll("users");
+        setAllUser(dataToEdit);
+    };
+    console.log(allUser);
 
     // useEffect(() => {}, [allUser, setAllUser]);
 
     const onToggle = (id) => {
         allUser.map((user) => {
             if (user._id === id) {
-                console.log(id, user._id);
+                // console.log(id, user._id);
                 user.state = !user.state;
-                console.log(user.state);
+                // console.log(user.state);
                 setAllUser(allUser);
                 navigate("/community");
             }

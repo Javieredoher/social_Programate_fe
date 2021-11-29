@@ -7,14 +7,22 @@ import styles from "./Comment_likes.module.css";
 import Technologies from "./Technologies";
 import "./style_icon.css";
 
-const News = ({ description, images, technologies, title, id, user, rol }) => {
+const News = ({
+    description,
+    images,
+    technologies,
+    title,
+    id,
+    user,
+    rol,
+    users,
+}) => {
     const { setGetPosts, idUser } = useContext(DataContext);
     const [showComments, setShowComments] = useState(false);
     const [moreComments, setMoreComments] = useState(false);
     const [inputComment, setInputComment] = useState("");
     const [postComments, setPostComments] = useState([]);
     const [comments, setComments] = useState([]);
-    const [users, setUsers] = useState([]);
     const [refresh, setRefresh] = useState(false);
     const [like, setLike] = useState(true);
     const [likes, setLikes] = useState([]);
@@ -27,15 +35,11 @@ const News = ({ description, images, technologies, title, id, user, rol }) => {
         setLikes((likes) => data.likes);
         setComments((comments) => data.comments);
     };
-    const getUsers = async () => {
-        const data = await getDataAll(`users`);
-        setUsers(data);
-    };
+
     const getUser = async () => {
         try {
             const data = await getData("users", user);
             setUserPost(data);
-            // console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -43,9 +47,8 @@ const News = ({ description, images, technologies, title, id, user, rol }) => {
 
     useEffect(() => {
         getUser();
-        commentInfo();
-        getUsers();
     }, []);
+
     useEffect(() => {
         commentInfo();
     }, [refresh, setRefresh]);
@@ -61,9 +64,9 @@ const News = ({ description, images, technologies, title, id, user, rol }) => {
     };
 
     const toggle = () => {
-        console.log("click");
         setShowComments(!showComments);
     };
+
     const submitData = async (e) => {
         e.preventDefault();
 
@@ -85,7 +88,6 @@ const News = ({ description, images, technologies, title, id, user, rol }) => {
     const onName = (id) => {
         const user = users.filter((user) => user._id === id);
         const userFilter = user[0];
-        // console.log(userFilter);
         return `${userFilter.firstName} ${userFilter.lastName}`;
     };
 
