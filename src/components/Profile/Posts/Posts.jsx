@@ -5,6 +5,7 @@ import { getDataAll } from "../../../helpers/fetch";
 import News from "./News";
 import Jobs from "./Jobs";
 import Events from "./Events";
+import { useParams } from "react-router-dom";
 
 const Posts = () => {
     const { setGetPostsProfile, getPostsProfile, idUser, dataUser } =
@@ -12,13 +13,22 @@ const Posts = () => {
 
     const { firstName, middleName, lastName, cohorte, avatar } = dataUser;
 
+    const params = useParams();
+
     useEffect(async () => {
         try {
             const data = await getDataAll("posts");
-            const filterData = data.filter(
-                (posts) => posts.user_info === idUser
-            );
-            setGetPostsProfile(filterData.reverse());
+            if (!params.id) {
+                const filterData = data.filter(
+                    (posts) => posts.user_info === idUser
+                );
+                setGetPostsProfile(filterData.reverse());
+            } else {
+                const filterData = data.filter(
+                    (posts) => posts.user_info === params.id
+                );
+                setGetPostsProfile(filterData.reverse());
+            }
         } catch (error) {
             console.log(error);
         }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import "../assets/styles/global2.css";
 import BodyProfile from "../components/Profile/BodyProfile";
 

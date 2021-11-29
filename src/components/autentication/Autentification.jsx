@@ -127,7 +127,18 @@ function Autentification() {
                 />
                 <Route
                     exact
+                    path="/profile/:id"
+                    element={isLogged ? <ProfilePage /> : <NotFound />}
+                />
+
+                <Route
+                    exact
                     path="/portfolio"
+                    element={isLogged ? <PortfolioPage /> : <NotFound />}
+                />
+                <Route
+                    exact
+                    path="/portfolio/:id"
                     element={isLogged ? <PortfolioPage /> : <NotFound />}
                 />
 

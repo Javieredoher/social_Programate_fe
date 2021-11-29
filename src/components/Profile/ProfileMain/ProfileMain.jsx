@@ -4,7 +4,7 @@ import style from "./ProfileMain.module.css";
 import medalla2 from "../../../assets/images/medalla2.png";
 import medalla3 from "../../../assets/images/medalla3.png"; */
 import { DataContext } from "../../../context/DataContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import altImg from "../../../assets/images/avatar.png";
 
 const ProfileMain = ({ dataProfile }) => {
@@ -12,6 +12,7 @@ const ProfileMain = ({ dataProfile }) => {
     const { avatar, firstName, middleName, lastName, cohorte } = dataUser;
 
     let navigate = useNavigate();
+    const params = useParams();
 
     const editProfile = () => {
         // console.log(idUser);
@@ -39,9 +40,20 @@ const ProfileMain = ({ dataProfile }) => {
                             <img src={medalla3} alt="imagen3" />
                         </div> */}
                         <div className={style.but_cont}>
-                            <Link to="/portfolio">
-                                <button>Ver portafolio</button>
-                            </Link>
+                            {!params.id ? (
+                                <Link to="/portfolio">
+                                    <button>Ver portafolio</button>
+                                </Link>
+                            ) : (
+                                <button
+                                    onClick={() =>
+                                        navigate(`/portfolio/${params.id}`)
+                                    }
+                                >
+                                    Ver portafolio
+                                </button>
+                            )}
+
                             <a href={dataProfile?.github} target="_blank">
                                 <button type="button">Ver Github</button>
                             </a>
@@ -58,11 +70,12 @@ const ProfileMain = ({ dataProfile }) => {
                             <br /> {cohorte.name}
                         </p>
                     </div>
-
-                    <div className={style.icon} onClick={editProfile}>
-                        <p className={style.tex_editar}>Editar perfil</p>
-                        <i className="fas fa-pencil-alt"></i>
-                    </div>
+                    {!params.id && (
+                        <div className={style.icon} onClick={editProfile}>
+                            <p className={style.tex_editar}>Editar perfil</p>
+                            <i className="fas fa-pencil-alt"></i>
+                        </div>
+                    )}
                 </section>
             </div>
         </Fragment>
