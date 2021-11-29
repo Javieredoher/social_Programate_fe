@@ -22,7 +22,7 @@ const ForumQuestions = () => {
     const allQuestions = async () => {
         const searchUrl = search ? "?title=" + search : "?type=questions";
         const data = await getDataAll(`posts${searchUrl}`);
-        setQuestions(data);
+        setQuestions(data.reverse());
     };
 
     useEffect(() => {
@@ -192,7 +192,6 @@ const ForumQuestions = () => {
                                 </div>
                             </div>
                         )}
-
                     </div>
                     <div className={styles.questionAnswer}>
                         <p>4 respuestas</p>

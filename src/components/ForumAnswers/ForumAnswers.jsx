@@ -21,7 +21,7 @@ const ForumAnswers = () => {
     const [userComment, setUserComment] = useState([]);
 
     const { setDataUser, idUser } = useContext(DataContext);
-    console.log(idUser);
+    // console.log(idUser);
     const searchUrl = idUser;
 
     /*   const searchUrl = '61942ebcac84f48bb97d64aa' //'619e91439d72f976d888e360'//'61942ebcac84f48bb97d64aa'*/
@@ -30,13 +30,12 @@ const ForumAnswers = () => {
         const data = await getData("users", searchUrl);
         setUser(data);
         console.log(data, "users");
-
     };
 
     const commentInfo = async () => {
         const data = await getData("posts", questionId);
-
         setComments((comments) => data.comments);
+        console.log(comments, "commets");
     };
 
     const submitData = async (e) => {
@@ -84,17 +83,23 @@ const ForumAnswers = () => {
     }, [questionId]);
 
     const onName = (id) => {
-        const user = users.filter((user) => user._id === id);
-        const userFilter = user[0];
-        console.log(userFilter);
-        return `${userFilter.firstName} ${userFilter.lastName}`;
+        // console.log(users, "users");
+        if (users.length > 0) {
+            const user = users?.filter((user) => user._id === id);
+            const userFilter = user[0];
+            // console.log(userFilter.firstName, comments, "nombres");
+            return `${userFilter.firstName} ${userFilter.lastName}`;
+        }
     };
 
     const onImage = (id) => {
-        const user = users.filter((user) => user._id === id);
-        const userFilter = user[0];
-        console.log(userFilter);
-        return userFilter.avatar;
+        // console.log(id, users, "id Imagen");
+        if (users.length > 0) {
+            const user = users?.filter((user) => user._id === id);
+            const userFilter = user[0];
+            return userFilter.avatar;
+        }
+        // console.log(userFilter);
     };
 
     const onDelete = async (id) => {
@@ -113,9 +118,7 @@ const ForumAnswers = () => {
                 </div>
                 <div className={styles.tagsContainer}></div>
                 <div className={styles.infoContainer}>
-                  
                     <p className={styles.name}>Jhonatan Mosquera Velez</p>
-
                 </div>
             </div>
             <p className={styles.title}>Respuestas</p>
