@@ -38,6 +38,12 @@
     flex-direction: column;
     cursor: pointer;
 }
+
+.navListItem:hover {
+    background-color: white;
+    color: #ffcc02;
+}
+
 .navListItem p {
     margin: 0;
 }
@@ -67,6 +73,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.dropdownBtn:hover {
+    color: #ffcc02;
+}
+
 .dropdownContent {
     position: absolute;
     top: 56px;
