@@ -5,6 +5,7 @@ import { sendData } from "../../helpers/fetch";
 import { BiMessageAltX } from "react-icons/bi";
 import { BiBox } from "react-icons/bi";
 import { DataContext } from "../../context/DataContext";
+import { TagsInput } from "react-tag-input-component";
 
 import ReactTagInput from "@pathofdev/react-tag-input"; //Review !
 import "@pathofdev/react-tag-input/build/index.css"; //Review !
@@ -14,6 +15,16 @@ const ForumAddQuestion = () => {
     const [tags, setTags] = useState([]);
     let navigate = useNavigate();
     const { dataUser, idUser } = useContext(DataContext);
+    function getBase64(file) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            console.log(reader.result);
+        };
+        reader.onerror = function (error) {
+            console.log("Error: ", error);
+        };
+    }
 
     return (
         <section className={styles.section}>
@@ -30,7 +41,7 @@ const ForumAddQuestion = () => {
                             title: "test1",
                             description: "test2",
                             tags: [],
-                            images: "imagen.png",
+                            images: "",
                             type: "questions",
                             user_info: idUser,
                         }}
@@ -56,8 +67,9 @@ const ForumAddQuestion = () => {
                             valores.tags = tags;
                             setTags([]);
                             resetForm();
-                            console.log("Formulario enviado");
-                            console.log(valores);
+                            /*     console.log("Formulario enviado");
+                            console.log(valores.images); */
+                            valores.images = getBase64(valores.images);
                             await sendData("posts", valores);
                             navigate("/questions");
                         }}
@@ -109,12 +121,13 @@ const ForumAddQuestion = () => {
                                 />
 
                                 <label htmlFor="tag">Agregar etiquetas</label>
-                                <ReactTagInput
-                                    id="tag"
-                                    tags={tags}
-                                    placeholder="Type and press enter"
-                                    onChange={(newTags) => setTags(newTags)}
+                                <TagsInput
+                                    value={tags}
+                                    onChange={setTags}
+                                    name="tags"
+                                    placeHolder="ingrese tecnologia"
                                 />
+                                <em>Presionar enter para agregar</em>
                                 <label htmlFor="image">Añadir imagen</label>
                                 <input
                                     name="images"

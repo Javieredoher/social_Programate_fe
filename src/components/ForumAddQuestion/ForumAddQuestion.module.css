@@ -104,23 +104,6 @@
     font-family: Gilroy-bold;
 }
 
-.tecnologias button {
-    width: 100px;
-    height: 90%;
-    padding: 3px;
-    margin: 15px;
-    border-radius: 10px;
-    border: 1px solid;
-    border-color: #92c149;
-    background-color: #ffffff;
-    font-family: "Roboto", sans-serif;
-}
-.tecnologias {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
 @media (max-width: 640px) {
     .containerForum {
         width: 90%;

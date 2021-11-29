@@ -6,7 +6,6 @@ import medalla3 from "../../../assets/images/medalla3.png"; */
 import { DataContext } from "../../../context/DataContext";
 import { Link, useNavigate } from "react-router-dom";
 
-
 const ProfileMain = ({ dataProfile }) => {
     const { dataUser, idUser } = useContext(DataContext);
     const { avatar, firstName, middleName, lastName, cohorte } = dataUser;
@@ -39,7 +38,9 @@ const ProfileMain = ({ dataProfile }) => {
                                 <button>Ver portafolio</button>
                             </Link>
                             <a href={dataProfile?.github} target="_blank">
-                                <button type="button">Ver Github</button>
+                                <button className={style.button} type="button">
+                                    Ver Github
+                                </button>
                             </a>
                         </div>
                     </div>
