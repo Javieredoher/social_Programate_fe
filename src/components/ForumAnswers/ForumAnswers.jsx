@@ -24,7 +24,6 @@ const ForumAnswers = () => {
 
     const searchUrl = idUser;
 
-
     const userInfo = async () => {
         const data = await getData("users", searchUrl);
         setUser(data);
@@ -55,7 +54,7 @@ const ForumAnswers = () => {
 
     const getUsers = async () => {
         const data = await getDataAll(`users`);
-        console.log(data)
+        console.log(data);
         setUsers(data);
     };
 
@@ -82,8 +81,7 @@ const ForumAnswers = () => {
     }, [questionId]);
 
     const onName = (id) => {
-
-/*         console.log(users)
+        /*         console.log(users)
         const user = users.filter((user) => user._id === id);
         //console.log(user)
         const userFilter = user[0];
@@ -115,7 +113,6 @@ const ForumAnswers = () => {
             return userFilter.avatar;
         }
         // console.log(userFilter);
-
     };
 
     const onDelete = async (id) => {
@@ -123,7 +120,7 @@ const ForumAnswers = () => {
         setRefresh((refresh) => !refresh);
     };
 
-    console.log(question)
+    console.log(question);
 
     return (
         <>
