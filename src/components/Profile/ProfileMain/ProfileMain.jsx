@@ -40,10 +40,11 @@ const ProfileMain = ({ dataProfile }) => {
                             <img src={medalla3} alt="imagen3" />
                         </div> */}
                         <div className={style.but_cont}>
-
                             {!params.id ? (
                                 <Link to="/portfolio">
-                                    <button>Ver portafolio</button>
+                                    <button className={style.button}>
+                                        Ver portafolio
+                                    </button>
                                 </Link>
                             ) : (
                                 <button
@@ -56,7 +57,9 @@ const ProfileMain = ({ dataProfile }) => {
                             )}
 
                             <a href={dataProfile?.github} target="_blank">
-                                <button className={style.button} type="button">Ver Github</button>
+                                <button className={style.button} type="button">
+                                    Ver Github
+                                </button>
                             </a>
                         </div>
                     </div>

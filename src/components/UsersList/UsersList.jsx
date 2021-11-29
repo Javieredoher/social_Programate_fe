@@ -6,35 +6,29 @@ import style from "./UsersList.module.css";
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
 
 const UsersList = () => {
-
-    const [toogle, setToogle] = useState(true)
-    const navigate = useNavigate()
-    const [allUser, setAllUser] = useState([])
-
+    const [toogle, setToogle] = useState(true);
+    const navigate = useNavigate();
+    const [allUser, setAllUser] = useState([]);
 
     useEffect(async () => {
         const dataToEdit = await getDataAll("users");
 
-        setAllUser(dataToEdit)
-    }, [])
+        setAllUser(dataToEdit);
+    }, []);
 
-    useEffect(() => {
-
-    }, [allUser, setAllUser]);
+    useEffect(() => {}, [allUser, setAllUser]);
 
     const onToggle = (id) => {
         allUser.map((user) => {
             if (user._id === id) {
                 console.log(id, user._id);
-                user.state = !user.state
-                console.log(user.state)
-                setAllUser(allUser)
-                navigate("/community")
+                user.state = !user.state;
+                console.log(user.state);
+                setAllUser(allUser);
+                navigate("/community");
             }
-
-        })
-    }
-
+        });
+    };
 
     return (
         <Fragment>
@@ -51,11 +45,12 @@ const UsersList = () => {
                             {user.middleName && user.middleName}
                             <br />
                             {user.state ? "En línea" : "off line"}
-                            <br/>
-                            <i>{user.cohorte.name}</i> 
+                            <br />
+                            <i>{user.cohorte.name}</i>
                         </p>
                         <button
                             type="button"
+                            className={style.button}
                             onClick={() => navigate(`/profile/${user._id}`)}
                         >
                             Ver perfil
