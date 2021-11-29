@@ -1,6 +1,8 @@
 .containProjects {
     width: 100%;
     background-color: white;
+    min-height: 68vh;
+    padding-bottom: 40px;
 }
 
 .container {
@@ -13,6 +15,7 @@
     margin-bottom: 30px;
     font-family: "Roboto", sans-serif;
     background-color: white;
+    padding-bottom: 40px;
 }
 
 .containBtn {

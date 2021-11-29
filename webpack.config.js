@@ -66,6 +66,9 @@ module.exports = {
             filename: "[name].css",
         }),
         new CleanWebpackPlugin(),
+        // new HtmlWebpackPlugin({
+        //     favicon: "./public/favicon.ico",
+        // }),
     ],
     optimization: {
         minimize: true,

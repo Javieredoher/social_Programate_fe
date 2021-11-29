@@ -69,7 +69,7 @@ const ForumAddQuestion = () => {
                             resetForm();
                             /*     console.log("Formulario enviado");
                             console.log(valores.images); */
-                            valores.images = getBase64(valores.images);
+                            /* valores.images = getBase64(valores.images); */
                             await sendData("posts", valores);
                             navigate("/questions");
                         }}

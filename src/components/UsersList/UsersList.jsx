@@ -8,9 +8,9 @@ import style from "./UsersList.module.css";
 const UsersList = () => {
 
     const [toogle, setToogle] = useState(true)
-
     const navigate = useNavigate()
     const [allUser, setAllUser] = useState([])
+
 
     useEffect(async () => {
         const dataToEdit = await getDataAll("users");
@@ -51,9 +51,16 @@ const UsersList = () => {
                             {user.middleName && user.middleName}
                             <br />
                             {user.state ? "En línea" : "off line"}
-                            <br/></p>
+                            <br/>
                             <i>{user.cohorte.name}</i> 
-                        
+                        </p>
+                        <button
+                            type="button"
+                            onClick={() => navigate(`/profile/${user._id}`)}
+                        >
+                            Ver perfil
+                        </button>
+
                         <ul
                             className={
                                 user.state ? style.icon_green : style.icon_Gray

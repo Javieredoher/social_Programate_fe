@@ -1,7 +1,7 @@
 import React from "react";
 import { deleteData } from "../../helpers/fetch";
 import style from "./Portfolio.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Project = ({
     deploy,
@@ -14,6 +14,8 @@ const Project = ({
     id,
 }) => {
     const navigate = useNavigate();
+    const params = useParams();
+
     const deleteProject = async () => {
         try {
             await deleteData("portfolios", id);
@@ -28,16 +30,18 @@ const Project = ({
             <div className={style.title_container}>
                 <div className={style.title}>
                     <h1>{title}</h1>
-                    <div className={style.titleIcons}>
-                        <i
-                            className="fas fa-pencil-alt"
-                            onClick={() => navigate(`/formproject/${id}`)}
-                        ></i>
-                        <i
-                            className="far fa-trash-alt"
-                            onClick={deleteProject}
-                        ></i>
-                    </div>
+                    {!params.id && (
+                        <div className={style.titleIcons}>
+                            <i
+                                className="fas fa-pencil-alt"
+                                onClick={() => navigate(`/formproject/${id}`)}
+                            ></i>
+                            <i
+                                className="far fa-trash-alt"
+                                onClick={deleteProject}
+                            ></i>
+                        </div>
+                    )}
                 </div>
                 <p>{decription}</p>
             </div>
