@@ -40,10 +40,10 @@ const ProfileMain = ({ dataProfile }) => {
                         </div> */}
                         <div className={style.but_cont}>
                             <Link to="/portfolio">
-                                <button>Ver portafolio</button>
+                                <button className={style.button} >Ver portafolio</button>
                             </Link>
                             <a href={dataProfile?.github} target="_blank">
-                                <button type="button">Ver Github</button>
+                                <button className={style.button} type="button">Ver Github</button>
                             </a>
                         </div>
                     </div>

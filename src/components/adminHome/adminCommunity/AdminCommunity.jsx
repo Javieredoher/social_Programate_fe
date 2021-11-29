@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useContext, useEffect } from 'react'
 import { getDataAll, updateData } from '../../../helpers/fetch'
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import style from '../../UsersList/UsersList.module.css'
 import { DataContext } from '../../../context/DataContext';
 //import ImagDama from '../../assets/images/ImagDama.png'
