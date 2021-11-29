@@ -7,42 +7,57 @@ import logoLinkedin from "../../assets/images/linkedin.png";
 import logoInstagram from "../../assets/images/instagram.png";
 
 const Footer = () => {
-  return (
-    <footer className={styles.footer}>
-      <div className={styles.containerFooter}>
-        <img
-          className={styles.logoEducamas}
+    return (
+        <footer className={styles.footer}>
+            <div className={styles.containerFooter}>
+                <img
+                    className={styles.logoEducamas}
+                    src={logoEducamas}
+                    alt="Educamas"
+                />
+                <div className={styles.logoRedes}>
+                    <ul className={styles.listRedes}>
+                        <li>
+                            <a href="https://www.facebook.com/Somos-EducaM%C3%A1s-109393514766174">
+                                <img
+                                    className={styles.logoSocial}
+                                    src={logoFacebook}
+                                    alt=""
+                                />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/educam%C3%A1s/">
+                                <img
+                                    className={styles.logoSocial}
+                                    src={logoLinkedin}
+                                    alt=""
+                                />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/somoseducamas/">
+                                <img
+                                    className={styles.logoSocial}
+                                    src={logoInstagram}
+                                    alt=""
+                                />
+                            </a>
+                        </li>
+                    </ul>
+                    <span className={styles.copyright}>
+                        &copy; Todos los derechos reservados
+                    </span>
+                </div>
 
-          src={logoEducamas}
-          alt="Educamas"
-        />
-        <div className={styles.logoRedes}>
-          <ul className={styles.listRedes}>
-            <li>
-              <a href="https://www.facebook.com/Somos-EducaM%C3%A1s-109393514766174">
-                <img className={styles.logo} src={logoFacebook} alt="" />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/company/educam%C3%A1s/">
-                <img className={styles.logo} src={logoLinkedin} alt="" />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/somoseducamas/">
-                <img className={styles.logo} src={logoInstagram} alt="" />
-              </a>
-            </li>
-          </ul>
-          <span className={styles.copyright}>
-            &copy; Todos los derechos reservados
-          </span>
-        </div>
-
-        <img className={styles.logoProgramate} src={logoProgramate} alt="Programate" />
-      </div>
-    </footer>
-  );
+                <img
+                    className={styles.logoProgramate}
+                    src={logoProgramate}
+                    alt="Programate"
+                />
+            </div>
+        </footer>
+    );
 };
 
 export default Footer;

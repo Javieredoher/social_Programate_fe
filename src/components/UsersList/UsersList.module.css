@@ -8,7 +8,6 @@
     flex-wrap: wrap;
     margin-top: 30px;
     margin-bottom: 30px;
-    
 }
 
 .card {
@@ -20,27 +19,23 @@
     flex-wrap: wrap;
     border-radius: 10px;
     border: 1px solid;
-    border-color: #92C149;
-    
-
-
+    border-color: #ffcc02;
+    border-width: 3px;
+    box-shadow: 0px 10px 10px -6px black;
 }
 
 .img {
     width: 50px;
-    
 }
-.p{
+.p {
     width: 160px;
 }
 
 .icon_Gray i {
     font-size: 25px;
-    color: #D7D7D7;
+    color: #d7d7d7;
     font-size: 25px;
     cursor: pointer;
-
-
 }
 
 .icon_green i {
@@ -54,11 +49,8 @@ i {
     width: 50%;
 }
 
-
 /* Large (lg) */
 @media (min-width: 1024px) {
-
-
     .container {
         width: 90%;
         flex-wrap: wrap;
@@ -66,13 +58,10 @@ i {
         justify-content: space-between;
         gap: 20px;
         cursor: pointer;
-        }
-
+    }
 
     .card {
         width: 45%;
         padding: 20px;
-        
     }
-
 }

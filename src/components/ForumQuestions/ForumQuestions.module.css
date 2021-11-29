@@ -168,7 +168,7 @@
 }
 
 .questionContainerMain {
-    border: 2.2px solid #92c149;
+    border: 3px solid #ffcc02;
     /* border: 2.2px solid #ffc107;*/
     padding: 1rem 2rem;
     border-radius: 20px;
@@ -206,7 +206,6 @@
     font-size: 17px;
     height: 3rem;
     color: black;
-    text-shadow: 2px 2px 2px #ffcc02;
 }
 
 /* -----------------------------------------------------*/
