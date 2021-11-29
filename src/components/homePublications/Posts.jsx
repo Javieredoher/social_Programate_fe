@@ -43,7 +43,23 @@ const Posts = () => {
                 .toLowerCase()
                 .includes(filterHome)
         );
+        return filteredUser;
+    };
 
+    const userFullName = () => {
+        const filteredUser = dataUsers.filter((user) =>
+            user?.firstName
+                .concat(
+                    " ",
+                    user?.middleName,
+                    " ",
+                    user?.lastName,
+                    " ",
+                    user?.secondSurname
+                )
+                .toLowerCase()
+                .includes(filterHome)
+        );
         return filteredUser;
     };
 
@@ -60,6 +76,9 @@ const Posts = () => {
                         .includes(filterHome) ||
                     filteredUser()
                         .map((user) => user._id)
+                        .includes(post?.user_info) ||
+                    userFullName()
+                        .map((user) => user._id)
                         .includes(post?.user_info)
             );
             return filtered?.slice(0, quantityPosts);
@@ -69,7 +88,7 @@ const Posts = () => {
     };
 
     const showMorePosts = () => {
-        setQuantityPosts(quantityPosts + 15);
+        setQuantityPosts(quantityPosts + 25);
     };
 
     useEffect(async () => {
