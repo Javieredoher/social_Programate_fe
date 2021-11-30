@@ -42,7 +42,7 @@ import FormProject from "../../components/FormProject/FormProject";
 
 //admin
 import AdminHomePage from "../../pages/AdminHomePage";
-import AdminNavbar from "../adminHome/adminNavbar/adminNavbar";
+import AdminNavbar from "../adminHome/adminNavbar/AdminNavbar";
 import AdminCommunity from "../adminHome/adminCommunity/AdminCommunity";
 
 function Autentification() {
@@ -93,7 +93,17 @@ function Autentification() {
                 <Route
                     exact
                     path="/adminhome"
-                    element={isLogged ? isAdmin? <AdminHomePage /> : <NotFound />: <NotFound />}
+                    element={
+                        isLogged ? (
+                            isAdmin ? (
+                                <AdminHomePage />
+                            ) : (
+                                <NotFound />
+                            )
+                        ) : (
+                            <NotFound />
+                        )
+                    }
                 />
 
                 {/* Home */}
@@ -207,22 +217,19 @@ function Autentification() {
                 />
 
                 {/* Testing Routes to visualize components */}
-           
 
                 <Route
                     exact
                     path="/test"
                     element={isLogged ? <AdminNavbar /> : <NotFound />}
-                    />
+                />
 
                 <Route
                     exact
                     path="/communitycrud"
-                    element={isLogged ? <AdminCommunity/> : <NotFound />}
-                    />
-                    
-
-            </Routes>    
+                    element={isLogged ? <AdminCommunity /> : <NotFound />}
+                />
+            </Routes>
         </>
     );
 }
