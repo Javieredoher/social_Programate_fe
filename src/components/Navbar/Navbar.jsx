@@ -68,7 +68,7 @@ const Navbar = () => {
 
                         <Link to="/questions">
                             <li className={styles.navListItem}>
-                                <BiMessageRoundedAdd size="30" />
+                                <MdOutlineForum size="30" />
                                 <p>Foro</p>
                             </li>
                         </Link>

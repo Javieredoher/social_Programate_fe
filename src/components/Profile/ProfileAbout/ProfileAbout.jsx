@@ -6,27 +6,6 @@ import style from "./ProfileAbout.module.css";
 const ProfileAbout = () => {
     const { dataProfile } = useContext(DataContext);
 
-    // useEffect(async () => {
-    //     if (idUser) {
-    //         try {
-    //             // console.log(idUser, "Testeando")
-
-    //             const data = await getDataAll("profiles");
-
-    //             // console.log(data);
-
-    //             const filterData = data.filter(
-    //                 (profile) => profile.user_info?._id === idUser
-    //             );
-
-    //             setDataProfile(filterData[0]);
-    //             //console.log(filterData, "data del perfil"); !!!
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    // }, [idUser]);
-
     return (
         <>
             <section className={style.container1}>
