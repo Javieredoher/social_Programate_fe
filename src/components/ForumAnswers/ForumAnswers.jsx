@@ -26,13 +26,12 @@ const ForumAnswers = () => {
   const userInfo = async () => {
     const data = await getData("users", searchUrl);
     setUser(data);
-    console.log(data, "users");
   };
 
   const commentInfo = async () => {
     const data = await getData("posts", questionId);
     setComments((comments) => data.comments);
-    console.log(comments, "commets");
+    // console.log(comments, "commets");
   };
 
   const submitData = async (e) => {
@@ -102,23 +101,28 @@ const ForumAnswers = () => {
     await deleteData("comments", id);
     setRefresh((refresh) => !refresh);
   };
-
-  console.log(question);
-
+  console.log(question)
   return (
     <>
-      <div className={styles.questionContainerMain}>
+      <div className={styles.questionContainerP}>
         <div className={styles.containerQuestion}>
           <div className="">
             <h5 className={styles.question}>{question.title}</h5>
             <p>{question.description}</p>
           </div>
-          <p className={styles.dateQuestion}>Creado: {question.createdAt} </p>
+          <p className={styles.dateQuestion}>Creado: {question?.createdAt?.slice(0,10)} </p>
         </div>
-        <div className={styles.tagsContainer}></div>
+        <div className={styles.tagsContainer}>
+        {question?.tags?.map((tag, index) => (
+          <h6 key={index} className={styles.tagsItems}>
+            {tag}
+          </h6>
+        ))}
+        </div>
         <div className={styles.infoContainer}>
-          <p className={styles.name}>Nombre creador pregunta</p>
+          <p className={styles.name}>{`${question?.user_info?.firstName} ${question?.user_info?.lastName} `}</p>
         </div>
+        <img src={`data:image/png;base64, ${question.images}`} alt="" className={styles.imageAnswers}/>
       </div>
       <p className={styles.title}>Respuestas</p>
       <div className={styles.questionContainerMain}>
