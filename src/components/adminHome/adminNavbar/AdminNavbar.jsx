@@ -1,34 +1,17 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 
-import styles from "../Navbar/Navbar.module.css";
-import iconoEducamas from "../../assets/images/iconoEducamas.png";
-import logoperfil from "../../assets/images/photoProfile.png";
+import styles from "../adminNavbar/adminNavbar.module.css";
+import iconoEducamas from "../../../assets/images/iconoEducamas.png";
+import logoperfil from "../../../assets/images/logo-perfil.png";
+
 import { BiGroup, BiMessageRoundedAdd } from "react-icons/bi";
 import { BiHomeAlt } from "react-icons/bi";
 import { MdOutlineForum } from "react-icons/md"
 import { Link } from "react-router-dom";
 import DropdownLogOut from "./DropdownLogOut";
-import { useSelector } from "react-redux";
-import { getData } from "../../helpers/fetch";
-import { DataContext } from "../../context/DataContext";
 
 
-
-
-const Navbar = () => {
-
-    const { idUser } = useContext(DataContext);
-
-    const [user, setUser] = useState([]);
-
-    const userInfo = async () => {
-        const data = await getData("users", idUser);
-        setUser(data);
-        console.log(user.rol, "user");
-    };
-
-
-
+const AdminNavbar = () => {
     return (
         <header className={styles.globalNav}>
             <div className={styles.globalNavContent}>
@@ -47,28 +30,15 @@ const Navbar = () => {
                                 <p>Home</p>
                             </li>
                         </Link>
-
-                        {/* {isAdmin?
-                            <Link to="/adminhome">
+                        <Link to="/communitycrud">
                             <li className={styles.navListItem}>
                                 <BiGroup size="30" />
                                 <p>Comunidad</p>
                             </li>
                         </Link>
-                        :
-                        <Link to="/community">
-                            <li className={styles.navListItem}>
-                                <BiGroup size="30" />
-                                <p>Comunidad</p>
-                            </li>
-                        </Link>
-
-                        } */}
-
-
                         <Link to="/questions">
                             <li className={styles.navListItem}>
-                                <MdOutlineForum size="30" />
+                                <BiMessageRoundedAdd size="30" />
                                 <p>Foro</p>
                             </li>
                         </Link>
@@ -87,4 +57,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default AdminNavbar;

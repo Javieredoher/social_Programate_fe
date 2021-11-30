@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import Footer from "../components/Footer/Footer";
 import AdminHome from "../components/adminHome/AdminHome";
-import Navbar from "../components/Navbar/Navbar"; 
+import AdminNavbar from "../components/adminHome/adminNavbar/AdminNavbar";
 
 const AdminHomePage = () => {
     return (
         <>
-            <Navbar/>                        
-            <AdminHome/>
+            <AdminNavbar />
+            <AdminHome />
             <Footer />
         </>
     );
