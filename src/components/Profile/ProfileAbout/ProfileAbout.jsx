@@ -4,48 +4,28 @@ import { getData, getDataAll } from "../../../helpers/fetch";
 import style from "./ProfileAbout.module.css";
 
 const ProfileAbout = () => {
+    const { dataProfile } = useContext(DataContext);
 
-    const { setDataUser, idUser, setDataProfile, dataProfile } =
-        useContext(DataContext); 
+    // useEffect(async () => {
+    //     if (idUser) {
+    //         try {
+    //             // console.log(idUser, "Testeando")
 
-    //Traer data del usuario
-    useEffect(async () => {
-        if (idUser) {
-            try {
-                const data = await getData("users", idUser);
-                setDataUser(data);
-                //console.log(data,idUser)
-                
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    }, [idUser]);
+    //             const data = await getDataAll("profiles");
 
+    //             // console.log(data);
 
+    //             const filterData = data.filter(
+    //                 (profile) => profile.user_info?._id === idUser
+    //             );
 
-    useEffect(async () => {
-        if (idUser) {
-
-
-            try {
-                console.log(idUser, "Testeando")
-
-                const data = await getDataAll("profiles");  
-
-                console.log(data)
-
-                const filterData = data.filter(
-                    (profile) => profile.user_info?._id === idUser
-                );
-
-                setDataProfile(filterData[0]);
-                //console.log(filterData, "data del perfil"); !!!
-            } catch (error) { 
-                console.log(error); 
-            }
-        }
-    }, [idUser]);
+    //             setDataProfile(filterData[0]);
+    //             //console.log(filterData, "data del perfil"); !!!
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    // }, [idUser]);
 
     return (
         <>

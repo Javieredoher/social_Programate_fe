@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DataContext } from "../../../context/DataContext";
 import { deleteData, getDataAll } from "../../../helpers/fetch";
 import style from "./Posts.module.css";
@@ -18,12 +18,12 @@ const News = ({
     cohorte,
     avatar,
 }) => {
-    const { setGetPosts, idUser } = useContext(DataContext);
+    const { setGetPostsProfile, idUser } = useContext(DataContext);
 
     let navigate = useNavigate();
+    const params = useParams();
 
     const deletePost = async () => {
-        console.log("borrado");
         try {
             await deleteData("posts", id);
 
@@ -31,7 +31,7 @@ const News = ({
             const filterData = data.filter(
                 (posts) => posts.user_info === idUser
             );
-            setGetPosts(filterData.reverse());
+            setGetPostsProfile(filterData.reverse());
         } catch (error) {
             console.log(error);
         }
@@ -59,28 +59,41 @@ const News = ({
                             {/* <br /> <span>2 hr</span> */}
                         </p>
                     </div>
-                    <div className={style.iconsModify}>
-                        <i
-                            className="fas fa-pencil-alt"
-                            onClick={() => navigate(`/formeventedit/${id}`)}
-                        ></i>
-                        <i
-                            className="far fa-trash-alt"
-                            onClick={deletePost}
-                        ></i>
-                    </div>
+                    {!params.id && (
+                        <div className={style.iconsModify}>
+                            <i
+                                className="fas fa-pencil-alt"
+                                onClick={() => navigate(`/formeventedit/${id}`)}
+                            ></i>
+                            <i
+                                className="far fa-trash-alt"
+                                onClick={deletePost}
+                            ></i>
+                        </div>
+                    )}
                 </div>
                 <div className={style.news}>
                     <h3>{title}</h3>
                     <p>{description}</p>
-                    <p>Link: {link}</p>
-                    <p>Lugar: {place}</p>
-                    <p>Fecha: {dateEvent}</p>
-                    <div className={style.techContain}>
-                        Tecnologías:
+                    <p>
+                        <span className={style.llavePost}>Link:&nbsp;</span>{" "}
+                        {link}
+                    </p>
+                    <p>
+                        {" "}
+                        <span className={style.llavePost}>Lugar:</span> &nbsp;
+                        {place}
+                    </p>
+                    <p>
+                        <span className={style.llavePost}>Fecha:</span> &nbsp;
+                        {dateEvent}
+                    </p>
+                    <div className={style.techContains}>
+                        <p className={style.llavePost}>Tecnologías:&nbsp;</p>
+
                         {technologies &&
                             technologies.map((tech, index) => (
-                                <span key={`technologies${index}`}>{tech}</span>
+                                <p key={`technologies${index}`}>{tech}&nbsp;</p>
                             ))}
                     </div>
                 </div>
@@ -92,9 +105,6 @@ const News = ({
                     <div className={style.like}>
                         <i className="far fa-comment-dots"></i>
                         <span>20</span>
-                    </div>
-                    <div>
-                        <i className="fas fa-share"></i>
                     </div>
                 </div>
             </div>

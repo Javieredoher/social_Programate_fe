@@ -147,6 +147,7 @@
     font-size: 18px;
     margin: 20px 10px 30px auto;
     cursor: pointer;
+    width: 200px;
 }
 
 .btnSubmit:hover {

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { dispatchGetUser, dispatchLogin, fetchUser } from '../../redux/actions/authAction'
 import { Navigate } from 'react-router'
-import './DontAllow.css'
+import styles from "./DontAllow.module.css"
 import { baseUrl } from '../../../config'
 
 
@@ -44,9 +44,22 @@ const DontAllow = () => {
 
   }, [token, dispatch])
   return (
-    <div className="allow">
+
+    /*<div className="allow">
       No tienes permisos para esta página.
-    </div>
+    </div> */
+
+    <section className={styles.access_container}>
+
+      <div className={styles.notallowed_container}>
+        <h1 className={styles.title_container}>405 Not Allowed</h1>
+      </div>
+
+      {/* <picture className={styles.card_img}>
+          <img src={ImgAccess} alt="sin-acceso" className={styles.notaccess} />
+      </picture> */}
+
+    </section>
   )
 }
 

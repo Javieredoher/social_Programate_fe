@@ -46,7 +46,6 @@ export const ProfessionalInformation = () => {
         if (idUser) {
             const data = await getData("users", idUser);
             setDataUser(data);
-            console.log(data, "data user");
         }
     }, [idUser]);
 
@@ -89,7 +88,7 @@ export const ProfessionalInformation = () => {
             }
         } else {
             try {
-                await updateData("users", idUser, dataProfile);
+                await updateData("users", idUser, dataUser);
                 await updateData("profiles", dataProfile._id, dataProfile);
                 navigate(`/profile`);
             } catch (error) {
@@ -99,7 +98,6 @@ export const ProfessionalInformation = () => {
     };
 
     const handleChangeEdu = ({ target }, id) => {
-        console.log(dataProfile, idUser);
         const { name, value } = target;
         setDataProfile({
             ...dataProfile,
@@ -165,7 +163,6 @@ export const ProfessionalInformation = () => {
     };
 
     const handleChangeExperience = ({ target }, id) => {
-        console.log(dataProfile);
         const { name, value } = target;
         setDataProfile({
             ...dataProfile,

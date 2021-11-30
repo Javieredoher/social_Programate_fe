@@ -28,13 +28,16 @@ import CommunityPage from "../../pages/CommunityPage";
 import ForumQuestions from "../ForumQuestions/ForumQuestions";
 import ForumAnswers from "../ForumAnswers/ForumAnswers";
 import ForumAddQuestion from "../ForumAddQuestion/ForumAddQuestion";
+import ForumPage from "../../pages/ForumPage";
+import ForumAnswersPage from "../../pages/ForumAnswersPage";
+import ForumQuestionsPage from "../../pages/ForumQuestionsPage";
 
 //home
 import HomePage from "../../pages/HomePage";
 
 //Profile
 import ProfilePage from "../../pages/ProfilePage";
-import PortfolioPage from "../../components/portfolio/Portfolio";
+import PortfolioPage from "../../pages/PortfolioPage";
 import FormProject from "../../components/FormProject/FormProject";
 
 //admin
@@ -124,7 +127,18 @@ function Autentification() {
                 />
                 <Route
                     exact
+                    path="/profile/:id"
+                    element={isLogged ? <ProfilePage /> : <NotFound />}
+                />
+
+                <Route
+                    exact
                     path="/portfolio"
+                    element={isLogged ? <PortfolioPage /> : <NotFound />}
+                />
+                <Route
+                    exact
+                    path="/portfolio/:id"
                     element={isLogged ? <PortfolioPage /> : <NotFound />}
                 />
 
@@ -177,17 +191,17 @@ function Autentification() {
                 <Route
                     exact
                     path="/questions"
-                    element={isLogged ? <ForumQuestions /> : <NotFound />}
+                    element={isLogged ? <ForumPage /> : <NotFound />}
                 />
                 <Route
                     exact
                     path="/questions/:questionId"
-                    element={isLogged ? <ForumAnswers /> : <NotFound />}
+                    element={isLogged ? <ForumAnswersPage /> : <NotFound />}
                 />
                 <Route
                     exact
                     path="/addquestion"
-                    element={isLogged ? <ForumAddQuestion /> : <NotFound />}
+                    element={isLogged ? <ForumQuestionsPage /> : <NotFound />}
                 />
 
                 {/* Testing Routes to visualize components */}

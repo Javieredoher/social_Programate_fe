@@ -67,7 +67,7 @@ const FormProject = () => {
     };
 
     const onChange = ({ target }) => {
-        console.log(portfolio);
+        // console.log(portfolio);
         const { name, value } = target;
         setPortfolio({
             ...portfolio,

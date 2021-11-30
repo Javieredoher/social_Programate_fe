@@ -8,10 +8,12 @@
 }
 
 .cont {
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
     flex-direction: row;
+    margin: auto;
+    align-items: flex-end;
 }
 
 .circulo_cont {
@@ -59,8 +61,8 @@
     align-items: center;
     gap: 15px;
 }
-
-button {
+ 
+.button {
     display: flex;
     width: 120px;
     height: 30px;
@@ -75,17 +77,18 @@ button {
     align-items: center;
 }
 
-button:hover {
+.button:hover {
     background-color: black;
     color: #ffcc02;
-}
+} 
 
 .tex_cont {
-    width: 100%;
+    width: 80%;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     flex-direction: row;
     align-items: center;
+    margin: auto;
 }
 
 .tex {
@@ -105,13 +108,17 @@ button:hover {
     cursor: pointer;
 }
 
+.icon i {
+    width: 20px;
+}
+
 /* b {
     font-size: 20px;
 } */
 
-.tex_editar {
+/* .tex_editar {
     visibility: hidden;
-}
+} */
 
 @media (min-width: 1024px) {
     .but_cont {

@@ -17,9 +17,12 @@ const ProfileExperience = () => {
                             <p>Experiencia</p>
                         </div>
                     </div>
-                    {experience?.map((exper, index) => (
-                        <Experience key={index} exper={exper} />
-                    ))}
+                    {experience?.map(
+                        (exper, index) =>
+                            exper.charge && (
+                                <Experience key={index} exper={exper} />
+                            )
+                    )}
 
                     {/* <ProfileEducations /> */}
                 </div>

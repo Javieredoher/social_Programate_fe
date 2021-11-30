@@ -3,15 +3,18 @@ import React, { Fragment, useContext, useEffect } from "react";
 import News from "./News";
 import Jobs from "./Jobs";
 import Events from "./Events";
-import { getDataAll } from "../../helpers/fetch";
+import { getData, getDataAll } from "../../helpers/fetch";
 import { DataContext } from "../../context/DataContext";
 import { useState } from "react";
+import style from "./Posts.module.css";
 
 const Posts = () => {
-    const { getPosts, setGetPosts, filterHome, setFilterHome } =
+    const { getPosts, setGetPosts, filterHome, setFilterHome, idUser } =
         useContext(DataContext);
 
     const [dataUsers, setDataUsers] = useState([]);
+    const [quantityPosts, setQuantityPosts] = useState(35);
+    const [getRol, setGetRol] = useState(1);
 
     useEffect(async () => {
         try {
@@ -22,12 +25,24 @@ const Posts = () => {
         }
     }, []);
 
+    useEffect(async () => {
+        if (idUser) {
+            try {
+                const data = await getData("users", idUser);
+                // console.log(data, "rol");
+                setGetRol(data.rol);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }, [idUser]);
+
     const filteredUser = () => {
-        const filteredUser = dataUsers.filter(
-            (user) =>
-                user?.firstName?.toLowerCase().includes(filterHome) ||
-                user?.middleName?.toLowerCase().includes(filterHome) ||
-                user?.lastName?.toLowerCase().includes(filterHome)
+        const filteredUser = dataUsers.filter((user) =>
+            user?.firstName
+                .concat(" ", user?.lastName)
+                .toLowerCase()
+                .includes(filterHome)
         );
 
         return filteredUser;
@@ -38,6 +53,9 @@ const Posts = () => {
             const filtered = getPosts.filter(
                 (post) =>
                     post?.type?.toLowerCase().includes(filterHome) ||
+                    post?.title?.toLowerCase().includes(filterHome) ||
+                    post?.company?.toLowerCase().includes(filterHome) ||
+                    post?.description?.toLowerCase().includes(filterHome) ||
                     post?.technologies
                         ?.map((tech) => tech.toLowerCase())
                         .includes(filterHome) ||
@@ -45,17 +63,20 @@ const Posts = () => {
                         .map((user) => user._id)
                         .includes(post?.user_info)
             );
-            return filtered;
+            return filtered?.slice(0, quantityPosts);
         } else {
-            return getPosts;
+            return getPosts?.slice(0, quantityPosts);
         }
+    };
+
+    const showMorePosts = () => {
+        setQuantityPosts(quantityPosts + 15);
     };
 
     useEffect(async () => {
         try {
             const data = await getDataAll("posts");
             setGetPosts(data.reverse());
-            // console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -72,6 +93,7 @@ const Posts = () => {
                         title={post.title}
                         id={post._id}
                         user={post.user_info ? post.user_info : ""}
+                        rol={getRol}
                         key={post._id}
                     />
                 ) : post.type === "jobs" ? (
@@ -87,6 +109,7 @@ const Posts = () => {
                         contact={post.contact}
                         id={post._id}
                         user={post.user_info ? post.user_info : ""}
+                        rol={getRol}
                         key={post._id}
                     />
                 ) : post.type === "event" ? (
@@ -99,10 +122,17 @@ const Posts = () => {
                         dateEvent={post.dateEvent}
                         id={post._id}
                         user={post.user_info ? post.user_info : ""}
+                        rol={getRol}
                         key={post._id}
                     />
                 ) : null
             )}
+            {/* <p className={style.backUp} onClick={showMorePosts}>
+                Ver más
+            </p> */}
+            <p className={style.addPosts} onClick={showMorePosts}>
+                Ver más
+            </p>
         </Fragment>
     );
 };

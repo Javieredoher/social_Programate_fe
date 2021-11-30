@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DataContext } from "../../../context/DataContext";
 import { deleteData, getDataAll } from "../../../helpers/fetch";
 import style from "./Posts.module.css";
@@ -20,6 +20,7 @@ const News = ({
     const { setGetPosts, idUser } = useContext(DataContext);
 
     let navigate = useNavigate();
+    const params = useParams();
 
     const deletePost = async () => {
         try {
@@ -56,21 +57,25 @@ const News = ({
                             {/* <br /> <span>2 hr</span> */}
                         </p>
                     </div>
-                    <div className={style.iconsModify}>
-                        <i
-                            className="fas fa-pencil-alt"
-                            onClick={() => navigate(`/formnews/${id}`)}
-                        ></i>
-                        <i
-                            className="far fa-trash-alt"
-                            onClick={deletePost}
-                        ></i>
-                    </div>
+                    {!params.id && (
+                        <div className={style.iconsModify}>
+                            <i
+                                className="fas fa-pencil-alt"
+                                onClick={() => navigate(`/formnews/${id}`)}
+                            ></i>
+                            <i
+                                className="far fa-trash-alt"
+                                onClick={deletePost}
+                            ></i>
+                        </div>
+                    )}
                 </div>
                 <div className={style.news}>
                     <h3>{title}</h3>
                     <p>{description}</p>
-                    <img src={images} alt="Foto" />
+                    <div className={style.image}>
+                        <img src={images} alt="Foto" />
+                    </div>
                     <div className={style.techContain}>
                         {technologies &&
                             technologies.map((tech, index) => (
@@ -86,9 +91,6 @@ const News = ({
                     <div className={style.like}>
                         <i className="far fa-comment-dots"></i>
                         <span>20</span>
-                    </div>
-                    <div>
-                        <i className="fas fa-share"></i>
                     </div>
                 </div>
             </div>

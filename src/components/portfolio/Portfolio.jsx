@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getDataAll } from "../../helpers/fetch";
 import style from "./Portfolio.module.css";
 import Project from "./Project";
@@ -10,23 +10,28 @@ const Portfolio = () => {
     const { setPortfolio, portfolio, idUser } = useContext(DataContext);
 
     const navigate = useNavigate();
+    const params = useParams();
 
     const [dataPortfolios, setdataPortfolios] = useState([]);
 
-    // useEffect(() => {
-    //     setPortfolio({ ...portfolio, profile_id: idUser });
-    //     console.log(portfolio, idUser);
-    // }, [idUser]);
+    useEffect(() => {
+        setPortfolio({ ...portfolio, profile_id: idUser });
+    }, [idUser]);
 
-    const id = localStorage.getItem("id");
     const getDataPort = async () => {
         try {
             const data = await getDataAll("portfolios");
-            const filterData = data.filter(
-                (project) => project.profile_id === idUser
-            );
-            console.log(filterData, id);
-            setdataPortfolios(filterData);
+            if (!params.id) {
+                const filterData = data.filter(
+                    (project) => project.profile_id === idUser
+                );
+                setdataPortfolios(filterData);
+            } else {
+                const filterData = data.filter(
+                    (project) => project.profile_id === params.id
+                );
+                setdataPortfolios(filterData);
+            }
         } catch (error) {
             console.log(error);
         }
@@ -52,24 +57,29 @@ const Portfolio = () => {
 
     return (
         <Fragment>
-            <div className={style.containBtn}>
-                <div className={style.addProject} onClick={addProject}>
-                    <i className="fa-solid fa-plus icon"></i>
-                </div>
+            <div className={style.containProjects}>
+                {!params.id && (
+                    <div className={style.containBtn}>
+                        <div className={style.addProject} onClick={addProject}>
+                            <i className="fa-solid fa-plus icon"></i>
+                        </div>
+                    </div>
+                )}
+
+                {dataPortfolios?.map((data) => (
+                    <Project
+                        key={data._id}
+                        deploy={data.deploy}
+                        decription={data.description_proyect}
+                        project={data.proyect_link}
+                        technologies={data.technologies}
+                        title={data.title}
+                        image={data.image}
+                        getDataPort={getDataPort}
+                        id={data._id}
+                    />
+                ))}
             </div>
-            {dataPortfolios.map((data) => (
-                <Project
-                    key={data._id}
-                    deploy={data.deploy}
-                    decription={data.description_proyect}
-                    project={data.proyect_link}
-                    technologies={data.technologies}
-                    title={data.title}
-                    image={data.image}
-                    getDataPort={getDataPort}
-                    id={data._id}
-                />
-            ))}
         </Fragment>
     );
 };
