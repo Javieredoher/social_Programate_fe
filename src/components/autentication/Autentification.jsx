@@ -1,5 +1,5 @@
 // React imports
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -44,22 +44,41 @@ import FormProject from "../../components/FormProject/FormProject";
 import AdminHomePage from "../../pages/AdminHomePage";
 import AdminNavbar from "../adminHome/adminNavbar/AdminNavbar";
 import AdminCommunity from "../adminHome/adminCommunity/AdminCommunity";
+import { DataContext } from "../../context/DataContext";
+import { getData } from "../../helpers/fetch";
 
 function Autentification() {
     const auth = useSelector((state) => state.auth);
     const { isLogged, isAdmin } = auth;
-    // useEffect(() => {
 
-    // }, [isLogged])
+    const { idUser } = useContext(DataContext);
+    const [user, setUser] = useState([]);
+
+    const [searchUrl, setsearchUrl] = useState([]);
+
+    useEffect(()=>{
+        setsearchUrl(idUser)
+    } )
+
+
+    const userInfo = async () => {
+        if(user.rol!=9){
+        if(searchUrl) {
+        const data = await getData("users", searchUrl);
+        setUser(data);
+        //console.log(user)
+        }
+    }
+      };
+
+    userInfo() 
+
+
+
 
     return (
         <>
             <Routes>
-                {/* Model */}
-
-                {/* <Route exact path="/formprofile" element={isLogged ? < CompletePerfil /> : <NotFound />} /> 
-
-        */}
 
                 {/* Login */}
                 <Route
@@ -93,17 +112,9 @@ function Autentification() {
                 <Route
                     exact
                     path="/adminhome"
-                    element={
-                        isLogged ? (
-                            isAdmin ? (
-                                <AdminHomePage />
-                            ) : (
-                                <NotFound />
-                            )
-                        ) : (
-                            <NotFound />
-                        )
-                    }
+
+                    element={isLogged ? user.rol==9 ? <AdminHomePage /> : <NotFound />: <NotFound />}
+
                 />
 
                 {/* Home */}
