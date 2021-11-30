@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import styles from "../Navbar/Navbar.module.css";
 import iconoEducamas from "../../assets/images/iconoEducamas.png";
@@ -18,14 +18,35 @@ import { DataContext } from "../../context/DataContext";
 const Navbar = () => {
 
     const { idUser } = useContext(DataContext);
-
+    //console.log(idUser)
     const [user, setUser] = useState([]);
+    const [searchUrl, setsearchUrl] = useState([]);
+
+    useEffect(()=>{
+        setsearchUrl(idUser)
+    } )
+
 
     const userInfo = async () => {
-        const data = await getData("users", idUser);
+        
+        if(user.rol!=9){
+        if(searchUrl) {
+        const data = await getData("users", searchUrl);
         setUser(data);
-        console.log(user.rol, "user");
-    };
+        //console.log(user)
+        }
+    }
+      };
+
+
+    //  useEffect(() => {
+    //      userInfo() 
+    //  }, []);
+
+    userInfo()
+
+
+
 
 
 
@@ -48,7 +69,7 @@ const Navbar = () => {
                             </li>
                         </Link>
 
-                        {/* {isAdmin?
+                        {user.rol==9?
                             <Link to="/adminhome">
                             <li className={styles.navListItem}>
                                 <BiGroup size="30" />
@@ -63,7 +84,14 @@ const Navbar = () => {
                             </li>
                         </Link>
 
-                        } */}
+                        }  
+
+                        {/* <Link to="/community">
+                            <li className={styles.navListItem}>
+                                <BiGroup size="30" />
+                                <p>Comunidad</p>
+                            </li>
+                        </Link> */}
 
 
                         <Link to="/questions">
