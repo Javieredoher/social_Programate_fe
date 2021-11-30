@@ -14,6 +14,8 @@ const AdminCommunity = () =>  {
 
     const navigate = useNavigate()
     const [allUser, setAllUser] = useState([])
+    const { filterHome, setFilterHome } = useContext(DataContext);
+
     
     useEffect(async () => {
         const dataToEdit = await getDataAll("users");
@@ -46,22 +48,20 @@ const AdminCommunity = () =>  {
 
     }
 
-/*     const [connection, setConnection] = useState()
+    const filter = () => {
+        if (filterHome.length !== 0) {
+            const filter = allUser.filter((user) =>
+                user?.firstName
+                    .concat(" ", user?.middleName, " ", user?.lastName)
+                    .toLowerCase()
+                    .includes(filterHome)
+            );
 
-    useEffect(()=>{
-        
-        const loggedUser = window.localStorage.getItem("loggedAgoraUser")
-        const UserLogInfo = JSON.parse(loggedUser);
-        console.log(UserLogInfo.msg)
-
-        if(UserLogInfo.msg=='Login success!'){
-            setConnection(true) 
+            return filter;
+        } else {
+            return allUser;
         }
-
-       // UserLogInfo!=='undefined'? : setConnection(false)
-        console.log(connection)
-    },[])
- */
+    };
 
     return (
         <Fragment>
@@ -69,7 +69,7 @@ const AdminCommunity = () =>  {
 
                 <FilterHome/>
 
-                {allUser.map((user) => (
+                {filter().map((user) => (
 
                     <div key={user._id} className={style.card}>
                         <img className={style.img} src={user.avatar} alt="ImagDama" />
@@ -81,11 +81,11 @@ const AdminCommunity = () =>  {
 
                             <button
                             type="button"
+                            className={style.button}
                             onClick={() => navigate(`/profile/${user._id}`)}
                         >
                             Ver perfil
                         </button>
-
 
 
 

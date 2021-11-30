@@ -16,7 +16,7 @@ const UsersList = () => {
 
     const { filterHome, setFilterHome } = useContext(DataContext);
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     useEffect(async () => {
         const dataToEdit = await getDataAll("users");

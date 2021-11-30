@@ -17,19 +17,6 @@ const AdminHome = () => {
 
     return (
         <Fragment>
-
-        {/* <button onClick={changeMenu}>Change</button> */}
-                        {/* <div>
-                            <ul>
-                                <li onClick={changeMenu}>Administrar usuarios</li>
-                                <li onClick={changeMenu}>Publicar Oferta Laboral</li>
-                            </ul>                  
-                        </div>
-                        
-                        {menu?
-                        <AdminCommunity/>:
-                        <FormJobs/>
-                        } */}
                         <AdminCommunity/>
         </Fragment>
     );

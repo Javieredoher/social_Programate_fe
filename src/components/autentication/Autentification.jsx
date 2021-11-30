@@ -56,22 +56,23 @@ function Autentification() {
 
     const [searchUrl, setsearchUrl] = useState([]);
 
-    useEffect(()=>{
-        setsearchUrl(idUser)
-    } )
+    // useEffect(()=>{
+    //     setsearchUrl(idUser)
+    // } )
 
 
-    const userInfo = async () => {
-        if(user.rol!=9){
-        if(searchUrl) {
-        const data = await getData("users", searchUrl);
+    const userInfo = async () => {      
+        if(idUser) {
+        const data = await getData("users", idUser);
         setUser(data);
-        //console.log(user)
-        }
-    }
-      };
+        //console.log(user)      
+    }};
+    
 
-    userInfo() 
+      useEffect(()=>{
+        userInfo() 
+    }, [idUser] )  
+
 
 
 

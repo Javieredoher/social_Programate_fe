@@ -17,38 +17,55 @@ import { DataContext } from "../../context/DataContext";
 
 const Navbar = () => {
 
+    // const { idUser } = useContext(DataContext);
+    // //console.log(idUser)
+    // const [user, setUser] = useState([]);
+    // const [searchUrl, setsearchUrl] = useState([]);
+
+    // useEffect(()=>{
+    //     setsearchUrl(idUser)
+    // } )
+
+
+    // const userInfo = async () => {
+        
+    //     if(user.rol!=9){
+    //     if(searchUrl) {
+    //     const data = await getData("users", searchUrl);
+    //     setUser(data);
+    //     //console.log(user)
+    //     }
+    // }
+    //   };
+
+
+    // //  useEffect(() => {
+    // //      userInfo() 
+    // //  }, []);
+
+    // userInfo()
+
     const { idUser } = useContext(DataContext);
-    //console.log(idUser)
     const [user, setUser] = useState([]);
+
     const [searchUrl, setsearchUrl] = useState([]);
 
-    useEffect(()=>{
-        setsearchUrl(idUser)
-    } )
+    // useEffect(()=>{
+    //     setsearchUrl(idUser)
+    // } )
 
 
-    const userInfo = async () => {
-        
-        if(user.rol!=9){
-        if(searchUrl) {
-        const data = await getData("users", searchUrl);
+    const userInfo = async () => {      
+        if(idUser) {
+        const data = await getData("users", idUser);
         setUser(data);
-        //console.log(user)
-        }
-    }
-      };
+        //console.log(user)      
+    }};
+    
 
-
-    //  useEffect(() => {
-    //      userInfo() 
-    //  }, []);
-
-    userInfo()
-
-
-
-
-
+      useEffect(()=>{
+        userInfo() 
+    }, [idUser] )  
 
     return (
         <header className={styles.globalNav}>
