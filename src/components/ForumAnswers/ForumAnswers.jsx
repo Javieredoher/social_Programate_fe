@@ -137,6 +137,7 @@ const ForumAnswers = () => {
               value={comment}
               onChange={handleChange}
             />
+
             <br />
           </div>
           <div className={styles.enviar}>

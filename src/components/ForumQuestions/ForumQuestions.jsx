@@ -12,12 +12,15 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 const ForumQuestions = () => {
-  const [questions, setQuestions] = useState([]);
-  const [filterTag, setFilterTag] = useState("");
-  const [dropdown, setDropdown] = useState(false);
+    const [questions, setQuestions] = useState([]);
+    const [filterTag, setFilterTag] = useState("");
+    const [dropdown, setDropdown] = useState(false);
+    const [users, setUsers] = useState([]);
+
 
   const query = useQuery();
   const search = query.get("search");
+
 
   const allQuestions = async () => {
     const searchUrl = search ? "?title=" + search : "?type=questions";
@@ -56,6 +59,60 @@ const ForumQuestions = () => {
             <Link to="/addquestion" className={styles.btn__question}>
               Añadir <BiMessageAdd />
             </Link>
+
+              {/*const allQuestions = async () => {
+        const searchUrl = search ? "?title=" + search : "?type=questions";
+        const data = await getDataAll(`posts${searchUrl}`);
+        setQuestions(data.reverse());
+        // console.log(data);
+    };
+
+    const getUsers = async () => {
+        const data = await getDataAll(`users`);
+        setUsers(data);
+    };
+
+    useEffect(() => {
+        allQuestions();
+        getUsers();
+    }, []);
+
+    // useEffect(() => {
+    //     getUsers();
+    // }, []);
+    // console.log(search);
+    // console.log(questions, "preguntas");
+    return (
+        <section
+            className={styles.section}
+            onClick={() => {
+                dropdown && setDropdown(false);
+            }}
+        >
+            <div className={styles.section__global}>
+                <div className={styles.section__head}>
+                    <h1 className={styles.section__title}>
+                        PREGUNTAS
+                        <RiQuestionLine size="27" />
+                    </h1>
+                    <hr className={styles.section__lineTitle} />
+                </div>
+                <div className={styles.section__options}>
+                    <Search
+                        setQuestions={setQuestions}
+                        questions={questions}
+                        allQuestions={allQuestions}
+                        filterTag={filterTag}
+                        dropdown={dropdown}
+                    />
+                    <div className={styles.btn__container}>
+                        <Link
+                            to="/addquestion"
+                            className={styles.btn__question}
+                        >
+                            Añadir <BiMessageAdd />
+                        </Link> */}
+
 
             <button
               className={styles.btn__question}
@@ -150,11 +207,18 @@ const ForumQuestions = () => {
                 >
                   MySQL
                 </div>
+
                 <div
                   className={styles.dropdown_item}
                   onClick={(e) => setFilterTag(e.target.innerText)}
                 >
                   Blockchain
+
+                  {/* <div className={styles.section__container}>
+                    {questions.map((data) => (
+                        <Question key={data._id} data={data} users={users} />
+                    ))} */}
+
                 </div>
               </div>
             )}

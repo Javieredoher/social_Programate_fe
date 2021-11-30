@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { getDataAll, getData } from "../../helpers/fetch";
 import styles from "./ForumQuestions.module.css";
 
+
 export const Question = ({ data }) => {
   const [users, setUsers] = useState([]);
+
 
   const getUsers = async () => {
     const data = await getDataAll(`users`);

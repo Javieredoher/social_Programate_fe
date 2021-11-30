@@ -15,12 +15,9 @@ import Notification from "../components/Notifications/Notification";
 import Media from "react-media";
 
 const HomePage = () => {
-    // const [widthScreen, setWidthScreen] = useState();
-
     return (
         <div className={style.homePage}>
             <Navbar />
-            {/* <Notification /> */}
 
             <div className={style.containBody}>
                 <Media query="(min-width: 1024px)">
@@ -53,9 +50,6 @@ const HomePage = () => {
                     }}
                 </Media>
             </div>
-            {/* <RenderPostHome />
-            <EventCard />
-            <JobCard /> */}
             <Footer />
         </div>
     );

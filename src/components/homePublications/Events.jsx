@@ -15,6 +15,7 @@ const News = ({
     dateEvent,
     id,
     user,
+    users,
     rol,
 }) => {
     const { setGetPosts, idUser } = useContext(DataContext);
@@ -23,7 +24,6 @@ const News = ({
     const [inputComment, setInputComment] = useState("");
     const [postComments, setPostComments] = useState([]);
     const [comments, setComments] = useState([]);
-    const [users, setUsers] = useState([]);
     const [refresh, setRefresh] = useState(false);
     const [userPost, setUserPost] = useState();
     const [like, setLike] = useState(true);
@@ -36,10 +36,7 @@ const News = ({
         setLikes((likes) => data.likes);
         setComments((comments) => data.comments);
     };
-    const getUsers = async () => {
-        const data = await getDataAll(`users`);
-        setUsers(data);
-    };
+
     const getUser = async () => {
         try {
             const data = await getData("users", user);
@@ -51,15 +48,14 @@ const News = ({
 
     useEffect(() => {
         getUser();
-        commentInfo();
-        getUsers();
     }, []);
+
     useEffect(() => {
         commentInfo();
     }, [setRefresh, refresh]);
+
     const submitData = async (e) => {
         e.preventDefault();
-
         try {
             await sendData(`posts/comment/${id}`, postComments);
             setInputComment("");
@@ -184,8 +180,6 @@ const News = ({
                             </b>
                             <br />
                             {userPost?.cohorte?.name}
-
-                            {/* <br /> <span>2 hr</span> */}
                         </p>
                     </div>
                     {idUser === user ? (
