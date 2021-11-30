@@ -1,6 +1,9 @@
 import React, { useState, Fragment, useContext, useEffect } from "react";
+import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { getDataAll, updateData } from "../../helpers/fetch";
+import FilterHome from "../filterHome/FilterHome";
+import { Search } from "../ForumQuestions/Search";
 import style from "./UsersList.module.css";
 //import ImagDama from '../../assets/images/ImagDama.png'
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
@@ -14,29 +17,21 @@ const UsersList = () => {
         allUsers();
     }, []);
 
+
     const allUsers = async () => {
         const dataToEdit = await getDataAll("users");
         setAllUser(dataToEdit);
     };
     console.log(allUser);
 
-    // useEffect(() => {}, [allUser, setAllUser]);
-
-    const onToggle = (id) => {
-        allUser.map((user) => {
-            if (user._id === id) {
-                // console.log(id, user._id);
-                user.state = !user.state;
-                // console.log(user.state);
-                setAllUser(allUser);
-                navigate("/community");
-            }
-        });
-    };
-
+ 
     return (
         <Fragment>
+
             <div className={style.container}>
+
+                <FilterHome/>
+
                 {allUser.map((user) => (
                     <div key={user._id} className={style.card}>
                         <img
@@ -48,9 +43,8 @@ const UsersList = () => {
                             {user.firstName}{" "}
                             {user.middleName && user.middleName}
                             <br />
-                            {user.state ? "En línea" : "off line"}
-                            <br />
-                            <i>{user.cohorte.name}</i>
+                            <i>{user.cohorte.name}</i> 
+
                         </p>
                         <button
                             type="button"
@@ -65,8 +59,7 @@ const UsersList = () => {
                                 user.state ? style.icon_green : style.icon_Gray
                             }
                         >
-                            <i
-                                onClick={() => onToggle(user._id)}
+                            <i                         
                                 className="far fa-user"
                             ></i>
                         </ul>

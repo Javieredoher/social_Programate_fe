@@ -3,6 +3,7 @@ import { getDataAll, updateData } from '../../../helpers/fetch'
 import { useNavigate } from "react-router-dom";
 import style from '../../UsersList/UsersList.module.css'
 import { DataContext } from '../../../context/DataContext';
+import FilterHome from "../../filterHome/FilterHome";
 //import ImagDama from '../../assets/images/ImagDama.png'
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
 
@@ -66,15 +67,28 @@ const AdminCommunity = () =>  {
         <Fragment>
             <div className={style.container}>
 
+                <FilterHome/>
+
                 {allUser.map((user) => (
 
                     <div key={user._id} className={style.card}>
                         <img className={style.img} src={user.avatar} alt="ImagDama" />
                         <p className={style.p}>{user.firstName} {user.middleName && user.middleName}<br />
                             {user.state ? 'Habilitado' : 'Deshabilitado'}<br/>
-                            {user.connection ? 'En linea': 'Desconectado'}
+                            {/* {user.connection ? 'En linea': 'Desconectado'} */}
                             </p>
                             <i>{user.cohorte.name}</i> 
+
+                            <button
+                            type="button"
+                            onClick={() => navigate(`/profile/${user._id}`)}
+                        >
+                            Ver perfil
+                        </button>
+
+
+
+
                         <ul className={user.state ? style.icon_green : style.icon_Gray}>
                             <i onClick={() => onToggle(user._id)} className="far fa-user" ></i>
                         </ul>
