@@ -30,20 +30,6 @@
     animation: mymove 5s infinite;
 }
 
-@keyframes mymove {
-    0% {
-        left: 100rem;
-        color: #ffcc02;
-        width: 85%;
-    }
-    100% {
-        left: 200rem;
-        left: 50%;
-        color: black;
-        width: 100%;
-    }
-}
-
 .section__lineTitle {
     width: 100px;
     border: 2px solid #ffcc02;
@@ -66,14 +52,14 @@
 .searchContainer {
     display: flex;
     justify-content: center;
-    padding: 20px 0;
+    padding: 20px 0 30px;
+    position: relative;
 }
 
 .searchBox {
     position: relative;
     width: 80%;
 }
-
 .searchButton {
     position: absolute;
     right: 0;
@@ -94,24 +80,10 @@
 }
 .clearFilter {
     position: absolute;
-    right: 2%;
-    top: 55px;
+    right: 0;
+    top: 50px;
     cursor: pointer;
 }
-
-/* .container__search{
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-}
-.searchQuestion{
-  border-radius: 15px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  padding: 10px 15px;
-  width: 80%;
-} */
-
-/*=============== SEARCH COMPONENT ===============*/
 
 .btn__container,
 .questionAnswer {
@@ -168,7 +140,6 @@
 }
 
 .questionContainerMain {
-    /*border: 2.2px solid #92c149;*/
     border: 2.2px solid #ffc107;
     padding: 1rem 2rem;
     border-radius: 20px;
@@ -178,7 +149,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 15px;
-    box-shadow: 0px 10px 10px -6px black;
+    box-shadow: 0px 10px 10px -6px rgb(70, 69, 69);
 }
 
 .question,
@@ -194,13 +165,20 @@
     justify-content: space-between;
 }
 
-/*
-.question {
-    font-size: 17px;
-    height: 3rem;
-    color: black;
+.ContainerTitle{
+    display: flex;
+    column-gap: 15px;
 }
-*/
+
+.questionTitle, .questionDescription{
+    margin: 0;
+}
+.imgQuestion {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    border: 2px solid #666;
+}
 
 .question {
     font-size: 17px;
@@ -223,13 +201,11 @@
 }
 
 .tagsItems {
-    border: 2.2px solid #92c149;
     padding: 0.5rem 1rem;
     background-color: #d7d7d7;
     border-radius: 5px;
     font-family: Gilroy-light;
     letter-spacing: 1.5px;
-    box-shadow: 0px 10px 10px -6px black;
 }
 
 .infoContainer {
