@@ -70,8 +70,29 @@
     appearance: none;
   }
   
+  .inputFile input[type="file"]{
+    
+    display: none;
+    visibility: none;
+    opacity: 0;
+  }
   .inputFile{
-    padding: 10px;
+    display: inline-block;
+    position: relative;
+    background-color: #f8d33c;
+    color: black;
+    cursor: pointer;
+    width: 150px;
+    padding: 0 0 0 10px;
+    font-family: Gilroy-light;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .inputFile label{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
   }
   .btnAdd{
       display: flex;

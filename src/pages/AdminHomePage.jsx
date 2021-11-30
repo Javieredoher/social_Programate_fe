@@ -4,9 +4,11 @@ import AdminHome from "../components/adminHome/AdminHome";
 //import AdminNavbar from "../components/adminHome/adminNavbar/adminNavbar";
 import Navbar from "../components/Navbar/Navbar";
 
+
 const AdminHomePage = () => {
     return (
         <>
+
             <Navbar/>                        
             <AdminHome/>
             <Footer />

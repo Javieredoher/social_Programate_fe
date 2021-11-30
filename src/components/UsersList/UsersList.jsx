@@ -1,6 +1,7 @@
 import React, { useState, Fragment, useContext, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../../context/DataContext";
 import { getDataAll, updateData } from "../../helpers/fetch";
 import FilterHome from "../filterHome/FilterHome";
 import { Search } from "../ForumQuestions/Search";
@@ -9,58 +10,42 @@ import style from "./UsersList.module.css";
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
 
 const UsersList = () => {
+    const [toogle, setToogle] = useState(true);
 
-    const [toogle, setToogle] = useState(true)
-    const navigate = useNavigate()
-    const [allUser, setAllUser] = useState([])
-    const [filteredUser, setFilteredUser] = useState()
-    
+    const [allUser, setAllUser] = useState([]);
+
+    const { filterHome, setFilterHome } = useContext(DataContext);
+
+    const navigate = useNavigate();
+
     useEffect(async () => {
         const dataToEdit = await getDataAll("users");
-        setAllUser(dataToEdit)
-    }, [])
+        setAllUser(dataToEdit);
+    }, []);
 
+    const filter = () => {
+        if (filterHome.length !== 0) {
+            const filter = allUser.filter((user) =>
+                user?.firstName
+                    .concat(" ", user?.middleName, " ", user?.lastName)
+                    .toLowerCase()
+                    .includes(filterHome)
+            );
 
-    const userFilter = () => {
-        setFilteredUser(allUser.filter((user) =>
-            user?.firstName
-                .concat(" ", user?.lastName)
-                .toLowerCase())
-        );
-
-        return filteredUser;
+            return filter;
+        } else {
+            return allUser;
+        }
     };
 
-    /*useEffect(() => {
-    }, [allUser, setAllUser]);*/
 
-    const handleChange = ({ target }) => {
-        const valueInput = target.value.toLowerCase();
-        userFilter(valueInput);
-        console.log(filteredUser)
-        //setAllUser()
-    };
-    
-
-
+ 
     return (
         <Fragment>
-
-        {/* <div className={style.filter}>
-            <input
-                type="text"
-                placeholder="Buscar usuario"
-                //value={filteredUser}
-                onChange={handleChange}
-            />
-            <i className="fa-solid fa-magnifying-glass"></i>
-        </div> */}
-
             <div className={style.container}>
+                <FilterHome />
 
-                <FilterHome/>
-
-                {allUser.map((user) => (
+                {filter().map((user) => (
                     <div key={user._id} className={style.card}>
                         <img
                             className={style.img}
@@ -71,12 +56,13 @@ const UsersList = () => {
                             {user.firstName}{" "}
                             {user.middleName && user.middleName}
                             <br />
-                            {/* {user.state ? "En línea" : "off line"} 
-                            <br/>*/}
+
                             <i>{user.cohorte.name}</i> 
+
                         </p>
                         <button
                             type="button"
+                            className={style.button}
                             onClick={() => navigate(`/profile/${user._id}`)}
                         >
                             Ver perfil
@@ -87,8 +73,7 @@ const UsersList = () => {
                                 user.state ? style.icon_green : style.icon_Gray
                             }
                         >
-                            <i
-                                /* onClick={() => onToggle(user._id)} */
+                            <i                         
                                 className="far fa-user"
                             ></i>
                         </ul>
