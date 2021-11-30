@@ -17,6 +17,7 @@ const News = ({
     contact,
     id,
     user,
+    users,
     rol,
 }) => {
     const { setGetPosts, idUser } = useContext(DataContext);
@@ -25,12 +26,13 @@ const News = ({
     const [inputComment, setInputComment] = useState("");
     const [postComments, setPostComments] = useState([]);
     const [comments, setComments] = useState([]);
-    const [users, setUsers] = useState([]);
     const [refresh, setRefresh] = useState(false);
     const [userPost, setUserPost] = useState();
     const [like, setLike] = useState(true);
     const [likes, setLikes] = useState([]);
     const [commentId, setCommentId] = useState([]);
+
+    let navigate = useNavigate();
 
     const commentInfo = async () => {
         const data = await getData("posts", id);
@@ -38,10 +40,7 @@ const News = ({
         setComments((comments) => data.comments);
         setLikes((likes) => data.likes);
     };
-    const getUsers = async () => {
-        const data = await getDataAll(`users`);
-        setUsers(data);
-    };
+
     const getUser = async () => {
         try {
             const data = await getData("users", user);
@@ -53,13 +52,11 @@ const News = ({
 
     useEffect(() => {
         getUser();
-        commentInfo();
-        getUsers();
     }, []);
+
     useEffect(() => {
         commentInfo();
     }, [refresh, setRefresh]);
-    let navigate = useNavigate();
 
     const submitData = async (e) => {
         e.preventDefault();

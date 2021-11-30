@@ -3,16 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { getDataAll, getData } from "../../helpers/fetch";
 import styles from "./ForumQuestions.module.css";
 
-export const Question = ({ data }) => {
-    const [users, setUsers] = useState([]);
-    const [user, setUser] = useState("");
-    const getUsers = async () => {
-        const data = await getDataAll(`users`);
-        setUsers(data);
-    };
-    useEffect(() => {
-        getUsers();
-    }, []);
+export const Question = ({ data, users }) => {
+    // const [users, setUsers] = useState([]);
+    // const [user, setUser] = useState("");
 
     const onName = (id) => {
         const user = users.filter((user) => user._id === id);

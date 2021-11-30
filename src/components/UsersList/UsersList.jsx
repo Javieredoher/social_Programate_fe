@@ -9,25 +9,22 @@ import style from "./UsersList.module.css";
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
 
 const UsersList = () => {
-
-    const [toogle, setToogle] = useState(true)
-    const navigate = useNavigate()
-    const [allUser, setAllUser] = useState([])
-    const [filteredUser, setfilteredUser] = useState("");
-
-
-
-    useEffect(async () => {
-        const dataToEdit = await getDataAll("users");
-
-        setAllUser(dataToEdit)
-    }, [])
+    const [toogle, setToogle] = useState(true);
+    const navigate = useNavigate();
+    const [allUser, setAllUser] = useState([]);
 
     useEffect(() => {
+        allUsers();
+    }, []);
 
-    }, [allUser, setAllUser]);
 
+    const allUsers = async () => {
+        const dataToEdit = await getDataAll("users");
+        setAllUser(dataToEdit);
+    };
+    console.log(allUser);
 
+ 
     return (
         <Fragment>
 
@@ -46,12 +43,12 @@ const UsersList = () => {
                             {user.firstName}{" "}
                             {user.middleName && user.middleName}
                             <br />
-                            {/* {user.state ? "En línea" : "off line"} 
-                            <br/>*/}
                             <i>{user.cohorte.name}</i> 
+
                         </p>
                         <button
                             type="button"
+                            className={style.button}
                             onClick={() => navigate(`/profile/${user._id}`)}
                         >
                             Ver perfil
@@ -62,8 +59,7 @@ const UsersList = () => {
                                 user.state ? style.icon_green : style.icon_Gray
                             }
                         >
-                            <i
-                                /* onClick={() => onToggle(user._id)} */
+                            <i                         
                                 className="far fa-user"
                             ></i>
                         </ul>

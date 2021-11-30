@@ -23,7 +23,6 @@ const ForumAnswers = () => {
     const { setDataUser, idUser } = useContext(DataContext);
     const searchUrl = idUser;
 
-
     const userInfo = async () => {
         const data = await getData("users", searchUrl);
         setUser(data);
@@ -81,7 +80,7 @@ const ForumAnswers = () => {
     }, [questionId]);
 
     const onName = (id) => {
-        // console.log(users, "users");
+
         if (users.length > 0) {
             const user = users?.filter((user) => user._id === id);
             const userFilter = user[0];
@@ -104,6 +103,7 @@ const ForumAnswers = () => {
         await deleteData("comments", id);
         setRefresh((refresh) => !refresh);
     };
+
 
     return (
         <>

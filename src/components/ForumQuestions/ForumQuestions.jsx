@@ -15,6 +15,7 @@ const ForumQuestions = () => {
     const [questions, setQuestions] = useState([]);
     const [filterTag, setFilterTag] = useState("");
     const [dropdown, setDropdown] = useState(false);
+    const [users, setUsers] = useState([]);
 
     const query = useQuery();
     const search = query.get("search");
@@ -23,12 +24,23 @@ const ForumQuestions = () => {
         const searchUrl = search ? "?title=" + search : "?type=questions";
         const data = await getDataAll(`posts${searchUrl}`);
         setQuestions(data.reverse());
+        // console.log(data);
+    };
+
+    const getUsers = async () => {
+        const data = await getDataAll(`users`);
+        setUsers(data);
     };
 
     useEffect(() => {
         allQuestions();
-    }, [search]);
+        getUsers();
+    }, []);
 
+    // useEffect(() => {
+    //     getUsers();
+    // }, []);
+    // console.log(search);
     // console.log(questions, "preguntas");
     return (
         <section
@@ -200,7 +212,7 @@ const ForumQuestions = () => {
                 </div>
                 <div className={styles.section__container}>
                     {questions.map((data) => (
-                        <Question key={data._id} data={data} />
+                        <Question key={data._id} data={data} users={users} />
                     ))}
                 </div>
             </div>
