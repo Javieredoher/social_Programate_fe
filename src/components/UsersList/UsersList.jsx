@@ -13,23 +13,48 @@ const UsersList = () => {
     const [toogle, setToogle] = useState(true)
     const navigate = useNavigate()
     const [allUser, setAllUser] = useState([])
-    const [filteredUser, setfilteredUser] = useState("");
-
-
-
+    const [filteredUser, setFilteredUser] = useState()
+    
     useEffect(async () => {
         const dataToEdit = await getDataAll("users");
-
         setAllUser(dataToEdit)
     }, [])
 
-    useEffect(() => {
 
-    }, [allUser, setAllUser]);
+    const userFilter = () => {
+        setFilteredUser(allUser.filter((user) =>
+            user?.firstName
+                .concat(" ", user?.lastName)
+                .toLowerCase())
+        );
+
+        return filteredUser;
+    };
+
+    /*useEffect(() => {
+    }, [allUser, setAllUser]);*/
+
+    const handleChange = ({ target }) => {
+        const valueInput = target.value.toLowerCase();
+        userFilter(valueInput);
+        console.log(filteredUser)
+        //setAllUser()
+    };
+    
 
 
     return (
         <Fragment>
+
+        {/* <div className={style.filter}>
+            <input
+                type="text"
+                placeholder="Buscar usuario"
+                //value={filteredUser}
+                onChange={handleChange}
+            />
+            <i className="fa-solid fa-magnifying-glass"></i>
+        </div> */}
 
             <div className={style.container}>
 
