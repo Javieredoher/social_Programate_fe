@@ -30,6 +30,7 @@ const News = ({
 
     let navigate = useNavigate();
 
+    //Section Posts
     const commentInfo = async () => {
         const data = await getData("posts", id);
         setLikes((likes) => data.likes);
@@ -45,14 +46,6 @@ const News = ({
         }
     };
 
-    useEffect(() => {
-        getUser();
-    }, []);
-
-    useEffect(() => {
-        commentInfo();
-    }, [refresh, setRefresh]);
-
     const deletePost = async () => {
         try {
             await deleteData("posts", id);
@@ -62,6 +55,8 @@ const News = ({
             console.log(error);
         }
     };
+
+    //Section Commets
 
     const toggle = () => {
         setShowComments(!showComments);
@@ -77,12 +72,6 @@ const News = ({
         } catch (error) {
             console.log("Error" + error);
         }
-    };
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setInputComment(value);
-        setPostComments({ ...postComments, [name]: value, user_id: idUser });
     };
 
     const onName = (id) => {
@@ -129,6 +118,20 @@ const News = ({
             }
         });
     };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setInputComment(value);
+        setPostComments({ ...postComments, [name]: value, user_id: idUser });
+    };
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
+    useEffect(() => {
+        commentInfo();
+    }, [refresh, setRefresh]);
 
     const previewComment = (comment, index) => {
         return (

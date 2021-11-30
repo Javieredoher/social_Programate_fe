@@ -36,6 +36,15 @@ const Posts = () => {
         }
     }, [idUser]);
 
+    useEffect(async () => {
+        try {
+            const data = await getDataAll("posts");
+            setGetPosts(data.reverse());
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
     const filteredUser = () => {
         const filteredUser = dataUsers.filter((user) =>
             user?.firstName
@@ -90,15 +99,6 @@ const Posts = () => {
     const showMorePosts = () => {
         setQuantityPosts(quantityPosts + 25);
     };
-
-    useEffect(async () => {
-        try {
-            const data = await getDataAll("posts");
-            setGetPosts(data.reverse());
-        } catch (error) {
-            console.log(error);
-        }
-    }, []);
 
     return (
         <Fragment>
