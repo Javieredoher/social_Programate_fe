@@ -34,11 +34,6 @@ const ProfileMain = ({ dataProfile }) => {
                     </div>
 
                     <div className={style.img_cont}>
-                        {/*                         <div>
-                            <img src={medalla1} alt="imagen1" />
-                            <img src={medalla2} alt="imagen2" />
-                            <img src={medalla3} alt="imagen3" />
-                        </div> */}
                         <div className={style.but_cont}>
                             {!params.id ? (
                                 <Link to="/portfolio">
