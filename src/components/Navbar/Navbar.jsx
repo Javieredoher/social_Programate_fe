@@ -5,10 +5,9 @@ import iconoEducamas from "../../assets/images/iconoEducamas.png";
 import logoperfil from "../../assets/images/photoProfile.png";
 import { BiGroup, BiMessageRoundedAdd } from "react-icons/bi";
 import { BiHomeAlt } from "react-icons/bi";
-import { MdOutlineForum } from "react-icons/md"
+import { MdOutlineForum } from "react-icons/md";
 import { Link } from "react-router-dom";
 import DropdownLogOut from "./DropdownLogOut";
-
 
 const Navbar = () => {
     return (
@@ -43,11 +42,11 @@ const Navbar = () => {
                         </Link>
                     </ul>
                     <div className={styles.containerPhoto}>
-                        <img
+                        {/* <img
                             src={logoperfil}
                             alt="Prográmate"
                             className={styles.photoProfile}
-                        />
+                        /> */}
                         <DropdownLogOut />
                     </div>
                 </nav>

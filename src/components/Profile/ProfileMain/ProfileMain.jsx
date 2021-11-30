@@ -1,8 +1,5 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import style from "./ProfileMain.module.css";
-/* import medalla1 from "../../../assets/images/medalla1.png";
-import medalla2 from "../../../assets/images/medalla2.png";
-import medalla3 from "../../../assets/images/medalla3.png"; */
 import { DataContext } from "../../../context/DataContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import altImg from "../../../assets/images/avatar.png";
@@ -15,7 +12,6 @@ const ProfileMain = ({ dataProfile }) => {
     const params = useParams();
 
     const editProfile = () => {
-        // console.log(idUser);
         navigate(`/formprofile/${idUser}`);
     };
 
