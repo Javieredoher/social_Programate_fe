@@ -119,11 +119,11 @@ const Navbar = () => {
                         </Link>
                     </ul>
                     <div className={styles.containerPhoto}>
-                        <img
+                        {/* <img
                             src={logoperfil}
                             alt="Prográmate"
                             className={styles.photoProfile}
-                        />
+                        /> */}
                         <DropdownLogOut />
                     </div>
                 </nav>
