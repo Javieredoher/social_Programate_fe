@@ -289,7 +289,7 @@ const FieldEducation = ({
                     className={style.inputPersonal}
                     name="institution"
                     id="institution"
-                    value={item.education}
+                    value={item.institution}
                     onChange={(e) => handleChange(e, item.id)}
                     placeholder="nombre de la institución"
                 />

@@ -45,6 +45,11 @@
 
 .icon_cont2 p {
     margin-top: 0;
+    width: 100%;
+}
+.certificate {
+    height: 60px;
+    float: right;
 }
 
 @media (min-width: 768px) {

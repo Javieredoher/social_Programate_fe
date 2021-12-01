@@ -7,10 +7,6 @@ import { ProfessionalInformation } from "../components/professionalInformation/P
 import { DataContext } from "../context/DataContext";
 import { getDataAll, getData } from "../helpers/fetch";
 
-/*const CompletePerfil = () => {
-    const { idUser, email, setDataProfile, dataProfile } =
-        useContext(DataContext);*/
-
 const CompletePerfil = ({ value }) => {
     const { idUser, email, setDataProfile, dataProfile } =
         useContext(DataContext);
@@ -19,13 +15,6 @@ const CompletePerfil = ({ value }) => {
     const [statusOff, setStatusOff] = useState(true);
     const [items, setItems] = useState([]);
     const [user, setUser] = useState([]);
-
-    // const auth = useSelector((state) => state.auth);
-
-    // const token = useSelector((state) => state.token);
-    // const { _id = "", email = "" } = auth.user && auth.user;
-
-    // console.log(email, _id, "imprimiendo email y id");
 
     const getAllProfiles = async () => {
         const data = await getDataAll(`profiles`);
@@ -51,7 +40,6 @@ const CompletePerfil = ({ value }) => {
         items.map((item) => {
             if (item.user_info?.email === email) {
                 setStatus((status) => true);
-                // console.log("working 2");
             }
         });
     }, [setItems, items]);

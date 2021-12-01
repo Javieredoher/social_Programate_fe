@@ -51,14 +51,14 @@ const BodyProfile = () => {
                 const data = await getDataAll("profiles");
                 if (!params.id) {
                     const filterData = data.filter(
-                        (profile) => profile.user_info._id === idUser
+                        (profile) => profile?.user_info?._id === idUser
                     );
                     setDataProfile(filterData[0]);
                 } else {
                     const filterData = data.filter(
-                        (profile) => profile.user_info._id === params.id
+                        (profile) => profile?.user_info?._id === params.id
                     );
-                    console.log(filterData[0]);
+
                     setDataProfile(filterData[0]);
                 }
             } catch (error) {

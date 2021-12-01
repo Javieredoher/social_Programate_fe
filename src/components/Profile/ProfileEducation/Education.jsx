@@ -2,6 +2,7 @@ import React from "react";
 import style from "./ProfileEducation.module.css";
 
 const Education = ({ study }) => {
+    console.log(study);
     return (
         <div className={style.icon_cont2}>
             <div>
@@ -15,6 +16,14 @@ const Education = ({ study }) => {
                     {study.eduDateEnd.slice(0, 7)}
                 </span>
             </p>
+            {study.certificate.length > 0 && (
+                <img
+                    className={style.certificate}
+                    src={study.certificate}
+                    alt="
+            Certificado"
+                />
+            )}
         </div>
     );
 };

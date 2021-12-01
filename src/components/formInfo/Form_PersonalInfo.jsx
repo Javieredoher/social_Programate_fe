@@ -16,15 +16,14 @@ import { getDataAll } from "../../helpers/fetch";
 
 const Form_PersonalInfo = () => {
     const { dataProfile, setDataProfile, idUser } = useContext(DataContext);
-    const params = useParams();
     const [technical, setTechnical] = useState([]);
     const [softSkills, setsoftSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
 
+    const params = useParams();
     // console.log(idUser)
 
     const onChange = ({ target }) => {
-        // console.log(dataProfile);
         const { name, value } = target;
         setDataProfile({
             ...dataProfile,
@@ -77,13 +76,14 @@ const Form_PersonalInfo = () => {
     };
 
     useEffect(async () => {
+        console.log("entro");
         if (params.id) {
             try {
                 const data = await getDataAll("profiles");
                 const filter = data.filter(
-                    (prof) => prof.user_info._id === idUser
+                    (prof) => prof?.user_info?._id === idUser
                 );
-                // console.log(filter[0]);
+                console.log(filter[0], "ssssss");
                 setDataProfile(filter[0]);
                 setLanguages(filter[0].lenguages);
                 setsoftSkills(filter[0].softSkills);
@@ -92,7 +92,7 @@ const Form_PersonalInfo = () => {
                 console.log(error);
             }
         }
-    }, []);
+    }, [idUser]);
     return (
         <Fragment>
             <form className={style.form_container}>
