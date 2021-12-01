@@ -36,6 +36,17 @@ export const Search = ({
         return filteredUser;
     };
 
+    const filteredFullName = () => {
+        const filteredUser = getUsers.filter((user) =>
+            user?.firstName
+                .concat(" ", user?.middleName, " ", user?.lastName)
+                .toLowerCase()
+                .includes(searchText)
+        );
+
+        return filteredUser;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (searchText.length !== 0) {
@@ -46,6 +57,9 @@ export const Search = ({
                         ?.map((quest) => quest.toLowerCase())
                         .includes(searchText) ||
                     filteredUser()
+                        .map((user) => user._id)
+                        .includes(item?.user_info) ||
+                    filteredFullName()
                         .map((user) => user._id)
                         .includes(item?.user_info)
             );
