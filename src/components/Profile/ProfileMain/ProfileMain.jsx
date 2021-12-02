@@ -41,7 +41,7 @@ const ProfileMain = ({ dataProfile }) => {
                                 <button
                                     onClick={() =>
                                         navigate(`/portfolio/${params.id}`)
-                                    }
+                                    } className={style.button}
                                 >
                                     Ver portafolio
                                 </button>

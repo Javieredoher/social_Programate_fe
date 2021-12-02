@@ -1,5 +1,5 @@
 // React imports
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -42,22 +42,44 @@ import FormProject from "../../components/FormProject/FormProject";
 
 //admin
 import AdminHomePage from "../../pages/AdminHomePage";
+import AdminNavbar from "../adminHome/adminNavbar/AdminNavbar";
+import AdminCommunity from "../adminHome/adminCommunity/AdminCommunity";
+import { DataContext } from "../../context/DataContext";
+import { getData } from "../../helpers/fetch";
 
 function Autentification() {
     const auth = useSelector((state) => state.auth);
     const { isLogged, isAdmin } = auth;
-    // useEffect(() => {
 
-    // }, [isLogged])
+    const { idUser } = useContext(DataContext);
+    const [user, setUser] = useState([]);
+
+    const [searchUrl, setsearchUrl] = useState([]);
+
+    // useEffect(()=>{
+    //     setsearchUrl(idUser)
+    // } )
+
+
+    const userInfo = async () => {      
+        if(idUser) {
+        const data = await getData("users", idUser);
+        setUser(data);
+        //console.log(user)      
+    }};
+    
+
+      useEffect(()=>{
+        userInfo() 
+    }, [idUser] )  
+
+
+
+
 
     return (
         <>
             <Routes>
-                {/* Model */}
-
-                {/* <Route exact path="/formprofile" element={isLogged ? < CompletePerfil /> : <NotFound />} /> 
-
-        */}
 
                 {/* Login */}
                 <Route
@@ -91,7 +113,9 @@ function Autentification() {
                 <Route
                     exact
                     path="/adminhome"
-                    element={isLogged ? <AdminHomePage /> : <NotFound />}
+
+                    element={isLogged ? user.rol==9 ? <AdminHomePage /> : <NotFound />: <NotFound />}
+
                 />
 
                 {/* Home */}
@@ -205,6 +229,18 @@ function Autentification() {
                 />
 
                 {/* Testing Routes to visualize components */}
+
+                <Route
+                    exact
+                    path="/test"
+                    element={isLogged ? <AdminNavbar /> : <NotFound />}
+                />
+
+                <Route
+                    exact
+                    path="/communitycrud"
+                    element={isLogged ? <AdminCommunity /> : <NotFound />}
+                />
             </Routes>
         </>
     );

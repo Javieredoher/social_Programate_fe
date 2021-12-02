@@ -3,6 +3,7 @@ import { getDataAll, updateData } from '../../../helpers/fetch'
 import { useNavigate } from "react-router-dom";
 import style from '../../UsersList/UsersList.module.css'
 import { DataContext } from '../../../context/DataContext';
+import FilterHome from "../../filterHome/FilterHome";
 //import ImagDama from '../../assets/images/ImagDama.png'
 //import ImagCaballero from '../../assets/images/ImagCaballero.png'
 
@@ -13,6 +14,8 @@ const AdminCommunity = () =>  {
 
     const navigate = useNavigate()
     const [allUser, setAllUser] = useState([])
+    const { filterHome, setFilterHome } = useContext(DataContext);
+
     
     useEffect(async () => {
         const dataToEdit = await getDataAll("users");
@@ -45,36 +48,47 @@ const AdminCommunity = () =>  {
 
     }
 
-/*     const [connection, setConnection] = useState()
+    const filter = () => {
+        if (filterHome.length !== 0) {
+            const filter = allUser.filter((user) =>
+                user?.firstName
+                    .concat(" ", user?.middleName, " ", user?.lastName)
+                    .toLowerCase()
+                    .includes(filterHome)
+            );
 
-    useEffect(()=>{
-        
-        const loggedUser = window.localStorage.getItem("loggedAgoraUser")
-        const UserLogInfo = JSON.parse(loggedUser);
-        console.log(UserLogInfo.msg)
-
-        if(UserLogInfo.msg=='Login success!'){
-            setConnection(true) 
+            return filter;
+        } else {
+            return allUser;
         }
-
-       // UserLogInfo!=='undefined'? : setConnection(false)
-        console.log(connection)
-    },[])
- */
+    };
 
     return (
         <Fragment>
             <div className={style.container}>
 
-                {allUser.map((user) => (
+                <FilterHome/>
+
+                {filter().map((user) => (
 
                     <div key={user._id} className={style.card}>
                         <img className={style.img} src={user.avatar} alt="ImagDama" />
                         <p className={style.p}>{user.firstName} {user.middleName && user.middleName}<br />
                             {user.state ? 'Habilitado' : 'Deshabilitado'}<br/>
-                            {user.connection ? 'En linea': 'Desconectado'}
+                            {/* {user.connection ? 'En linea': 'Desconectado'} */}
                             </p>
                             <i>{user.cohorte.name}</i> 
+
+                            <button
+                            type="button"
+                            className={style.button}
+                            onClick={() => navigate(`/profile/${user._id}`)}
+                        >
+                            Ver perfil
+                        </button>
+
+
+
                         <ul className={user.state ? style.icon_green : style.icon_Gray}>
                             <i onClick={() => onToggle(user._id)} className="far fa-user" ></i>
                         </ul>
